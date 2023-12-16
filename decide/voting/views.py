@@ -6,6 +6,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 
 from .models import Question, QuestionOption, Voting
+from census.models import Census
 from .serializers import SimpleVotingSerializer, VotingSerializer
 from base.perms import UserIsStaff
 from base.models import Auth
@@ -113,14 +114,24 @@ class VotingUpdate(generics.RetrieveUpdateDestroyAPIView):
     
 
 
+
 @login_required(login_url="/authentication/login-view/")
 def list_votings(request):
-    votings = Voting.objects.all()
-    user = request.user
-    return render(request, 'list_votings.html', {
-        'votings': votings,
-        'user': user,
-    })
+    if request.user.is_staff:
+        votings = Voting.objects.all()
+        user = request.user
+        return render(request, 'list_votings.html', {
+            'votings': votings,
+            'user': user,
+        })
+    else:
+        census =  Census.objects.filter(voter_id=request.user.id)
+        votings = Voting.objects.filter(id__in=census.values('voting_id'))
+        user = request.user
+        return render(request, 'list_votings.html', {
+            'votings': votings,
+            'user': user,
+        })
 
 @login_required(login_url="/authentication/login-view/")
 def voting_details(request,voting_id):
