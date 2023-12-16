@@ -77,7 +77,7 @@ class VotingTestCase(BaseTestCase):
         q.save()
         for i in range(5):
             opt = QuestionOptionRanked(
-                question=q, option='option {}'.format(i+1))
+                question=q, option='option {}'.format(i+1), number=i+1)
             opt.save()
         v = Voting(name='test ranked voting', question=q)
         v.save()
@@ -197,6 +197,37 @@ class VotingTestCase(BaseTestCase):
         for q in v.postproc:
             self.assertEqual(tally.get(q["number"], 0), q["votes"])
 
+    def store_ranked_votes(self, v):
+        def string_to_ascii(value):
+            result = ''
+            for char in value:
+                value_ascii = str(ord(char))
+                if len(value_ascii) <= 2:
+                    value_ascii = '0' + value_ascii if len(value_ascii) == 2 else value_ascii
+                result += value_ascii
+            return result
+        
+        voters = list(Census.objects.filter(voting_id=v.id))
+        voter = voters.pop()
+
+        answers = ['1-2-3-4-5','2-3-4-5-1','3-4-5-1-2']
+        clear = []
+        for answer in answers:
+            for i in range(random.randint(0, 5)):
+                a, b = self.encrypt_msg(int(string_to_ascii(answer)), v)
+                data = {
+                    'voting': v.id,
+                    'voter': voter.voter_id,
+                    'vote': {'a': a, 'b': b},
+                    'voting_type': 'preference'
+                }
+                clear.append(answer)
+                user = self.get_or_create_user(voter.voter_id)
+                self.login(user=user.username)
+                voter = voters.pop()
+                mods.post('store', json=data)
+        return clear
+    
     def test_complete_ranked_voting(self):
         v = self.create_ranked_voting()
         self.create_voters(v)
@@ -204,20 +235,19 @@ class VotingTestCase(BaseTestCase):
         v.create_pubkey()
         v.start_date = timezone.now()
         v.save()
-        # clear = self.store_votes(v)
+        clear = self.store_ranked_votes(v)
 
         self.login()
-        # v.tally_votes(self.token)
+        v.tally_votes(self.token)
 
-        # tally = v.tally
-        # tally.sort()
-        # tally = {k: len(list(x)) for k, x in itertools.groupby(tally)}
+        tally = v.tally
+        answers = ['1-2-3-4-5','2-3-4-5-1','3-4-5-1-2']
 
-        # for q in v.question.options.all():
-        #     self.assertEqual(tally.get(q.number, 0), clear.get(q.number, 0))
-
-        # for q in v.postproc:
-        #     self.assertEqual(tally.get(q["number"], 0), q["votes"])
+        for answer in answers:
+            num_of_answer = clear.count(answer)
+            if num_of_answer!=0:
+                self.assertEqual(num_of_answer, tally['msgs'].count(answer))
+        
 
     def store_multiple_choice_votes(self, v):
         voters = list(Census.objects.filter(voting_id=v.id))
@@ -272,6 +302,37 @@ class VotingTestCase(BaseTestCase):
         for q in v.postproc:
             self.assertEqual(tally.get(q["number"], 0), q["votes"])
 
+
+    def store_comment_votes(self, v):
+        def string_to_ascii(value):
+            result = ''
+            for char in value:
+                value_ascii = str(ord(char))
+                if len(value_ascii) <= 2:
+                    value_ascii = '0' + value_ascii if len(value_ascii) == 2 else value_ascii
+                result += value_ascii
+            return result
+
+        voters = list(Census.objects.filter(voting_id=v.id))
+        voter = voters.pop()
+        answers = ['a','b','c']
+        clear = []
+        for answer in answers:
+            for i in range(random.randint(0, 5)):
+                a, b = self.encrypt_msg(int(string_to_ascii(answer)), v)
+                data = {
+                    'voting': v.id,
+                    'voter': voter.voter_id,
+                    'vote': {'a': a, 'b': b},
+                    'voting_type': 'comment',
+                }
+                clear.append(answer)
+                user = self.get_or_create_user(voter.voter_id)
+                self.login(user=user.username)
+                voter = voters.pop()
+                mods.post('store', json=data)
+        return clear
+
     def test_complete_comment_voting(self):
         v = self.create_comment_voting()
         self.create_voters(v)
@@ -280,9 +341,19 @@ class VotingTestCase(BaseTestCase):
         v.start_date = timezone.now()
         v.save()
 
-        clear = self.store_classic_votes(v)
+        clear = self.store_comment_votes(v)
 
-        self.login()
+        self.login()  # set token
+        v.tally_votes(self.token)
+
+        tally = v.tally
+        answers = ['a','b','c']
+
+        for answer in answers:
+            num_of_answer = clear.count(answer)
+            if num_of_answer!=0:
+                self.assertEqual(num_of_answer, tally['msgs'].count(answer))
+        
 
     def test_create_voting_from_api(self):
         data = {'name': 'Example'}
