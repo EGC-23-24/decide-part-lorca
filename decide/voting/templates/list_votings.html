@@ -6,10 +6,13 @@
     <h1>Votings_List</h1>
 </div>
 {% if user.is_staff %}
+<div style="text-align: center; margin-top: 20px;">
+    <a class="btn btn-primary" href="{% url 'census' %}">📒 Census</a>
+</div>
     {% for voting in votings %}
         {% if voting.end_date != null and voting.start_date != null %}
         <div>
-            <h1>⌛{{voting.name}}</h1>
+            <h1>⌛{{voting.name}} (ID: {{voting.id}})</h1>
             <p>{{voting.desc}}</p>
         
             <form method="post" action="{% url 'voting_delete' voting.id %}">
@@ -35,7 +38,7 @@
         {% endif %}
         {% if voting.start_date == null %}
         <div>
-            <h1>⏳{{voting.name}}</h1>
+            <h1>⏳{{voting.name}} (ID: {{voting.id}}) (ID: {{voting.id}})</h1>
             <p>{{voting.desc}}</p>
             <form method="post" action="{% url 'voting_delete' voting.id %}">
                 {% csrf_token %}
@@ -61,7 +64,7 @@
         {% endif %}
         {% if voting.end_date == null and voting.start_date != null %}
         <div>
-            <h1>⏳{{voting.name}}</h1>
+            <h1>⏳{{voting.name}} (ID: {{voting.id}})</h1>
             <p>{{voting.desc}}</p>
             <form method="post" action="{% url 'voting_delete' voting.id %}">
                 {% csrf_token %}
@@ -79,6 +82,7 @@
                 {{ form.as_p }}
                 <button type="submit">✏ Update</button>
             </form>
+         
 
         </div>
         {% endif %}
