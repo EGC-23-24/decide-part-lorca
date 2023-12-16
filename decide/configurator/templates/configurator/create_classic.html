@@ -48,6 +48,7 @@
             {{ form.more_options }}
 
             <div class="d-flex justify-content-center gap-2">
+                <a href="{% url 'configurator' %}" class="btn btn-secondary">Cancel</a>
                 <button type="button" class="btn btn-primary" onclick="addOption()">Add Option</button>
                 <button type="submit" class="btn btn-primary" onclick="updateOptions()">Create</button>
             </div>

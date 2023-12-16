@@ -1,4 +1,4 @@
-{% extends "base.html"%}
+{% extends "base2.html"%}
 
 {% load i18n static %}
 
@@ -11,8 +11,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="container text-center">
-    <h1 class="display-4 mb-4">Choose a voting type</h1>
+<div class="container text-center" style="margin-top: 60px;">
+    <h1 class="display-4 mb-4">Voting configurator</h1>
 
     {% if messages %}
     {% for message in messages %}
@@ -28,10 +28,10 @@
             <p>Classic votings are used to determine the most favored option among a set of options.</p>
             <a href="{% url 'create_classic' %}" class="btn btn-primary">Create</a>
         </div>
-        <div class="col bg-light border border-dark rounded p-3 mx-4">
-            <h3>Yes/No</h3>
-            <p>In Yes/No votings participants choose either "Yes" or "No" in response to a specific question.</p>
-            <a href="{% url 'create_yes_no' %}" class="btn btn-primary">Create</a>
+        <div class="col p-3 mx-4 align-self-center">
+            <p class="text-muted">Choose a voting type</p>
+            <p class="text-muted">OR</p>
+            <a href="{% url 'list_votings' %}" class="btn btn-primary">View all votings</a>
         </div>
         <div class="col bg-light border border-dark rounded p-3">
             <h3>Multiple choice</h3>
@@ -42,14 +42,14 @@
 
     <div class="row mb-4">
         <div class="col bg-light border border-dark rounded p-3">
+            <h3>Yes/No</h3>
+            <p>In Yes/No votings participants choose either "Yes" or "No" in response to a specific question.</p>
+            <a href="{% url 'create_yes_no' %}" class="btn btn-primary">Create</a>
+        </div>
+        <div class="col bg-light border border-dark rounded p-3 mx-4">
             <h3>Preference</h3>
             <p>In Preference votings participants rank options based on their personal preferences.</p>
             <a href="{% url 'create_preference' %}" class="btn btn-primary">Create</a>
-        </div>
-        <div class="col bg-light border border-dark rounded p-3 mx-4">
-            <h3>Multiple questions</h3>
-            <p>In Multiple questions votings participants answer multiple questions with a single vote.</p>
-            <a href="#" class="btn btn-primary">Create</a>
         </div>
         <div class="col bg-light border border-dark rounded p-3">
             <h3>Open question</h3>

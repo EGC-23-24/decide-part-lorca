@@ -20,8 +20,8 @@
         {% endif %}
 
         <div class="d-flex justify-content-center border rounded p-4 gap-4">
-            <a href="#" class="btn btn-primary">Add voters</a>
-            <a href="#" class="btn btn-primary">Import census from Excel</a>
+            <a href="{% url 'census' %}" class="btn btn-primary">Add voters</a>
+            <a href="{% url 'import_census' %}" class="btn btn-primary">Import census from Excel</a>
             <a href="{% url 'configurator' %}" class="btn btn-primary">Manage census later</a>
         </div>
     </div>
