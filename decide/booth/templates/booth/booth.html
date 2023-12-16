@@ -441,34 +441,35 @@
                                 this.showAlert("danger", '{% trans "Error: " %}' + error);
                             });
                     } else if (this.voting.question.type === 'R') {
-                        evt.preventDefault();
-                        var values = document.getElementsByClassName('form-ranked-input')
-                        var listValues = Array.prototype.slice.call(values).map(x => x.value)
-                        var check = this.checkVote(listValues)
-                        if (check.error) {
-                            this.showAlert("danger", '{% trans "Error: " %}' + check.msg);
-                            return
-                        }
-                        var vote = listValues.join('-')
-                        this.selected = this.stringToASCII(vote)
-                        var v = this.decideEncrypt();
-                        var data = {
-                            vote: {a: v.alpha.toString(), b: v.beta.toString()},
-                            voting: this.voting.id,
-                            voter: this.user.id,
-                            voting_type: 'preference',
-                            token: this.token,
-                        }
-                        this.postData("{% url "gateway" "store" "/" %}", data)
-                            .then(data => {
-                                this.successVote = true;
-                                this.alertShow = false;
-                                this.showAlert("success", '{% trans "Congratulations. Your vote has been sent" %}');
-                            })
-                            .catch(error => {
-                                this.succesVote = false;
-                                this.showAlert("danger", '{% trans "Error: " %}' + error);
-                            });
+                      evt.preventDefault();
+                      var values = document.getElementsByClassName('form-ranked-input')
+                      var listValues = Array.prototype.slice.call(values).map(x => x.value)
+                      let max = {{maxOption}}
+                      var check = this.checkVote(listValues)
+                      if (check.error) {
+                        this.showAlert("danger", '{% trans "Error: " %}' + check.msg);
+                        return
+                      }
+                      var vote = listValues.join('-')
+                      this.selected = this.stringToASCII(vote)
+                      var v = this.decideEncrypt();
+                      var data = {
+                          vote: {a: v.alpha.toString(), b: v.beta.toString()},
+                          voting: this.voting.id,
+                          voter: this.user.id,
+                          voting_type: 'preference',
+                          token: this.token,
+                      }
+                      this.postData("{% url "gateway" "store" "/" %}", data)
+                          .then(data => {
+                              this.successVote = true;
+                              this.alertShow = false;
+                              this.showAlert("success", '{% trans "Congratulations. Your vote has been sent" %}');
+                          })
+                          .catch(error => {
+                              this.succesVote = false;
+                              this.showAlert("danger", '{% trans "Error: " %}' + error);
+                          });
                     } else {
                         // Tipo de votación no reconocido
                         this.showAlert("danger", "Unknown voting type");
@@ -518,6 +519,10 @@
                   vSet = new Set(v)
                   if (v.length !== vSet.size) {
                     return { error: true, msg: 'No puede haber preferencias repetidas entre opciones'}
+                  }
+                  let max = {{maxOption}}
+                  if (v.some(x => x < 1 || x > max)) {
+                    return { error: true, msg: `No se pueden escoger preferencias que no existen el rango de prefenrecias es 1-${max}`}
                   }
                   return { error: false, msg: ''}
                 }
