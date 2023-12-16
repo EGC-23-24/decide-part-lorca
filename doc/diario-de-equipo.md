@@ -5,24 +5,25 @@
 * Grupo Teoría: 1
 * Milestone: M3
 
-# Miembros del grupo decide-part-lorca-1
+| Miembros del grupo decide-part-lorca-1 |
+| Nombre     | Correo   | Apodos GitHub   |
+| ------------ | ------------ | ------------ |
+| Gallardo Pelayo, Alejandro     | alegalpel@alum.us.es     | Thealean28 y Alejandro Gallardo Pelayo |
+| Medina Durán, Alejandro     | alemeddur@alum.us.es    | alejandromd y Alejandro Medina Durán|
+| López-Benjumea Novella, Alberto Miguel      | alblopnov@alum.us.es   | alblopnov y Alberto|
+| Campos Mejías, Gonzalo      | goncammej@alum.us.es   | goncammej|
+| Delgado Pallares, David      | davdelpal1@alum.us.es   | david y davdelpal1|
+| Jímenez del Villar, Juan Antonio      | juajimdel2@alum.us.es   | JuanAntonioJimenezdelVillar y Juan Antonio Jiménez del Villar|
 
-* Gallardo Pelayo, Alejandro (alegalpel@alum.us.es) <br>
-* Medina Durán, Alejandro (alemeddur@alum.us.es) <br>
-* López-Benjumea Novella, Alberto Miguel (alblopnov@alum.us.es) <br>
-* Campos Mejías, Gonzalo (goncammej@alum.us.es) <br>
-* Delgado Pallares, David (davdelpal1@alum.us.es) <br>
-* Jímenez del Villar, Juan Antonio (juajimdel2@alum.us.es) <br>
-
-# Miembros del grupo decide-part-lorca-2
-
-* Bernal Caunedo, Álvaro Jesús (alvarobc2412@gmail.com) <br>
-* Gónzalez Frías, Álvaro (alvgonfri@alum.us.es) <br>
-* Martín Acuña, Joaquín (jmardev@proton.me) <br>
-* García Berdejo, José María (josgarber6@alum.us.es) <br>
-* Benítez Ruis Díaz, Francisco Sebastían (frabenrui1@alum.us.es) <br>
-* García Ruíz, Manuel (manuelgruiz22@gmail.com) <br>
-
+ Miembros del grupo decide-part-lorca-2 |
+| Nombre     | Correo   | Apodos GitHub   |
+| ------------ | ------------ | ------------ |
+| Bernal Caunedo, Álvaro Jesús    | alvarobc2412@gmail.com    | alvarobernal2412 y Alvaro Jesus Bernal Caunedo  |
+|  Gónzalez Frías, Álvaro    | alvgonfri@alum.us.es | alvgonfri y Álvaro González|
+| Martín Acuña, Joaquín   | jmardev@proton.me | Joaquin Martin y jmartinacu |
+|  García Berdejo, José María     |   josgarber6@alum.us.es | josgarber6 y Dr.Kenobi27 |
+| Benítez Ruis Díaz, Francisco Sebastían    | frabenrui1@alum.us.es  | Francisco Benitez |
+|  García Ruíz, Manuel | manuelgruiz22@gmail.com | Manuel García Ruiz y mangarrui|
 
 # Resumen reuniones
 
@@ -97,15 +98,15 @@
 
 # Tareas asignadas y horas imputadas
 En este apartado se recoge el tiempo empleado por cada persona del proyecto respecto al desarrollo de sus funcionalidades asignadas, aparte de este tiempo todos los miembros han invertido más horas en reuniones, solución de conflictos y errores relativos a la correción de pull requests.
-* Gallardo Pelayo, Alejandro: Autenticación con redes sociales, elaboración y corrección de los test de authentication, implementación vista login y registro para usuarios, elaboración del diario del equipo, automatización de releases en GitHub Actions y actualización del manual de gestión del repositorio. Tiempo: <br>
-* Medina Durán, Alejandro: Mostrar datos en tiempo real en visualizer, mostrar datos en gráficas en visualizer, implementar todos los tipos de votación en visualizer, elaboración y corrección de los test de visualizer, elaboración del diario del equipo y añadir al django.yml las instancias de redis y celery. Tiempo: <br>
-* López-Benjumea Novella, Alberto Miguel: Implementación del voto si/no en el módulo voting, elaboración de los test de yes/no del módulo voting, arreglar el tally en preference voting. Tiempo: <br>
-* Campos Mejías, Gonzalo: Implementación de la interfaz de multiple questions módulo booth (finalmente no integrado en la versión final del proyecto), configurar redis y celery, predefinir una fecha de cierre de la votación de forma asíncrona, refactorizar el booth de preference voting, lanzar la aplicación en Docker y generar documentación automática en GitHub Actions, realización de los test de redis y celery, elaboración de los test de multiple questions del módulo booth (finalmente no integrado en la versión final del proyecto). Tiempo: <br>
-* Delgado Pallares, David: Gestión de la interfaz del censo, elaboración de los test de Census (menos importar/exportar censo) y despliegue en Vagrant. Tiempo:  <br>
-* Jímenez del Villar, Juan Antonio: Soportar todos los tipos de votaciones en el postprocesado, solución de distintos errores e implementar nuevo sistema de encriptación en la mixnet. Tiempo: <br>
-* Bernal Caunedo, Álvaro Jesús: Impementación del comment questions en el módulo voting, interfaz de votación si/no del módulo voting, elaboración documento manual de git, implementación del booth del comment question, documento de gestión del repositorio. Tiempo: <br>
-* Gónzalez Frías, Álvaro: Importación/exportación del censo, elaboración de los test de importación/exportación del censo, plantilla de incidencias e implementación de una vista de gestión de votaciones para el administrador. Tiempo: <br>
-* Martín Acuña, Joaquín: Elaboración documento manual de git, despliegue en render, integración continua y configuración de GitHub Actions, implementación de todos los tipos de votación en el módulo store, interfaz de votación por preferencia en Booth, encriptar y desencriptar ascii en el postprocesado. Tiempo: <br>
-* García Berdejo, José María: Implementación del voto por preferencia en el módulo Voting, la página inicial y test de selenium de Voting. Tiempo: <br>
-* Benítez Ruis Díaz, Francisco Sebastían: Implementación de votación con varias preguntas en el módulo Voting(finalmente no integrado en la versión final del proyecto), implementación de multiple choice en Voting y Booth, permitir que un usuario pueda sobreescribir su voto en el Booth. Tiempo: <br>
-* García Ruíz, Manuel: Interfaz del configurador. Tiempo: <br>
+* Gallardo Pelayo, Alejandro: Autenticación con redes sociales, elaboración y corrección de los test de authentication, implementación vista login y registro para usuarios, elaboración del diario del equipo, automatización de releases en GitHub Actions, actualización del manual de gestión del repositorio para indicar como añadir una nueva tag y actualización del Readme original de Decie. Tiempo: 60 horas<br>
+* Medina Durán, Alejandro: Mostrar datos en tiempo real en visualizer, mostrar datos en gráficas en visualizer, implementar todos los tipos de votación en visualizer, elaboración y corrección de los test de visualizer, elaboración del diario del equipo y añadir al django.yml las instancias de redis y celery, implementar visualizer de multiple questions (finalmente no integrado en la versión final del proyecto), documentar modelos para generar documentación automática. Tiempo: 60 horas<br>
+* López-Benjumea Novella, Alberto Miguel: Implementación del voto si/no en el módulo voting, elaboración de los test de yes/no del módulo voting, arreglar el tally en preference voting, agregar estilo al listado de votaciones. Tiempo: 55 horas<br>
+* Campos Mejías, Gonzalo: Implementación de la interfaz de multiple questions módulo booth (finalmente no integrado en la versión final del proyecto), configurar redis y celery, predefinir una fecha de cierre de la votación de forma asíncrona, refactorizar el booth de preference voting, lanzar la aplicación en Docker y generar documentación automática en GitHub Actions, realización de los test de redis y celery, elaboración de los test de multiple questions del módulo booth (finalmente no integrado en la versión final del proyecto). Tiempo: 60 horas<br>
+* Delgado Pallares, David: Gestión de la interfaz del censo, elaboración de los test de Census (menos importar/exportar censo) y despliegue en Vagrant. Tiempo: 50 horas<br>
+* Jímenez del Villar, Juan Antonio: Soportar todos los tipos de votaciones en el postprocesado, solución de distintos errores, desencriptar ascii en el postprocesado. Tiempo: 60 horas<br>
+* Bernal Caunedo, Álvaro Jesús: Impementación del comment questions en el módulo voting, interfaz de votación si/no del módulo voting, elaboración documento manual de git, implementación del booth del comment question, documento de gestión del repositorio, documento de gestión de pruebas, creación autmática de inciencias en GitHub Actions. Tiempo: 70 horas<br>
+* Gónzalez Frías, Álvaro: Importación/exportación del censo, elaboración de los test de importación/exportación del censo, plantilla de incidencias, implementación de una vista de gestión de votaciones para el administrador, Interfaz del configurador. Tiempo: 65 horas<br>
+* Martín Acuña, Joaquín: Elaboración documento manual de git, despliegue en render, integración continua y configuración de GitHub Actions, implementación de todos los tipos de votación en el módulo store, interfaz de votación por preferencia en Booth, encriptar ascii en el booth de la votación por preferencia. Tiempo: 70 horas<br>
+* García Berdejo, José María: Implementación del voto por preferencia en el módulo Voting, creación de tipo de pregunta yes/no, la página inicial y test de selenium de Voting. Tiempo: 55 horas<br>
+* Benítez Ruis Díaz, Francisco Sebastían: Implementación de votación con varias preguntas en el módulo Voting(finalmente no integrado en la versión final del proyecto), implementación de multiple choice en Voting y Booth, permitir que un usuario pueda sobreescribir su voto en el Booth, refactorización de los tests del booth, pruebas de carga. Tiempo: 65 horas<br>
+* García Ruíz, Manuel:  Gestión del módulo voting, interfaz de listado de votaciones de cada usuario, redirigir autenticación cuando se inicia una votación, permitir al administrador acceder a la gestión del censo. Tiempo: 50 horas<br>
