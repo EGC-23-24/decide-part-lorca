@@ -22,7 +22,7 @@
 |  Gónzalez Frías, Álvaro    | alvgonfri@alum.us.es | alvgonfri y Álvaro González|
 | Martín Acuña, Joaquín   | jmardev@proton.me | Joaquin Martin y jmartinacu |
 |  García Berdejo, José María     |   josgarber6@alum.us.es | josgarber6 y Dr.Kenobi27 |
-| Benítez Ruis Díaz, Francisco Sebastían    | frabenrui1@alum.us.es  | Francisco Benitez |
+| Benítez Ruis Díaz, Francisco Sebastían    | frabenrui1@alum.us.es  | Francisco Benitez y sebasruii|
 |  García Ruíz, Manuel | manuelgruiz22@gmail.com | Manuel García Ruiz y mangarrui|
 
 # Resumen reuniones
