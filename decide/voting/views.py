@@ -6,6 +6,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 
 from .models import Question, QuestionOption, Voting
+from census.models import Census
 from .serializers import SimpleVotingSerializer, VotingSerializer
 from base.perms import UserIsStaff
 from base.models import Auth
@@ -113,23 +114,33 @@ class VotingUpdate(generics.RetrieveUpdateDestroyAPIView):
     
 
 
-@login_required
-def list_votings(request):
-    votings = Voting.objects.all()
-    user = request.user
-    return render(request, 'list_votings.html', {
-        'votings': votings,
-        'user': user,
-    })
 
-@login_required
+@login_required(login_url="/authentication/login-view/")
+def list_votings(request):
+    if request.user.is_staff:
+        votings = Voting.objects.all()
+        user = request.user
+        return render(request, 'list_votings.html', {
+            'votings': votings,
+            'user': user,
+        })
+    else:
+        census =  Census.objects.filter(voter_id=request.user.id)
+        votings = Voting.objects.filter(id__in=census.values('voting_id'))
+        user = request.user
+        return render(request, 'list_votings.html', {
+            'votings': votings,
+            'user': user,
+        })
+
+@login_required(login_url="/authentication/login-view/")
 def voting_details(request,voting_id):
     voting = get_object_or_404(Voting, pk=voting_id)
     return render(request, 'voting_details.html',{
         'voting': voting,
     })
 
-@login_required
+@login_required(login_url="/authentication/login-view/")
 def voting_delete(request, voting_id):
     voting = get_object_or_404(Voting, pk=voting_id)
 
@@ -143,7 +154,7 @@ def voting_delete(request, voting_id):
 
     return render(request, 'list_votings.html', {'votings': Voting.objects.all(), 'user': request.user})
 
-@login_required
+@login_required(login_url="/authentication/login-view/")
 def start_voting(request, voting_id):
     voting = get_object_or_404(Voting, pk=voting_id)
     if request.method == 'POST':
@@ -156,7 +167,7 @@ def start_voting(request, voting_id):
     return render(request, 'list_votings.html', {'votings': Voting.objects.all(), 'user': request.user})
 
 
-@login_required
+@login_required(login_url="/authentication/login-view/")
 def end_voting(request, voting_id):
     voting = get_object_or_404(Voting, pk=voting_id)
     if request.method == 'POST':
@@ -167,7 +178,7 @@ def end_voting(request, voting_id):
             return redirect('list_votings')  
     return render(request, 'list_votings.html', {'votings': Voting.objects.all(), 'user': request.user})
 
-@login_required
+@login_required(login_url="/authentication/login-view/")
 def update_voting(request, voting_id):
     voting = get_object_or_404(Voting, pk=voting_id)
 
@@ -182,7 +193,7 @@ def update_voting(request, voting_id):
 
     return render(request, 'update_voting.html', {'form': form, 'voting': voting})
 
-@login_required
+@login_required(login_url="/authentication/login-view/")
 def tally_view(request, voting_id):
     voting = get_object_or_404(Voting, pk=voting_id)
     if request.method == 'POST':
