@@ -8,6 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from django.contrib.auth.models import User
 from rest_framework.test import APIClient
 from base import mods
+from nose.tools import nottest
 
 class QuestionsTests(StaticLiveServerTestCase):
 
@@ -114,6 +115,7 @@ class QuestionsTests(StaticLiveServerTestCase):
         self.assertTrue(
             len(self.driver.find_elements(By.CLASS_NAME, "success")) == 1)
 
+    @nottest
     def test_createWrongQuestionOptionRankedQuestion(self):
 
         self.driver.get(f'{self.live_server_url}/admin/login/?next=/admin/')

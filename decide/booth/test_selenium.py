@@ -14,6 +14,7 @@ from django.contrib.auth.models import User
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 
 @nottest
@@ -92,7 +93,7 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
             )
         username.click()
         
-        self.driver.find_element(By.ID, "username").send_keys("noadmin")
+        self.driver.find_element(By.ID, "username").send_keys("user1")
         self.driver.find_element(By.ID, "password").click()
         self.driver.find_element(By.ID, "password").send_keys("qwerty")
         self.driver.find_element(By.ID, "process-login-button").click()
@@ -187,11 +188,10 @@ class CommentBoothTestCase(StaticLiveServerTestCase):
             )
         username.click()
         
-        self.driver.find_element(By.ID, "username").send_keys("noadmin")
+        self.driver.find_element(By.ID, "username").send_keys("user1")
         self.driver.find_element(By.ID, "password").click()
-        self.driver.find_element(By.ID, "password").send_keys("qwerty")
-        self.driver.find_element(By.ID, "process-login-button").click()
-        
+        self.driver.find_element(By.ID, "password").send_keys("qwerty", Keys.ENTER)
+
         WebDriverWait(self.driver, 10).until(
         EC.visibility_of_element_located((By.ID, "floatingTextarea2"))
             )
@@ -215,10 +215,6 @@ class YesNoBoothTestCase(StaticLiveServerTestCase):
     def create_voting(self):
         q = Question(desc='test question', type='Y')
         q.save()
-        opt1 = QuestionOptionYesNo(question=q, option='Si')
-        opt2 = QuestionOptionYesNo(question=q, option='No')
-        opt1.save()
-        opt2.save()
         v = Voting(name='test voting', question=q)
         v.save()
 
@@ -284,10 +280,9 @@ class YesNoBoothTestCase(StaticLiveServerTestCase):
             )
         username.click()
         
-        self.driver.find_element(By.ID, "username").send_keys("noadmin")
+        self.driver.find_element(By.ID, "username").send_keys("user1")
         self.driver.find_element(By.ID, "password").click()
-        self.driver.find_element(By.ID, "password").send_keys("qwerty")
-        self.driver.find_element(By.ID, "process-login-button").click()
+        self.driver.find_element(By.ID, "password").send_keys("qwerty", Keys.ENTER)
         
         yes_button = WebDriverWait(self.driver, 10).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-success"))
@@ -372,7 +367,7 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         time.sleep(1)
         self.driver.find_element(By.CSS_SELECTOR, ".btn-secondary").click()
         time.sleep(1)
-        self.driver.find_element(By.ID, "username").send_keys("noadmin")
+        self.driver.find_element(By.ID, "username").send_keys("user1")
         time.sleep(1)
 
         self.driver.find_element(By.ID, "password").send_keys("qwerty")

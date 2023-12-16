@@ -170,8 +170,7 @@ class LoginView(CreateView):
         
         user = authenticate(request, username=username, password=password1)
 
-        url = reverse_lazy('welcome')
-        response = redirect(url)
+        response = redirect('/')
 
         if user is not None:
             login(request, user)
@@ -189,7 +188,7 @@ class LoginView(CreateView):
 
     
 class RegisterView(CreateView):
-    template_name = "authentication/authentication.html"
+    template_name = "authentication/register.html"
     form_class = CustomUserCreationForm
     model = User
 
@@ -247,7 +246,7 @@ class RegisterView(CreateView):
 
 
         if (len(errors)>0):
-            template = loader.get_template("authentication/authentication.html")
+            template = loader.get_template("authentication/register.html")
             context = {"errors":errors}
 
             return HttpResponse(template.render(context, request))
@@ -272,12 +271,11 @@ class RegisterView(CreateView):
             except IntegrityError:
                 return HttpResponse("Integrity Error raised", status=HTTP_400_BAD_REQUEST)
             
-            url = reverse_lazy('welcome')
-            return redirect(url)
+            return redirect('/')
 
 
 def main(request):
-    template = loader.get_template("authentication/welcome.html")
+    template = loader.get_template("authentication/authentication.html")
     context = {}
     is_authenticated = False
 
@@ -291,8 +289,7 @@ def main(request):
 
 
 def logout_view(request):
-    url = reverse_lazy('welcome')
-    response = redirect(url)
+    response = redirect('/')
     if request.user.is_authenticated == True:
         logout(request)
         response.delete_cookie('token')

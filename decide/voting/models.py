@@ -12,16 +12,20 @@ import json
 class Question(models.Model):
     desc = models.TextField()
     TYPES = [
-            ('C', 'Classic question'),
-            ('R', 'Ranked'),
-            ('Y', 'Yes/No question'),
-            ('M', 'Multiple choice question'),
-            ('T', 'Text question')
-            ]
+        ('C', 'Classic question'),
+        ('Y', 'Yes/No question'),
+        ('M', 'Multiple choice question'),
+        ('T', 'Text question'),
+        ('R', 'Ranked question'),
+    ]
     type = models.CharField(max_length=1, choices=TYPES, default='C')
-    
-    def save(self):
-        super().save()
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.type == 'Y':
+            # Create Yes/No options when a Yes/No question is saved
+            QuestionOptionYesNo.objects.get_or_create(question=self, option='Si', number=1)
+            QuestionOptionYesNo.objects.get_or_create(question=self, option='No', number=2)
 
     def __str__(self):
         return self.desc
@@ -67,11 +71,11 @@ class QuestionOptionYesNo(models.Model):
     number = models.PositiveIntegerField(blank=True, null=True)
     option = models.TextField()
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if not self.number:
             self.number = self.question.options.count() + 2
         if self.question.type == 'Y':
-            return super().save()
+            return super().save(*args, **kwargs)
 
     def __str__(self):
         if self.question.type == 'Y':

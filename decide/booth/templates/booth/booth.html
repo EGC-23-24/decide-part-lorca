@@ -394,6 +394,7 @@
                     } else if (this.voting.question.type === 'Y') {
                         // Votación 'Si' o 'No'
                         var selectedOption = this.voting.question.options.find(opt => opt.option === valor);
+                        
                         this.selected = selectedOption.number;
                         evt.preventDefault();
                         var v = this.decideEncrypt();
@@ -484,6 +485,16 @@
                         token: this.token,
                         voting_type: 'choices'
                     }
+                    this.postData("{% url "gateway" "store" "/" %}", data)
+                        .then(data => {
+                            this.successVote = true;
+                            this.alertShow = false;
+                            this.showAlert("success", '{% trans "Congratulations. Your vote has been sent" %}');
+                        })
+                        .catch(error => {
+                            this.succesVote = false;
+                            this.showAlert("danger", '{% trans "Error: " %}' + error);
+                        });
                 },
                 showAlert(lvl, msg) {
                     this.alertLvl = lvl;

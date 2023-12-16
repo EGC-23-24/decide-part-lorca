@@ -6,9 +6,9 @@
 1. [Política de *Commits*](#id1)
 2. [Estructura del Repositorio](#id2)
 3. [Estrategia de Ramificación](#id3)
-    1. [Ramas Principales](#id3.1)
-    2. [Corrección de Bugs en Producción](#id3.2)
-    3. [Ramas Épicas y Features](#id3.3)
+    1. [Ramas principales](#id3.1)
+    2. [Ramas épicas y *features*](#id3.2)
+    3. [Otras ramas](#id3.3)
 4. [Estrategia de Revisiones de código y *Pull Requests*](#id4)
 5. [Política de Versionado](#id5)
 
@@ -93,23 +93,23 @@ La estructura del proyecto se compone de diversas carpetas que contienen element
 
 #### 3.1. Ramas principales
 
-Las ramas principales del proyecto serán *main* y *develop*, donde se reunirán la funcionalidad estable y la funcionalidad en desarrollo, respectivamente. Ambas ramas están protegidas para evitar la fusión sin 2 revisiones aprobadas.
+Las ramas principales del proyecto serán *main* y *develop*, donde se reunirán la funcionalidad estable y la funcionalidad en desarrollo, respectivamente. Ambas ramas están protegidas para permitir la fusión únicamente tras 2 aprobaciones del código y la ejecución exitosa de las pruebas en GitHub Actions.
 
 <div id='id3.2'/>
 
-#### 3.2. Corrección de errores en producción
+#### 3.2. Ramas épicas y *features*
 
-En caso de encontrar un error en *main*, se creará una nueva rama llamada *hotfix* para corregirlo con la siguiente estructura:
-- `hotfix/nombre_rama`.
-Luego, se creará una nueva solicitud de extracción para fusionar en *main* y *develop*.
+- Las ramas épicas se utilizarán para desarrollar funcionalidades que requieran modificar varios módulos del proyecto. Estas ramas se crearán a partir de *develop* y se fusionarán en *develop* una vez finalizadas. Deberán seguir la siguiente nomenclatura: `epic/id_issue-titulo-descriptivo`.
+- Las ramas *features* se utilizarán para desarrollar funcionalidades que requieran modificar un único módulo del proyecto. Estas ramas se crearán o bien a partir de *develop* o bien a partir de una rama épica y se fusionarán en *develop* o en la rama épica correspondiente una vez finalizadas. Deberán seguir la siguiente nomenclatura: `feature/id_issue-titulo-descriptivo`. En caso de que se creen varias ramas *features* a partir de una rama épica, se deberá añadir el módulo al que pertenece la rama *feature* en la nomenclatura. Por ejemplo: `feature/id_issue-titulo-descriptivo-modulo`.
 
 <div id='id3.3'/>
 
-#### 3.3. Ramas Épicas y Features
+#### 3.3. Otras ramas
 
-En nuestro proyecto hemos definido algunos incrementos para implementar, por lo que usaremos ramas épicas para gestionar las modificaciones de varios desarrolladores. Cuando una épica contenga la nueva funcionalidad implementada con sus respectivas pruebas, se creará una solicitud de extracción para fusionarla en *develop*. La épica tendrá la siguiente estructura: `epic/ID_issue-nombre_rama`.
-
-Los desarrolladores crearán sus ramas a partir de esta épica para trabajar en un módulo de esa función con la estructura: `feature/nombre_rama-módulo`. Solo cuando hayan terminado sus cambios y hayan creado sus pruebas se creará una solicitud de extracción para fusionarse en su épica.
+- Las ramas *hotfix* se utilizarán para corregir errores en producción. Estas ramas se crearán a partir de *main* y se fusionarán en *main* y *develop* una vez finalizadas. Deberán seguir la siguiente nomenclatura: `hotfix/titulo-descriptivo`.
+- Las ramas *fix* se utilizarán para corregir errores o realizar mejoras en desarrollo. Estas ramas se crearán a partir de la rama sobre la que se quiera realizar la corrección o mejora y se fusionarán en la misma una vez finalizadas. Deberán seguir la siguiente nomenclatura: `fix/titulo-descriptivo`.
+- Las ramas *doc* se utilizarán para realizar cambios en la documentación. Estas ramas se crearán a partir de *develop* y se fusionarán en *develop* una vez finalizadas. Deberán seguir la siguiente nomenclatura: `doc/titulo-descriptivo`.
+- Las ramas *conf* se utilizarán para realizar cambios en archivos de configuración. Estas ramas se crearán a partir de *develop* y se fusionarán en *develop* una vez finalizadas. Deberán seguir la siguiente nomenclatura: `conf/titulo-descriptivo`.
 
 <div id='id4'/>
 
@@ -135,3 +135,17 @@ Además, debe cumplir con los siguientes requisitos:
 - La precedencia se determina por la diferencia al comparar identificadores de izquierda a derecha. Por ejemplo: 1.0.0 < 2.0.0 < 2.1.0.
 
 En nuestro caso, las etiquetas se utilizarán principalmente en versiones de producción. Por ejemplo: la primera versión será 1.0.0.
+
+Una vez elegido el número de versión adecuado, es posible crear una nueva release de forma automática. 
+Teniendo la rama main actualizada, debes ejecutar estos comandos para crear un nuevo tag:
+
+- Recuerda estar siempre situado en la rama main
+- Sutitye "v1.0.0." por el número de versión escogido
+
+1. Creación del nuevo tag
+    - `git tag -a v1.0.0 -m “mensaje para añadir al tag que también aparecerá en la release”`
+
+2.  Subir el nuevo tag
+    - `git push origin v1.0.0.`
+
+Una vez ejecutados estos comandos, se creará automáticamente un nuevo tag en el repositorio y automáticamente se generará una nueva release con el tag indicado.

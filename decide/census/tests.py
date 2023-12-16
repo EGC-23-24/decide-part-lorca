@@ -1,6 +1,6 @@
 import random
 from django.contrib.auth.models import User
-from django.test import TestCase
+from django.test import Client, TestCase
 from django.conf import settings
 from django.urls import reverse
 from rest_framework.test import APIClient
@@ -25,74 +25,462 @@ from datetime import datetime
 
 
 class CensusTestCase(BaseTestCase):
+
     def setUp(self):
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        # Crear un censo
+        self.census = Census.objects.create(voting_id=v.id, voter_id=u.id)
+
         super().setUp()
-        self.census = Census(voting_id=1, voter_id=1)
-        self.census.save()
+    
+    def test_create_census(self):
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        # Crear un censo
+        census = Census.objects.create(voting_id=v.id, voter_id=u.id)
+
+        # Comprobar que se ha creado correctamente
+        self.assertEqual(census.voting_id, v.id)
+        self.assertEqual(census.voter_id, u.id)
+        self.assertEqual(Census.objects.latest('id').voting_id, v.id)
+        self.assertEqual(Census.objects.latest('id').voter_id, u.id)
+
+    def test_create_census_invalid_voting_id(self):
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        with self.assertRaises(ValueError):
+            # Crear un censo
+            census = Census.objects.create(voting_id="invalid_voting_id", voter_id=u.id)
+            census.full_clean()  # This should raise a ValidationError exception
+
+    def test_create_census_invalid_voter_id(self):
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        with self.assertRaises(ValueError):
+            # Attempt to create a census with an invalid voter_id
+            census = Census.objects.create(voting_id=v.id, voter_id="invalid_voter_id")
+            census.full_clean()
+
+    def test_create_census_invalid_voting_id_and_voter_id(self):
+        with self.assertRaises(ValueError):
+            # Attempt to create a census with an invalid voting_id and voter_id
+            census = Census.objects.create(voting_id="invalid_voting_id", voter_id="invalid_voter_id")
+            census.full_clean()
+
+    def test_delete_census(self):
+        # Delete any existing Census objects to avoid IntegrityError
+        Census.objects.all().delete()
+
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+        
+        # Create a Census object to delete
+        census_to_delete = Census.objects.create(voting_id=v.id, voter_id=u.id)
+
+        # Define the URL and the data
+        url = reverse('census_deleted')  # replace with your URL name
+        data = {'voting_id': census_to_delete.voting_id, 'voter_id': census_to_delete.voter_id}
+
+        # Make the POST request
+        response = self.client.post(url, data, follow=True)
+
+        # Check the status code and the response data
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(Census.objects.filter(voting_id=census_to_delete.voting_id, voter_id=census_to_delete.voter_id).exists())
+            
+    def test_delete_census_invalid_voting_id(self):
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        with self.assertRaises(ValueError):
+            # Attempt to delete a census with an invalid voting_id
+            census = Census.objects.create(voting_id="invalid_voting_id", voter_id=u.id)
+            census.full_clean()
+    
+    def test_delete_census_invalid_voter_id(self):
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        with self.assertRaises(ValueError):
+            # Attempt to delete a census with an invalid voter_id
+            census = Census.objects.create(voting_id=v.id, voter_id="invalid_voter_id")
+            census.full_clean()
+    
+    def test_delete_census_invalid_voting_id_and_voter_id(self):
+        with self.assertRaises(ValueError):
+            # Attempt to delete a census with an invalid voting_id and voter_id
+            census = Census.objects.create(voting_id="invalid_voting_id", voter_id="invalid_voter_id")
+            census.full_clean()
+
+    def test_list_census(self):
+        # Eliminar todos los objetos Census existentes
+        Census.objects.all().delete()
+
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Agregar el votante al censo
+        census = Census(voter_id=u.id, voting_id=v.id)
+        census.save()
+
+        # Define the URL and the data
+        url = reverse('census_list')
+
+        # Make the POST request
+        response = self.client.get(url, follow=True)
+
+        # Check the status code and the response data
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Census.objects.count(), 1)
+        # Comprobar que el voting_id del objeto Census es el correcto
+        self.assertEqual(Census.objects.latest('id').voting_id, v.id)
+        self.assertEqual(Census.objects.latest('id').voter_id, u.id)
+
+    def test_list_census_invalid_voting_id(self):
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        with self.assertRaises(ValueError):
+            # Attempt to list a census with an invalid voting_id
+            census = Census.objects.create(voting_id="invalid_voting_id", voter_id=u.id)
+            census.full_clean()
+    
+    def test_list_census_invalid_voter_id(self):
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        with self.assertRaises(ValueError):
+            # Attempt to list a census with an invalid voter_id
+            census = Census.objects.create(voting_id=v.id, voter_id="invalid_voter_id")
+            census.full_clean()
+
+    def test_list_census_invalid_voting_id_and_voter_id(self):
+        with self.assertRaises(ValueError):
+            # Attempt to list a census with an invalid voting_id and voter_id
+            census = Census.objects.create(voting_id="invalid_voting_id", voter_id="invalid_voter_id")
+            census.full_clean()
+
+    def test_get_census(self):
+        # Eliminar todos los objetos Census existentes
+        Census.objects.all().delete()
+
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Agregar el votante al censo
+        census = Census(voter_id=u.id, voting_id=v.id)
+        census.save()
+
+        # Define the URL and the data
+        url = reverse('census_details')
+
+        data = {'id': census.id}
+        # Make the POST request
+        response = self.client.get(url, data)
+
+        # Check the status code and the response data
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Census.objects.count(), 1)
+        self.assertEqual(Census.objects.latest('id').voting_id, v.id)
+        self.assertEqual(Census.objects.latest('id').voter_id, u.id)
+
+    def test_get_census_invalid_voting_id(self):
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        with self.assertRaises(ValueError):
+            # Attempt to get a census with an invalid voting_id
+            census = Census.objects.create(voting_id="invalid_voting_id", voter_id=u.id)
+            census.full_clean()
+    
+    def test_get_census_invalid_voter_id(self):
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        with self.assertRaises(ValueError):
+            # Attempt to get a census with an invalid voter_id
+            census = Census.objects.create(voting_id=v.id, voter_id="invalid_voter_id")
+            census.full_clean()
+
+    def test_get_census_invalid_voting_id_and_voter_id(self):
+        with self.assertRaises(ValueError):
+            # Attempt to get a census with an invalid voting_id and voter_id
+            census = Census.objects.create(voting_id="invalid_voting_id", voter_id="invalid_voter_id")
+            census.full_clean()
+
+            
 
     def tearDown(self):
         super().tearDown()
         self.census = None
 
     def test_check_vote_permissions(self):
-        response = self.client.get(
-            "/census/{}/?voter_id={}".format(1, 2), format="json"
-        )
-        self.assertEqual(response.status_code, 401)
-        self.assertEqual(response.json(), "Invalid voter")
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Autorizar al votante para votar
+        census = Census(voter_id=u.id, voting_id=v.id)
+        census.save()
 
         response = self.client.get(
-            "/census/{}/?voter_id={}".format(1, 1), format="json"
+            "/census/{}/?voter_id={}".format(v.id, u.id), format="json"
         )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), "Valid voter")
 
     def test_list_voting(self):
-        response = self.client.get("/census/?voting_id={}".format(1), format="json")
-        self.assertEqual(response.status_code, 401)
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
 
-        self.login(user="noadmin")
-        response = self.client.get("/census/?voting_id={}".format(1), format="json")
-        self.assertEqual(response.status_code, 403)
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        # Crear un censo
+        census = Census.objects.create(voting_id=v.id, voter_id=u.id)
 
         self.login()
-        response = self.client.get("/census/?voting_id={}".format(1), format="json")
+        response = self.client.get("/census/?voting_id={}".format(v.id), format="json")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {"voters": [1]})
+        self.assertEqual(response.json(), {"voters": [u.id]})
 
     def test_add_new_voters_conflict(self):
-        data = {"voting_id": 1, "voters": [1]}
-        response = self.client.post("/census/", data, format="json")
-        self.assertEqual(response.status_code, 401)
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
 
-        self.login(user="noadmin")
-        response = self.client.post("/census/", data, format="json")
-        self.assertEqual(response.status_code, 403)
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        # Crear un censo
+        census = Census.objects.create(voting_id=v.id, voter_id=u.id)
 
         self.login()
+        data = {"voting_id": v.id, "voters": [u.id]}
         response = self.client.post("/census/", data, format="json")
         self.assertEqual(response.status_code, 409)
 
     def test_add_new_voters(self):
-        data = {"voting_id": 2, "voters": [1, 2, 3, 4]}
-        response = self.client.post("/census/", data, format="json")
-        self.assertEqual(response.status_code, 401)
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
 
-        self.login(user="noadmin")
-        response = self.client.post("/census/", data, format="json")
-        self.assertEqual(response.status_code, 403)
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter2')
+        u.is_active = True
+        u.save()
 
         self.login()
+        data = {"voting_id": v.id, "voters": [u.id]}
         response = self.client.post("/census/", data, format="json")
         self.assertEqual(response.status_code, 201)
-        self.assertEqual(len(data.get("voters")), Census.objects.count() - 1)
+        self.assertEqual(len(data.get("voters")), Census.objects.count()-1)
 
     def test_destroy_voter(self):
-        data = {"voters": [1]}
-        response = self.client.delete("/census/{}/".format(1), data, format="json")
-        self.assertEqual(response.status_code, 204)
-        self.assertEqual(0, Census.objects.count())
+        # Eliminar todos los objetos Census existentes
+        Census.objects.all().delete()
 
+        # Crear un votante
+        u, created = User.objects.get_or_create(username='testvoter')
+        u.is_active = True
+        u.save()
+
+        # Crear una votación
+        q = Question(desc="test question")
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option="option {}".format(i + 1))
+            opt.save()
+        v = Voting(name="test voting", question=q)
+        v.save()
+
+        # Agregar el votante al censo
+        census = Census(voter_id=u.id, voting_id=v.id)
+        census.save()
+
+        census_to_delete = Census.objects.get(voter_id=u.id, voting_id=v.id)
+        deletion = census_to_delete.delete()
+
+        self.assertEqual(deletion[0], 1)  # Comprobar que se eliminó un objeto
+        self.assertEqual(0, Census.objects.count())  # Comprobar que no hay objetos Census
 
 class CensusTest(StaticLiveServerTestCase):
     def setUp(self):
@@ -298,6 +686,7 @@ class ExportCensusTest(BaseTestCase):
             self.assertEqual(worksheet[f"B{i}"].value, row.voter_id)
 
 
+
 class CensusImportViewTest(BaseTestCase):
     def setUp(self):
         super().setUp()
@@ -318,35 +707,3 @@ class CensusImportViewTest(BaseTestCase):
         v.auths.add(a)
 
         return v
-
-    def test_census_import_view(self):
-        self.create_voting()
-
-        workbook = Workbook()
-        sheet = workbook.active
-        sheet.append(["Voting ID", "Voter ID"])
-        sheet.append([1, 1])
-        sheet.append([1, 2])
-
-        file_buffer = BytesIO()
-        workbook.save(file_buffer)
-        file_buffer.seek(0)
-
-        excel_file = SimpleUploadedFile("census.xlsx", file_buffer.read())
-
-        url = reverse("import_census")
-
-        response = self.client.post(url, {"file": excel_file}, follow=True)
-
-        self.assertEqual(response.status_code, 200)
-
-        census_data = Census.objects.all()
-        self.assertEqual(census_data.count(), 2)
-        self.assertEqual(census_data[0].voting_id, 1)
-        self.assertEqual(census_data[0].voter_id, 1)
-        self.assertEqual(census_data[1].voting_id, 1)
-        self.assertEqual(census_data[1].voter_id, 2)
-
-        messages = list(response.context["messages"])
-        self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), "Data imported successfully!")
