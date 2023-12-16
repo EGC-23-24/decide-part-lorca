@@ -5,7 +5,7 @@
 * Grupo Teoría: 1
 * Milestone: M3
 
-| Miembros del grupo decide-part-lorca-1 |
+# Miembros del grupo decide-part-lorca-1
 | Nombre     | Correo   | Apodos GitHub   |
 | ------------ | ------------ | ------------ |
 | Gallardo Pelayo, Alejandro     | alegalpel@alum.us.es     | Thealean28 y Alejandro Gallardo Pelayo |
@@ -15,7 +15,7 @@
 | Delgado Pallares, David      | davdelpal1@alum.us.es   | david y davdelpal1|
 | Jímenez del Villar, Juan Antonio      | juajimdel2@alum.us.es   | JuanAntonioJimenezdelVillar y Juan Antonio Jiménez del Villar|
 
- Miembros del grupo decide-part-lorca-2 |
+# Miembros del grupo decide-part-lorca-2
 | Nombre     | Correo   | Apodos GitHub   |
 | ------------ | ------------ | ------------ |
 | Bernal Caunedo, Álvaro Jesús    | alvarobc2412@gmail.com    | alvarobernal2412 y Alvaro Jesus Bernal Caunedo  |
