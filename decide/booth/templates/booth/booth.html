@@ -116,6 +116,9 @@
 
         <!-- Voting -->
         <div v-if="!signup" class="container text-center mt-5">
+            <p>Debug Django: isAuthenticated = {{ user.is_authenticated }}, username = "{{ user.username }}"</p>
+            <p>Debug Vue: isAuthenticated = [[ isAuthenticated ]], username = [[ username ]]</p>
+            <p>Debug Vue: token = [[ token ]]</p>
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title display-3">Voting ID: [[ voting.id ]]</h1>
@@ -235,6 +238,7 @@
     <script>
         var isAuthenticated = {{ user.is_authenticated|yesno:"true,false" }};
         var username = "{{ user.username }}"
+        var token1 = "{{ token }}";
         const { createApp } = Vue
         var voting = {{voting|safe}};
         createApp({
@@ -248,11 +252,11 @@
                     alertShow: false,
                     alertMsg: "",
                     alertLvl: "info",
-                    token: null,
+                    token: "{{ token }}",
                     user: isAuthenticated ? { username: username } : null,
                     form: {
-                        username: '',
-                        password: ''
+                        username: !isAuthenticated ? '' : {{ user.username|safe }},
+                        password: !isAuthenticated ? '' : {{ user.password|safe }},
                     },
                     bigpk: {
                         p: BigInt.fromJSONObject(voting.pub_key.p.toString()),
@@ -297,7 +301,7 @@
                         method: 'POST',
                     };
 
-                    if (this.token) {
+                    if (this.token != '') {
                         fdata.headers['Authorization'] = 'Token ' + this.token;
                     }
 
