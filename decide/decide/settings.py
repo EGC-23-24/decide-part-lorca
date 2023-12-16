@@ -25,7 +25,7 @@ SECRET_KEY = '^##ydkswfu0+=ofw0l#$kv^8n)0$i(qd&d&ol#p9!b$8*5%j1+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -62,7 +62,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend'
 ]
 
-LOGIN_REDIRECT_URL = '/authentication'
+LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_QUERY_EMAIL = True
 ACCOUNT_LOGOUT_ON_GET= True
@@ -81,6 +81,7 @@ MODULES = [
     'store',
     'visualizer',
     'voting',
+
 ]
 
 BASEURL = 'http://localhost:8000'
@@ -171,6 +172,7 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = BASE_DIR  + '/' + 'static',
 
 # number of bits for the key, all auths should use the same number of bits
 KEYBITS = 256
@@ -178,6 +180,15 @@ KEYBITS = 256
 # Versioning
 ALLOWED_VERSIONS = ['v1', 'v2']
 DEFAULT_VERSION = 'v1'
+
+CELERY_BROKER_URL = os.environ.get("BROKER_URL", "redis://localhost:6379/0")
+CELERY_RESULT_BACKEND = os.environ.get("RESULT_BACKEND", "redis://localhost:6379/0")
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+CELERY_TASK_DEFAULT_QUEUE = 'default'
 
 try:
     from local_settings import *

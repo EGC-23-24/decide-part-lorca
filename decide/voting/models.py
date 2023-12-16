@@ -15,8 +15,8 @@ class Question(models.Model):
         ('C', 'Classic question'),
         ('Y', 'Yes/No question'),
         ('M', 'Multiple choice question'),
+        ('T', 'Text question'),
         ('R', 'Ranked question'),
-        ('T', 'Text question')
     ]
     type = models.CharField(max_length=1, choices=TYPES, default='C')
 

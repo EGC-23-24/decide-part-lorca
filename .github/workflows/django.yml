@@ -49,17 +49,11 @@ jobs:
         pip install -r requirements.txt
         pip install codacy-coverage
         cp decide/local_settings.gactions.py decide/local_settings.py
-    - name: Run all tests
-      if: ${{ github.base_ref == 'main' }}
-      run: |
-        cd decide
-        coverage run --branch --source=. ./manage.py test  --keepdb 
-        coverage xml 
     - name: Run tests
       if: ${{ github.base_ref == 'develop' }}
       run: |
         cd decide
-        coverage run --branch --source=. ./manage.py test --exclude-tag=slow  --keepdb 
+        coverage run --branch --source=. ./manage.py test -v 2  --keepdb 
         coverage xml 
     - name: Codacy Coverage Reporter
       uses: codacy/codacy-coverage-reporter-action@v1

@@ -1,0 +1,117 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+
+<div style="text-align: center;">
+    <h1>Votings_List</h1>
+</div>
+{% if user.is_staff %}
+<div style="text-align: center; margin-top: 20px;">
+    <a class="btn btn-primary" href="{% url 'census' %}">📒 Census</a>
+</div>
+    {% for voting in votings %}
+        {% if voting.end_date != null and voting.start_date != null %}
+        <div>
+            <h1>⌛{{voting.name}} (ID: {{voting.id}})</h1>
+            <p>{{voting.desc}}</p>
+        
+            <form method="post" action="{% url 'voting_delete' voting.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="voting_id" value="{{ voting.id }}" />
+                <button type="submit" name="delete_button">❌ Delete</button>
+            </form>
+        
+            <form method="post" action="{% url 'tally_view' voting.id %}">
+                {% csrf_token %}
+                <button type="submit" name="tally_button">🗳 Tally</button>
+            </form>
+        
+            <form method="post" action="{% url 'update_voting' voting.id %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">✏ Update</button>
+            </form>
+            <a class="btn btn-primary" href="{% url 'visualizer' voting.id %}">📊 Results</a>
+        
+        </div>
+        
+        {% endif %}
+        {% if voting.start_date == null %}
+        <div>
+            <h1>⏳{{voting.name}} (ID: {{voting.id}}) (ID: {{voting.id}})</h1>
+            <p>{{voting.desc}}</p>
+            <form method="post" action="{% url 'voting_delete' voting.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="voting_id" value="{{ voting.id }}" />
+                <button type="submit" name="delete_button">❌ Delete</button>
+
+            </form>
+            <button>
+        
+                <form method="post" action="{% url 'start_voting' voting.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="voting_id" value="{{ voting.id }}" />
+                    <button type="submit" name="start_voting_button">📆 Start Voting</button>
+                </form>
+            </button>                
+                <form method="post" action="{% url 'update_voting' voting.id %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">✏ Update</button>
+                </form>
+
+        </div>
+        {% endif %}
+        {% if voting.end_date == null and voting.start_date != null %}
+        <div>
+            <h1>⏳{{voting.name}} (ID: {{voting.id}})</h1>
+            <p>{{voting.desc}}</p>
+            <form method="post" action="{% url 'voting_delete' voting.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="voting_id" value="{{ voting.id }}" />
+                <button type="submit" name="delete_button">❌ Delete</button>
+            </form>
+            
+            <form method="post" action="{% url 'end_voting' voting.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="voting_id" value="{{ voting.id }}" />
+                <button type="submit" name="end_voting_button">📆 End Voting</button>
+            </form>
+            <form method="post" action="{% url 'update_voting' voting.id %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">✏ Update</button>
+            </form>
+         
+
+        </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if not user.is_staff %}
+    {% for voting in votings %}
+
+    {% if voting.end_date == null and voting.start_date != null %}
+    <h1>⌛{{voting.name}}</h1>
+    <p>{{voting.desc}}</p>
+    <a class="btn btn-primary" href="{% url 'booth' voting.id %}">🗳 Vote</a>
+
+    {% endif %}
+
+    {% if voting.end_date != null and voting.start_date != null %}
+    <div>
+        <h1>⌛{{voting.name}}</h1>
+        <p>{{voting.desc}}</p>
+        
+        <a class="btn btn-primary" href="{% url 'visualizer' voting.id %}">📊 Results</a>
+
+    </div>
+    {% endif %}
+
+    {% endfor %}
+    
+{% endif %}
+    
+
+{% endblock %}

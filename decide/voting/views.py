@@ -6,10 +6,20 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 
 from .models import Question, QuestionOption, Voting
+from census.models import Census
 from .serializers import SimpleVotingSerializer, VotingSerializer
 from base.perms import UserIsStaff
 from base.models import Auth
-
+from django.utils import timezone
+from voting.models import Voting
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+from django.db import IntegrityError
+from .forms import  UpdateVotingForm
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 class VotingView(generics.ListCreateAPIView):
   queryset = Voting.objects.all()
@@ -103,3 +113,93 @@ class VotingUpdate(generics.RetrieveUpdateDestroyAPIView):
         return Response(msg, status=st)
     
 
+
+
+@login_required(login_url="/authentication/login-view/")
+def list_votings(request):
+    if request.user.is_staff:
+        votings = Voting.objects.all()
+        user = request.user
+        return render(request, 'list_votings.html', {
+            'votings': votings,
+            'user': user,
+        })
+    else:
+        census =  Census.objects.filter(voter_id=request.user.id)
+        votings = Voting.objects.filter(id__in=census.values('voting_id'))
+        user = request.user
+        return render(request, 'list_votings.html', {
+            'votings': votings,
+            'user': user,
+        })
+
+@login_required(login_url="/authentication/login-view/")
+def voting_details(request,voting_id):
+    voting = get_object_or_404(Voting, pk=voting_id)
+    return render(request, 'voting_details.html',{
+        'voting': voting,
+    })
+
+@login_required(login_url="/authentication/login-view/")
+def voting_delete(request, voting_id):
+    voting = get_object_or_404(Voting, pk=voting_id)
+
+    if request.method == 'POST':
+        
+        if 'delete_button' in request.POST:
+            
+            voting.delete()
+            messages.success(request, 'La votación ha sido eliminada con éxito.')
+            return redirect('list_votings')  
+
+    return render(request, 'list_votings.html', {'votings': Voting.objects.all(), 'user': request.user})
+
+@login_required(login_url="/authentication/login-view/")
+def start_voting(request, voting_id):
+    voting = get_object_or_404(Voting, pk=voting_id)
+    if request.method == 'POST':
+        if 'start_voting_button' in request.POST:
+            voting.create_pubkey()
+            voting.start_date = timezone.now()
+            voting.save()
+            messages.success(request, 'Voting started successfully.')
+            return redirect('list_votings')  
+    return render(request, 'list_votings.html', {'votings': Voting.objects.all(), 'user': request.user})
+
+
+@login_required(login_url="/authentication/login-view/")
+def end_voting(request, voting_id):
+    voting = get_object_or_404(Voting, pk=voting_id)
+    if request.method == 'POST':
+        if 'end_voting_button' in request.POST:
+            voting.end_date = timezone.now()
+            voting.save()
+            messages.success(request, 'Voting started successfully.')
+            return redirect('list_votings')  
+    return render(request, 'list_votings.html', {'votings': Voting.objects.all(), 'user': request.user})
+
+@login_required(login_url="/authentication/login-view/")
+def update_voting(request, voting_id):
+    voting = get_object_or_404(Voting, pk=voting_id)
+
+    if request.method == 'POST':
+        form = UpdateVotingForm(request.POST, instance=voting)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Voting updated successfully.')
+            return redirect('list_votings')  
+    else:
+        form = UpdateVotingForm(instance=voting)
+
+    return render(request, 'update_voting.html', {'form': form, 'voting': voting})
+
+@login_required(login_url="/authentication/login-view/")
+def tally_view(request, voting_id):
+    voting = get_object_or_404(Voting, pk=voting_id)
+    if request.method == 'POST':
+        token = request.session.get('auth-token', '')
+        voting.tally_votes(token)
+        messages.success(request, 'Tally completed successfully.')
+        return redirect('list_votings')  
+
+    return render(request, 'tally_view.html', {'voting': voting})
