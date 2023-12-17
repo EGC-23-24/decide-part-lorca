@@ -393,7 +393,8 @@ document.write(`
 
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/&quot;</span><span class="p">)</span></div></div>
 
-<div class="viewcode-block" id="TestRegisterNegative"><a class="viewcode-back" href="../../modules/auth.html#authentication.test_selenium.TestRegisterNegative">[docs]</a><span class="k">class</span> <span class="nc">TestRegisterNegative</span><span class="p">(</span><span class="n">StaticLiveServerTestCase</span><span class="p">):</span>
+<div class="viewcode-block" id="TestRegisterNegative"><a class="viewcode-back" href="../../modules/auth.html#authentication.test_selenium.TestRegisterNegative">[docs]</a><span class="nd">@nottest</span>
+<span class="k">class</span> <span class="nc">TestRegisterNegative</span><span class="p">(</span><span class="n">StaticLiveServerTestCase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Test case for negative user registration scenarios.</span>
 
@@ -584,7 +585,6 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/authentication/register-view/&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.alert&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;This username not match with the pattern&quot;</span><span class="p">)</span></div>
 
-    <span class="nd">@nottest</span>
     <span class="k">def</span> <span class="nf">testregisternegativeemail</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/authentication/register-view/&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">910</span><span class="p">,</span> <span class="mi">1016</span><span class="p">)</span>
