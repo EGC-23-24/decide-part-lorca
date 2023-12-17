@@ -302,7 +302,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <h1>Source code for voting.tests</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">datetime</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">time</span>
@@ -1469,10 +1469,10 @@ document.write(`
 
 <span class="sd">        Verifies that the task transitions from &#39;PENDING&#39; to &#39;STARTED&#39;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="n">task_result</span> <span class="o">=</span> <span class="n">future_stop_voting_task</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">created_at</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">future_stop</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">task_result</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;PENDING&#39;</span><span class="p">,</span> <span class="s1">&#39;STARTED&#39;</span><span class="p">],</span> <span class="s2">&quot;Task status should be either &#39;PENDING&#39; or &#39;STARTED&#39;&quot;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;PENDING&#39;</span><span class="p">,</span> <span class="s1">&#39;STARTED&#39;</span><span class="p">,</span> <span class="s1">&#39;SUCCESS&#39;</span><span class="p">],</span> <span class="s2">&quot;Task status should be either &#39;PENDING&#39; , &#39;STARTED&#39; or &#39;SUCCESS&#39;&quot;</span><span class="p">)</span></div>
         
 <div class="viewcode-block" id="FutureClosureTests.test_task_finished"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.FutureClosureTests.test_task_finished">[docs]</a>    <span class="k">def</span> <span class="nf">test_task_finished</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1480,7 +1480,7 @@ document.write(`
 
 <span class="sd">        Verifies if the task status is marked as &#39;SUCCESS&#39;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">)</span></div>
     
 <div class="viewcode-block" id="FutureClosureTests.test_end_date"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.FutureClosureTests.test_end_date">[docs]</a>    <span class="k">def</span> <span class="nf">test_end_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1489,7 +1489,7 @@ document.write(`
 
 <span class="sd">        Verifies if the end date of the voting matches the scheduled future stop date.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">end_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">future_stop</span><span class="p">)</span></div></div>
 </pre></div>
 
