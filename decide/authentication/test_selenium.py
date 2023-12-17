@@ -53,7 +53,7 @@ class TestRegisterPositive(StaticLiveServerTestCase):
         )
         element_last_name.click() 
         element_last_name.send_keys("Smith")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
+        self.driver.find_element(By.ID, "register_button").click()
 
         self.assertTrue(self.driver.current_url == self.live_server_url+"/")
 
@@ -100,7 +100,7 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         )
         element_last_name.click() 
         element_last_name.send_keys("Smith")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
+        self.driver.find_element(By.ID, "register_button").click()
 
         self.assertTrue(self.driver.current_url == self.live_server_url+"/authentication/register-view/")
         self.assertTrue(self.driver.find_element(By.CSS_SELECTOR, ".alert").text == "Passwords must be the same")
@@ -124,7 +124,7 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         )
         element_last_name.click() 
         element_last_name.send_keys("Smith")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
+        self.driver.find_element(By.ID, "register_button").click()
 
         self.assertTrue(self.driver.current_url == self.live_server_url+"/authentication/register-view/")
         self.assertTrue(self.driver.find_element(By.CSS_SELECTOR, ".alert").text == "This username is larger than 150 characters")
@@ -148,7 +148,7 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         )
         element_last_name.click() 
         element_last_name.send_keys("Smith")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
+        self.driver.find_element(By.ID, "register_button").click()
 
         self.assertTrue(self.driver.current_url == self.live_server_url+"/authentication/register-view/")
         self.assertTrue(self.driver.find_element(By.CSS_SELECTOR, ".alert").text == "This username has already taken")
@@ -172,7 +172,7 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         )
         element_last_name.click() 
         element_last_name.send_keys("Smith")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
+        self.driver.find_element(By.ID, "register_button").click()
 
         self.assertTrue(self.driver.current_url == self.live_server_url+"/authentication/register-view/")
         self.assertTrue(self.driver.find_element(By.CSS_SELECTOR, ".alert").text == "This username not match with the pattern")
@@ -196,7 +196,7 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         )
         element_last_name.click() 
         element_last_name.send_keys("Smith")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
+        self.driver.find_element(By.ID, "register_button").click()
 
         self.assertTrue(self.driver.current_url == self.live_server_url+"/authentication/register-view/")
         self.assertTrue(self.driver.find_element(By.CSS_SELECTOR, ".alert").text == "This email has already taken")
@@ -220,7 +220,7 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         )
         element_last_name.click() 
         element_last_name.send_keys("Smith")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
+        self.driver.find_element(By.ID, "register_button").click()
 
         self.assertTrue(self.driver.current_url == self.live_server_url+"/authentication/register-view/")
         self.assertTrue(self.driver.find_element(By.CSS_SELECTOR, ".alert").text == "This password is a common password")
@@ -244,7 +244,7 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         )
         element_last_name.click() 
         element_last_name.send_keys("Smith")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
+        self.driver.find_element(By.ID, "register_button").click()
 
         self.assertTrue(self.driver.current_url == self.live_server_url+"/authentication/register-view/")
         self.assertTrue(self.driver.find_element(By.CSS_SELECTOR, ".alert").text == "This password is too similar to your personal data")
@@ -268,7 +268,7 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         )
         element_last_name.click() 
         element_last_name.send_keys("Smith")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
+        self.driver.find_element(By.ID, "register_button").click()
 
         self.assertTrue(self.driver.current_url == self.live_server_url+"/authentication/register-view/")
         self.assertTrue(self.driver.find_element(By.CSS_SELECTOR, ".alert").text == "This password is numeric")
@@ -312,7 +312,7 @@ class TestLoginPositive(StaticLiveServerTestCase):
         )
         element_last_name.click() 
         element_last_name.send_keys("Smith")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
+        self.driver.find_element(By.ID, "register_button").click()
 
         self.assertTrue(self.driver.current_url == self.live_server_url+"/")
 
@@ -322,7 +322,7 @@ class TestLoginPositive(StaticLiveServerTestCase):
         self.driver.find_element(By.ID, "id_username").send_keys("testlogin")
         self.driver.find_element(By.ID, "id_password1").click()
         self.driver.find_element(By.ID, "id_password1").send_keys("login1234")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
+        self.driver.find_element(By.ID, "login_button").click()
 
         self.assertTrue(self.driver.current_url == self.live_server_url+"/")
 
@@ -350,7 +350,7 @@ class TestLoginNegative(StaticLiveServerTestCase):
         self.driver.find_element(By.ID, "id_username").send_keys("testnegative")
         self.driver.find_element(By.ID, "id_password1").click()
         self.driver.find_element(By.ID, "id_password1").send_keys("testnegative123")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
+        self.driver.find_element(By.ID, "login_button").click()
 
         
         self.assertTrue(self.driver.current_url == self.live_server_url+"/authentication/login-view/")
