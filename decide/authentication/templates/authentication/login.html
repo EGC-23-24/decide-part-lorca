@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% load i18n static %}
 {% block extrahead %}
     <link type="text/css" rel="stylesheet"
@@ -9,33 +9,36 @@
 {% endblock %}
 
 {% block content %}
-        <form action="" method="post">
-            {% csrf_token %}
-            <h1>Login</h1>
-            <div class="fieldWrapper">
-                <label for="id_username">Username:</label>
-                <input type="text" name="username" class="form-control mb-2" required="true" id="id_username">
+<div class="container mt-4 p-5">
+    <div class="row justify-content-center p-5">
+        <div class="col-md-6">
+            <form action="" method="post" class="card p-4">
+                {% csrf_token %}
+                <h1 class="text-center mb-3">Login</h1>
+                
+                <div class="mb-3">
+                    <label for="id_username" class="form-label">Username:</label>
+                    <input type="text" name="username" class="form-control" required="true" id="id_username">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="id_password1" class="form-label">Password:</label>
+                    <input type="password" name="password1" class="form-control" required="true" id="id_password1">
+                </div>
+                <input type="submit" class="btn btn-primary w-100" value="Login">
+            </form>
+
+            <div class="text-center mt-3">
+                <p class="lead">You can also:</p>
+                <p class="lead"><a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-danger">Sign in with Google</a> or <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary">Sign in with Facebook</a></p>
             </div>
             
-            <div class="fieldWrapper">
-                <label for="id_password1">Password:</label>
-                <input type="password" name="password1" class="form-control mb-2" required="true" id="id_password1">
-            </div>
-            <input type="submit" class="btn btn-primary" value="Login">
-        </form>
-
-        <p class="lead">You can also:</p>
-        
-        <p class="lead"><a href="{% url 'social:begin' 'google-oauth2' %}">Sign in with Google</a> or <a href="{% url 'social:begin' 'facebook' %}">Sign in with Facebook</a></p>
-        
-
-        {% for error in errors %}
-        <div class="alert alert-danger">
-            {{error}}
-            <br>
+            {% for error in errors %}
+                <div class="alert alert-danger mt-2">
+                    {{ error }}
+                </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-
+    </div>
 </div>
-
 {% endblock %}

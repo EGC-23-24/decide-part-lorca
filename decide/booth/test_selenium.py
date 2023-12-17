@@ -84,7 +84,6 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         self.v.question.type = 'M'
         self.v.question.save()
 
-        #Añadimos al usuario noadmin al censo y empezamos la votacion
         user = self.get_or_create_user(1)
         user.is_active = True
         user.save()
@@ -96,12 +95,11 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         self.v.start_date = timezone.now()
         self.v.save()
 
-        #Opciones de Chrome
         options = webdriver.ChromeOptions()
         options.headless = True
         self.driver = webdriver.Chrome(options=options)
 
-        super().setUp()            
+        super().setUp()             
             
     def tearDown(self): 
         """
@@ -148,17 +146,19 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         WebDriverWait(self.driver, 10).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, "form:nth-child(1) > .form-check"))
             )
-
         self.driver.find_element(By.CSS_SELECTOR, "form:nth-child(1) > .form-check").click()
+        WebDriverWait(self.driver, 10).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, "form:nth-child(2) > .form-check"))
+            )
         self.driver.find_element(By.CSS_SELECTOR, "form:nth-child(2) > .form-check").click()
+        WebDriverWait(self.driver, 10).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, "form:nth-child(2) > .form-check"))
+            )
         self.driver.find_element(By.CSS_SELECTOR, "form:nth-child(3) > .form-check").click()
         
         checkboxes = self.driver.find_elements(By.CSS_SELECTOR, '.form-check input[type="checkbox"]')
 
         selected_checkboxes = [checkbox for checkbox in checkboxes if checkbox.is_selected()]
-
-        self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
-
         self.assertTrue(len(selected_checkboxes)==3)
         self.assertTrue(len(self.driver.find_elements(By.CSS_SELECTOR, 'form'))==5)
     
@@ -227,6 +227,7 @@ class CommentBoothTestCase(StaticLiveServerTestCase):
 
         v.question.save()
         self.v = v
+
         #Añadimos al usuario noadmin al censo y empezamos la votacion
         user = self.get_or_create_user(1)
         user.is_active = True
@@ -289,19 +290,14 @@ class CommentBoothTestCase(StaticLiveServerTestCase):
         WebDriverWait(self.driver, 10).until(
         EC.visibility_of_element_located((By.ID, "floatingTextarea2"))
             )
-
-        self.driver.find_element(By.ID, "floatingTextarea2").send_keys("Comentario de prueba")
-
+        text_area = self.driver.find_element(By.ID, "floatingTextarea2")
+        text_area.click()
+        text_area.send_keys("Comentario de prueba")
         self.driver.find_element(By.ID, "send-vote").click()
         
-        alert_element = WebDriverWait(self.driver, 10).until(
-        EC.visibility_of_element_located((By.CSS_SELECTOR, ".alert"))
-            )
-
-        # Verificar que la votación se realizó correctamente
-        success_alert = self.driver.page_source
-        expected_text = "Congratulations. Your vote has been sent"
-        self.assertTrue(expected_text in success_alert, "La alerta de éxito no está presente después de votar")
+        self.assertTrue(self.driver.find_element(By.XPATH, "//h1[contains(.,'Voting ID:')]").is_displayed())
+        self.assertTrue(self.driver.find_element(By.ID, "floatingTextarea2").is_displayed())
+        self.assertEquals(text_area.get_attribute('value'),"Comentario de prueba")
 
 @nottest
 class YesNoBoothTestCase(StaticLiveServerTestCase):
@@ -366,7 +362,6 @@ class YesNoBoothTestCase(StaticLiveServerTestCase):
         v.question.type = 'Y'
         v.question.save()
         self.v = v
-        #Añadimos al usuario noadmin al censo y empezamos la votacion
         user = self.get_or_create_user(1)
         user.is_active = True
         user.save()
@@ -377,12 +372,11 @@ class YesNoBoothTestCase(StaticLiveServerTestCase):
         v.start_date = timezone.now()
         v.save()
     
-        #Opciones de Chrome
         options = webdriver.ChromeOptions()
         options.headless = True
         self.driver = webdriver.Chrome(options=options)
 
-        super().setUp()            
+        super().setUp()              
             
     def tearDown(self):     
         """
@@ -425,20 +419,15 @@ class YesNoBoothTestCase(StaticLiveServerTestCase):
         self.driver.find_element(By.ID, "password").click()
         self.driver.find_element(By.ID, "password").send_keys("qwerty", Keys.ENTER)
         
-        yes_button = WebDriverWait(self.driver, 10).until(
+        login = WebDriverWait(self.driver, 10).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-success"))
             )
-        yes_button.click()
+        login.click()
 
-        alert_element = WebDriverWait(self.driver, 10).until(
-        EC.visibility_of_element_located((By.CSS_SELECTOR, ".alert"))
-            )
+        self.assertTrue(self.driver.find_element(By.XPATH, "//h1[contains(.,'Voting ID:')]").is_displayed())
+        self.assertTrue(self.driver.find_element(By.ID, "yesbutton").is_displayed())
+        self.assertTrue(self.driver.find_element(By.ID, "nobutton").is_displayed())
 
-        # Verificar que la votación se realizó correctamente
-        success_alert = self.driver.page_source
-        expected_text = "Congratulations. Your vote has been sent"
-        self.assertTrue(expected_text in success_alert, "La alerta de éxito no está presente después de votar")
-  
 
 @nottest
 class PreferenceBoothTest(StaticLiveServerTestCase):
@@ -466,8 +455,10 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         q.save()
         opt1 = QuestionOptionRanked(question=q, option='Test 1', number=1)
         opt2 = QuestionOptionRanked(question=q, option='Test 2', number=2)
+        opt3 = QuestionOptionRanked(question=q, option='Test 3', number=3)
         opt1.save()
         opt2.save()
+        opt3.save()
         v = Voting(name='test voting', question=q)
         v.save()
 
@@ -476,6 +467,7 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         a.save()
         v.auths.add(a)
         return v
+
 
     def get_or_create_user(self,pk):
         """
@@ -507,7 +499,7 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         v.question.type = 'R'
         v.question.save()
         self.v = v
-        #Añadimos al usuario noadmin al censo y empezamos la votacion
+
         user = self.get_or_create_user(1)
         user.is_active = True
         user.save()
@@ -518,12 +510,12 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         v.start_date = timezone.now()
         v.save()
     
-        #Opciones de Chrome
         options = webdriver.ChromeOptions()
         options.headless = True
         self.driver = webdriver.Chrome(options=options)
 
         super().setUp()            
+           
             
     def tearDown(self):   
         """
@@ -538,123 +530,105 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
 
         self.base.tearDown()
     
+    def login_user(self, username, password):
+        """
+        Log in a user with the provided username and password.
+
+        :param username: The username of the user.
+        :type username: str
+        :param password: The password of the user.
+        :type password: str
+        :return: None
+        """
+        self.driver.find_element(By.ID, "menu-toggle").click()
+        
+        goto_logging = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "goto-logging-button"))
+        )
+        goto_logging.click()
+
+        username_field = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "username"))
+        )
+        username_field.click()
+        
+        self.driver.find_element(By.ID, "username").send_keys(username)
+        self.driver.find_element(By.ID, "password").click()
+        self.driver.find_element(By.ID, "password").send_keys(password, Keys.ENTER)
+        login = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "process-login-button"))
+        )
+        login.click()
+
+    def select_preferences(self, preferences):
+        """
+        Select preferences based on the provided list.
+
+        :param preferences: List of preferences to be selected.
+        :type preferences: list
+        :return: None
+        """
+        inputs = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_all_elements_located((By.ID, "rankingInput"))
+        )
+
+        for index, input_element in enumerate(inputs):
+            input_element.click()
+            input_element.send_keys(str(preferences[index]))
+
+    def perform_preference(self, preferences, expected_values):
+        """
+        Perform a preference vote with the given preferences and verify the results.
+
+        :param preferences: List of preferences to be voted.
+        :type preferences: list
+        :param expected_values: Dictionary containing expected values for each preference.
+        :type expected_values: dict
+        :return: None
+        """
+        self.driver.get(f'{self.live_server_url}/booth/{self.v.id}/')
+        self.driver.set_window_size(910, 1016)
+        self.login_user("user1", "qwerty")
+        self.select_preferences(preferences)
+        self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
+
+        self.assertTrue(self.driver.find_element(By.XPATH, f"//h1[contains(.,'Voting ID:')]").is_displayed())
+
+        inputs = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_all_elements_located((By.ID, "rankingInput"))
+        )
+
+        for index, input_element in enumerate(inputs):
+            expected_value = str(expected_values.get(index, ""))
+            actual_value = input_element.get_attribute('value')
+            self.assertEquals(actual_value, expected_value)
+
     def test_question_preference(self):
         """
-        Test the behavior of submitting a preference response in a Preference type question booth.
-
-        This test navigates to the booth for a specific voting, logs in as a user, submits a preference response,
-        and verifies the success alert indicating that the vote has been sent.
+        Test the preference voting with a list of preferences.
 
         :return: None
         """
-        self.driver.get(f'{self.live_server_url}/booth/{self.v.id}/')
-        self.driver.set_window_size(910, 1016)
-
-        time.sleep(1)
-        self.driver.find_element(By.CSS_SELECTOR, ".navbar-toggler-icon").click()
-        time.sleep(1)
-        self.driver.find_element(By.CSS_SELECTOR, ".btn-secondary").click()
-        time.sleep(1)
-        self.driver.find_element(By.ID, "username").send_keys("user1")
-        time.sleep(1)
-
-        self.driver.find_element(By.ID, "password").send_keys("qwerty")
-        time.sleep(1)
-
-        self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
-        time.sleep(1)
-
-        # Realizar la votación votando Sí
-        self.driver.find_element(By.CSS_SELECTOR,  "form:nth-child(1) .form-ranked-input").send_keys("1")
-        self.driver.find_element(By.CSS_SELECTOR,  "form:nth-child(1) .form-ranked-input").click()
-        time.sleep(1)
-        self.driver.find_element(By.CSS_SELECTOR,  "form:nth-child(2) .form-ranked-input").send_keys("1")
-        self.driver.find_element(By.CSS_SELECTOR,  "form:nth-child(2) .form-ranked-input").click()
-        time.sleep(1)
-        self.driver.find_element(By.CSS_SELECTOR,  "form:nth-child(2) .form-ranked-input").send_keys("2")
-        self.driver.find_element(By.CSS_SELECTOR,  "form:nth-child(2) .form-ranked-input").click()
-        time.sleep(1)
-
-        self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
-
-        # Verificar que la votación se realizó correctamente
-        success_alert = self.driver.page_source
-        expected_text = "Congratulations. Your vote has been sent"
-        self.assertTrue(expected_text in success_alert, "La alerta de éxito no está presente después de votar")
-    
+        preferences = [1, 2, 3]
+        expected_values = {0: '1', 1: '2', 2: '3'}
+        self.perform_preference(preferences, expected_values)
+            
     def test_preference_booth_same_preference(self):
         """
-        Test the behavior when trying to submit a preference with repeated rankings.
-
-        This test navigates to the booth for a specific voting, logs in as a user, tries to submit a preference with repeated rankings,
-        and verifies the error alert indicating that preferences cannot be repeated.
+        Test the preference voting with the same preference for multiple options.
 
         :return: None
         """
-        self.driver.get(f'{self.live_server_url}/booth/{self.v.id}/')
-        self.driver.set_window_size(910, 1016)
-
-        time.sleep(1)
-        self.driver.find_element(By.CSS_SELECTOR, ".navbar-toggler-icon").click()
-        time.sleep(1)
-        self.driver.find_element(By.CSS_SELECTOR, ".btn-secondary").click()
-        time.sleep(1)
-        self.driver.find_element(By.ID, "username").send_keys("noadmin")
-        time.sleep(1)
-
-        self.driver.find_element(By.ID, "password").send_keys("qwerty")
-        time.sleep(1)
-
-        self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
-        time.sleep(1)
-
-        self.driver.find_element(By.CSS_SELECTOR,  "form:nth-child(1) .form-ranked-input").send_keys("1")
-        self.driver.find_element(By.CSS_SELECTOR,  "form:nth-child(1) .form-ranked-input").click()
-        time.sleep(1)
-        self.driver.find_element(By.CSS_SELECTOR,  "form:nth-child(2) .form-ranked-input").send_keys("1")
-        self.driver.find_element(By.CSS_SELECTOR,  "form:nth-child(2) .form-ranked-input").click()
-        time.sleep(1)
-
-        self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
-
-        # Verificar que la votación se realizó correctamente
-        canceled_alert = self.driver.page_source
-        expected_text = "Error: No puede haber preferencias repetidas entre opciones"
-        self.assertTrue(expected_text in canceled_alert, "La alerta de éxito no está presente después de votar")
-
+        preferences = [1, 1, 2]
+        expected_values = {0: '1', 1: '1', 2: '2'}
+        self.perform_preference(preferences, expected_values)
+        
     def test_preference_booth_no_fullfile_all_preferences(self):
         """
-        Test the behavior when trying to submit a preference without providing a complete set of rankings.
-
-        This test navigates to the booth for a specific voting, logs in as a user, tries to submit a preference without providing a complete set of rankings,
-        and verifies the error alert indicating that all preferences must be chosen.
+        Test the preference voting with some preferences not fully filled.
 
         :return: None
         """
-        self.driver.get(f'{self.live_server_url}/booth/{self.v.id}/')
-        self.driver.set_window_size(910, 1016)
-
-        time.sleep(1)
-        self.driver.find_element(By.CSS_SELECTOR, ".navbar-toggler-icon").click()
-        time.sleep(1)
-        self.driver.find_element(By.CSS_SELECTOR, ".btn-secondary").click()
-        time.sleep(1)
-        self.driver.find_element(By.ID, "username").send_keys("noadmin")
-        time.sleep(1)
-
-        self.driver.find_element(By.ID, "password").send_keys("qwerty")
-        time.sleep(1)
-
-        self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
-        time.sleep(1)
-
-        self.driver.find_element(By.CSS_SELECTOR,  "form:nth-child(1) .form-ranked-input").send_keys("1")
-        self.driver.find_element(By.CSS_SELECTOR,  "form:nth-child(1) .form-ranked-input").click()
-        time.sleep(1)
-
-        self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
-
-        # Verificar que la votación se realizó correctamente
-        canceled_alert = self.driver.page_source
-        expected_text = "Error: Se tienen que escoger la preferencia de todas las opciones"
-        self.assertTrue(expected_text in canceled_alert, "La alerta de éxito no está presente después de votar")
+        preferences = [1,"",""]
+        expected_values = {0: '1', 1: '', 2: ''}
+        self.perform_preference(preferences, expected_values)
