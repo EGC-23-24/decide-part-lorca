@@ -7,15 +7,44 @@ from base import mods
 
 
 class PostProcTestCase(APITestCase):
+    """
+    Test case for the PostProc API endpoint.
 
+    This test case covers the behavior of the PostProc API endpoint, which performs post-processing on voting results.
+
+    :ivar client: The Django REST framework API client.
+    :vartype client: APIClient
+    """
     def setUp(self):
+        """
+        Set up the test environment before each test method is run.
+
+        This method is called before each test method in the test case.
+
+        :return: None
+        """
         self.client = APIClient()
         mods.mock_query(self.client)
 
     def tearDown(self):
+        """
+        Clean up the test environment after each test method is run.
+
+        This method is called after each test method in the test case.
+
+        :return: None
+        """
         self.client = None
 
     def test_identity(self):
+        """
+        Test the behavior of the PostProc API endpoint with the 'IDENTITY' type.
+
+        This test sends a POST request to the '/postproc/' endpoint with identity-type data and verifies
+        that the response contains the expected post-processed result.
+
+        :return: None
+        """
         data = {
             'type': 'IDENTITY',
             'options': [

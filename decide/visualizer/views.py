@@ -10,9 +10,30 @@ from store.models import Vote
 
 
 class VisualizerView(TemplateView):
+    """
+    View for visualizing voting data.
+
+    This view renders a template for visualizing voting statistics, including the number of census entries,
+    votes, and participation rate.
+
+    :ivar template_name: The name of the template to render.
+    :vartype template_name: str
+    """
     template_name = 'visualizer/visualizer.html'
     
     def get_context_data(self, **kwargs):
+        """
+        Retrieve the context data for rendering the template.
+
+        Retrieves information about a specific voting instance, including the number of census entries,
+        votes, and participation rate.
+
+        :param kwargs: Keyword arguments.
+        :type kwargs: dict
+        :return: A dictionary containing context data for the template.
+        :rtype: dict
+        :raises Http404: If an error occurs while retrieving or processing the voting data.
+        """
         context = super().get_context_data(**kwargs)
         voting_id = kwargs.get('voting_id', 0)
     

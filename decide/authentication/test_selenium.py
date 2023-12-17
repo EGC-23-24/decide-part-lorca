@@ -14,8 +14,24 @@ from base import mods
 
 
 class TestRegisterPositive(StaticLiveServerTestCase):
+    """
+    Test case for positive user registration scenarios.
+
+    Inherits from StaticLiveServerTestCase to test views using a live server.
+
+    Methods:
+    - setUp: Set up the test environment before each test case.
+    - tearDown: Tear down the test environment after each test case.
+    - testregisterpositive: Test positive user registration.
+    """
 
     def setUp(self):
+        """
+        Set up the test environment before each test case.
+
+        - Creates a BaseTestCase instance.
+        - Configures a headless Chrome browser for testing.
+        """
         self.base = BaseTestCase()
         self.base.setUp()
 
@@ -25,12 +41,26 @@ class TestRegisterPositive(StaticLiveServerTestCase):
 
         super().setUp()            
             
-    def tearDown(self):           
+    def tearDown(self):
+        """
+        Tear down the test environment after each test case.
+
+        - Quits the Chrome browser.
+        - Calls the tearDown method of the BaseTestCase instance.
+        """           
         super().tearDown()
         self.cleaner.quit()
         self.base.tearDown()
   
     def testregisterpositive(self):
+        """
+        Test positive user registration.
+
+        - Accesses the registration view.
+        - Fills in valid user registration information.
+        - Submits the registration form.
+        - Asserts that the user is redirected to the home page.
+        """
         self.cleaner.get(self.live_server_url+"/authentication/register-view/")
         
         self.cleaner.find_element(By.ID, "id_username").click()
@@ -50,8 +80,35 @@ class TestRegisterPositive(StaticLiveServerTestCase):
         self.assertTrue(self.cleaner.current_url == self.live_server_url+"/")
 
 class TestRegisterNegative(StaticLiveServerTestCase):
+    """
+    Test case for negative user registration scenarios.
+
+    Inherits from StaticLiveServerTestCase to test views using a live server.
+
+    Methods:
+    - setUp: Set up the test environment before each test case.
+    - tearDown: Tear down the test environment after each test case.
+    - testregisternegativewrongpassword: Test user registration with mismatched passwords.
+    - testregisternegativelongusername: Test user registration with a too-long username.
+    - testregisternegativeusername: Test user registration with an already taken username.
+    - testregisternegativepatternusername: Test user registration with an invalid username pattern.
+    - testregisternegativeemail: Test user registration with an already taken email.
+    - testregisternegativeemail: Test user registration with an invalid email.
+    - testregisternegativeemail: Test user registration with a short password.
+    - testregisternegativecommonpass: Test user registration with a common password.
+    - testregisternegativesimilarpass: Test user registration with a password similar to the username.
+    - testregisternegativenumericpass: Test user registration with a numeric password.
+    """
 
     def setUp(self):
+        """
+        Set up the test environment before each test case.
+
+        - Creates a BaseTestCase instance.
+        - Configures a headless Chrome browser for testing.
+        - Sets up a mock API client.
+        - Creates a test user in the database.
+        """
         self.base = BaseTestCase()
         self.base.setUp()
 
@@ -68,12 +125,26 @@ class TestRegisterNegative(StaticLiveServerTestCase):
 
         super().setUp()            
             
-    def tearDown(self):           
+    def tearDown(self):
+        """
+        Tear down the test environment after each test case.
+
+        - Quits the Chrome browser.
+        - Calls the tearDown method of the BaseTestCase instance.
+        """           
         super().tearDown()
         self.cleaner.quit()
         self.base.tearDown()
   
     def testregisternegativewrongpassword(self):
+        """
+        Test user registration with mismatched passwords.
+
+        - Accesses the registration view.
+        - Fills in registration form with mismatched passwords.
+        - Submits the form.
+        - Asserts that the user stays on the registration view and sees an alert.
+        """
         self.cleaner.get(self.live_server_url+"/authentication/register-view/")
         
         self.cleaner.find_element(By.ID, "id_username").click()
@@ -94,6 +165,16 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         self.assertTrue( self.cleaner.find_element(By.CSS_SELECTOR, ".alert").text == "Passwords must be the same")
 
     def testregisternegativelongusername(self):
+        """
+        Test user registration with a too-long username.
+
+        - Accesses the registration view.
+        - Fills in the registration form with a too-long username.
+        - Submits the form.
+        - Asserts that the user stays on the registration view and sees an alert.
+
+        :return: None
+        """
         self.cleaner.get(self.live_server_url+"/authentication/register-view/")
         
         self.cleaner.find_element(By.ID, "id_username").click()
@@ -114,6 +195,16 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         self.assertTrue( self.cleaner.find_element(By.CSS_SELECTOR, ".alert").text == "This username is larger than 150 characters")
 
     def testregisternegativeusername(self):
+        """
+        Test user registration with an already taken username.
+
+        - Accesses the registration view.
+        - Fills in the registration form with an already taken username.
+        - Submits the form.
+        - Asserts that the user stays on the registration view and sees an alert.
+
+        :return: None
+        """
         self.cleaner.get(self.live_server_url+"/authentication/register-view/")
         
         self.cleaner.find_element(By.ID, "id_username").click()
@@ -134,6 +225,16 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         self.assertTrue( self.cleaner.find_element(By.CSS_SELECTOR, ".alert").text == "This username has already taken")
 
     def testregisternegativepatternusername(self):
+        """
+        Test user registration with an invalid username pattern.
+
+        - Accesses the registration view.
+        - Fills in the registration form with an invalid username pattern.
+        - Submits the form.
+        - Asserts that the user stays on the registration view and sees an alert.
+
+        :return: None
+        """
         self.cleaner.get(self.live_server_url+"/authentication/register-view/")
         
         self.cleaner.find_element(By.ID, "id_username").click()
@@ -174,6 +275,16 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         self.assertTrue( self.cleaner.find_element(By.CSS_SELECTOR, ".alert").text == "This email has already taken")
     
     def testregisternegativeemail(self):
+        """
+        Test user registration with an already taken email.
+
+        - Accesses the registration view.
+        - Fills in the registration form with an already taken email.
+        - Submits the form.
+        - Asserts that the user stays on the registration view and sees an alert.
+
+        :return: None
+        """
         self.cleaner.get(self.live_server_url+"/authentication/register-view/")
         
         self.cleaner.find_element(By.ID, "id_username").click()
@@ -194,6 +305,16 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         self.assertTrue( self.cleaner.find_element(By.CSS_SELECTOR, ".alert").text == "This email has already taken")
 
     def testregisternegativeemail(self):
+        """
+        Test user registration with a short password.
+
+        - Accesses the registration view.
+        - Fills in the registration form with a short password.
+        - Submits the form.
+        - Asserts that the user stays on the registration view and sees an alert.
+
+        :return: None
+        """
         self.cleaner.get(self.live_server_url+"/authentication/register-view/")
         
         self.cleaner.find_element(By.ID, "id_username").click()
@@ -214,6 +335,16 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         self.assertTrue( self.cleaner.find_element(By.CSS_SELECTOR, ".alert").text == "This password must contain at least 8 characters")
 
     def testregisternegativecommonpass(self):
+        """
+        Test user registration with a common password.
+
+        - Accesses the registration view.
+        - Fills in the registration form with a common password.
+        - Submits the form.
+        - Asserts that the user stays on the registration view and sees an alert.
+
+        :return: None
+        """
         self.cleaner.get(self.live_server_url+"/authentication/register-view/")
         
         self.cleaner.find_element(By.ID, "id_username").click()
@@ -234,6 +365,16 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         self.assertTrue( self.cleaner.find_element(By.CSS_SELECTOR, ".alert").text == "This password is a common password")
 
     def testregisternegativesimilarpass(self):
+        """
+        Test user registration with a password similar to the username.
+
+        - Accesses the registration view.
+        - Fills in the registration form with a password similar to the username.
+        - Submits the form.
+        - Asserts that the user stays on the registration view and sees an alert.
+
+        :return: None
+        """
         self.cleaner.get(self.live_server_url+"/authentication/register-view/")
         
         self.cleaner.find_element(By.ID, "id_username").click()
@@ -254,6 +395,16 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         self.assertTrue( self.cleaner.find_element(By.CSS_SELECTOR, ".alert").text == "This password is too similar to your personal data")
 
     def testregisternegativenumericpass(self):
+        """
+        Test user registration with a numeric password.
+
+        - Accesses the registration view.
+        - Fills in the registration form with a numeric password.
+        - Submits the form.
+        - Asserts that the user stays on the registration view and sees an alert.
+
+        :return: None
+        """
         self.cleaner.get(self.live_server_url+"/authentication/register-view/")
         
         self.cleaner.find_element(By.ID, "id_username").click()
@@ -275,8 +426,24 @@ class TestRegisterNegative(StaticLiveServerTestCase):
 
 
 class TestLoginPositive(StaticLiveServerTestCase):
+    """
+    Test case for positive user login scenarios.
+
+    Inherits from StaticLiveServerTestCase to test views using a live server.
+
+    Methods:
+    - setUp: Set up the test environment before each test case.
+    - tearDown: Tear down the test environment after each test case.
+    - testloginpositive: Test positive user login.
+    """
 
     def setUp(self):
+        """
+        Set up the test environment before each test case.
+
+        - Creates a BaseTestCase instance.
+        - Configures a headless Chrome browser for testing.
+        """
         self.base = BaseTestCase()
         self.base.setUp()
 
@@ -286,12 +453,27 @@ class TestLoginPositive(StaticLiveServerTestCase):
 
         super().setUp()            
             
-    def tearDown(self):           
+    def tearDown(self):
+        """
+        Tear down the test environment after each test case.
+
+        - Quits the Chrome browser.
+        - Calls the tearDown method of the BaseTestCase instance.
+        """
+           
         super().tearDown()
         self.cleaner.quit()
         self.base.tearDown()
   
     def testloginpositive(self):
+        """
+        Test positive user login.
+
+        - Accesses the registration view.
+        - Registers a new user.
+        - Logs in with the registered user credentials.
+        - Asserts that the user is redirected to the home page.
+        """
         self.cleaner.get(self.live_server_url+"/authentication/register-view/")
         
         self.cleaner.find_element(By.ID, "id_username").click()
@@ -321,8 +503,24 @@ class TestLoginPositive(StaticLiveServerTestCase):
         self.assertTrue(self.cleaner.current_url == self.live_server_url+"/")
 
 class TestLoginNegative(StaticLiveServerTestCase):
+    """
+    Test case for negative user login scenarios.
+
+    Inherits from StaticLiveServerTestCase to test views using a live server.
+
+    Methods:
+    - setUp: Set up the test environment before each test case.
+    - tearDown: Tear down the test environment after each test case.
+    - testloginnegative: Test negative user login.
+    """
 
     def setUp(self):
+        """
+        Set up the test environment before each test case.
+
+        - Creates a BaseTestCase instance.
+        - Configures a headless Chrome browser for testing.
+        """
         self.base = BaseTestCase()
         self.base.setUp()
 
@@ -332,12 +530,25 @@ class TestLoginNegative(StaticLiveServerTestCase):
 
         super().setUp()            
             
-    def tearDown(self):           
+    def tearDown(self):
+        """
+        Tear down the test environment after each test case.
+
+        - Quits the Chrome browser.
+        - Calls the tearDown method of the BaseTestCase instance.
+        """           
         super().tearDown()
         self.cleaner.quit()
         self.base.tearDown()
   
     def testloginnegative(self):
+        """
+        Test negative user login.
+
+        - Accesses the login view.
+        - Attempts to log in with invalid credentials.
+        - Asserts that the user stays on the login view and sees an alert.
+        """
         self.cleaner.get(self.live_server_url+"/authentication/login-view/")
         
         self.cleaner.find_element(By.ID, "id_username").click()
