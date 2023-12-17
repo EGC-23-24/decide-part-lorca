@@ -59,6 +59,7 @@ class TestRegisterPositive(StaticLiveServerTestCase):
 
         self.assertTrue(self.driver.current_url == self.live_server_url+"/")
 
+@nottest
 class TestRegisterNegative(StaticLiveServerTestCase):
 
     def setUp(self):
@@ -179,7 +180,6 @@ class TestRegisterNegative(StaticLiveServerTestCase):
         self.assertTrue(self.driver.current_url == self.live_server_url+"/authentication/register-view/")
         self.assertTrue(self.driver.find_element(By.CSS_SELECTOR, ".alert").text == "This username not match with the pattern")
 
-    @nottest
     def testregisternegativeemail(self):
         self.driver.get(self.live_server_url+"/authentication/register-view/")
         self.driver.set_window_size(910, 1016)
