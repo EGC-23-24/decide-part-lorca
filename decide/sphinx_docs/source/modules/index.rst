@@ -11,6 +11,7 @@ You can take a look at the source code documentation of each module through the 
 
     booth
     census
+    auth
     mixnet
     postproc
     store
