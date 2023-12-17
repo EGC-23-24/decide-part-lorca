@@ -1,5 +1,6 @@
-Plataforma voto electrónico educativa
-=====================================
+# SPEC
+
+## Plataforma voto electrónico educativa
 
 El objetivo de este proyecto es implementar una plataforma de voto
 electrónico seguro, que cumpla una serie de garantías básicas, como la
@@ -10,8 +11,7 @@ votación, por lo que primará la simplicidad por encima de la eficiencia
 cuando sea posible. Por lo tanto se asumen algunas carencias para permitir
 que sea entendible y extensible por alumnos.
 
-Propuesta técnica
-=================
+## Propuesta técnica
 
 Aplicación completa implementada en python, que se publicará en un
 repositorio público, en github, permitiendo la colaboración desde el

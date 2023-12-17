@@ -1,3 +1,4 @@
+# Informe de pruebas
 <h1 align="center">Informe de pruebas</h1>
 <p align="center">Este documento recopila y detalla las pruebas implementadas en el proyecto de <b><i>decide-part-lorca</i></b>, proporcionando información crucial sobre la validación y funcionamiento de sus componentes. Además, presenta ejemplos prácticos que ilustran el uso correcto y las funcionalidades clave del proyecto.</p>
 

@@ -9,4 +9,4 @@ The documents can be accessed through the following table of contents.
     :titlesonly:
     :glob:
 
-    *.md
+    *

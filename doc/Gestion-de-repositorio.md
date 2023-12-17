@@ -1,5 +1,5 @@
-<h1 align="center">Gestión de repositorio y código</h1>
-<h6 align="center">Documento que contiene la estrategia de ramificación, política de commits, estrategia de pull requests, política de versionado y estructura de carpetas</h6>
+# Gestión de repositorio y código
+###### Documento que contiene la estrategia de ramificación, política de commits, estrategia de pull requests, política de versionado y estructura de carpetas
 
 ## Tabla de Contenidos
 
