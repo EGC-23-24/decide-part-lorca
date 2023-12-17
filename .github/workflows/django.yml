@@ -65,7 +65,7 @@ jobs:
       if: ${{ github.base_ref == 'develop' }}
       run: |
         cd decide
-        coverage run --branch --source=. ./manage.py test -v 2  --keepdb 
+        coverage run --branch --source=. ./manage.py test booth -v 2  --keepdb 
         coverage xml 
     - name: Codacy Coverage Reporter
       uses: codacy/codacy-coverage-reporter-action@v1
