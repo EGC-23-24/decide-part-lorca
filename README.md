@@ -120,21 +120,26 @@ Aclaración: En esta guía vamos a usar como url de base: "localhost:8000".
 
 Una vez iniciada la aplicación, si accedemos a http://localhost:8000/ podremos ver la página de incio de Decide. En ella podremos inciar sesión si ya tenemos un usuario o podremos registrarnos. Si tenemos un usuario administrador, podremos iniciar sesión directamente con dicho usuario
 
-![Imagen 01: Incio](./resources/quickstart/00_login.png)
+![Imagen 01: Incio](./resources/lorca/inicio.png)
 
 Si hemos inciado sesión correctamente, nos debería aparecer la siguiente vista:
 
-![Imagen 02: Incio logueado](./resources/quickstart/01_menu.png)
+![Imagen 02: Incio logueado](./resources/lorca/user.png)
+
+SI hemos iniciado sesión con administrador, nos aparece la siguiente vista:
+
+![Imagen 03: Incio logueado](./resources/lorca/admin.png)
+
 
 ### 2. Autenticación de usuarios
 
 Si en la página de incio pulsamos el botón register, nos debería llevar al siguiente formulario para registarnos en Decide:
 
-![Imagen 03: Register form](./resources/quickstart/02_question.png)
+![Imagen 03: Register form](./resources/lorca/register.png)
 
 Una vez registrados correctamente, deberemos inciar sesión en Decide para empezar a utilizar la aplicación. El formulario que aparece es el siguiente, dónde también podremos identificarnos en Decide usando nuestra cuenta de Google o Facebook: 
 
-![Imagen 04: Login form](./resources/quickstart/02_question.png)
+![Imagen 04: Login form](./resources/lorca/login.png)
 
 ### 3. Creación de las preguntas
 
@@ -148,59 +153,60 @@ Una vez registrados correctamente, deberemos inciar sesión en Decide para empez
 
 (completar)
 
-### 7. Inciar y gestionar una votación
-
+### 6. Inciar y gestionar una votación
 Una vez creada la votación, si pulsamos en el botón list votings de la página de incio podremos ver todas las votaciones creadas por el adminsitrador y nos llevará a la vista de gestión de votaciones. En esta vista podremos inciar, finalizar, eliminar y editar una votación. 
 
-(imagen iniciar)
+![Imagen 04: Login form](./resources/lorca/start.png)
 
 Pulsando en el botón start voting, podremos inciar la votación. A partir de este momento, los usuarios registrados en el censo ya pueden votar. También, podemos modificar o eliminar la votación pulsando en los botones Update o Delete.
 
-### 8. Votar en los diferentes tipos de votaciones
+### 7. Votar en los diferentes tipos de votaciones
 Una vez inciada la votación, los usarios del censo podrán registrar su voto. Para ello, inciamos sesión con un usario y pulsamos el botón list votings. En la vista que nos aparece, sólo aparecen las votaciones en las que ese usuario esta incluido en el censo. Para votar, simplementa pulsamos en el botón vote.
 
-(imagen list votings usuario)
+![Imagen 04: Login form](./resources/lorca/vote.png)
 
 Dependiendo del tipo de votación, nos aparecerá la cabina de votación correspondiente.
 
 * Votación clásica: simplemente seleccionamos una de las opciones y registramos nuestro voto.
 
-(imagen booth clásico)
+![Imagen 04: Login form](./resources/lorca/booth_clasico.png)
 
 * Votación de múltiple opción: podremos seleccionar varias opciones y registar nuestro voto.
 
-(imagen booth multiple)
+![Imagen 04: Login form](./resources/lorca/multiple.png)
 
 * Votación si/no: seleccionamos la opción Si o No y registramos nuestro voto.
 
-(imagen booth yes/no)
+![Imagen 04: Login form](./resources/lorca/yesno.png)
 
 * Votación por preferencia: seleccionamos cada opción estableciendo un orden de preferencia.
 
-(imagen booth preference)
+![Imagen 04: Login form](./resources/lorca/preference.png)
 
 * Votación de respues abierta: podremos responder a la votación escribiendo lo que queramos en el cuadro de texto.
 
-(imagen booth open)
+![Imagen 04: Login form](./resources/lorca/comment.png)
 
-### 9. Realizar el conteo de votos
+### 8. Realizar el conteo de votos
 Una vez que todos los usarios han votado, accedemos como administrador a la vista de gestión de votaciones. Para ello, pulsamos en el votón list votings de la página de incio. Primero hay que finalizar la votación, para ello pulsamos en el botón End Voting. 
 
-(imagen end voting)
+![Imagen 04: Login form](./resources/lorca/end.png)
 
 Una vez finalizada la votación, pulsamos en el botón Tally para realizar el conteo de los votos.
 
-(imagen tally)
+![Imagen 04: Login form](./resources/lorca/tally.png)
 
-### 10. Visualizar los resultados
+### 9. Visualizar los resultados
 
 Una vez contados todos los votos, podremos visualizar los resultados pulsando en el botón Results. Por ejemplo, si visualizamos los resultados de la votación yes/no nos aparecerá una tabla con la puntuación y el número de votos para cada opción. Además disponemos de diferentes gráficos para visualizar los resultados.
 
-(imagenes visualizer)
+![Imagen 04: Login form](./resources/lorca/grafica1.png)
+
+![Imagen 04: Login form](./resources/lorca/grafica2.png)
 
 Además, mientras la votación está en curso podemos ver los resultados en tiempo real sin finalizar la votación.
 
-(imagenes visualizer tiempo real)
+![Imagen 04: Login form](./resources/lorca/real_time.png)
 
 
 Ejecutar con docker
