@@ -1,0 +1,606 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Proceso de Gestión de Incidencias &#8212; decide-part-lorca</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'doc/proceso-de-gestion-de-incidencias';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Subsistemas" href="subsistemas.html" />
+    <link rel="prev" title="Issues" href="issues.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">decide-part-lorca</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Welcome to decide’s documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modules/index.html">Decide modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/booth.html">Booth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/census.html">Census Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/auth.html">Auth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/mixnet.html">Mixnet Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/postproc.html">Postproc Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/store.html">Store Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/visualizer.html">Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/voting.html">Voting Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Decide doc files</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Gestion-de-repositorio.html">Gestión de repositorio y código</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Informe-de-pruebas.html">Informe de pruebas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Manual-de-Git.html">Manual de git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SPEC.html">SPEC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diario-de-equipo.html">decide-part-lorca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issues.html">Issues</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Proceso de Gestión de Incidencias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subsistemas.html">Subsistemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiki-cover.html">decide-part-lorca-1</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../memes.html">Memes collection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/edit/main/doc/proceso-de-gestion-de-incidencias.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/issues/new?title=Issue%20on%20page%20%2Fdoc/proceso-de-gestion-de-incidencias.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/doc/proceso-de-gestion-de-incidencias.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Proceso de Gestión de Incidencias</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-una-incidencia">¿Qué es una incidencia?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-el-registro-de-incidencias">¿Qué es el Registro de Incidencias?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-hacer-cuando-se-detecta-una-incidencia">¿Qué hacer cuando se detecta una incidencia?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-se-resuelven-las-incidencias">¿Cómo se resuelven las incidencias?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-hacer-cuando-se-resuelve-una-incidencia">¿Qué hacer cuando se resuelve una incidencia?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-hacer-cuando-se-descarta-una-incidencia">¿Qué hacer cuando se descarta una incidencia?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algunos-ejemplos">Algunos ejemplos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incidencia-de-nueva-funcionalidad">Incidencia de nueva funcionalidad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incidencia-de-error">Incidencia de error</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incidencia-de-mejora">Incidencia de mejora</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="proceso-de-gestion-de-incidencias">
+<h1>Proceso de Gestión de Incidencias<a class="headerlink" href="#proceso-de-gestion-de-incidencias" title="Permalink to this heading">#</a></h1>
+<section id="que-es-una-incidencia">
+<h2>¿Qué es una incidencia?<a class="headerlink" href="#que-es-una-incidencia" title="Permalink to this heading">#</a></h2>
+<p>Una incidencia es un problema que se ha detectado, relacionado con el software o la documentación del proyecto. En nuestro caso, una incidencia también suponen tareas de implementación de nueva funcionalidad y mejoras en el repositorio (ya sean de documentación, github actions, etc)</p>
+</section>
+<section id="que-es-el-registro-de-incidencias">
+<h2>¿Qué es el Registro de Incidencias?<a class="headerlink" href="#que-es-el-registro-de-incidencias" title="Permalink to this heading">#</a></h2>
+<p>El Registro de Incidencias es un Project Board de GitHub nombrado <em>Incidents</em>, en el que se registran todas las incidencias detectadas. Cada incidencia se representa como una tarjeta del tablero. El idioma empleado en el Registro de Incidencias es el inglés.</p>
+</section>
+<section id="que-hacer-cuando-se-detecta-una-incidencia">
+<h2>¿Qué hacer cuando se detecta una incidencia?<a class="headerlink" href="#que-hacer-cuando-se-detecta-una-incidencia" title="Permalink to this heading">#</a></h2>
+<p>Cuando se detecta una incidencia, se debe seguir el siguiente proceso:</p>
+<ol class="arabic simple">
+<li><p>Se crea una Issue en el Registro de Incidencias, dentro de la columna <em>OPEN</em>,  indicando el nombre de la incidencia y el módulo al que hace referencia, separado por un guión. Por ejemplo: <em>Import/Export Census - Census</em>. Si la incidencia está relacionada con la documentación, en lugar de un módulo, se indica <em>Doc</em>. Por ejemplo: <em>Change documentation - Doc</em>. Si la incidencia está relacionada con la configuración, en lugar de un módulo, se indica <em>Conf</em>. Por ejemplo: <em>Change GitHub Actions - Conf</em>.</p></li>
+<li><p>Se asigna una Label a la Issue indicando el tipo de incidencia (<em>Error</em>, <em>Improvement</em> o <em>New feature</em>).</p></li>
+<li><p>Se realiza una descripción detallada de la Issue según el tipo de incidencia:</p>
+<ul class="simple">
+<li><p><em>Error</em>: se indica cómo reproducir el error y se describe el comportamiento esperado. Si es necesario, se describe el entorno en el que se ha detectado el error.</p></li>
+<li><p><em>Improvement</em>: se describe el estado actual de la funcionalidad y cómo se debería mejorar.</p></li>
+<li><p><em>New feature</em>: se describe la nueva funcionalidad que se propone acotando el alcance de la misma.</p></li>
+</ul>
+</li>
+<li><p>Se asigna la Issue a una persona que será la encargada de revisarla y resolverla.</p></li>
+<li><p>Se asigna una Label a la Issue indicando el grupo al que pertenece la persona responsable de revisarla y resolverla (<em>lorca-1</em> o <em>lorca-2</em>).</p></li>
+<li><p>Se asigna una Label a la Issue indicando la prioridad de la incidencia (<em>High</em>,
+<em>Medium</em> o <em>Low</em>).</p></li>
+</ol>
+</section>
+<section id="como-se-resuelven-las-incidencias">
+<h2>¿Cómo se resuelven las incidencias?<a class="headerlink" href="#como-se-resuelven-las-incidencias" title="Permalink to this heading">#</a></h2>
+<p>Para resolver una incidencia, se debe seguir el siguiente proceso:</p>
+<ol class="arabic simple">
+<li><p>Si es necesario, se crea una rama del repositorio para trabajar en la resolución de la incidencia, dependiendo del tipo de incidencia:</p>
+<ul class="simple">
+<li><p><em>Error</em>: se crea una rama del estilo <em>fix/titulo-descriptivo</em> a partir de la rama sobre la que se ha detectado el error. Excepcionalmente, si el error se ha detectado en la rama <em>main</em>,
+se crea una rama del estilo <em>hotfix/titulo-descriptivo</em> a partir de la rama <em>main</em>.</p></li>
+<li><p><em>Improvement</em>: se crea una rama del estilo <em>fix/titulo-descriptivo</em> a partir de la rama sobre la que se ha detectado la mejora.</p></li>
+<li><p><em>New feature</em>: si es una nueva funcionalidad que requiere la modificación de varios módulos, se crea una rama del estilo <em>epic/id_issue-titulo-descriptivo</em> a partir de la rama <em>develop</em>. Si es una nueva funcionalidad que requiere la modificación de un único módulo, se crea una rama del estilo <em>feature/id_issue-titulo-descriptivo</em> a partir de la rama épica correspondiente o de la rama <em>develop</em> si no existe una rama épica asociada.</p></li>
+<li><p>Excepcionalmente, si la incidencia está relacionada con la documentación, se crea una rama del estilo <em>doc/titulo-descriptivo</em> a partir de la rama <em>develop</em>. Si la incidencia está relacionada con la configuración, se crea una rama del estilo <em>conf/titulo-descriptivo</em> a partir de la rama <em>develop</em>.</p></li>
+</ul>
+</li>
+<li><p>Se realiza la modificación que resuelve la incidencia.</p></li>
+</ol>
+<p><strong>Nota</strong>: para más información sobre el estilo de las ramas, consultar la sección <em>Estrategia de ramificación</em> del documento <a class="reference internal" href="Gestion-de-repositorio.html"><span class="std std-doc">Gestión de Repositorio</span></a>.</p>
+</section>
+<section id="que-hacer-cuando-se-resuelve-una-incidencia">
+<h2>¿Qué hacer cuando se resuelve una incidencia?<a class="headerlink" href="#que-hacer-cuando-se-resuelve-una-incidencia" title="Permalink to this heading">#</a></h2>
+<p>Cuando se resuelve una o varias incidencias, se debe seguir el siguiente proceso:</p>
+<ol class="arabic simple">
+<li><p>Crear una Pull Request hacia la rama <em>develop</em> del repositorio, en la que se incluya la modificación que resuelve la incidencia. Es importante que la Issue esté referenciada en la descripción o comentarios de la Pull Request. Por ejemplo: <em>Fixes #1</em>.</p></li>
+<li><p>Una vez que la Pull Request ha sido aprobada y fusionada, se mueve la Issue a la columna <em>CLOSED</em> del Registro de Incidencias. Es importante que la Pull Request esté referenciada en la descripción o comentarios de la Issue. Por ejemplo: <em>Solved in #1</em>.</p></li>
+<li><p>Se cierra la Issue.</p></li>
+</ol>
+</section>
+<section id="que-hacer-cuando-se-descarta-una-incidencia">
+<h2>¿Qué hacer cuando se descarta una incidencia?<a class="headerlink" href="#que-hacer-cuando-se-descarta-una-incidencia" title="Permalink to this heading">#</a></h2>
+<p>Cuando se descarta una incidencia, se debe seguir el siguiente proceso:</p>
+<ol class="arabic simple">
+<li><p>Se realiza un comentario en la Issue indicando el motivo por el que se descarta.</p></li>
+<li><p>Se mueve la Issue a la columna <em>CLOSED</em> del Registro de Incidencias.</p></li>
+<li><p>Se cierra la Issue como no planeada.</p></li>
+</ol>
+</section>
+<section id="algunos-ejemplos">
+<h2>Algunos ejemplos<a class="headerlink" href="#algunos-ejemplos" title="Permalink to this heading">#</a></h2>
+<section id="incidencia-de-nueva-funcionalidad">
+<h3>Incidencia de nueva funcionalidad<a class="headerlink" href="#incidencia-de-nueva-funcionalidad" title="Permalink to this heading">#</a></h3>
+<p align="center">
+<img  src="./images/newFeature.png">
+</p>
+</section>
+<section id="incidencia-de-error">
+<h3>Incidencia de error<a class="headerlink" href="#incidencia-de-error" title="Permalink to this heading">#</a></h3>
+<p align="center">
+<img  src="./images/errorPart1.png">
+<img  src="./images/errorPart2.png">
+<img  src="./images/errorPart3.png">
+</p>
+</section>
+<section id="incidencia-de-mejora">
+<h3>Incidencia de mejora<a class="headerlink" href="#incidencia-de-mejora" title="Permalink to this heading">#</a></h3>
+<p align="center">
+<img  src="./images/improvement.png">  
+</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="issues.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Issues</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="subsistemas.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Subsistemas</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-una-incidencia">¿Qué es una incidencia?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-el-registro-de-incidencias">¿Qué es el Registro de Incidencias?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-hacer-cuando-se-detecta-una-incidencia">¿Qué hacer cuando se detecta una incidencia?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-se-resuelven-las-incidencias">¿Cómo se resuelven las incidencias?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-hacer-cuando-se-resuelve-una-incidencia">¿Qué hacer cuando se resuelve una incidencia?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-hacer-cuando-se-descarta-una-incidencia">¿Qué hacer cuando se descarta una incidencia?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algunos-ejemplos">Algunos ejemplos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incidencia-de-nueva-funcionalidad">Incidencia de nueva funcionalidad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incidencia-de-error">Incidencia de error</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incidencia-de-mejora">Incidencia de mejora</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandro Medina Durán, Gonzalo Campos Mejías
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Alejandro Medina Durán, Gonzalo Campos Mejías.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
