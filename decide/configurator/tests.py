@@ -18,7 +18,6 @@ class ConfiguratorViewTest(BaseTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "configurator/configurator.html")
 
-
     def test_configurator_view_not_admin(self):
         response = self.client.get(reverse("configurator"))
         self.assertEqual(response.status_code, 302)
@@ -41,6 +40,7 @@ class CreateClassicViewTest(BaseTestCase):
             "name": "Test Voting",
             "desc": "This is a test voting",
             "question_desc": "This is a test question",
+            "future_stop": "3000-12-31T23:59",
             "option1": "Option 1",
             "option2": "Option 2",
             "more_options": "Option 3\nOption 4",
@@ -89,6 +89,7 @@ class CreateYesNoViewTest(BaseTestCase):
             "name": "Test Voting",
             "desc": "This is a test voting",
             "question_desc": "This is a test question",
+            "future_stop": "3000-12-31T23:59",
         }
         response = self.client.post(reverse("create_yes_no"), data)
 
@@ -131,6 +132,7 @@ class CreateMultipleChoiceViewTest(BaseTestCase):
             "name": "Test Voting",
             "desc": "This is a test voting",
             "question_desc": "This is a test question",
+            "future_stop": "3000-12-31T23:59",
             "option1": "Option 1",
             "option2": "Option 2",
             "more_options": "Option 3\nOption 4",
@@ -181,6 +183,7 @@ class CreatePreferenceViewTest(BaseTestCase):
             "name": "Test Voting",
             "desc": "This is a test voting",
             "question_desc": "This is a test question",
+            "future_stop": "3000-12-31T23:59",
             "option1": "Option 1",
             "option2": "Option 2",
             "more_options": "Option 3\nOption 4",
@@ -229,6 +232,7 @@ class CreateOpenQuestionViewTest(BaseTestCase):
             "name": "Test Voting",
             "desc": "This is a test voting",
             "question_desc": "This is a test question",
+            "future_stop": "3000-12-31T23:59",
         }
         response = self.client.post(reverse("create_open_question"), data)
 

@@ -7,13 +7,18 @@ from base.models import Auth
 
 class ClassicForm(forms.ModelForm):
     question_desc = forms.CharField(label="Question")
+    future_stop = forms.DateTimeField(
+        label="Optionally, set an end date",
+        widget=forms.DateTimeInput(attrs={"type": "datetime-local"}),
+        required=False,
+    )
     option1 = forms.CharField(label="Option 1")
     option2 = forms.CharField(label="Option 2")
     more_options = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     class Meta:
         model = Voting
-        fields = ["name", "desc"]
+        fields = ["name", "desc", "future_stop"]
 
     def save(self):
         # Create Question
@@ -39,6 +44,7 @@ class ClassicForm(forms.ModelForm):
         self.fields["name"].widget.attrs.update({"class": "form-control"})
         self.fields["desc"].widget.attrs.update({"class": "form-control", "rows": 3})
         self.fields["question_desc"].widget.attrs.update({"class": "form-control"})
+        self.fields["future_stop"].widget.attrs.update({"class": "form-control"})
         self.fields["option1"].widget.attrs.update({"class": "form-control"})
         self.fields["option2"].widget.attrs.update({"class": "form-control"})
         self.fields["more_options"].widget.attrs.update(
@@ -48,10 +54,15 @@ class ClassicForm(forms.ModelForm):
 
 class YesNoForm(forms.ModelForm):
     question_desc = forms.CharField(label="Question")
+    future_stop = forms.DateTimeField(
+        label="Optionally, set an end date",
+        widget=forms.DateTimeInput(attrs={"type": "datetime-local"}),
+        required=False,
+    )
 
     class Meta:
         model = Voting
-        fields = ["name", "desc"]
+        fields = ["name", "desc", "future_stop"]
 
     def save(self):
         # Create Question
@@ -67,17 +78,23 @@ class YesNoForm(forms.ModelForm):
         self.fields["name"].widget.attrs.update({"class": "form-control"})
         self.fields["desc"].widget.attrs.update({"class": "form-control", "rows": 3})
         self.fields["question_desc"].widget.attrs.update({"class": "form-control"})
+        self.fields["future_stop"].widget.attrs.update({"class": "form-control"})
 
 
 class MultipleChoiceForm(forms.ModelForm):
     question_desc = forms.CharField(label="Question")
+    future_stop = forms.DateTimeField(
+        label="Optionally, set an end date",
+        widget=forms.DateTimeInput(attrs={"type": "datetime-local"}),
+        required=False,
+    )
     option1 = forms.CharField(label="Option 1")
     option2 = forms.CharField(label="Option 2")
     more_options = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     class Meta:
         model = Voting
-        fields = ["name", "desc"]
+        fields = ["name", "desc", "future_stop"]
 
     def save(self):
         # Create Question
@@ -103,6 +120,7 @@ class MultipleChoiceForm(forms.ModelForm):
         self.fields["name"].widget.attrs.update({"class": "form-control"})
         self.fields["desc"].widget.attrs.update({"class": "form-control", "rows": 3})
         self.fields["question_desc"].widget.attrs.update({"class": "form-control"})
+        self.fields["future_stop"].widget.attrs.update({"class": "form-control"})
         self.fields["option1"].widget.attrs.update({"class": "form-control"})
         self.fields["option2"].widget.attrs.update({"class": "form-control"})
         self.fields["more_options"].widget.attrs.update(
@@ -112,13 +130,18 @@ class MultipleChoiceForm(forms.ModelForm):
 
 class PreferenceForm(forms.ModelForm):
     question_desc = forms.CharField(label="Question")
+    future_stop = forms.DateTimeField(
+        label="Optionally, set an end date",
+        widget=forms.DateTimeInput(attrs={"type": "datetime-local"}),
+        required=False,
+    )
     option1 = forms.CharField(label="Option 1")
     option2 = forms.CharField(label="Option 2")
     more_options = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     class Meta:
         model = Voting
-        fields = ["name", "desc"]
+        fields = ["name", "desc", "future_stop"]
 
     def save(self):
         # Create Question
@@ -144,6 +167,7 @@ class PreferenceForm(forms.ModelForm):
         self.fields["name"].widget.attrs.update({"class": "form-control"})
         self.fields["desc"].widget.attrs.update({"class": "form-control", "rows": 3})
         self.fields["question_desc"].widget.attrs.update({"class": "form-control"})
+        self.fields["future_stop"].widget.attrs.update({"class": "form-control"})
         self.fields["option1"].widget.attrs.update({"class": "form-control"})
         self.fields["option2"].widget.attrs.update({"class": "form-control"})
         self.fields["more_options"].widget.attrs.update(
@@ -153,10 +177,15 @@ class PreferenceForm(forms.ModelForm):
 
 class OpenQuestionForm(forms.ModelForm):
     question_desc = forms.CharField(label="Question")
+    future_stop = forms.DateTimeField(
+        label="Optionally, set an end date",
+        widget=forms.DateTimeInput(attrs={"type": "datetime-local"}),
+        required=False,
+    )
 
     class Meta:
         model = Voting
-        fields = ["name", "desc"]
+        fields = ["name", "desc", "future_stop"]
 
     def save(self):
         # Create Question
@@ -172,6 +201,7 @@ class OpenQuestionForm(forms.ModelForm):
         self.fields["name"].widget.attrs.update({"class": "form-control"})
         self.fields["desc"].widget.attrs.update({"class": "form-control", "rows": 3})
         self.fields["question_desc"].widget.attrs.update({"class": "form-control"})
+        self.fields["future_stop"].widget.attrs.update({"class": "form-control"})
 
 
 def create_question(self, type):
@@ -198,6 +228,7 @@ def create_voting(self, question):
     voting = Voting(
         name=self.cleaned_data["name"],
         desc=self.cleaned_data["desc"],
+        future_stop=self.cleaned_data["future_stop"],
         question=question,
         start_date=timezone.now(),
     )

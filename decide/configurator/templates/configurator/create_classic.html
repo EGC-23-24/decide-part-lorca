@@ -16,7 +16,7 @@
 
             <!-- Voting Fields -->
             <div class="mb-3">
-                <p class="mb-0">{{ form.name.label_tag }}</p>
+                {{ form.name.label_tag }}
                 {{ form.name }}
             </div>
             <div class="mb-3">
@@ -28,6 +28,12 @@
             <div class="mb-3">
                 {{ form.question_desc.label_tag }}
                 {{ form.question_desc }}
+            </div>
+
+            <!-- Future Stop -->
+            <div class="mb-3">
+                {{ form.future_stop.label_tag }}
+                {{ form.future_stop }}
             </div>
 
             <hr class="my-4">
