@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% load i18n static %} {% block extrahead %}
+{% extends 'base2.html' %}
+{% load i18n static %} 
+{% block extrahead %}
 <link
   type="text/css"
   rel="stylesheet"
@@ -6,7 +8,7 @@
 />
 <link type="text/css" rel="stylesheet" href="{% static "booth/style.css" %}" />
 {% endblock %} {% block content %}
-<div class="voting container">
+<div class="voting container mt-4">
   <h3>Export census</h3>
 
   <table class="table table-bordered table-striped">

@@ -12,6 +12,13 @@ votación, por lo que prima la simplicidad por encima de la eficiencia
 cuando sea posible. Por lo tanto se asumen algunas carencias para permitir
 que sea entendible y extensible.
 
+Esta versión de Decide implementa 5 tipos de votaciones posibles:
+* Votación clasica
+* Votación de respuesta con múltiple opción
+* Votación con respuesta si/no
+* Votación por orden de preferencia
+* Votación de respuesta abierta
+
 
 Subsistemas, apps y proyecto base
 ---------------------------------
@@ -109,110 +116,125 @@ Guía rápida
 
 Aclaración: En esta guía vamos a usar como url de base: "localhost:8000".
 
-### 1. Login como administrador del sistema
+### 1. Página de inicio de Decide
 
-Una vez iniciada la aplicación, accedemos a http://localhost:8000/admin/ e ingresamos las credenciales 
-del super usuario creado anteriormente.
+Una vez iniciada la aplicación, si accedemos a http://localhost:8000/ podremos ver la página de inicio de Decide. En ella podremos iniciar sesión si ya tenemos un usuario o podremos registrarnos. Si tenemos un usuario administrador, podremos iniciar sesión directamente con dicho usuario.
 
-![Imagen 01: Login](./resources/quickstart/00_login.png)
+![Imagen 01: Inicio](./resources/lorca/inicio.png)
 
-Si nos hemos conectado con éxito como un administrador, nos debería aparecer la siguiente vista:
+Si hemos iniciado sesión correctamente, nos debería aparecer la siguiente vista:
 
-![Imagen 02: Menu](./resources/quickstart/01_menu.png)
+![Imagen 02: Incio logueado](./resources/lorca/user.png)
 
-### 2. Creación de questions
+Si hemos iniciado sesión con administrador, nos aparece la siguiente vista:
 
-Buscamos el botón "add" dentro del apartado "questions" de la categoría "voting". En el textarea 
-etiquetado como "Desc" se añade la pregunta a realizar en la futura votación. Después en los
-apartados de "question options" añadimos todas las posibles respuestas a la pregunta definida 
-anteriormente. Estas "questions options" se pueden eliminar clickando a la "X" situada a la derecha y
-se pueden añadir mas opciones pulsando en "add questions options" situado mas abajo. 
+![Imagen 03: Incio logueado](./resources/lorca/admin.png)
 
-No es necesario rellenar todas las "question options" que aparezcan en la vista. Una vez tengamos 
-todas las posibles respuestas que deseamos podemos guardar haciendo click en el botón "Save".
 
-![Imagen 03: Questions](./resources/quickstart/02_question.png)
+### 2. Autenticación de usuarios
 
-### 3. Creación de votings
+Si en la página de inicio pulsamos el botón register, nos debería llevar al siguiente formulario para registrarnos en Decide:
 
-Hacemos click al botón "add" dentro de "Votings" en la categoría "Voting" y nos aparecerá el formulario
-de creacion de votaciones.
+![Imagen 03: Register form](./resources/lorca/register.png)
 
-En dicho formulario le ponemos un nombre a la votación, la descripción es opcional, en el desplegable
-"question" nos debe aparecer la pregunta generada en el apartado anterior de esta guía y la 
-seleccionamos. 
+Una vez registrados correctamente, deberemos iniciar sesión en Decide para empezar a utilizar la aplicación. El formulario que aparece es el siguiente, dónde también podremos identificarnos en Decide usando nuestra cuenta de Google o Facebook: 
 
-![Imagen 04: Voting](./resources/quickstart/03_voting.png)
+![Imagen 04: Login form](./resources/lorca/login.png)
 
-En el apartado "Auths" de su primera votación deberá crear uno. Para ello, debe clickar en el "+" a la 
-derecha de la lista de "Auths". Aparecerá una ventana nueva donde deberá rellenar un formulario con el
-nombre que desee y la url, en nuestro caso es "http://localhost:8000".
 
-![Imagen 05: Auth](./resources/quickstart/04_auth.png)
+### 3. Creación de las votaciones
 
-Pulsamos en el botón "Save" y ya tenemos nuestra votación creada.
+Iniciamos sesión como administrador y pulsamos el botón voting configurator para abrir la vista de gestión de votaciones:
 
-### 4. Creacion de census
+![Imagen 04: Login form](./resources/lorca/voting_manag.png)
 
-En "votings" buscamos la votación que hemos generado y entramos en ella para mirar en la barra de 
-direcciones la id de nuestra votación. En el siguiente ejemplo, la id es 19.
+Podremos crear una votación de cada tipo. Para crear una votación tipo clásica tenemos que rellenar el siguiente formulario indicando un nombre, una descripción, la pregunta que queremos hacer y opcionalmente podemos indicar una fecha de fin de votación. También, podemos crear las opciones de respuesta a la pregunta que hemos realizado y podremos añadir más opciones:
 
-    http://localhost:8000/admin/voting/voting/19/change/
+![Imagen 04: Login form](./resources/lorca/clasic_create.png)
 
-Nos dirigimos al apartado "censuss" en la categoría "census" y clickamos en "add". Ponemos la id de 
-nuestra votacion en "voting id" y en "voter id" ponemos la id del votante que queremos añadir. 
+Para crear una votación de tipo si/no tendremos que indicar simplemente la pregunta que queremos realizar, ya que las opciones se crean automáticamente:
 
-NOTA: el administrador si es el primer usuario creado tendrá la id 1.
+![Imagen 04: Login form](./resources/lorca/yesno_create.png)
 
-![Imagen 06: Census](./resources/quickstart/05_census.png)
+Para crear una votación por preferencia o una votación de múltiple respuesta hacemos lo mismo que para la votación clásica rellenando los siguientes formularios:
 
-### 5. Comenzar la votación
+![Imagen 04: Login form](./resources/lorca/preference_create.png)
 
-Llegados a este punto necesitamos abrir una votación, para ello debemos marcar el checkbox a la 
-izquierda de nuestra votación. Una vez seleccionado, tenemos que ir al desplegable de "action",
-seleccionamos la opción "Start" y pulsamos en el boton "Go". Esperamos a que aparezca el "Start date" 
-y ya tendríamos la votación abierta y lista para votar. 
+![Imagen 04: Login form](./resources/lorca/multiple_create.png)
 
-![Imagen 07: Start voting](./resources/quickstart/06_start.png)
+Para crear una votación de respuesta abierta, simplemente creamos una votación indicando la pregunta que queremos realizar:
 
-### 6. Votar
+![Imagen 04: Login form](./resources/lorca/open_create.png)
 
-Para poder votar primero debemos ingresar en la barra de direcciones de nuestro navegador lo siguiente:
+Una vez creada nos aparecerá esta vista para configurar el censo de la votación, pero podremos hacerlo mas tarde.
 
-    http://localhost:8000/booth/[id de la votación]/
+![Imagen 04: Login form](./resources/lorca/create_voting_succ.png)
 
-![Imagen 08: Booth](./resources/quickstart/07_booth.png)
+### 4. Creación del censo
 
-Una vez accedemos, debemos iniciar sesión con un usuario que esté incluido en el censo.
+Una vez creada la votacion, debemos añadir un censo para que los usuarios puedan registrar sus votaciones. Para ello, estando logueado como administrador pulsamos el botón list votings y luego pulsamos el botón census. Esto nos llevará a la vista de gestión del censo:
 
-Cuando nos aparezca la pregunta, ya podemos seleccionar la respuesta y guardarla como un voto. 
-Al confirmar el voto, nos aparecerá lo siguiente:
+![Imagen 04: Login form](./resources/lorca/census.png)
 
-![Imagen 09: Vote success](./resources/quickstart/08_voted.png)
+En esta vista podremos crear un nuevo censo indicando el id de la votación y el id del votante:
 
-El mensaje de "Congratulations. Your vote has been sent" nos confirma que nuestro voto ha sido 
-registrado correctamente.
+![Imagen 04: Login form](./resources/lorca/census_create.png)
 
-### 7. Conteo de votos
+También podremos eliminar a una persona del censo, ver los detalles del censo de una votación, importar un censo a partir un archivo excel así como exportar un censo ya existente. También, podremos listar todos los censos que tenemos creados.
 
-Nos dirigimos nuevamente al apartado "voting" desde nuestro perfil de administrador. Primero tenemos 
-que cerrar la votación, para ello seleccionamos el checkbox a la izquierda de nuestra votación
-marcamos "Stop" y pulsamos el botón "Go". Notará que en el apartado "End Date" ahora aparece
-la fecha actual, esto nos indica que la votación ha sido cerrada y está lista para el conteo.
+### 5. Inciar y gestionar una votación
+Una vez añadido el censo, si pulsamos en el botón list votings de la página de inicio podremos ver todas las votaciones creadas por el adminsitrador y nos llevará a la vista de gestión de votaciones. En esta vista podremos finalizar, eliminar y editar una votación. 
 
-Una vez cerrada la votación, volvemos a seleccionar el checkbox de la izquierda de nuestra votación
-marcamos la opción "Tally" en el desplegable de "Actions" y pulsamos nuevamente en el botón "Go".
+![Imagen 04: Login form](./resources/lorca/delete_voting.png)
 
-![Imagen 10: Tally](./resources/quickstart/09_tally.png)
+A partir de este momento, los usuarios registrados en el censo ya pueden votar en todas las votaciones que aparezcan en dicha vista. 
 
-### 8. Visualización de resultado
+### 6. Votar en los diferentes tipos de votaciones
+Una vez inciada la votación, los usarios del censo podrán registrar su voto. Para ello, iniciamos sesión con un usuario y pulsamos el botón list votings. En la vista que nos aparece, sólo aparecen las votaciones en las que ese usuario está incluido en el censo. Para votar, simplemente pulsamos en el botón vote. Si la votación ya ha finalizado, podremos ver los resultados de dicha votación pulsando en el botón results.
 
-Una vez tenemos la votación cerrada y con el conteo de votos realizado, ya podemos visualizar el
-resultado accediendo a la siguiente url:
+![Imagen 04: Login form](./resources/lorca/vote.png)
 
-    http://localhost:8000/visualizer/[id de la votación]/
+Dependiendo del tipo de votación, nos aparecerá la cabina de votación correspondiente.
 
-![Imagen 11: Visualizer](./resources/quickstart/10_visualizer.png)
+* Votación clásica: simplemente seleccionamos una de las opciones y registramos nuestro voto.
+
+![Imagen 04: Login form](./resources/lorca/booth_clasico.png)
+
+* Votación de múltiple opción: podremos seleccionar varias opciones y registar nuestro voto.
+
+![Imagen 04: Login form](./resources/lorca/multiple.png)
+
+* Votación si/no: seleccionamos la opción Si o No y registramos nuestro voto.
+
+![Imagen 04: Login form](./resources/lorca/yesno.png)
+
+* Votación por preferencia: seleccionamos cada opción estableciendo un orden de preferencia.
+
+![Imagen 04: Login form](./resources/lorca/preference.png)
+
+* Votación de respuesta abierta: podremos responder a la votación escribiendo lo que queramos en el cuadro de texto.
+
+![Imagen 04: Login form](./resources/lorca/comment.png)
+
+### 7. Realizar el conteo de votos
+Una vez que todos los usarios han votado, accedemos como administrador a la vista de gestión de votaciones. Para ello, pulsamos en el votón list votings de la página de incio. Primero hay que finalizar la votación, para ello pulsamos en el botón End Voting. 
+
+Una vez finalizada la votación, pulsamos en el botón Tally para realizar el conteo de los votos.
+
+![Imagen 04: Login form](./resources/lorca/tally.png)
+
+### 8. Visualizar los resultados
+
+Una vez contados todos los votos, podremos visualizar los resultados pulsando en el botón Results. Por ejemplo, si visualizamos los resultados de la votación yes/no nos aparecerá una tabla con la puntuación y el número de votos para cada opción. Además disponemos de diferentes gráficos para visualizar los resultados.
+
+![Imagen 04: Login form](./resources/lorca/grafica1.png)
+
+![Imagen 04: Login form](./resources/lorca/grafica2.png)
+
+Además, mientras la votación está en curso podemos ver los resultados en tiempo real sin finalizar la votación.
+
+![Imagen 04: Login form](./resources/lorca/real_time.png)
+
 
 Ejecutar con docker
 -------------------
@@ -476,18 +498,23 @@ Versiones actuales
 En las ultimas actualizaciones se han modificado las versiones usadas por la aplicación Decide. Las 
 versiones usadas actualmente se corresponden a las siguientes:
 
-* Django = 4.1
-* pycryptodome = 3.15.0
-* djangorestframework = 3.14.0
-* django-cors-headers = 3.13.0
-* requests = 2.28.1
-* django-filter = 22.1
-* psycopg2 = 2.9.4
-* coverage = 6.5.0
-* jsonnet = 0.18.0
-* django-nose = 1.4.6
-* django-rest-swagger = 2.2.0
-* Python = 3.9
-* Vue=3
-* Bootstrap=5.2
-* selenium = 4.7.2
+Django==4.1
+pycryptodome==3.15.0
+djangorestframework==3.14.0
+django-cors-headers==3.13.0
+requests==2.28.1
+django-filter==22.1
+psycopg2==2.9.4
+pynose==1.4.8
+coverage==6.5.0
+jsonnet==0.18.0
+django-nose==1.4.6
+django-rest-swagger==2.2.0
+selenium==4.7.2
+pynose==1.4.8
+dj-database-url==2.1.0
+whitenoise==6.5.0
+gunicorn==21.2.0
+social-auth-app-django==5.4.0
+social-auth-core==4.5.0
+openpyxl==3.1.2

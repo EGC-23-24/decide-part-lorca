@@ -1,0 +1,36 @@
+name: Build Documentation
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Generate Documentation
+      run: |
+        cd decide
+        sphinx-build -b html sphinx_docs/source sphinx_docs/build
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./decide/sphinx_docs/build
