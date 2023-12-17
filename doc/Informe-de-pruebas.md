@@ -48,6 +48,8 @@ Para ejecutar estas pruebas en local, es necesario ejecutar los siguientes coman
 `./manage.py test booth.test_selenium.CommentBoothTest  -v 2`
 - **Votación Preferencia**
 `./manage.py test booth.test_selenium.PreferenceBoothTest  -v 2`
+- **Registro negativo**
+`./manage.py test authentication.test_selenium.TestRegisterNegative  -v 2`
 
  <div id='id2.2'/>
 
