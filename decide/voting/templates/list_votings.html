@@ -7,11 +7,6 @@
             <h1 class="mb-4 p-5">Voting List</h2>
         </div>
     </div>
-    {% if user.is_staff %}
-                <div style="text-align: center; margin-top: 20px;">
-                    <a class="btn btn-primary" href="{% url 'census' %}">📒 Census</a>
-                </div>
-    {% endif %}
 
     <div class="row justify-content-center mt-1">
         <div class="col-10">
@@ -111,6 +106,8 @@
                             </div>
                         </div>
                     {% endif %}
+                {% empty %}
+                    <p class="text-center">No votings found.</p>
                 {% endfor %}
             {% endif %}
 
@@ -143,7 +140,10 @@
                             </div>
                         </div>
                     {% endif %}
+                {% empty %}
+                    <p class="text-center mt-4">No votings found</p>
                 {% endfor %}
+                
             {% endif %}
         </div>
     </div>
