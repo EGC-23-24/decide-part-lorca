@@ -1,0 +1,1080 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>store.tests &#8212; decide-part-lorca</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/store/tests';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">decide-part-lorca</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Welcome to decide’s documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/index.html">Decide modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/booth.html">Booth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/census.html">Census Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/auth.html">Auth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/mixnet.html">Mixnet Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/postproc.html">Postproc Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/store.html">Store Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/visualizer.html">Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/voting.html">Voting Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../memes.html">Memes collection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/issues/new?title=Issue%20on%20page%20%2F_modules/store/tests.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for store.tests</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">TestCase</span>
+<span class="kn">from</span> <span class="nn">rest_framework.test</span> <span class="kn">import</span> <span class="n">APIClient</span>
+<span class="kn">from</span> <span class="nn">rest_framework.test</span> <span class="kn">import</span> <span class="n">APITestCase</span>
+
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Vote</span>
+<span class="kn">from</span> <span class="nn">.serializers</span> <span class="kn">import</span> <span class="n">VoteSerializer</span>
+<span class="kn">from</span> <span class="nn">base</span> <span class="kn">import</span> <span class="n">mods</span>
+<span class="kn">from</span> <span class="nn">base.models</span> <span class="kn">import</span> <span class="n">Auth</span>
+<span class="kn">from</span> <span class="nn">base.tests</span> <span class="kn">import</span> <span class="n">BaseTestCase</span>
+<span class="kn">from</span> <span class="nn">census.models</span> <span class="kn">import</span> <span class="n">Census</span>
+<span class="kn">from</span> <span class="nn">mixnet.models</span> <span class="kn">import</span> <span class="n">Key</span>
+<span class="kn">from</span> <span class="nn">voting.models</span> <span class="kn">import</span> <span class="n">Question</span><span class="p">,</span> <span class="n">QuestionOption</span>
+<span class="kn">from</span> <span class="nn">voting.models</span> <span class="kn">import</span> <span class="n">Voting</span>
+
+
+<div class="viewcode-block" id="StoreChoiceCase"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase">[docs]</a><span class="k">class</span> <span class="nc">StoreChoiceCase</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test case for storing votes with choices.</span>
+
+<span class="sd">    This class tests the functionality of storing votes for different types of voting,</span>
+<span class="sd">    including classic, choices, text, yes/no, and preference types.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        question (Question): A Question object for classic type voting.</span>
+<span class="sd">        question_choices (Question): A Question object for multiple choices type voting.</span>
+<span class="sd">        voting (Voting): A Voting object for classic type voting.</span>
+<span class="sd">        voting_choices (Voting): A Voting object for multiple choices type voting.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="StoreChoiceCase.setUp"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set up necessary objects for testing.</span>
+
+<span class="sd">        Creates Question and Voting objects for both classic and multiple choices type voting.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question_choices</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question_choices</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">5001</span><span class="p">,</span>
+                             <span class="n">name</span><span class="o">=</span><span class="s1">&#39;voting example&#39;</span><span class="p">,</span>
+                             <span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span>
+                             <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+                             <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">5002</span><span class="p">,</span>
+                                     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;voting example text&#39;</span><span class="p">,</span>
+                                     <span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question_choices</span><span class="p">,</span>
+                                     <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="StoreChoiceCase.tearDown"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Clean up after tests.</span>
+
+<span class="sd">        Clears the created objects to ensure isolation of tests.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question_choices</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="StoreChoiceCase.gen_voting"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.gen_voting">[docs]</a>    <span class="k">def</span> <span class="nf">gen_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate a voting object for testing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            pk (int): Primary key for the voting object.</span>
+
+<span class="sd">        Creates a Voting object with specified primary key and saves it to the database.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;v1&#39;</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;v1 desc&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+                        <span class="n">end_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="StoreChoiceCase.get_or_create_user"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.get_or_create_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get an existing user or create a new one for testing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            pk (int): Primary key of the user.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            User: The fetched or created User object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">user</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;user</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pk</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s1">&#39;qwerty&#39;</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">user</span></div>
+
+<div class="viewcode-block" id="StoreChoiceCase.gen_votes"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.gen_votes">[docs]</a>    <span class="k">def</span> <span class="nf">gen_votes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate random votes for testing.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: A tuple containing lists of generated voting IDs and user IDs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">votings</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+        <span class="n">users</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5002</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">votings</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gen_voting</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="n">random_user</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">users</span><span class="p">)</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="n">random_user</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">random_user</span><span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="n">v</span><span class="p">,</span>
+                <span class="s2">&quot;voter&quot;</span><span class="p">:</span> <span class="n">random_user</span><span class="p">,</span>
+                <span class="s2">&quot;vote&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="n">b</span><span class="p">},</span>
+                <span class="s2">&quot;voting_type&quot;</span><span class="p">:</span> <span class="s1">&#39;classic&#39;</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">votings</span><span class="p">,</span> <span class="n">users</span></div>
+
+<div class="viewcode-block" id="StoreChoiceCase.test_gen_vote_invalid"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.test_gen_vote_invalid">[docs]</a>    <span class="k">def</span> <span class="nf">test_gen_vote_invalid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test case for generating an invalid vote.</span>
+
+<span class="sd">        This method sends a POST request with invalid vote data and expects to receive a 401 Unauthorized status code.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            data (dict): A dictionary containing the invalid vote data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;voter&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;vote&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+            <span class="s2">&quot;voting_type&quot;</span><span class="p">:</span> <span class="s1">&#39;classic&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StoreChoiceCase.test_store_vote"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.test_store_vote">[docs]</a>    <span class="k">def</span> <span class="nf">test_store_vote</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test case for storing a valid vote.</span>
+
+<span class="sd">        This method creates a voting instance and a user, then sends a POST request to store a vote and expects to receive a 200 OK status code. It also checks the count and content of the Vote objects in the database to ensure the vote is stored correctly.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            VOTING_PK (int): Primary key for the voting instance.</span>
+<span class="sd">            CTE_A (int): Test constant for &#39;a&#39; field in vote.</span>
+<span class="sd">            CTE_B (int): Test constant for &#39;b&#39; field in vote.</span>
+<span class="sd">            data (dict): A dictionary containing the vote data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">VOTING_PK</span> <span class="o">=</span> <span class="mi">345</span>
+        <span class="n">CTE_A</span> <span class="o">=</span> <span class="mi">96</span>
+        <span class="n">CTE_B</span> <span class="o">=</span> <span class="mi">184</span>
+        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">VOTING_PK</span><span class="p">,</span>
+                        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;voting example&#39;</span><span class="p">,</span>
+                        <span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span>
+                        <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+                        <span class="p">)</span>
+        <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">VOTING_PK</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gen_voting</span><span class="p">(</span><span class="n">VOTING_PK</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="n">VOTING_PK</span><span class="p">,</span>
+            <span class="s2">&quot;voter&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;vote&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="n">CTE_A</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="n">CTE_B</span><span class="p">},</span>
+            <span class="s2">&quot;voting_type&quot;</span><span class="p">:</span> <span class="s1">&#39;classic&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">VOTING_PK</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">voter_id</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">CTE_A</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="n">CTE_B</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StoreChoiceCase.test_store_vote_choices"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.test_store_vote_choices">[docs]</a>    <span class="k">def</span> <span class="nf">test_store_vote_choices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test case for storing multiple choice votes.</span>
+
+<span class="sd">        This method tests the storage of multiple choice votes by creating relevant data, sending a POST request, and verifying the response and database records.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            CTE_A (int): Test constant for &#39;a&#39; field in vote.</span>
+<span class="sd">            CTE_B (int): Test constant for &#39;b&#39; field in vote.</span>
+<span class="sd">            data (dict): A dictionary containing multiple votes data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">CTE_A</span> <span class="o">=</span> <span class="mi">96</span>
+        <span class="n">CTE_B</span> <span class="o">=</span> <span class="mi">184</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s2">&quot;voter&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;votes&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="n">CTE_A</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="n">CTE_B</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="n">CTE_A</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="n">CTE_B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}],</span>
+            <span class="s1">&#39;voting_type&#39;</span><span class="p">:</span> <span class="s1">&#39;choices&#39;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">voter_id</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">CTE_A</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;a&#39;</span><span class="p">],</span> <span class="n">CTE_A</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">CTE_B</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="n">CTE_B</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="n">a</span><span class="o">=</span><span class="n">CTE_A</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;a&#39;</span><span class="p">],</span> <span class="n">CTE_A</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="n">b</span><span class="o">=</span><span class="n">CTE_B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="n">CTE_B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">test_voting_invalid_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test case for storing a vote with an invalid voting type.</span>
+
+<span class="sd">        This method attempts to store a vote with an invalid voting type and expects to receive a 400 Bad Request status code.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            data (dict): A dictionary containing the vote data with an invalid voting type.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s2">&quot;voter&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;vote&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+            <span class="s1">&#39;voting_type&#39;</span><span class="p">:</span> <span class="s1">&#39;invalid&#39;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+
+<div class="viewcode-block" id="StoreChoiceCase.test_store_vote_text"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.test_store_vote_text">[docs]</a>    <span class="k">def</span> <span class="nf">test_store_vote_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test case for storing a text vote.</span>
+
+<span class="sd">        This method tests storing a text-based vote by creating relevant data, sending a POST request, and verifying the response and database records.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            CTE_A (int): Test constant for &#39;a&#39; field in vote.</span>
+<span class="sd">            CTE_B (int): Test constant for &#39;b&#39; field in vote.</span>
+<span class="sd">            data (dict): A dictionary containing the text vote data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">CTE_A</span> <span class="o">=</span> <span class="mi">96</span>
+        <span class="n">CTE_B</span> <span class="o">=</span> <span class="mi">184</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s2">&quot;voter&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;vote&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="n">CTE_A</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="n">CTE_B</span><span class="p">},</span>
+            <span class="s1">&#39;voting_type&#39;</span><span class="p">:</span> <span class="s1">&#39;comment&#39;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">voter_id</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">CTE_A</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="n">CTE_B</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StoreChoiceCase.test_voting_invalid_type"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.test_voting_invalid_type">[docs]</a>    <span class="k">def</span> <span class="nf">test_voting_invalid_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test case for retrieving stored votes.</span>
+
+<span class="sd">        This method generates votes and then tests retrieving them via GET requests, verifying the response status codes and content.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s2">&quot;voter&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;vote&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+            <span class="s1">&#39;voting_type&#39;</span><span class="p">:</span> <span class="s1">&#39;invalid&#39;</span>
+        <span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StoreChoiceCase.test_vote"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.test_vote">[docs]</a>    <span class="k">def</span> <span class="nf">test_vote</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test case for retrieving stored votes.</span>
+
+<span class="sd">        This method generates votes and then tests retrieving them via GET requests, verifying the response status codes and content.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">gen_votes</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s1">&#39;noadmin&#39;</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">403</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="n">votes</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">votes</span><span class="p">),</span> <span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">votes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">VoteSerializer</span><span class="p">(</span>
+            <span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">first</span><span class="p">())</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StoreChoiceCase.test_filter"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.test_filter">[docs]</a>    <span class="k">def</span> <span class="nf">test_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test case for filtering votes.</span>
+
+<span class="sd">        This method generates votes and then tests filtering them by voting_id and voter_id via GET requests, verifying the response status codes and content.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">votings</span><span class="p">,</span> <span class="n">voters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_votes</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">votings</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;/store/?voting_id=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s1">&#39;noadmin&#39;</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;/store/?voting_id=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">403</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;/store/?voting_id=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="n">votes</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">votes</span><span class="p">),</span> <span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+
+        <span class="n">v</span> <span class="o">=</span> <span class="n">voters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;/store/?voter_id=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="n">votes</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">votes</span><span class="p">),</span> <span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voter_id</span><span class="o">=</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="StoreChoiceCase.test_hasvote"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.test_hasvote">[docs]</a>    <span class="k">def</span> <span class="nf">test_hasvote</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test case for checking if a specific vote exists.</span>
+
+<span class="sd">        This method tests the existence of a specific vote by voter_id and voting_id, verifying the response status codes and content.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    
+        <span class="n">votings</span><span class="p">,</span> <span class="n">voters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_votes</span><span class="p">()</span>
+        <span class="n">vo</span> <span class="o">=</span> <span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">vo</span><span class="o">.</span><span class="n">voting_id</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">vo</span><span class="o">.</span><span class="n">voter_id</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;/store/?voting_id=</span><span class="si">{}</span><span class="s1">&amp;voter_id=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s1">&#39;noadmin&#39;</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;/store/?voting_id=</span><span class="si">{}</span><span class="s1">&amp;voter_id=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">403</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;/store/?voting_id=</span><span class="si">{}</span><span class="s1">&amp;voter_id=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="n">votes</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">votes</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">votes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;voting_id&quot;</span><span class="p">],</span> <span class="n">v</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">votes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;voter_id&quot;</span><span class="p">],</span> <span class="n">u</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StoreChoiceCase.test_voting_status"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.test_voting_status">[docs]</a>    <span class="k">def</span> <span class="nf">test_voting_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test case for verifying voting status during vote storage.</span>
+
+<span class="sd">        This method checks the response status code when attempting to store a vote based on the voting&#39;s opening and closing status.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            data (dict): A dictionary containing the vote data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="mi">5001</span><span class="p">,</span>
+            <span class="s2">&quot;voter&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;vote&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">55</span><span class="p">},</span>
+            <span class="s2">&quot;voting_type&quot;</span><span class="p">:</span> <span class="s1">&#39;classic&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="mi">5001</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="c1"># not opened</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span>
+
+        <span class="c1"># not closed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="c1"># closed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="StoreTextCase"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreTextCase">[docs]</a><span class="k">class</span> <span class="nc">StoreTextCase</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test case for storing text-type votes.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        question (Question): A classic question instance for the test.</span>
+<span class="sd">        question_text (Question): A text-type question instance for the test.</span>
+<span class="sd">        voting (Voting): A voting instance associated with the classic question.</span>
+<span class="sd">        voting_text (Voting): A voting instance associated with the text-type question.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="StoreTextCase.setUp"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreTextCase.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set up method to initialize test data before each test is run.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question_text</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question_text</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">5001</span><span class="p">,</span>
+                             <span class="n">name</span><span class="o">=</span><span class="s1">&#39;voting example&#39;</span><span class="p">,</span>
+                             <span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span>
+                             <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+                             <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting_text</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">5002</span><span class="p">,</span>
+                                  <span class="n">name</span><span class="o">=</span><span class="s1">&#39;voting example text&#39;</span><span class="p">,</span>
+                                  <span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question_text</span><span class="p">,</span>
+                                  <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting_text</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="StoreTextCase.tearDown"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreTextCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tear down method to clean up after each test is run.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question_text</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting_text</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="StoreTextCase.get_or_create_user"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreTextCase.get_or_create_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves or creates a user for the given primary key.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            pk (int): The primary key of the user.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            User: The retrieved or created user.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">user</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;user</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pk</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s1">&#39;qwerty&#39;</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">user</span></div>
+
+<div class="viewcode-block" id="StoreTextCase.test_store_vote_text"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreTextCase.test_store_vote_text">[docs]</a>    <span class="k">def</span> <span class="nf">test_store_vote_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tests the storage of a text-type vote.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">CTE_A</span> <span class="o">=</span> <span class="mi">96</span>
+        <span class="n">CTE_B</span> <span class="o">=</span> <span class="mi">184</span>
+
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_text</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">voting_text</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s2">&quot;voter&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;vote&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="n">CTE_A</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="n">CTE_B</span><span class="p">},</span>
+            <span class="s1">&#39;voting_type&#39;</span><span class="p">:</span> <span class="s1">&#39;comment&#39;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">voting_text</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">voter_id</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">CTE_A</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="n">CTE_B</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="StoreYesNoCase"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreYesNoCase">[docs]</a><span class="k">class</span> <span class="nc">StoreYesNoCase</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test case for storing yes/no-type votes.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        question (Question): A classic question instance for the test.</span>
+<span class="sd">        question_yesno (Question): A yes/no-type question instance for the test.</span>
+<span class="sd">        voting (Voting): A voting instance associated with the classic question.</span>
+<span class="sd">        voting_yesno (Voting): A voting instance associated with the yes/no-type question.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="StoreYesNoCase.setUp"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreYesNoCase.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set up method to initialize test data before each test is run.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question_yesno</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question_yesno</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">5001</span><span class="p">,</span>
+                             <span class="n">name</span><span class="o">=</span><span class="s1">&#39;voting example&#39;</span><span class="p">,</span>
+                             <span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span>
+                             <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+                             <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting_yesno</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">5002</span><span class="p">,</span>
+                                   <span class="n">name</span><span class="o">=</span><span class="s1">&#39;voting example yesno&#39;</span><span class="p">,</span>
+                                   <span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question_yesno</span><span class="p">,</span>
+                                   <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting_yesno</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="StoreYesNoCase.tearDown"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreYesNoCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tear down method to clean up after each test is run.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question_yesno</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting_yesno</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="StoreYesNoCase.get_or_create_user"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreYesNoCase.get_or_create_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+        <span class="n">user</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;user</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pk</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s1">&#39;qwerty&#39;</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">user</span></div>
+
+<div class="viewcode-block" id="StoreYesNoCase.test_store_vote_yesno"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreYesNoCase.test_store_vote_yesno">[docs]</a>    <span class="k">def</span> <span class="nf">test_store_vote_yesno</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tests the storage of a yes/no-type vote.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">CTE_A</span> <span class="o">=</span> <span class="mi">96</span>
+        <span class="n">CTE_B</span> <span class="o">=</span> <span class="mi">184</span>
+
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_yesno</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">voting_yesno</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s2">&quot;voter&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;vote&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="n">CTE_A</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="n">CTE_B</span><span class="p">},</span>
+            <span class="s1">&#39;voting_type&#39;</span><span class="p">:</span> <span class="s1">&#39;yesno&#39;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">voting_yesno</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">voter_id</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">CTE_A</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="n">CTE_B</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="StorePreferenceCase"><a class="viewcode-back" href="../../modules/store.html#store.tests.StorePreferenceCase">[docs]</a><span class="k">class</span> <span class="nc">StorePreferenceCase</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test case for storing preference-type votes.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        question (Question): A classic question instance for the test.</span>
+<span class="sd">        question_preference (Question): A preference-type question instance for the test.</span>
+<span class="sd">        voting (Voting): A voting instance associated with the classic question.</span>
+<span class="sd">        voting_preference (Voting): A voting instance associated with the preference-type question.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+<div class="viewcode-block" id="StorePreferenceCase.setUp"><a class="viewcode-back" href="../../modules/store.html#store.tests.StorePreferenceCase.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set up method to initialize test data before each test is run.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question_preference</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question_preference</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">5001</span><span class="p">,</span>
+                             <span class="n">name</span><span class="o">=</span><span class="s1">&#39;voting example&#39;</span><span class="p">,</span>
+                             <span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span>
+                             <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+                             <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting_preference</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">5002</span><span class="p">,</span>
+                                        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;voting example text&#39;</span><span class="p">,</span>
+                                        <span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question_preference</span><span class="p">,</span>
+                                        <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting_preference</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="StorePreferenceCase.tearDown"><a class="viewcode-back" href="../../modules/store.html#store.tests.StorePreferenceCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tear down method to clean up after each test is run.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question_preference</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting_preference</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="StorePreferenceCase.get_or_create_user"><a class="viewcode-back" href="../../modules/store.html#store.tests.StorePreferenceCase.get_or_create_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+        <span class="n">user</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;user</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pk</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s1">&#39;qwerty&#39;</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">user</span></div>
+
+<div class="viewcode-block" id="StorePreferenceCase.test_store_vote_preference"><a class="viewcode-back" href="../../modules/store.html#store.tests.StorePreferenceCase.test_store_vote_preference">[docs]</a>    <span class="k">def</span> <span class="nf">test_store_vote_preference</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tests the storage of a preference-type vote.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">CTE_A</span> <span class="o">=</span> <span class="mi">96</span>
+        <span class="n">CTE_B</span> <span class="o">=</span> <span class="mi">184</span>
+
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_preference</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">voting_preference</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s2">&quot;voter&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;vote&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="n">CTE_A</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="n">CTE_B</span><span class="p">},</span>
+            <span class="s1">&#39;voting_type&#39;</span><span class="p">:</span> <span class="s1">&#39;preference&#39;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">voting_preference</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">voter_id</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">CTE_A</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="n">CTE_B</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StorePreferenceCase.test_voting_invalid_type"><a class="viewcode-back" href="../../modules/store.html#store.tests.StorePreferenceCase.test_voting_invalid_type">[docs]</a>    <span class="k">def</span> <span class="nf">test_voting_invalid_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tests the behavior when attempting to store a vote with an invalid voting type.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_preference</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">voting_preference</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s2">&quot;voter&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;vote&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+            <span class="s1">&#39;voting_type&#39;</span><span class="p">:</span> <span class="s1">&#39;invalid&#39;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span></div></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandro Medina Durán, Gonzalo Campos Mejías
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Alejandro Medina Durán, Gonzalo Campos Mejías.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

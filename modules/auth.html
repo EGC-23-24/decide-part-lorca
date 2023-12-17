@@ -1,0 +1,1654 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Auth Module &#8212; decide-part-lorca</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/auth';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mixnet Module" href="mixnet.html" />
+    <link rel="prev" title="Census Module" href="census.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">decide-part-lorca</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Welcome to decide’s documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Decide modules</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="booth.html">Booth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census.html">Census Module</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Auth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mixnet.html">Mixnet Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postproc.html">Postproc Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="store.html">Store Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualizer.html">Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voting.html">Voting Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../memes.html">Memes collection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/edit/main/modules/auth.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/issues/new?title=Issue%20on%20page%20%2Fmodules/auth.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/modules/auth.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Auth Module</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-authentication.views">views.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.Meta"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.Meta</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.Meta.fields"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.Meta.fields</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.Meta.labels"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.Meta.labels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.Meta.model"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.Meta.model</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.base_fields"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.base_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.clean_confirmation"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.clean_confirmation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.clean_password_common"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.clean_password_common()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.clean_password_lenght"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.clean_password_lenght()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.clean_password_numeric"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.clean_password_numeric()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.clean_password_too_similar"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.clean_password_too_similar()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.declared_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.email_clean"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.email_clean()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.media"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.media</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.username_clean_exits"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.username_clean_exits()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.username_clean_lenght"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.username_clean_lenght()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.username_clean_pattern"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.username_clean_pattern()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.GetUserView"><code class="docutils literal notranslate"><span class="pre">GetUserView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.GetUserView.post"><code class="docutils literal notranslate"><span class="pre">GetUserView.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LoginView"><code class="docutils literal notranslate"><span class="pre">LoginView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LoginView.form_class"><code class="docutils literal notranslate"><span class="pre">LoginView.form_class</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LoginView.model"><code class="docutils literal notranslate"><span class="pre">LoginView.model</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LoginView.post"><code class="docutils literal notranslate"><span class="pre">LoginView.post()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LoginView.template_name"><code class="docutils literal notranslate"><span class="pre">LoginView.template_name</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LogoutView"><code class="docutils literal notranslate"><span class="pre">LogoutView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LogoutView.post"><code class="docutils literal notranslate"><span class="pre">LogoutView.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterView"><code class="docutils literal notranslate"><span class="pre">RegisterView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterView.form_class"><code class="docutils literal notranslate"><span class="pre">RegisterView.form_class</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterView.get_form"><code class="docutils literal notranslate"><span class="pre">RegisterView.get_form()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterView.model"><code class="docutils literal notranslate"><span class="pre">RegisterView.model</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterView.post"><code class="docutils literal notranslate"><span class="pre">RegisterView.post()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterView.template_name"><code class="docutils literal notranslate"><span class="pre">RegisterView.template_name</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterViewAPI"><code class="docutils literal notranslate"><span class="pre">RegisterViewAPI</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterViewAPI.post"><code class="docutils literal notranslate"><span class="pre">RegisterViewAPI.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.logout_view"><code class="docutils literal notranslate"><span class="pre">logout_view()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-authentication.serializers">serializers.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.serializers.UserSerializer"><code class="docutils literal notranslate"><span class="pre">UserSerializer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.serializers.UserSerializer.model"><code class="docutils literal notranslate"><span class="pre">UserSerializer.model</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.serializers.UserSerializer.fields"><code class="docutils literal notranslate"><span class="pre">UserSerializer.fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.serializers.UserSerializer.Meta"><code class="docutils literal notranslate"><span class="pre">UserSerializer.Meta</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.serializers.UserSerializer.Meta.model"><code class="docutils literal notranslate"><span class="pre">UserSerializer.Meta.model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.serializers.UserSerializer.Meta.fields"><code class="docutils literal notranslate"><span class="pre">UserSerializer.Meta.fields</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">UserSerializer.Meta.fields</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">UserSerializer.Meta.model</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-authentication.test_selenium">test_selenium.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginNegative"><code class="docutils literal notranslate"><span class="pre">TestLoginNegative</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginNegative.setUp"><code class="docutils literal notranslate"><span class="pre">TestLoginNegative.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginNegative.tearDown"><code class="docutils literal notranslate"><span class="pre">TestLoginNegative.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginNegative.testloginnegative"><code class="docutils literal notranslate"><span class="pre">TestLoginNegative.testloginnegative()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginPositive"><code class="docutils literal notranslate"><span class="pre">TestLoginPositive</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginPositive.setUp"><code class="docutils literal notranslate"><span class="pre">TestLoginPositive.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginPositive.tearDown"><code class="docutils literal notranslate"><span class="pre">TestLoginPositive.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginPositive.testloginpositive"><code class="docutils literal notranslate"><span class="pre">TestLoginPositive.testloginpositive()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.setUp"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.tearDown"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativecommonpass"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativecommonpass()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativeemail"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativeemail()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativelongusername"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativelongusername()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativenumericpass"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativenumericpass()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativepatternusername"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativepatternusername()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativesimilarpass"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativesimilarpass()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativeusername"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativeusername()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativewrongpassword"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativewrongpassword()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterPositive"><code class="docutils literal notranslate"><span class="pre">TestRegisterPositive</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterPositive.setUp"><code class="docutils literal notranslate"><span class="pre">TestRegisterPositive.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterPositive.tearDown"><code class="docutils literal notranslate"><span class="pre">TestRegisterPositive.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterPositive.testregisterpositive"><code class="docutils literal notranslate"><span class="pre">TestRegisterPositive.testregisterpositive()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-authentication.tests">tests.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase"><code class="docutils literal notranslate"><span class="pre">AuthTestCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.setUp"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.tearDown"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_getuser"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_getuser()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_getuser_invalid_token"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_getuser_invalid_token()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_getuser_invented_token"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_getuser_invented_token()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_login"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_login()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_login_fail"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_login_fail()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_logout"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_logout()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_register"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_register()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_register_bad_permissions"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_register_bad_permissions()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_register_bad_request"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_register_bad_request()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_register_user_already_exist"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_register_user_already_exist()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="auth-module">
+<h1>Auth Module<a class="headerlink" href="#auth-module" title="Permalink to this heading">#</a></h1>
+<p>The Auth module is responsible for various functionalities. This section documents the components of the Booth module, including models, views, and more.</p>
+<section id="module-authentication.views">
+<span id="views-py"></span><h2>views.py<a class="headerlink" href="#module-authentication.views" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authentication.views.</span></span><span class="sig-name descname"><span class="pre">CustomUserCreationForm</span></span><a class="reference internal" href="../_modules/authentication/views.html#CustomUserCreationForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.CustomUserCreationForm" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UserCreationForm</span></code></p>
+<p>Custom form for user registration.</p>
+<p>Extends UserCreationForm to add custom validation methods for username and password.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="../_modules/authentication/views.html#CustomUserCreationForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.CustomUserCreationForm.Meta" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Meta</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('username',</span> <span class="pre">'password1',</span> <span class="pre">'password2',</span> <span class="pre">'email',</span> <span class="pre">'first_name',</span> <span class="pre">'last_name')</span></em><a class="headerlink" href="#authentication.views.CustomUserCreationForm.Meta.fields" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.Meta.labels">
+<span class="sig-name descname"><span class="pre">labels</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'email':</span> <span class="pre">'Email',</span> <span class="pre">'first_name':</span> <span class="pre">'First</span> <span class="pre">Name',</span> <span class="pre">'last_name':</span> <span class="pre">'Last</span> <span class="pre">Name',</span> <span class="pre">'password1':</span> <span class="pre">'Password',</span> <span class="pre">'password2':</span> <span class="pre">'Confirm</span> <span class="pre">Password',</span> <span class="pre">'username':</span> <span class="pre">'Username'}</span></em><a class="headerlink" href="#authentication.views.CustomUserCreationForm.Meta.labels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#authentication.views.CustomUserCreationForm.Meta.model" title="Permalink to this definition">#</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'first_name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'last_name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'username':</span> <span class="pre">&lt;django.contrib.auth.forms.UsernameField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#authentication.views.CustomUserCreationForm.base_fields" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.clean_confirmation">
+<span class="sig-name descname"><span class="pre">clean_confirmation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirm_password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#CustomUserCreationForm.clean_confirmation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.CustomUserCreationForm.clean_confirmation" title="Permalink to this definition">#</a></dt>
+<dd><p>Validate that the entered passwords match.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>password</strong> (<em>str</em>) – The first entered password.</p></li>
+<li><p><strong>confirm_password</strong> (<em>str</em>) – The second entered password for confirmation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the passwords do not match, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.clean_password_common">
+<span class="sig-name descname"><span class="pre">clean_password_common</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#CustomUserCreationForm.clean_password_common"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.CustomUserCreationForm.clean_password_common" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if the entered password is common.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<em>str</em>) – The password to be checked.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the password is common, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.clean_password_lenght">
+<span class="sig-name descname"><span class="pre">clean_password_lenght</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#CustomUserCreationForm.clean_password_lenght"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.CustomUserCreationForm.clean_password_lenght" title="Permalink to this definition">#</a></dt>
+<dd><p>Validate the length of the password.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<em>str</em>) – The password to be validated.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the password has fewer than 8 characters, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.clean_password_numeric">
+<span class="sig-name descname"><span class="pre">clean_password_numeric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#CustomUserCreationForm.clean_password_numeric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.CustomUserCreationForm.clean_password_numeric" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if the password consists only of numeric characters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<em>str</em>) – The password to be checked.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the password consists only of numeric characters, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.clean_password_too_similar">
+<span class="sig-name descname"><span class="pre">clean_password_too_similar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#CustomUserCreationForm.clean_password_too_similar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.CustomUserCreationForm.clean_password_too_similar" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if the password is too similar to personal data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>password</strong> (<em>str</em>) – The password to be checked.</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – The username of the user.</p></li>
+<li><p><strong>first_name</strong> (<em>str</em>) – The first name of the user.</p></li>
+<li><p><strong>last_name</strong> (<em>str</em>) – The last name of the user.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the password is too similar to personal data, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#authentication.views.CustomUserCreationForm.declared_fields" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.email_clean">
+<span class="sig-name descname"><span class="pre">email_clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#CustomUserCreationForm.email_clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.CustomUserCreationForm.email_clean" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if the email already exists in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>email</strong> (<em>str</em>) – The email to be checked.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the email already exists, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#authentication.views.CustomUserCreationForm.media" title="Permalink to this definition">#</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.username_clean_exits">
+<span class="sig-name descname"><span class="pre">username_clean_exits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#CustomUserCreationForm.username_clean_exits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.CustomUserCreationForm.username_clean_exits" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if the username already exists in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>username</strong> (<em>str</em>) – The username to be checked.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the username already exists, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.username_clean_lenght">
+<span class="sig-name descname"><span class="pre">username_clean_lenght</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#CustomUserCreationForm.username_clean_lenght"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.CustomUserCreationForm.username_clean_lenght" title="Permalink to this definition">#</a></dt>
+<dd><p>Validate the length of the username.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>username</strong> (<em>str</em>) – The username to be validated.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the username is longer than 150 characters, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.CustomUserCreationForm.username_clean_pattern">
+<span class="sig-name descname"><span class="pre">username_clean_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#CustomUserCreationForm.username_clean_pattern"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.CustomUserCreationForm.username_clean_pattern" title="Permalink to this definition">#</a></dt>
+<dd><p>Validate the username against a specific pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>username</strong> (<em>str</em>) – The username to be validated.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the username does not match the pattern, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.views.GetUserView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authentication.views.</span></span><span class="sig-name descname"><span class="pre">GetUserView</span></span><a class="reference internal" href="../_modules/authentication/views.html#GetUserView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.GetUserView" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<p>API view for retrieving user information.</p>
+<p>Handles POST requests to retrieve user information based on the provided user token.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.GetUserView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#GetUserView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.GetUserView.post" title="Permalink to this definition">#</a></dt>
+<dd><p>Handle POST requests to retrieve user information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>Request</em>) – The incoming HTTP request containing the user token.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An HTTP response containing the serialized user data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.views.LoginView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authentication.views.</span></span><span class="sig-name descname"><span class="pre">LoginView</span></span><a class="reference internal" href="../_modules/authentication/views.html#LoginView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.LoginView" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CreateView</span></code></p>
+<p>View for handling user login.</p>
+<p>Inherits from CreateView to handle user login. Uses CustomUserCreationForm for customized user registration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.views.LoginView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#authentication.views.LoginView.form_class" title="Permalink to this definition">#</a></dt>
+<dd><p>alias of <a class="reference internal" href="#authentication.views.CustomUserCreationForm" title="authentication.views.CustomUserCreationForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomUserCreationForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.views.LoginView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#authentication.views.LoginView.model" title="Permalink to this definition">#</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.LoginView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#LoginView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.LoginView.post" title="Permalink to this definition">#</a></dt>
+<dd><p>Handle POST requests to log in a user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>Request</em>) – The incoming HTTP request containing the username and password.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An HTTP response indicating the success or failure of the login operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HttpResponse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.views.LoginView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'authentication/login.html'</span></em><a class="headerlink" href="#authentication.views.LoginView.template_name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.views.LogoutView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authentication.views.</span></span><span class="sig-name descname"><span class="pre">LogoutView</span></span><a class="reference internal" href="../_modules/authentication/views.html#LogoutView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.LogoutView" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<p>API view for logging out a user.</p>
+<p>Handles POST requests to log out a user by deleting their authentication token.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.LogoutView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#LogoutView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.LogoutView.post" title="Permalink to this definition">#</a></dt>
+<dd><p>Handle POST requests to log out a user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>Request</em>) – The incoming HTTP request containing the user token.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An HTTP response indicating the success or failure of the logout operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.views.RegisterView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authentication.views.</span></span><span class="sig-name descname"><span class="pre">RegisterView</span></span><a class="reference internal" href="../_modules/authentication/views.html#RegisterView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.RegisterView" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CreateView</span></code></p>
+<p>View for user registration.</p>
+<p>Inherits from CreateView to handle user registration. Uses CustomUserCreationForm for customized user registration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.views.RegisterView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#authentication.views.RegisterView.form_class" title="Permalink to this definition">#</a></dt>
+<dd><p>alias of <a class="reference internal" href="#authentication.views.CustomUserCreationForm" title="authentication.views.CustomUserCreationForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomUserCreationForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.RegisterView.get_form">
+<span class="sig-name descname"><span class="pre">get_form</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#RegisterView.get_form"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.RegisterView.get_form" title="Permalink to this definition">#</a></dt>
+<dd><p>Customize the form widget attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>form_class</strong> (<a class="reference internal" href="#authentication.views.CustomUserCreationForm" title="authentication.views.CustomUserCreationForm"><em>CustomUserCreationForm</em></a>) – The form class.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The customized form.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#authentication.views.CustomUserCreationForm" title="authentication.views.CustomUserCreationForm">CustomUserCreationForm</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.views.RegisterView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#authentication.views.RegisterView.model" title="Permalink to this definition">#</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.RegisterView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#RegisterView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.RegisterView.post" title="Permalink to this definition">#</a></dt>
+<dd><p>Handle POST requests to register a new user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>Request</em>) – The incoming HTTP request containing user registration data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An HTTP response indicating the success or failure of the registration.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HttpResponse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.views.RegisterView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'authentication/register.html'</span></em><a class="headerlink" href="#authentication.views.RegisterView.template_name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.views.RegisterViewAPI">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authentication.views.</span></span><span class="sig-name descname"><span class="pre">RegisterViewAPI</span></span><a class="reference internal" href="../_modules/authentication/views.html#RegisterViewAPI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.RegisterViewAPI" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<p>API view for registering a new user.</p>
+<p>Handles POST requests to register a new user with admin privileges.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.views.RegisterViewAPI.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#RegisterViewAPI.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.RegisterViewAPI.post" title="Permalink to this definition">#</a></dt>
+<dd><p>Handle POST requests to register a new user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>Request</em>) – The incoming HTTP request containing the admin token, username, and password.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An HTTP response indicating the success or failure of the registration.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="authentication.views.logout_view">
+<span class="sig-prename descclassname"><span class="pre">authentication.views.</span></span><span class="sig-name descname"><span class="pre">logout_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#logout_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.logout_view" title="Permalink to this definition">#</a></dt>
+<dd><p>Logout view to handle user logout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>Request</em>) – The incoming HTTP request.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An HTTP response redirecting to the home page after logout.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HttpResponse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="authentication.views.main">
+<span class="sig-prename descclassname"><span class="pre">authentication.views.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/views.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.views.main" title="Permalink to this definition">#</a></dt>
+<dd><p>Main view for handling authentication.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>Request</em>) – The incoming HTTP request.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An HTTP response with the authentication template.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HttpResponse</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-authentication.serializers">
+<span id="serializers-py"></span><h2>serializers.py<a class="headerlink" href="#module-authentication.serializers" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.serializers.UserSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authentication.serializers.</span></span><span class="sig-name descname"><span class="pre">UserSerializer</span></span><a class="reference internal" href="../_modules/authentication/serializers.html#UserSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.serializers.UserSerializer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">HyperlinkedModelSerializer</span></code></p>
+<p>Serializer class for User model.</p>
+<p>Serializes User instances to JSON data and vice versa.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.serializers.UserSerializer.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#authentication.serializers.UserSerializer.model" title="Permalink to this definition">#</a></dt>
+<dd><p>The User model to be serialized.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.serializers.UserSerializer.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><a class="headerlink" href="#authentication.serializers.UserSerializer.fields" title="Permalink to this definition">#</a></dt>
+<dd><p>The fields to include in the serialized data.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.serializers.UserSerializer.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="../_modules/authentication/serializers.html#UserSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.serializers.UserSerializer.Meta" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Meta class for UserSerializer.</p>
+<p>Defines metadata options for the serializer.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.serializers.UserSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#authentication.serializers.UserSerializer.Meta.model" title="Permalink to this definition">#</a></dt>
+<dd><p>The User model to be serialized.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authentication.serializers.UserSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><a class="headerlink" href="#authentication.serializers.UserSerializer.Meta.fields" title="Permalink to this definition">#</a></dt>
+<dd><p>The fields to include in the serialized data.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('id',</span> <span class="pre">'username',</span> <span class="pre">'first_name',</span> <span class="pre">'last_name',</span> <span class="pre">'email',</span> <span class="pre">'is_staff')</span></em><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#id1" title="Permalink to this definition">#</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-authentication.test_selenium">
+<span id="test-selenium-py"></span><h2>test_selenium.py<a class="headerlink" href="#module-authentication.test_selenium" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestLoginNegative">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authentication.test_selenium.</span></span><span class="sig-name descname"><span class="pre">TestLoginNegative</span></span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestLoginNegative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestLoginNegative" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StaticLiveServerTestCase</span></code></p>
+<p>Test case for negative user login scenarios.</p>
+<p>Inherits from StaticLiveServerTestCase to test views using a live server.</p>
+<p>Methods:
+- setUp: Set up the test environment before each test case.
+- tearDown: Tear down the test environment after each test case.
+- testloginnegative: Test negative user login.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestLoginNegative.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestLoginNegative.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestLoginNegative.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up the test environment before each test case.</p>
+<ul class="simple">
+<li><p>Creates a BaseTestCase instance.</p></li>
+<li><p>Configures a headless Chrome browser for testing.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestLoginNegative.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestLoginNegative.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestLoginNegative.tearDown" title="Permalink to this definition">#</a></dt>
+<dd><p>Tear down the test environment after each test case.</p>
+<ul class="simple">
+<li><p>Quits the Chrome browser.</p></li>
+<li><p>Calls the tearDown method of the BaseTestCase instance.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestLoginNegative.testloginnegative">
+<span class="sig-name descname"><span class="pre">testloginnegative</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestLoginNegative.testloginnegative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestLoginNegative.testloginnegative" title="Permalink to this definition">#</a></dt>
+<dd><p>Test negative user login.</p>
+<ul class="simple">
+<li><p>Accesses the login view.</p></li>
+<li><p>Attempts to log in with invalid credentials.</p></li>
+<li><p>Asserts that the user stays on the login view and sees an alert.</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestLoginPositive">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authentication.test_selenium.</span></span><span class="sig-name descname"><span class="pre">TestLoginPositive</span></span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestLoginPositive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestLoginPositive" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StaticLiveServerTestCase</span></code></p>
+<p>Test case for positive user login scenarios.</p>
+<p>Inherits from StaticLiveServerTestCase to test views using a live server.</p>
+<p>Methods:
+- setUp: Set up the test environment before each test case.
+- tearDown: Tear down the test environment after each test case.
+- testloginpositive: Test positive user login.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestLoginPositive.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestLoginPositive.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestLoginPositive.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up the test environment before each test case.</p>
+<ul class="simple">
+<li><p>Creates a BaseTestCase instance.</p></li>
+<li><p>Configures a headless Chrome browser for testing.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestLoginPositive.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestLoginPositive.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestLoginPositive.tearDown" title="Permalink to this definition">#</a></dt>
+<dd><p>Tear down the test environment after each test case.</p>
+<ul class="simple">
+<li><p>Quits the Chrome browser.</p></li>
+<li><p>Calls the tearDown method of the BaseTestCase instance.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestLoginPositive.testloginpositive">
+<span class="sig-name descname"><span class="pre">testloginpositive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestLoginPositive.testloginpositive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestLoginPositive.testloginpositive" title="Permalink to this definition">#</a></dt>
+<dd><p>Test positive user login.</p>
+<ul class="simple">
+<li><p>Accesses the registration view.</p></li>
+<li><p>Registers a new user.</p></li>
+<li><p>Logs in with the registered user credentials.</p></li>
+<li><p>Asserts that the user is redirected to the home page.</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterNegative">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authentication.test_selenium.</span></span><span class="sig-name descname"><span class="pre">TestRegisterNegative</span></span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterNegative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterNegative" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StaticLiveServerTestCase</span></code></p>
+<p>Test case for negative user registration scenarios.</p>
+<p>Inherits from StaticLiveServerTestCase to test views using a live server.</p>
+<p>Methods:
+- setUp: Set up the test environment before each test case.
+- tearDown: Tear down the test environment after each test case.
+- testregisternegativewrongpassword: Test user registration with mismatched passwords.
+- testregisternegativelongusername: Test user registration with a too-long username.
+- testregisternegativeusername: Test user registration with an already taken username.
+- testregisternegativepatternusername: Test user registration with an invalid username pattern.
+- testregisternegativeemail: Test user registration with an already taken email.
+- testregisternegativeemail: Test user registration with an invalid email.
+- testregisternegativeemail: Test user registration with a short password.
+- testregisternegativecommonpass: Test user registration with a common password.
+- testregisternegativesimilarpass: Test user registration with a password similar to the username.
+- testregisternegativenumericpass: Test user registration with a numeric password.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterNegative.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterNegative.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterNegative.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up the test environment before each test case.</p>
+<ul class="simple">
+<li><p>Creates a BaseTestCase instance.</p></li>
+<li><p>Configures a headless Chrome browser for testing.</p></li>
+<li><p>Sets up a mock API client.</p></li>
+<li><p>Creates a test user in the database.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterNegative.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterNegative.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterNegative.tearDown" title="Permalink to this definition">#</a></dt>
+<dd><p>Tear down the test environment after each test case.</p>
+<ul class="simple">
+<li><p>Quits the Chrome browser.</p></li>
+<li><p>Calls the tearDown method of the BaseTestCase instance.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterNegative.testregisternegativecommonpass">
+<span class="sig-name descname"><span class="pre">testregisternegativecommonpass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterNegative.testregisternegativecommonpass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativecommonpass" title="Permalink to this definition">#</a></dt>
+<dd><p>Test user registration with a common password.</p>
+<ul class="simple">
+<li><p>Accesses the registration view.</p></li>
+<li><p>Fills in the registration form with a common password.</p></li>
+<li><p>Submits the form.</p></li>
+<li><p>Asserts that the user stays on the registration view and sees an alert.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterNegative.testregisternegativeemail">
+<span class="sig-name descname"><span class="pre">testregisternegativeemail</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterNegative.testregisternegativeemail"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativeemail" title="Permalink to this definition">#</a></dt>
+<dd><p>Test user registration with an already taken email.</p>
+<ul class="simple">
+<li><p>Accesses the registration view.</p></li>
+<li><p>Fills in the registration form with an already taken email.</p></li>
+<li><p>Submits the form.</p></li>
+<li><p>Asserts that the user stays on the registration view and sees an alert.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterNegative.testregisternegativelongusername">
+<span class="sig-name descname"><span class="pre">testregisternegativelongusername</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterNegative.testregisternegativelongusername"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativelongusername" title="Permalink to this definition">#</a></dt>
+<dd><p>Test user registration with a too-long username.</p>
+<ul class="simple">
+<li><p>Accesses the registration view.</p></li>
+<li><p>Fills in the registration form with a too-long username.</p></li>
+<li><p>Submits the form.</p></li>
+<li><p>Asserts that the user stays on the registration view and sees an alert.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterNegative.testregisternegativenumericpass">
+<span class="sig-name descname"><span class="pre">testregisternegativenumericpass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterNegative.testregisternegativenumericpass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativenumericpass" title="Permalink to this definition">#</a></dt>
+<dd><p>Test user registration with a numeric password.</p>
+<ul class="simple">
+<li><p>Accesses the registration view.</p></li>
+<li><p>Fills in the registration form with a numeric password.</p></li>
+<li><p>Submits the form.</p></li>
+<li><p>Asserts that the user stays on the registration view and sees an alert.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterNegative.testregisternegativepatternusername">
+<span class="sig-name descname"><span class="pre">testregisternegativepatternusername</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterNegative.testregisternegativepatternusername"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativepatternusername" title="Permalink to this definition">#</a></dt>
+<dd><p>Test user registration with an invalid username pattern.</p>
+<ul class="simple">
+<li><p>Accesses the registration view.</p></li>
+<li><p>Fills in the registration form with an invalid username pattern.</p></li>
+<li><p>Submits the form.</p></li>
+<li><p>Asserts that the user stays on the registration view and sees an alert.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterNegative.testregisternegativesimilarpass">
+<span class="sig-name descname"><span class="pre">testregisternegativesimilarpass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterNegative.testregisternegativesimilarpass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativesimilarpass" title="Permalink to this definition">#</a></dt>
+<dd><p>Test user registration with a password similar to the username.</p>
+<ul class="simple">
+<li><p>Accesses the registration view.</p></li>
+<li><p>Fills in the registration form with a password similar to the username.</p></li>
+<li><p>Submits the form.</p></li>
+<li><p>Asserts that the user stays on the registration view and sees an alert.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterNegative.testregisternegativeusername">
+<span class="sig-name descname"><span class="pre">testregisternegativeusername</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterNegative.testregisternegativeusername"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativeusername" title="Permalink to this definition">#</a></dt>
+<dd><p>Test user registration with an already taken username.</p>
+<ul class="simple">
+<li><p>Accesses the registration view.</p></li>
+<li><p>Fills in the registration form with an already taken username.</p></li>
+<li><p>Submits the form.</p></li>
+<li><p>Asserts that the user stays on the registration view and sees an alert.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterNegative.testregisternegativewrongpassword">
+<span class="sig-name descname"><span class="pre">testregisternegativewrongpassword</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterNegative.testregisternegativewrongpassword"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativewrongpassword" title="Permalink to this definition">#</a></dt>
+<dd><p>Test user registration with mismatched passwords.</p>
+<ul class="simple">
+<li><p>Accesses the registration view.</p></li>
+<li><p>Fills in registration form with mismatched passwords.</p></li>
+<li><p>Submits the form.</p></li>
+<li><p>Asserts that the user stays on the registration view and sees an alert.</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterPositive">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authentication.test_selenium.</span></span><span class="sig-name descname"><span class="pre">TestRegisterPositive</span></span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterPositive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterPositive" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StaticLiveServerTestCase</span></code></p>
+<p>Test case for positive user registration scenarios.</p>
+<p>Inherits from StaticLiveServerTestCase to test views using a live server.</p>
+<p>Methods:
+- setUp: Set up the test environment before each test case.
+- tearDown: Tear down the test environment after each test case.
+- testregisterpositive: Test positive user registration.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterPositive.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterPositive.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterPositive.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up the test environment before each test case.</p>
+<ul class="simple">
+<li><p>Creates a BaseTestCase instance.</p></li>
+<li><p>Configures a headless Chrome browser for testing.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterPositive.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterPositive.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterPositive.tearDown" title="Permalink to this definition">#</a></dt>
+<dd><p>Tear down the test environment after each test case.</p>
+<ul class="simple">
+<li><p>Quits the Chrome browser.</p></li>
+<li><p>Calls the tearDown method of the BaseTestCase instance.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.test_selenium.TestRegisterPositive.testregisterpositive">
+<span class="sig-name descname"><span class="pre">testregisterpositive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/test_selenium.html#TestRegisterPositive.testregisterpositive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.test_selenium.TestRegisterPositive.testregisterpositive" title="Permalink to this definition">#</a></dt>
+<dd><p>Test positive user registration.</p>
+<ul class="simple">
+<li><p>Accesses the registration view.</p></li>
+<li><p>Fills in valid user registration information.</p></li>
+<li><p>Submits the registration form.</p></li>
+<li><p>Asserts that the user is redirected to the home page.</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-authentication.tests">
+<span id="tests-py"></span><h2>tests.py<a class="headerlink" href="#module-authentication.tests" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="authentication.tests.AuthTestCase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authentication.tests.</span></span><span class="sig-name descname"><span class="pre">AuthTestCase</span></span><a class="reference internal" href="../_modules/authentication/tests.html#AuthTestCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.tests.AuthTestCase" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APITestCase</span></code></p>
+<p>Test case for authentication-related functionality.</p>
+<p>Inherits from APITestCase to provide utility functions for making API requests.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.tests.AuthTestCase.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/tests.html#AuthTestCase.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.tests.AuthTestCase.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up the test environment.</p>
+<p>Creates a test client, mocks a database query, and creates two users for testing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.tests.AuthTestCase.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/tests.html#AuthTestCase.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.tests.AuthTestCase.tearDown" title="Permalink to this definition">#</a></dt>
+<dd><p>Tear down the test environment.</p>
+<p>Resets the test client to None.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.tests.AuthTestCase.test_getuser">
+<span class="sig-name descname"><span class="pre">test_getuser</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/tests.html#AuthTestCase.test_getuser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.tests.AuthTestCase.test_getuser" title="Permalink to this definition">#</a></dt>
+<dd><p>Test retrieving user information after successful login.</p>
+<p>Logs in a user, retrieves the user information, and checks if the received data is correct.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.tests.AuthTestCase.test_getuser_invalid_token">
+<span class="sig-name descname"><span class="pre">test_getuser_invalid_token</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/tests.html#AuthTestCase.test_getuser_invalid_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.tests.AuthTestCase.test_getuser_invalid_token" title="Permalink to this definition">#</a></dt>
+<dd><p>Test retrieving user information with an invalid token.</p>
+<p>Logs in a user, logs them out, and then attempts to retrieve user information with the invalidated token.
+Expects a 404 status code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.tests.AuthTestCase.test_getuser_invented_token">
+<span class="sig-name descname"><span class="pre">test_getuser_invented_token</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/tests.html#AuthTestCase.test_getuser_invented_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.tests.AuthTestCase.test_getuser_invented_token" title="Permalink to this definition">#</a></dt>
+<dd><p>Test retrieving user information with an invented token.</p>
+<p>Tries to retrieve user information with a token that does not exist and expects a 404 status code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.tests.AuthTestCase.test_login">
+<span class="sig-name descname"><span class="pre">test_login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/tests.html#AuthTestCase.test_login"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.tests.AuthTestCase.test_login" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the login functionality.</p>
+<p>Attempts to log in with valid credentials and checks for the presence of a token.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.tests.AuthTestCase.test_login_fail">
+<span class="sig-name descname"><span class="pre">test_login_fail</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/tests.html#AuthTestCase.test_login_fail"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.tests.AuthTestCase.test_login_fail" title="Permalink to this definition">#</a></dt>
+<dd><p>Test login failure with incorrect password.</p>
+<p>Attempts to log in with incorrect credentials and expects a 400 status code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.tests.AuthTestCase.test_logout">
+<span class="sig-name descname"><span class="pre">test_logout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/tests.html#AuthTestCase.test_logout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.tests.AuthTestCase.test_logout" title="Permalink to this definition">#</a></dt>
+<dd><p>Test user logout.</p>
+<p>Logs in a user, logs them out, and checks if the corresponding token is removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.tests.AuthTestCase.test_register">
+<span class="sig-name descname"><span class="pre">test_register</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/tests.html#AuthTestCase.test_register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.tests.AuthTestCase.test_register" title="Permalink to this definition">#</a></dt>
+<dd><p>Test user registration.</p>
+<p>Logs in as an admin, attempts to register a new user, and checks if the registration is successful.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.tests.AuthTestCase.test_register_bad_permissions">
+<span class="sig-name descname"><span class="pre">test_register_bad_permissions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/tests.html#AuthTestCase.test_register_bad_permissions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.tests.AuthTestCase.test_register_bad_permissions" title="Permalink to this definition">#</a></dt>
+<dd><p>Test user registration with insufficient permissions.</p>
+<p>Logs in a user with insufficient permissions, attempts to register a new user,
+and expects a 401 status code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.tests.AuthTestCase.test_register_bad_request">
+<span class="sig-name descname"><span class="pre">test_register_bad_request</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/tests.html#AuthTestCase.test_register_bad_request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.tests.AuthTestCase.test_register_bad_request" title="Permalink to this definition">#</a></dt>
+<dd><p>Test user registration with a bad request.</p>
+<p>Logs in as an admin, attempts to register a new user with incomplete data,
+and expects a 400 status code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authentication.tests.AuthTestCase.test_register_user_already_exist">
+<span class="sig-name descname"><span class="pre">test_register_user_already_exist</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authentication/tests.html#AuthTestCase.test_register_user_already_exist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authentication.tests.AuthTestCase.test_register_user_already_exist" title="Permalink to this definition">#</a></dt>
+<dd><p>Test user registration when the user already exists.</p>
+<p>Logs in as an admin, attempts to register an existing user, and expects a 400 status code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="census.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Census Module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="mixnet.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mixnet Module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-authentication.views">views.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.Meta"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.Meta</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.Meta.fields"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.Meta.fields</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.Meta.labels"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.Meta.labels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.Meta.model"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.Meta.model</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.base_fields"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.base_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.clean_confirmation"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.clean_confirmation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.clean_password_common"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.clean_password_common()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.clean_password_lenght"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.clean_password_lenght()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.clean_password_numeric"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.clean_password_numeric()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.clean_password_too_similar"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.clean_password_too_similar()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.declared_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.email_clean"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.email_clean()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.media"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.media</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.username_clean_exits"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.username_clean_exits()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.username_clean_lenght"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.username_clean_lenght()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.CustomUserCreationForm.username_clean_pattern"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.username_clean_pattern()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.GetUserView"><code class="docutils literal notranslate"><span class="pre">GetUserView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.GetUserView.post"><code class="docutils literal notranslate"><span class="pre">GetUserView.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LoginView"><code class="docutils literal notranslate"><span class="pre">LoginView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LoginView.form_class"><code class="docutils literal notranslate"><span class="pre">LoginView.form_class</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LoginView.model"><code class="docutils literal notranslate"><span class="pre">LoginView.model</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LoginView.post"><code class="docutils literal notranslate"><span class="pre">LoginView.post()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LoginView.template_name"><code class="docutils literal notranslate"><span class="pre">LoginView.template_name</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LogoutView"><code class="docutils literal notranslate"><span class="pre">LogoutView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.LogoutView.post"><code class="docutils literal notranslate"><span class="pre">LogoutView.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterView"><code class="docutils literal notranslate"><span class="pre">RegisterView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterView.form_class"><code class="docutils literal notranslate"><span class="pre">RegisterView.form_class</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterView.get_form"><code class="docutils literal notranslate"><span class="pre">RegisterView.get_form()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterView.model"><code class="docutils literal notranslate"><span class="pre">RegisterView.model</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterView.post"><code class="docutils literal notranslate"><span class="pre">RegisterView.post()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterView.template_name"><code class="docutils literal notranslate"><span class="pre">RegisterView.template_name</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterViewAPI"><code class="docutils literal notranslate"><span class="pre">RegisterViewAPI</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.RegisterViewAPI.post"><code class="docutils literal notranslate"><span class="pre">RegisterViewAPI.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.logout_view"><code class="docutils literal notranslate"><span class="pre">logout_view()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.views.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-authentication.serializers">serializers.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.serializers.UserSerializer"><code class="docutils literal notranslate"><span class="pre">UserSerializer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.serializers.UserSerializer.model"><code class="docutils literal notranslate"><span class="pre">UserSerializer.model</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.serializers.UserSerializer.fields"><code class="docutils literal notranslate"><span class="pre">UserSerializer.fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.serializers.UserSerializer.Meta"><code class="docutils literal notranslate"><span class="pre">UserSerializer.Meta</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.serializers.UserSerializer.Meta.model"><code class="docutils literal notranslate"><span class="pre">UserSerializer.Meta.model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.serializers.UserSerializer.Meta.fields"><code class="docutils literal notranslate"><span class="pre">UserSerializer.Meta.fields</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">UserSerializer.Meta.fields</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">UserSerializer.Meta.model</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-authentication.test_selenium">test_selenium.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginNegative"><code class="docutils literal notranslate"><span class="pre">TestLoginNegative</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginNegative.setUp"><code class="docutils literal notranslate"><span class="pre">TestLoginNegative.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginNegative.tearDown"><code class="docutils literal notranslate"><span class="pre">TestLoginNegative.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginNegative.testloginnegative"><code class="docutils literal notranslate"><span class="pre">TestLoginNegative.testloginnegative()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginPositive"><code class="docutils literal notranslate"><span class="pre">TestLoginPositive</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginPositive.setUp"><code class="docutils literal notranslate"><span class="pre">TestLoginPositive.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginPositive.tearDown"><code class="docutils literal notranslate"><span class="pre">TestLoginPositive.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestLoginPositive.testloginpositive"><code class="docutils literal notranslate"><span class="pre">TestLoginPositive.testloginpositive()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.setUp"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.tearDown"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativecommonpass"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativecommonpass()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativeemail"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativeemail()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativelongusername"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativelongusername()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativenumericpass"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativenumericpass()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativepatternusername"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativepatternusername()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativesimilarpass"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativesimilarpass()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativeusername"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativeusername()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterNegative.testregisternegativewrongpassword"><code class="docutils literal notranslate"><span class="pre">TestRegisterNegative.testregisternegativewrongpassword()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterPositive"><code class="docutils literal notranslate"><span class="pre">TestRegisterPositive</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterPositive.setUp"><code class="docutils literal notranslate"><span class="pre">TestRegisterPositive.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterPositive.tearDown"><code class="docutils literal notranslate"><span class="pre">TestRegisterPositive.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.test_selenium.TestRegisterPositive.testregisterpositive"><code class="docutils literal notranslate"><span class="pre">TestRegisterPositive.testregisterpositive()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-authentication.tests">tests.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase"><code class="docutils literal notranslate"><span class="pre">AuthTestCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.setUp"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.tearDown"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_getuser"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_getuser()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_getuser_invalid_token"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_getuser_invalid_token()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_getuser_invented_token"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_getuser_invented_token()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_login"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_login()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_login_fail"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_login_fail()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_logout"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_logout()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_register"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_register()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_register_bad_permissions"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_register_bad_permissions()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_register_bad_request"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_register_bad_request()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication.tests.AuthTestCase.test_register_user_already_exist"><code class="docutils literal notranslate"><span class="pre">AuthTestCase.test_register_user_already_exist()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandro Medina Durán, Gonzalo Campos Mejías
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Alejandro Medina Durán, Gonzalo Campos Mejías.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

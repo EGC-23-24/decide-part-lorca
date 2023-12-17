@@ -1,0 +1,1739 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Census Module &#8212; decide-part-lorca</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/census';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Auth Module" href="auth.html" />
+    <link rel="prev" title="Booth Module" href="booth.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">decide-part-lorca</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Welcome to decide’s documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Decide modules</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="booth.html">Booth Module</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Census Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth.html">Auth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mixnet.html">Mixnet Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postproc.html">Postproc Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="store.html">Store Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualizer.html">Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voting.html">Voting Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../memes.html">Memes collection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/edit/main/modules/census.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/issues/new?title=Issue%20on%20page%20%2Fmodules/census.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/modules/census.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Census Module</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-census.admin">admin.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.admin.CensusAdmin"><code class="docutils literal notranslate"><span class="pre">CensusAdmin</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.admin.CensusAdmin.list_display"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.list_display</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.admin.CensusAdmin.list_filter"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.list_filter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.admin.CensusAdmin.search_fields"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.search_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.list_display</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.list_filter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.admin.CensusAdmin.media"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.media</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.search_fields</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-census.models">models.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census"><code class="docutils literal notranslate"><span class="pre">Census</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.voting_id"><code class="docutils literal notranslate"><span class="pre">Census.voting_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.voter_id"><code class="docutils literal notranslate"><span class="pre">Census.voter_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.clean"><code class="docutils literal notranslate"><span class="pre">Census.clean()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.save"><code class="docutils literal notranslate"><span class="pre">Census.save()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Census.DoesNotExist</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Census.MultipleObjectsReturned</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Census.clean()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.id"><code class="docutils literal notranslate"><span class="pre">Census.id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.objects"><code class="docutils literal notranslate"><span class="pre">Census.objects</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">Census.save()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">Census.voter_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">Census.voting_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-census.forms">forms.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.voting_id"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.voting_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.voter_id"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.voter_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.Meta"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.Meta</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.Meta.model"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.Meta.model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.Meta.fields"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.Meta.fields</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.Meta.fields</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.Meta.model</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.base_fields"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.base_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.declared_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.media"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.media</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.save"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.save()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-census.views">views.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusCreate"><code class="docutils literal notranslate"><span class="pre">CensusCreate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusCreate.create"><code class="docutils literal notranslate"><span class="pre">CensusCreate.create()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusCreate.list"><code class="docutils literal notranslate"><span class="pre">CensusCreate.list()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusCreate.permission_classes"><code class="docutils literal notranslate"><span class="pre">CensusCreate.permission_classes</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusDetail"><code class="docutils literal notranslate"><span class="pre">CensusDetail</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusDetail.destroy"><code class="docutils literal notranslate"><span class="pre">CensusDetail.destroy()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusDetail.retrieve"><code class="docutils literal notranslate"><span class="pre">CensusDetail.retrieve()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusExportView"><code class="docutils literal notranslate"><span class="pre">CensusExportView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusExportView.dispatch"><code class="docutils literal notranslate"><span class="pre">CensusExportView.dispatch()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusExportView.get_context_data"><code class="docutils literal notranslate"><span class="pre">CensusExportView.get_context_data()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusExportView.template_name"><code class="docutils literal notranslate"><span class="pre">CensusExportView.template_name</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusImportView"><code class="docutils literal notranslate"><span class="pre">CensusImportView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusImportView.dispatch"><code class="docutils literal notranslate"><span class="pre">CensusImportView.dispatch()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusImportView.get_context_data"><code class="docutils literal notranslate"><span class="pre">CensusImportView.get_context_data()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusImportView.post"><code class="docutils literal notranslate"><span class="pre">CensusImportView.post()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusImportView.template_name"><code class="docutils literal notranslate"><span class="pre">CensusImportView.template_name</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.GetId"><code class="docutils literal notranslate"><span class="pre">GetId()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.census"><code class="docutils literal notranslate"><span class="pre">census()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.censusList"><code class="docutils literal notranslate"><span class="pre">censusList()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.createCensus"><code class="docutils literal notranslate"><span class="pre">createCensus()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.deleteCensus"><code class="docutils literal notranslate"><span class="pre">deleteCensus()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.export_census"><code class="docutils literal notranslate"><span class="pre">export_census()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.is_admin"><code class="docutils literal notranslate"><span class="pre">is_admin()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-census.tests">tests.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusExportViewTest"><code class="docutils literal notranslate"><span class="pre">CensusExportViewTest</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusExportViewTest.create_voting"><code class="docutils literal notranslate"><span class="pre">CensusExportViewTest.create_voting()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusExportViewTest.setUp"><code class="docutils literal notranslate"><span class="pre">CensusExportViewTest.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusExportViewTest.test_census_export_view_for_admin"><code class="docutils literal notranslate"><span class="pre">CensusExportViewTest.test_census_export_view_for_admin()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusExportViewTest.test_census_export_view_for_non_admin"><code class="docutils literal notranslate"><span class="pre">CensusExportViewTest.test_census_export_view_for_non_admin()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.create_voting"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.create_voting()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.setUp"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_fail"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_fail()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_no_file"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_no_file()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_not_admin"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_not_admin()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_success"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_success()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_voting_ended"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_voting_ended()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_voting_not_started"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_voting_not_started()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest"><code class="docutils literal notranslate"><span class="pre">CensusTest</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.createCensusEmptyError"><code class="docutils literal notranslate"><span class="pre">CensusTest.createCensusEmptyError()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.createCensusSuccess"><code class="docutils literal notranslate"><span class="pre">CensusTest.createCensusSuccess()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.createCensusValueError"><code class="docutils literal notranslate"><span class="pre">CensusTest.createCensusValueError()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.setUp"><code class="docutils literal notranslate"><span class="pre">CensusTest.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.tearDown"><code class="docutils literal notranslate"><span class="pre">CensusTest.tearDown()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase"><code class="docutils literal notranslate"><span class="pre">CensusTestCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.setUp"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.tearDown"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_add_new_voters"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_add_new_voters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_add_new_voters_conflict"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_add_new_voters_conflict()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_check_vote_permissions"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_check_vote_permissions()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_create_census"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_create_census()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_create_census_invalid_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_create_census_invalid_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_create_census_invalid_voting_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_create_census_invalid_voting_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_create_census_invalid_voting_id_and_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_create_census_invalid_voting_id_and_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_delete_census"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_delete_census()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_delete_census_invalid_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_delete_census_invalid_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_delete_census_invalid_voting_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_delete_census_invalid_voting_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_delete_census_invalid_voting_id_and_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_delete_census_invalid_voting_id_and_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_destroy_voter"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_destroy_voter()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_get_census"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_get_census()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_get_census_invalid_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_get_census_invalid_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_get_census_invalid_voting_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_get_census_invalid_voting_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_get_census_invalid_voting_id_and_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_get_census_invalid_voting_id_and_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_list_census"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_list_census()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_list_census_invalid_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_list_census_invalid_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_list_census_invalid_voting_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_list_census_invalid_voting_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_list_census_invalid_voting_id_and_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_list_census_invalid_voting_id_and_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_list_voting"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_list_voting()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.ExportCensusTest"><code class="docutils literal notranslate"><span class="pre">ExportCensusTest</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.ExportCensusTest.create_voters"><code class="docutils literal notranslate"><span class="pre">ExportCensusTest.create_voters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.ExportCensusTest.create_voting"><code class="docutils literal notranslate"><span class="pre">ExportCensusTest.create_voting()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.ExportCensusTest.setUp"><code class="docutils literal notranslate"><span class="pre">ExportCensusTest.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.ExportCensusTest.test_export_census"><code class="docutils literal notranslate"><span class="pre">ExportCensusTest.test_export_census()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="census-module">
+<h1>Census Module<a class="headerlink" href="#census-module" title="Permalink to this heading">#</a></h1>
+<p>The Census module is a vital component of the Decide application, managing census-related functionalities. Below is the Sphinx documentation for its components.</p>
+<section id="module-census.admin">
+<span id="admin-py"></span><h2>admin.py<a class="headerlink" href="#module-census.admin" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="census.admin.CensusAdmin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.admin.</span></span><span class="sig-name descname"><span class="pre">CensusAdmin</span></span><a class="reference internal" href="../_modules/census/admin.html#CensusAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.admin.CensusAdmin" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelAdmin</span></code></p>
+<p>A Django admin interface class for the Census model.</p>
+<p>Configures how the Census model is displayed and interacted with in the Django admin interface. This includes settings for how the list of Census records is displayed, which fields are used for filtering and searching.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.admin.CensusAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><a class="headerlink" href="#census.admin.CensusAdmin.list_display" title="Permalink to this definition">#</a></dt>
+<dd><p>Specifies the fields of the Census model to be displayed in the list view.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.admin.CensusAdmin.list_filter">
+<span class="sig-name descname"><span class="pre">list_filter</span></span><a class="headerlink" href="#census.admin.CensusAdmin.list_filter" title="Permalink to this definition">#</a></dt>
+<dd><p>Specifies the fields of the Census model to be used for filtering in the list view.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.admin.CensusAdmin.search_fields">
+<span class="sig-name descname"><span class="pre">search_fields</span></span><a class="headerlink" href="#census.admin.CensusAdmin.search_fields" title="Permalink to this definition">#</a></dt>
+<dd><p>Specifies the fields of the Census model to be used for searching in the list view.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('voting_id',</span> <span class="pre">'voter_id')</span></em><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">list_filter</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('voting_id',)</span></em><a class="headerlink" href="#id1" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="census.admin.CensusAdmin.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#census.admin.CensusAdmin.media" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">search_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('voter_id',)</span></em><a class="headerlink" href="#id2" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-census.models">
+<span id="models-py"></span><h2>models.py<a class="headerlink" href="#module-census.models" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="census.models.Census">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.models.</span></span><span class="sig-name descname"><span class="pre">Census</span></span><a class="reference internal" href="../_modules/census/models.html#Census"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.models.Census" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Model representing a voting census, associating voters with votings.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.models.Census.voting_id">
+<span class="sig-name descname"><span class="pre">voting_id</span></span><a class="headerlink" href="#census.models.Census.voting_id" title="Permalink to this definition">#</a></dt>
+<dd><p>The ID of the voting to which the voter belongs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>models.IntegerField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.models.Census.voter_id">
+<span class="sig-name descname"><span class="pre">voter_id</span></span><a class="headerlink" href="#census.models.Census.voter_id" title="Permalink to this definition">#</a></dt>
+<dd><p>The ID of the user who is voting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>models.IntegerField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.models.Census.clean">
+<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/models.html#Census.clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.models.Census.clean" title="Permalink to this definition">#</a></dt>
+<dd><p>Validates that both the Voting and User instances exist.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.models.Census.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/models.html#Census.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.models.Census.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Saves the instance after validation.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="census.models.Census.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#census.models.Census.DoesNotExist" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="census.models.Census.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#census.models.Census.MultipleObjectsReturned" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/models.html#Census.clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Permalink to this definition">#</a></dt>
+<dd><p>Validates that the referenced Voting and User objects exist.</p>
+<p>Raises a ValidationError if either the voting or the user do not exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValidationError</strong> – If the referenced voting or user do not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.models.Census.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#census.models.Census.id" title="Permalink to this definition">#</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.models.Census.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#census.models.Census.objects" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/models.html#Census.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id4" title="Permalink to this definition">#</a></dt>
+<dd><p>Saves the Census object after validation.</p>
+<p>First calls clean to validate the data, then calls the save method of the superclass.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> – Variable arguments.</p></li>
+<li><p><strong>kwargs</strong> – Variable keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of the save method from the superclass.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">voter_id</span></span><a class="headerlink" href="#id5" title="Permalink to this definition">#</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">voting_id</span></span><a class="headerlink" href="#id6" title="Permalink to this definition">#</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-census.forms">
+<span id="forms-py"></span><h2>forms.py<a class="headerlink" href="#module-census.forms" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="census.forms.CreationCensusForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.forms.</span></span><span class="sig-name descname"><span class="pre">CreationCensusForm</span></span><a class="reference internal" href="../_modules/census/forms.html#CreationCensusForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.forms.CreationCensusForm" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Form</span></code></p>
+<p>A Django form for creating Census instances.</p>
+<p>This form allows for the creation of new Census records, associating a voter with a voting.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.forms.CreationCensusForm.voting_id">
+<span class="sig-name descname"><span class="pre">voting_id</span></span><a class="headerlink" href="#census.forms.CreationCensusForm.voting_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Field for the ID of the voting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>forms.IntegerField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.forms.CreationCensusForm.voter_id">
+<span class="sig-name descname"><span class="pre">voter_id</span></span><a class="headerlink" href="#census.forms.CreationCensusForm.voter_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Field for the ID of the voter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>forms.IntegerField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="simple">
+<dt>Inner class:</dt><dd><p>Meta: Provides metadata for the form, including model association and fields.</p>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="census.forms.CreationCensusForm.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="../_modules/census/forms.html#CreationCensusForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.forms.CreationCensusForm.Meta" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Meta class for CreationCensusForm.</p>
+<p>Specifies the model and fields associated with this form.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.forms.CreationCensusForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#census.forms.CreationCensusForm.Meta.model" title="Permalink to this definition">#</a></dt>
+<dd><p>The model associated with this form.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.forms.CreationCensusForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><a class="headerlink" href="#census.forms.CreationCensusForm.Meta.fields" title="Permalink to this definition">#</a></dt>
+<dd><p>The fields of the model to include in this form.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('voting_id',</span> <span class="pre">'voter_id')</span></em><a class="headerlink" href="#id7" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#id8" title="Permalink to this definition">#</a></dt>
+<dd><p>alias of <a class="reference internal" href="#census.models.Census" title="census.models.Census"><code class="xref py py-class docutils literal notranslate"><span class="pre">Census</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.forms.CreationCensusForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'voter_id':</span> <span class="pre">&lt;django.forms.fields.IntegerField</span> <span class="pre">object&gt;,</span> <span class="pre">'voting_id':</span> <span class="pre">&lt;django.forms.fields.IntegerField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#census.forms.CreationCensusForm.base_fields" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.forms.CreationCensusForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'voter_id':</span> <span class="pre">&lt;django.forms.fields.IntegerField</span> <span class="pre">object&gt;,</span> <span class="pre">'voting_id':</span> <span class="pre">&lt;django.forms.fields.IntegerField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#census.forms.CreationCensusForm.declared_fields" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="census.forms.CreationCensusForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#census.forms.CreationCensusForm.media" title="Permalink to this definition">#</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.forms.CreationCensusForm.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/forms.html#CreationCensusForm.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.forms.CreationCensusForm.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Saves the form instance as a Census model instance.</p>
+<p>Overrides the save method to handle the saving of the Census instance with the provided ‘voting_id’ and ‘voter_id’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>commit</strong> (<em>bool</em>) – Whether to save the instance to the database. Defaults to True.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The saved or unsaved Census instance, depending on the commit parameter.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#census.models.Census" title="census.models.Census">Census</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-census.views">
+<span id="views-py"></span><h2>views.py<a class="headerlink" href="#module-census.views" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="census.views.CensusCreate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.views.</span></span><span class="sig-name descname"><span class="pre">CensusCreate</span></span><a class="reference internal" href="../_modules/census/views.html#CensusCreate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.CensusCreate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListCreateAPIView</span></code></p>
+<p>API view for listing and creating census records.</p>
+<p>Inherits from ListCreateAPIView to provide handling for GET and POST requests for Census model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="census.views.CensusCreate.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#CensusCreate.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.CensusCreate.create" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates new census records from the provided data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – The HTTP request object containing voting and voter data.</p></li>
+<li><p><strong>args</strong> – Variable arguments.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Response object with creation status.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.views.CensusCreate.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#CensusCreate.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.CensusCreate.list" title="Permalink to this definition">#</a></dt>
+<dd><p>Lists voters in a census for a given voting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – The HTTP request object containing the voting_id parameter.</p></li>
+<li><p><strong>args</strong> – Variable arguments.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Response object with the list of voters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.views.CensusCreate.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'base.perms.UserIsStaff'&gt;,)</span></em><a class="headerlink" href="#census.views.CensusCreate.permission_classes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="census.views.CensusDetail">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.views.</span></span><span class="sig-name descname"><span class="pre">CensusDetail</span></span><a class="reference internal" href="../_modules/census/views.html#CensusDetail"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.CensusDetail" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RetrieveDestroyAPIView</span></code></p>
+<p>API view for retrieving and deleting census records.</p>
+<p>Inherits from RetrieveDestroyAPIView to provide handling for GET and DELETE requests for the Census model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="census.views.CensusDetail.destroy">
+<span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voting_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#CensusDetail.destroy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.CensusDetail.destroy" title="Permalink to this definition">#</a></dt>
+<dd><p>Deletes voters from a census based on provided voting_id and voter ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – The HTTP request object containing voter data.</p></li>
+<li><p><strong>voting_id</strong> – The ID of the voting.</p></li>
+<li><p><strong>args</strong> – Variable arguments.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Response object confirming deletion.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.views.CensusDetail.retrieve">
+<span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voting_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#CensusDetail.retrieve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.CensusDetail.retrieve" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieves a specific voter in a census based on provided voting_id and voter id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – The HTTP request object containing the voter_id parameter.</p></li>
+<li><p><strong>voting_id</strong> – The ID of the voting.</p></li>
+<li><p><strong>args</strong> – Variable arguments.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Response object indicating if the voter is valid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="census.views.CensusExportView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.views.</span></span><span class="sig-name descname"><span class="pre">CensusExportView</span></span><a class="reference internal" href="../_modules/census/views.html#CensusExportView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.CensusExportView" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TemplateView</span></code></p>
+<p>View for exporting census data to an Excel file.</p>
+<p>Inherits from TemplateView to display a page for selecting the voting to export census data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="census.views.CensusExportView.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#CensusExportView.dispatch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.CensusExportView.dispatch" title="Permalink to this definition">#</a></dt>
+<dd><p>Handles the request before it reaches the get or post method. Redirects to home if the user is not an admin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – The HTTP request object.</p></li>
+<li><p><strong>args</strong> – Variable arguments.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>HttpResponse or redirection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.views.CensusExportView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#CensusExportView.get_context_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.CensusExportView.get_context_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Provides the context data for rendering the template.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – Keyword arguments.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Context data dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.views.CensusExportView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'census/export_census.html'</span></em><a class="headerlink" href="#census.views.CensusExportView.template_name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="census.views.CensusImportView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.views.</span></span><span class="sig-name descname"><span class="pre">CensusImportView</span></span><a class="reference internal" href="../_modules/census/views.html#CensusImportView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.CensusImportView" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TemplateView</span></code></p>
+<p>View for importing census data from an Excel file.</p>
+<p>Inherits from TemplateView to display a page for selecting the voting and uploading the Excel file for census data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="census.views.CensusImportView.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#CensusImportView.dispatch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.CensusImportView.dispatch" title="Permalink to this definition">#</a></dt>
+<dd><p>Handles the request before it reaches the get or post method. Redirects to home if the user is not an admin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – The HTTP request object.</p></li>
+<li><p><strong>args</strong> – Variable arguments.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>HttpResponse or redirection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.views.CensusImportView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#CensusImportView.get_context_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.CensusImportView.get_context_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Provides the context data for rendering the template.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – Keyword arguments.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Context data dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.views.CensusImportView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#CensusImportView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.CensusImportView.post" title="Permalink to this definition">#</a></dt>
+<dd><p>Handles the POST request for importing census data from an uploaded Excel file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – The HTTP request object.</p></li>
+<li><p><strong>args</strong> – Variable arguments.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Redirects to the import page with a success or error message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="census.views.CensusImportView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'census/import_census.html'</span></em><a class="headerlink" href="#census.views.CensusImportView.template_name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="census.views.GetId">
+<span class="sig-prename descclassname"><span class="pre">census.views.</span></span><span class="sig-name descname"><span class="pre">GetId</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#GetId"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.GetId" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieves and displays the census details for a given voting ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – The HTTP request object containing the voting ID.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Rendered web page with census details or an error message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="census.views.census">
+<span class="sig-prename descclassname"><span class="pre">census.views.</span></span><span class="sig-name descname"><span class="pre">census</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#census"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.census" title="Permalink to this definition">#</a></dt>
+<dd><p>Renders the census page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – The HTTP request object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Rendered web page for the census.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="census.views.censusList">
+<span class="sig-prename descclassname"><span class="pre">census.views.</span></span><span class="sig-name descname"><span class="pre">censusList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#censusList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.censusList" title="Permalink to this definition">#</a></dt>
+<dd><p>Displays a list of all census records.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – The HTTP request object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Rendered web page displaying a list of all census records.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="census.views.createCensus">
+<span class="sig-prename descclassname"><span class="pre">census.views.</span></span><span class="sig-name descname"><span class="pre">createCensus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#createCensus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.createCensus" title="Permalink to this definition">#</a></dt>
+<dd><p>Handles the creation of a census record through a form submission.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – The HTTP request object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Redirects to the census page on success or renders the creation form with errors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="census.views.deleteCensus">
+<span class="sig-prename descclassname"><span class="pre">census.views.</span></span><span class="sig-name descname"><span class="pre">deleteCensus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#deleteCensus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.deleteCensus" title="Permalink to this definition">#</a></dt>
+<dd><p>Deletes a specific census record based on the voting and voter ID provided in the request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – The HTTP request object containing the voting and voter IDs.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Redirects to the census page on successful deletion or renders the census page with an error message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="census.views.export_census">
+<span class="sig-prename descclassname"><span class="pre">census.views.</span></span><span class="sig-name descname"><span class="pre">export_census</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voting_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#export_census"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.export_census" title="Permalink to this definition">#</a></dt>
+<dd><p>Exports the census data for a given voting to an Excel file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – The HTTP request object.</p></li>
+<li><p><strong>voting_id</strong> – The ID of the voting whose census data is to be exported.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>HttpResponse with the Excel file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="census.views.is_admin">
+<span class="sig-prename descclassname"><span class="pre">census.views.</span></span><span class="sig-name descname"><span class="pre">is_admin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/views.html#is_admin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.views.is_admin" title="Permalink to this definition">#</a></dt>
+<dd><p>Determines if the given user is an admin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>user</strong> (<em>User</em>) – The user object to be checked.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the user is authenticated and is a staff member, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-census.tests">
+<span id="tests-py"></span><h2>tests.py<a class="headerlink" href="#module-census.tests" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="census.tests.CensusExportViewTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.tests.</span></span><span class="sig-name descname"><span class="pre">CensusExportViewTest</span></span><a class="reference internal" href="../_modules/census/tests.html#CensusExportViewTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusExportViewTest" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTestCase</span></code></p>
+<p>Test suite for the CensusExportView functionality.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusExportViewTest.create_voting">
+<span class="sig-name descname"><span class="pre">create_voting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusExportViewTest.create_voting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusExportViewTest.create_voting" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a Voting instance with associated questions and options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The Voting instance that was created.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="voting.html#voting.models.Voting" title="voting.models.Voting">Voting</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusExportViewTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusExportViewTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusExportViewTest.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up the test environment for each test method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusExportViewTest.test_census_export_view_for_admin">
+<span class="sig-name descname"><span class="pre">test_census_export_view_for_admin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusExportViewTest.test_census_export_view_for_admin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusExportViewTest.test_census_export_view_for_admin" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the CensusExportView for admin users.</p>
+<p>Ensures that admin users can access the export census view and
+that the context contains the correct data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusExportViewTest.test_census_export_view_for_non_admin">
+<span class="sig-name descname"><span class="pre">test_census_export_view_for_non_admin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusExportViewTest.test_census_export_view_for_non_admin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusExportViewTest.test_census_export_view_for_non_admin" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the CensusExportView for non-admin users.</p>
+<p>Ensures that non-admin users are redirected when trying to access
+the export census view.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="census.tests.CensusImportViewTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.tests.</span></span><span class="sig-name descname"><span class="pre">CensusImportViewTest</span></span><a class="reference internal" href="../_modules/census/tests.html#CensusImportViewTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusImportViewTest" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTestCase</span></code></p>
+<p>Test suite for the CensusImportView functionality.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusImportViewTest.create_voting">
+<span class="sig-name descname"><span class="pre">create_voting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusImportViewTest.create_voting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusImportViewTest.create_voting" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a Voting instance with associated questions and options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The Voting instance that was created.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="voting.html#voting.models.Voting" title="voting.models.Voting">Voting</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusImportViewTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusImportViewTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusImportViewTest.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up the test environment for each test method by creating a user and initializing the base test case.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusImportViewTest.test_census_import_view_fail">
+<span class="sig-name descname"><span class="pre">test_census_import_view_fail</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusImportViewTest.test_census_import_view_fail"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusImportViewTest.test_census_import_view_fail" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the failure case of importing census data from an Excel file with incorrect data.</p>
+<p>Ensures that an error message is displayed when incorrect data is imported.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusImportViewTest.test_census_import_view_no_file">
+<span class="sig-name descname"><span class="pre">test_census_import_view_no_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusImportViewTest.test_census_import_view_no_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusImportViewTest.test_census_import_view_no_file" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the case where no file is provided for importing census data.</p>
+<p>Ensures that an appropriate error message is displayed when no file is selected.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusImportViewTest.test_census_import_view_not_admin">
+<span class="sig-name descname"><span class="pre">test_census_import_view_not_admin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusImportViewTest.test_census_import_view_not_admin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusImportViewTest.test_census_import_view_not_admin" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the access control for the import census view to ensure only admins can access it.</p>
+<p>Ensures that non-admin users receive an appropriate error message when trying to access the import view.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusImportViewTest.test_census_import_view_success">
+<span class="sig-name descname"><span class="pre">test_census_import_view_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusImportViewTest.test_census_import_view_success"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusImportViewTest.test_census_import_view_success" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the successful import of census data from an Excel file.</p>
+<p>Ensures that census data is correctly imported into the database
+and appropriate success message is displayed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusImportViewTest.test_census_import_view_voting_ended">
+<span class="sig-name descname"><span class="pre">test_census_import_view_voting_ended</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusImportViewTest.test_census_import_view_voting_ended"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusImportViewTest.test_census_import_view_voting_ended" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the case where an attempt is made to import census data for a voting that has already ended.</p>
+<p>Ensures that an appropriate error message is displayed when trying to import data for an ended voting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusImportViewTest.test_census_import_view_voting_not_started">
+<span class="sig-name descname"><span class="pre">test_census_import_view_voting_not_started</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusImportViewTest.test_census_import_view_voting_not_started"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusImportViewTest.test_census_import_view_voting_not_started" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the case where an attempt is made to import census data for a voting that has not started yet.</p>
+<p>Ensures that an appropriate error message is displayed when trying to import data for a not-started voting.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="census.tests.CensusTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.tests.</span></span><span class="sig-name descname"><span class="pre">CensusTest</span></span><a class="reference internal" href="../_modules/census/tests.html#CensusTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTest" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StaticLiveServerTestCase</span></code></p>
+<p>Test case for census creation using Selenium and a live server.</p>
+<p>This class inherits from StaticLiveServerTestCase to provide a test environment
+for web-based interactions using Selenium WebDriver.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTest.createCensusEmptyError">
+<span class="sig-name descname"><span class="pre">createCensusEmptyError</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTest.createCensusEmptyError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTest.createCensusEmptyError" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the behavior when attempting to create a census entry with empty fields.</p>
+<p>This method checks if the correct error message is displayed when trying
+to save a census entry without filling out the required fields.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTest.createCensusSuccess">
+<span class="sig-name descname"><span class="pre">createCensusSuccess</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTest.createCensusSuccess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTest.createCensusSuccess" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the successful creation of a census entry in the admin interface.</p>
+<p>This method simulates the process of logging into the admin site and
+creating a new census entry with valid data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTest.createCensusValueError">
+<span class="sig-name descname"><span class="pre">createCensusValueError</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTest.createCensusValueError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTest.createCensusValueError" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the behavior when attempting to create a census entry with invalid values.</p>
+<p>This method simulates the creation of a census entry with invalid values
+and checks if the appropriate error message is displayed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTest.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up the test environment before each test method.</p>
+<p>Initializes the WebDriver and sets up the base test environment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTest.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTest.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTest.tearDown" title="Permalink to this definition">#</a></dt>
+<dd><p>Tear down the test environment after each test method.</p>
+<p>Closes the WebDriver and tears down the base test environment.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.tests.</span></span><span class="sig-name descname"><span class="pre">CensusTestCase</span></span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTestCase</span></code></p>
+<p>Test case for census-related operations.</p>
+<p>This class inherits from TestCase and provides test methods for creating,
+validating, and deleting census records.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up the test environment before each test method.</p>
+<p>Creates a voting instance, a user, and a census record.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.tearDown" title="Permalink to this definition">#</a></dt>
+<dd><p>Tear down the test environment after each test method.</p>
+<p>Cleans up any created test data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_add_new_voters">
+<span class="sig-name descname"><span class="pre">test_add_new_voters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_add_new_voters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_add_new_voters" title="Permalink to this definition">#</a></dt>
+<dd><p>Test adding new voters to a voting.</p>
+<p>Validates that new voters can be added to a voting successfully.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_add_new_voters_conflict">
+<span class="sig-name descname"><span class="pre">test_add_new_voters_conflict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_add_new_voters_conflict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_add_new_voters_conflict" title="Permalink to this definition">#</a></dt>
+<dd><p>Test adding new voters to a voting when there’s a conflict.</p>
+<p>Validates the behavior when adding a voter who no longer exists.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_check_vote_permissions">
+<span class="sig-name descname"><span class="pre">test_check_vote_permissions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_check_vote_permissions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_check_vote_permissions" title="Permalink to this definition">#</a></dt>
+<dd><p>Test to check voting permissions for a user.</p>
+<p>Validates that a user has permission to vote in a specific voting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_create_census">
+<span class="sig-name descname"><span class="pre">test_create_census</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_create_census"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_create_census" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the creation of a census record.</p>
+<p>Validates that the census record is correctly created and its attributes
+match the expected values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_create_census_invalid_voter_id">
+<span class="sig-name descname"><span class="pre">test_create_census_invalid_voter_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_create_census_invalid_voter_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_create_census_invalid_voter_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the creation of a census record with an invalid voter ID.</p>
+<p>Expects a ValueError when trying to create a census with an invalid voter ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_create_census_invalid_voting_id">
+<span class="sig-name descname"><span class="pre">test_create_census_invalid_voting_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_create_census_invalid_voting_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_create_census_invalid_voting_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the creation of a census record with an invalid voting ID.</p>
+<p>Expects a ValueError when trying to create a census with an invalid voting ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_create_census_invalid_voting_id_and_voter_id">
+<span class="sig-name descname"><span class="pre">test_create_census_invalid_voting_id_and_voter_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_create_census_invalid_voting_id_and_voter_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_create_census_invalid_voting_id_and_voter_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the creation of a census record with both invalid voting and voter IDs.</p>
+<p>Expects a ValueError when trying to create a census with invalid voting and
+voter IDs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_delete_census">
+<span class="sig-name descname"><span class="pre">test_delete_census</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_delete_census"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_delete_census" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the deletion of a census record.</p>
+<p>Validates that the census record is successfully deleted and no longer exists
+in the database.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_delete_census_invalid_voter_id">
+<span class="sig-name descname"><span class="pre">test_delete_census_invalid_voter_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_delete_census_invalid_voter_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_delete_census_invalid_voter_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the deletion of a census record with an invalid voter ID.</p>
+<p>Expects a ValueError when trying to delete a census with an invalid voter ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_delete_census_invalid_voting_id">
+<span class="sig-name descname"><span class="pre">test_delete_census_invalid_voting_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_delete_census_invalid_voting_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_delete_census_invalid_voting_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the deletion of a census record with an invalid voting ID.</p>
+<p>Expects a ValueError when trying to delete a census with an invalid voting ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_delete_census_invalid_voting_id_and_voter_id">
+<span class="sig-name descname"><span class="pre">test_delete_census_invalid_voting_id_and_voter_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_delete_census_invalid_voting_id_and_voter_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_delete_census_invalid_voting_id_and_voter_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the deletion of a census record with both invalid voting and voter IDs.</p>
+<p>Expects a ValueError when trying to delete a census with invalid voting and
+voter IDs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_destroy_voter">
+<span class="sig-name descname"><span class="pre">test_destroy_voter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_destroy_voter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_destroy_voter" title="Permalink to this definition">#</a></dt>
+<dd><p>Test destroying a voter in a voting.</p>
+<p>Validates that a voter can be removed from a voting successfully.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_get_census">
+<span class="sig-name descname"><span class="pre">test_get_census</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_get_census"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_get_census" title="Permalink to this definition">#</a></dt>
+<dd><p>Test retrieval of a specific census record.</p>
+<p>Validates that a specific census record can be retrieved and its attributes match
+the expected values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_get_census_invalid_voter_id">
+<span class="sig-name descname"><span class="pre">test_get_census_invalid_voter_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_get_census_invalid_voter_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_get_census_invalid_voter_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Test retrieval of a census record with an invalid voter ID.</p>
+<p>Expects a ValueError when trying to retrieve a census record with an invalid
+voter ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_get_census_invalid_voting_id">
+<span class="sig-name descname"><span class="pre">test_get_census_invalid_voting_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_get_census_invalid_voting_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_get_census_invalid_voting_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Test retrieval of a census record with an invalid voting ID.</p>
+<p>Expects a ValueError when trying to retrieve a census record with an invalid
+voting ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_get_census_invalid_voting_id_and_voter_id">
+<span class="sig-name descname"><span class="pre">test_get_census_invalid_voting_id_and_voter_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_get_census_invalid_voting_id_and_voter_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_get_census_invalid_voting_id_and_voter_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Test retrieval of a census record with both invalid voting and voter IDs.</p>
+<p>Expects a ValueError when trying to retrieve a census record with invalid
+voting and voter IDs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_list_census">
+<span class="sig-name descname"><span class="pre">test_list_census</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_list_census"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_list_census" title="Permalink to this definition">#</a></dt>
+<dd><p>Test listing of all census records.</p>
+<p>Validates that the census records can be retrieved and their attributes match
+the expected values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_list_census_invalid_voter_id">
+<span class="sig-name descname"><span class="pre">test_list_census_invalid_voter_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_list_census_invalid_voter_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_list_census_invalid_voter_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Test listing of census records with an invalid voter ID.</p>
+<p>Expects a ValueError when trying to list census records with an invalid voter ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_list_census_invalid_voting_id">
+<span class="sig-name descname"><span class="pre">test_list_census_invalid_voting_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_list_census_invalid_voting_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_list_census_invalid_voting_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Test listing of census records with an invalid voting ID.</p>
+<p>Expects a ValueError when trying to list census records with an invalid voting ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_list_census_invalid_voting_id_and_voter_id">
+<span class="sig-name descname"><span class="pre">test_list_census_invalid_voting_id_and_voter_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_list_census_invalid_voting_id_and_voter_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_list_census_invalid_voting_id_and_voter_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Test listing of census records with both invalid voting and voter IDs.</p>
+<p>Expects a ValueError when trying to list census records with invalid voting and
+voter IDs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.CensusTestCase.test_list_voting">
+<span class="sig-name descname"><span class="pre">test_list_voting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase.test_list_voting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase.test_list_voting" title="Permalink to this definition">#</a></dt>
+<dd><p>Test listing all votings.</p>
+<p>Validates that all votings can be listed and their attributes match the
+expected values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="census.tests.ExportCensusTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.tests.</span></span><span class="sig-name descname"><span class="pre">ExportCensusTest</span></span><a class="reference internal" href="../_modules/census/tests.html#ExportCensusTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.ExportCensusTest" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTestCase</span></code></p>
+<p>Test suite for exporting census data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.ExportCensusTest.create_voters">
+<span class="sig-name descname"><span class="pre">create_voters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#ExportCensusTest.create_voters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.ExportCensusTest.create_voters" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates voters and adds them to the census of a given voting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<a class="reference internal" href="voting.html#voting.models.Voting" title="voting.models.Voting"><em>Voting</em></a>) – The Voting instance to which the voters will be added.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.ExportCensusTest.create_voting">
+<span class="sig-name descname"><span class="pre">create_voting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#ExportCensusTest.create_voting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.ExportCensusTest.create_voting" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a Voting instance with associated questions and options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The Voting instance that was created.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="voting.html#voting.models.Voting" title="voting.models.Voting">Voting</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.ExportCensusTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#ExportCensusTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.ExportCensusTest.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up the test environment for each test method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="census.tests.ExportCensusTest.test_export_census">
+<span class="sig-name descname"><span class="pre">test_export_census</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#ExportCensusTest.test_export_census"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.ExportCensusTest.test_export_census" title="Permalink to this definition">#</a></dt>
+<dd><p>Test the functionality of exporting census data to an Excel file.</p>
+<p>Ensures that the response contains the correct content type and
+disposition, and the Excel file contains the correct data.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="booth.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Booth Module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="auth.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Auth Module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-census.admin">admin.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.admin.CensusAdmin"><code class="docutils literal notranslate"><span class="pre">CensusAdmin</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.admin.CensusAdmin.list_display"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.list_display</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.admin.CensusAdmin.list_filter"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.list_filter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.admin.CensusAdmin.search_fields"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.search_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.list_display</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.list_filter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.admin.CensusAdmin.media"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.media</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">CensusAdmin.search_fields</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-census.models">models.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census"><code class="docutils literal notranslate"><span class="pre">Census</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.voting_id"><code class="docutils literal notranslate"><span class="pre">Census.voting_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.voter_id"><code class="docutils literal notranslate"><span class="pre">Census.voter_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.clean"><code class="docutils literal notranslate"><span class="pre">Census.clean()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.save"><code class="docutils literal notranslate"><span class="pre">Census.save()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Census.DoesNotExist</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Census.MultipleObjectsReturned</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Census.clean()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.id"><code class="docutils literal notranslate"><span class="pre">Census.id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.models.Census.objects"><code class="docutils literal notranslate"><span class="pre">Census.objects</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">Census.save()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">Census.voter_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">Census.voting_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-census.forms">forms.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.voting_id"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.voting_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.voter_id"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.voter_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.Meta"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.Meta</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.Meta.model"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.Meta.model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.Meta.fields"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.Meta.fields</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.Meta.fields</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.Meta.model</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.base_fields"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.base_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.declared_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.media"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.media</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.forms.CreationCensusForm.save"><code class="docutils literal notranslate"><span class="pre">CreationCensusForm.save()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-census.views">views.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusCreate"><code class="docutils literal notranslate"><span class="pre">CensusCreate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusCreate.create"><code class="docutils literal notranslate"><span class="pre">CensusCreate.create()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusCreate.list"><code class="docutils literal notranslate"><span class="pre">CensusCreate.list()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusCreate.permission_classes"><code class="docutils literal notranslate"><span class="pre">CensusCreate.permission_classes</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusDetail"><code class="docutils literal notranslate"><span class="pre">CensusDetail</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusDetail.destroy"><code class="docutils literal notranslate"><span class="pre">CensusDetail.destroy()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusDetail.retrieve"><code class="docutils literal notranslate"><span class="pre">CensusDetail.retrieve()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusExportView"><code class="docutils literal notranslate"><span class="pre">CensusExportView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusExportView.dispatch"><code class="docutils literal notranslate"><span class="pre">CensusExportView.dispatch()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusExportView.get_context_data"><code class="docutils literal notranslate"><span class="pre">CensusExportView.get_context_data()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusExportView.template_name"><code class="docutils literal notranslate"><span class="pre">CensusExportView.template_name</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusImportView"><code class="docutils literal notranslate"><span class="pre">CensusImportView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusImportView.dispatch"><code class="docutils literal notranslate"><span class="pre">CensusImportView.dispatch()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusImportView.get_context_data"><code class="docutils literal notranslate"><span class="pre">CensusImportView.get_context_data()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusImportView.post"><code class="docutils literal notranslate"><span class="pre">CensusImportView.post()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.CensusImportView.template_name"><code class="docutils literal notranslate"><span class="pre">CensusImportView.template_name</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.GetId"><code class="docutils literal notranslate"><span class="pre">GetId()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.census"><code class="docutils literal notranslate"><span class="pre">census()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.censusList"><code class="docutils literal notranslate"><span class="pre">censusList()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.createCensus"><code class="docutils literal notranslate"><span class="pre">createCensus()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.deleteCensus"><code class="docutils literal notranslate"><span class="pre">deleteCensus()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.export_census"><code class="docutils literal notranslate"><span class="pre">export_census()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.views.is_admin"><code class="docutils literal notranslate"><span class="pre">is_admin()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-census.tests">tests.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusExportViewTest"><code class="docutils literal notranslate"><span class="pre">CensusExportViewTest</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusExportViewTest.create_voting"><code class="docutils literal notranslate"><span class="pre">CensusExportViewTest.create_voting()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusExportViewTest.setUp"><code class="docutils literal notranslate"><span class="pre">CensusExportViewTest.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusExportViewTest.test_census_export_view_for_admin"><code class="docutils literal notranslate"><span class="pre">CensusExportViewTest.test_census_export_view_for_admin()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusExportViewTest.test_census_export_view_for_non_admin"><code class="docutils literal notranslate"><span class="pre">CensusExportViewTest.test_census_export_view_for_non_admin()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.create_voting"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.create_voting()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.setUp"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_fail"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_fail()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_no_file"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_no_file()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_not_admin"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_not_admin()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_success"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_success()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_voting_ended"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_voting_ended()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_voting_not_started"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_voting_not_started()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest"><code class="docutils literal notranslate"><span class="pre">CensusTest</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.createCensusEmptyError"><code class="docutils literal notranslate"><span class="pre">CensusTest.createCensusEmptyError()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.createCensusSuccess"><code class="docutils literal notranslate"><span class="pre">CensusTest.createCensusSuccess()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.createCensusValueError"><code class="docutils literal notranslate"><span class="pre">CensusTest.createCensusValueError()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.setUp"><code class="docutils literal notranslate"><span class="pre">CensusTest.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.tearDown"><code class="docutils literal notranslate"><span class="pre">CensusTest.tearDown()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase"><code class="docutils literal notranslate"><span class="pre">CensusTestCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.setUp"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.tearDown"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_add_new_voters"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_add_new_voters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_add_new_voters_conflict"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_add_new_voters_conflict()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_check_vote_permissions"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_check_vote_permissions()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_create_census"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_create_census()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_create_census_invalid_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_create_census_invalid_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_create_census_invalid_voting_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_create_census_invalid_voting_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_create_census_invalid_voting_id_and_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_create_census_invalid_voting_id_and_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_delete_census"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_delete_census()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_delete_census_invalid_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_delete_census_invalid_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_delete_census_invalid_voting_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_delete_census_invalid_voting_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_delete_census_invalid_voting_id_and_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_delete_census_invalid_voting_id_and_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_destroy_voter"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_destroy_voter()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_get_census"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_get_census()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_get_census_invalid_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_get_census_invalid_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_get_census_invalid_voting_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_get_census_invalid_voting_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_get_census_invalid_voting_id_and_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_get_census_invalid_voting_id_and_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_list_census"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_list_census()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_list_census_invalid_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_list_census_invalid_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_list_census_invalid_voting_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_list_census_invalid_voting_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_list_census_invalid_voting_id_and_voter_id"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_list_census_invalid_voting_id_and_voter_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase.test_list_voting"><code class="docutils literal notranslate"><span class="pre">CensusTestCase.test_list_voting()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.ExportCensusTest"><code class="docutils literal notranslate"><span class="pre">ExportCensusTest</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.ExportCensusTest.create_voters"><code class="docutils literal notranslate"><span class="pre">ExportCensusTest.create_voters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.ExportCensusTest.create_voting"><code class="docutils literal notranslate"><span class="pre">ExportCensusTest.create_voting()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.ExportCensusTest.setUp"><code class="docutils literal notranslate"><span class="pre">ExportCensusTest.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.ExportCensusTest.test_export_census"><code class="docutils literal notranslate"><span class="pre">ExportCensusTest.test_export_census()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandro Medina Durán, Gonzalo Campos Mejías
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Alejandro Medina Durán, Gonzalo Campos Mejías.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

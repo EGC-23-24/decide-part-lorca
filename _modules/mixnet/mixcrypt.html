@@ -1,0 +1,756 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mixnet.mixcrypt &#8212; decide-part-lorca</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/mixnet/mixcrypt';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">decide-part-lorca</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Welcome to decide’s documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/index.html">Decide modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/booth.html">Booth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/census.html">Census Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/auth.html">Auth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/mixnet.html">Mixnet Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/postproc.html">Postproc Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/store.html">Store Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/visualizer.html">Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/voting.html">Voting Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../memes.html">Memes collection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/issues/new?title=Issue%20on%20page%20%2F_modules/mixnet/mixcrypt.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for mixnet.mixcrypt</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">&gt;&gt;&gt; B = 256</span>
+<span class="sd">&gt;&gt;&gt; k1 = MixCrypt(bits=B)</span>
+<span class="sd">&gt;&gt;&gt; k2 = MixCrypt(k=k1.k, bits=B)</span>
+<span class="sd">&gt;&gt;&gt; k3 = gen_multiple_key(k1, k2)</span>
+<span class="sd">&gt;&gt;&gt; N = 4</span>
+<span class="sd">&gt;&gt;&gt; clears = [random.StrongRandom().randint(1, B) for i in range(N)]</span>
+<span class="sd">&gt;&gt;&gt; cipher = [k3.encrypt(i) for i in clears]</span>
+<span class="sd">&gt;&gt;&gt; d = multiple_decrypt_shuffle(cipher, k1, k2)</span>
+<span class="sd">&gt;&gt;&gt; clears == d</span>
+<span class="sd">False</span>
+<span class="sd">&gt;&gt;&gt; sorted(clears) == sorted(d)</span>
+<span class="sd">True</span>
+
+<span class="sd">&gt;&gt;&gt; B = 256</span>
+<span class="sd">&gt;&gt;&gt; k1 = MixCrypt(bits=B)</span>
+<span class="sd">&gt;&gt;&gt; k1.setk(167,156,89,130) #doctest: +ELLIPSIS</span>
+<span class="sd">&lt;Crypto.PublicKey.ElGamal.ElGamalobj object at 0x...&gt;</span>
+<span class="sd">&gt;&gt;&gt; k2 = MixCrypt(bits=B)</span>
+<span class="sd">&gt;&gt;&gt; k2.setk(167,156,53,161) #doctest: +ELLIPSIS</span>
+<span class="sd">&lt;Crypto.PublicKey.ElGamal.ElGamalobj object at 0x...&gt;</span>
+<span class="sd">&gt;&gt;&gt; k3 = MixCrypt(bits=B)</span>
+<span class="sd">&gt;&gt;&gt; k3.k = ElGamal.construct((167, 156, 4717))</span>
+<span class="sd">&gt;&gt;&gt; k3.k.p, k3.k.g, k3.k.y</span>
+<span class="sd">(167, 156, 4717)</span>
+<span class="sd">&gt;&gt;&gt; N = 4</span>
+<span class="sd">&gt;&gt;&gt; clears = [2,3,6,4]</span>
+<span class="sd">&gt;&gt;&gt; cipher = [(161, 109), (17, 101), (148, 163), (71, 37)]</span>
+<span class="sd">&gt;&gt;&gt; d = multiple_decrypt_shuffle(cipher, k2, k1)</span>
+<span class="sd">&gt;&gt;&gt; clears == d</span>
+<span class="sd">False</span>
+<span class="sd">&gt;&gt;&gt; sorted(clears) == sorted(d)</span>
+<span class="sd">True</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="kn">from</span> <span class="nn">Crypto.PublicKey</span> <span class="kn">import</span> <span class="n">ElGamal</span>
+<span class="kn">from</span> <span class="nn">Crypto.Random</span> <span class="kn">import</span> <span class="n">random</span>
+<span class="kn">from</span> <span class="nn">Crypto</span> <span class="kn">import</span> <span class="n">Random</span>
+<span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="n">GCD</span>
+<span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>
+
+
+<div class="viewcode-block" id="rand"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.rand">[docs]</a><span class="k">def</span> <span class="nf">rand</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates a random integer k where GCD(k, p-1) == 1.</span>
+
+<span class="sd">    :param p: A prime number.</span>
+<span class="sd">    :type p: int</span>
+<span class="sd">    :return: A random integer k.</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">StrongRandom</span><span class="p">()</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">GCD</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">break</span>
+    <span class="k">return</span> <span class="n">k</span></div>
+
+
+<div class="viewcode-block" id="gen_multiple_key"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.gen_multiple_key">[docs]</a><span class="k">def</span> <span class="nf">gen_multiple_key</span><span class="p">(</span><span class="o">*</span><span class="n">crypts</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates a combined MixCrypt object from multiple MixCrypt objects.</span>
+
+<span class="sd">    :param crypts: Variable number of MixCrypt objects.</span>
+<span class="sd">    :type crypts: tuple</span>
+<span class="sd">    :return: A new MixCrypt object with combined properties.</span>
+<span class="sd">    :rtype: MixCrypt</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">crypts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">MixCrypt</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">k1</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="n">k1</span><span class="o">.</span><span class="n">bits</span><span class="p">)</span>
+    <span class="n">k</span><span class="o">.</span><span class="n">k</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">kx</span> <span class="ow">in</span> <span class="n">crypts</span><span class="p">:</span>
+        <span class="n">k</span><span class="o">.</span><span class="n">k</span><span class="o">.</span><span class="n">y</span> <span class="o">*=</span> <span class="n">kx</span><span class="o">.</span><span class="n">k</span><span class="o">.</span><span class="n">y</span>
+    <span class="n">k</span><span class="o">.</span><span class="n">k</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">k</span><span class="o">.</span><span class="n">y</span> <span class="o">%</span> <span class="n">k</span><span class="o">.</span><span class="n">k</span><span class="o">.</span><span class="n">p</span>
+    <span class="k">return</span> <span class="n">k</span></div>
+
+
+<div class="viewcode-block" id="multiple_decrypt"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.multiple_decrypt">[docs]</a><span class="k">def</span> <span class="nf">multiple_decrypt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="o">*</span><span class="n">crypts</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sequentially decrypts a cipher using multiple MixCrypt objects.</span>
+
+<span class="sd">    :param c: The cipher to decrypt.</span>
+<span class="sd">    :type c: tuple</span>
+<span class="sd">    :param crypts: Variable number of MixCrypt objects for decryption.</span>
+<span class="sd">    :type crypts: tuple</span>
+<span class="sd">    :return: The decrypted message.</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">crypts</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">decrypt</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">b</span></div>
+
+
+<div class="viewcode-block" id="multiple_decrypt_shuffle"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.multiple_decrypt_shuffle">[docs]</a><span class="k">def</span> <span class="nf">multiple_decrypt_shuffle</span><span class="p">(</span><span class="n">ciphers</span><span class="p">,</span> <span class="o">*</span><span class="n">crypts</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sequentially decrypts and shuffles a list of ciphers using multiple MixCrypt objects.</span>
+
+<span class="sd">    :param ciphers: The list of ciphers to decrypt and shuffle.</span>
+<span class="sd">    :type ciphers: list</span>
+<span class="sd">    :param crypts: Variable number of MixCrypt objects for decryption and shuffling.</span>
+<span class="sd">    :type crypts: tuple</span>
+<span class="sd">    :return: The list of decrypted and shuffled messages.</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">b</span> <span class="o">=</span> <span class="n">ciphers</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">crypts</span><span class="p">):</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">crypts</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">shuffle_decrypt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">b</span></div>
+
+<div class="viewcode-block" id="multiple_decrypt_shuffle2"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.multiple_decrypt_shuffle2">[docs]</a><span class="k">def</span> <span class="nf">multiple_decrypt_shuffle2</span><span class="p">(</span><span class="n">ciphers</span><span class="p">,</span> <span class="o">*</span><span class="n">crypts</span><span class="p">,</span> <span class="n">pubkey</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decrypts and shuffles a list of ciphers using multiple MixCrypt objects.</span>
+
+<span class="sd">    :param ciphers: The list of ciphers to decrypt and shuffle.</span>
+<span class="sd">    :type ciphers: list</span>
+<span class="sd">    :param crypts: Variable number of MixCrypt objects for decryption and shuffling.</span>
+<span class="sd">    :type crypts: tuple</span>
+<span class="sd">    :param pubkey: Optional public key used in the shuffling process.</span>
+<span class="sd">    :type pubkey: tuple, optional</span>
+<span class="sd">    :return: The list of decrypted and shuffled messages.</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    &gt;&gt;&gt; B = 256</span>
+<span class="sd">    &gt;&gt;&gt; k1 = MixCrypt(bits=B)</span>
+<span class="sd">    &gt;&gt;&gt; k2 = MixCrypt(k=k1.k, bits=B)</span>
+<span class="sd">    &gt;&gt;&gt; k3 = gen_multiple_key(k1, k2)</span>
+<span class="sd">    &gt;&gt;&gt; pk = pubkey=(k3.k.p, k3.k.g, k3.k.y)</span>
+<span class="sd">    &gt;&gt;&gt; N = 8</span>
+<span class="sd">    &gt;&gt;&gt; clears = [random.StrongRandom().randint(1, B) for i in range(N)]</span>
+<span class="sd">    &gt;&gt;&gt; cipher = [k3.encrypt(i) for i in clears]</span>
+<span class="sd">    &gt;&gt;&gt; d = multiple_decrypt_shuffle2(cipher, k1, k2, pubkey=pk)</span>
+<span class="sd">    &gt;&gt;&gt; clears == d</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; sorted(clears) == sorted(d)</span>
+<span class="sd">    True</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">b</span> <span class="o">=</span> <span class="n">ciphers</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># shuffle</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">crypts</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">pubkey</span><span class="p">)</span>
+
+    <span class="c1"># decrypt</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">crypts</span><span class="p">):</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">crypts</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">multiple_decrypt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="n">last</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">b</span></div>
+
+
+<div class="viewcode-block" id="MixCrypt"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.MixCrypt">[docs]</a><span class="k">class</span> <span class="nc">MixCrypt</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class for cryptographic operations based on the ElGamal encryption scheme.</span>
+
+<span class="sd">    :param k: Optional pre-existing key to initialize the MixCrypt.</span>
+<span class="sd">    :type k: ElGamal key, optional</span>
+<span class="sd">    :param bits: Bit size for the key generation.</span>
+<span class="sd">    :type bits: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+<div class="viewcode-block" id="MixCrypt.__init__"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.MixCrypt.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="mi">256</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bits</span> <span class="o">=</span> <span class="n">bits</span>
+        <span class="k">if</span> <span class="n">k</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getk</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="n">k</span><span class="o">.</span><span class="n">g</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">genk</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="MixCrypt.genk"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.MixCrypt.genk">[docs]</a>    <span class="k">def</span> <span class="nf">genk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generates a new ElGamal key.</span>
+
+<span class="sd">        :return: The generated ElGamal key.</span>
+<span class="sd">        :rtype: ElGamal key</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">ElGamal</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bits</span><span class="p">,</span> <span class="n">Random</span><span class="o">.</span><span class="n">new</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span></div>
+
+<div class="viewcode-block" id="MixCrypt.getk"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.MixCrypt.getk">[docs]</a>    <span class="k">def</span> <span class="nf">getk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs an ElGamal key from given parameters.</span>
+
+<span class="sd">        :param p: Prime number.</span>
+<span class="sd">        :type p: int</span>
+<span class="sd">        :param g: Generator number.</span>
+<span class="sd">        :type g: int</span>
+<span class="sd">        :return: The constructed ElGamal key.</span>
+<span class="sd">        :rtype: ElGamal key</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">x</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">ElGamal</span><span class="o">.</span><span class="n">construct</span><span class="p">((</span><span class="n">p</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span></div>
+
+<div class="viewcode-block" id="MixCrypt.setk"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.MixCrypt.setk">[docs]</a>    <span class="k">def</span> <span class="nf">setk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the ElGamal key with specified parameters.</span>
+
+<span class="sd">        :param p: Prime number.</span>
+<span class="sd">        :type p: int</span>
+<span class="sd">        :param g: Generator number.</span>
+<span class="sd">        :type g: int</span>
+<span class="sd">        :param y: Public key component.</span>
+<span class="sd">        :type y: int</span>
+<span class="sd">        :param x: Private key component.</span>
+<span class="sd">        :type x: int</span>
+<span class="sd">        :return: The set ElGamal key.</span>
+<span class="sd">        :rtype: ElGamal key</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">ElGamal</span><span class="o">.</span><span class="n">construct</span><span class="p">((</span><span class="n">p</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span></div>
+    
+<div class="viewcode-block" id="MixCrypt.encrypt"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.MixCrypt.encrypt">[docs]</a>    <span class="k">def</span> <span class="nf">encrypt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encrypts a message using ElGamal encryption.</span>
+
+<span class="sd">        :param m: The message to encrypt.</span>
+<span class="sd">        :type m: int</span>
+<span class="sd">        :param k: Optional key to use for encryption. If not provided, use the instance&#39;s key.</span>
+<span class="sd">        :type k: ElGamal key, optional</span>
+<span class="sd">        :return: The encrypted message.</span>
+<span class="sd">        :rtype: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">r</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="o">.</span><span class="n">p</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">k</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">_encrypt</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span></div>
+
+<div class="viewcode-block" id="MixCrypt.decrypt"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.MixCrypt.decrypt">[docs]</a>    <span class="k">def</span> <span class="nf">decrypt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decrypts an ElGamal encrypted message.</span>
+
+<span class="sd">        :param c: The encrypted message tuple.</span>
+<span class="sd">        :type c: tuple</span>
+<span class="sd">        :return: The decrypted message.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="o">.</span><span class="n">_decrypt</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">m</span></div>
+    
+<div class="viewcode-block" id="MixCrypt.multiple_decrypt"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.MixCrypt.multiple_decrypt">[docs]</a>    <span class="k">def</span> <span class="nf">multiple_decrypt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msgs</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decrypts multiple messages, optionally leaving them in tuple form.</span>
+
+<span class="sd">        :param msgs: List of encrypted message tuples.</span>
+<span class="sd">        :type msgs: list</span>
+<span class="sd">        :param last: If True, return the clear message; if False, return a tuple with the original &#39;a&#39; value and the decrypted &#39;b&#39;.</span>
+<span class="sd">        :type last: bool</span>
+<span class="sd">        :return: List of decrypted messages or message tuples.</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">msgs2</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">msgs</span><span class="p">:</span>
+            <span class="n">clear</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decrypt</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">last</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">clear</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">clear</span><span class="p">)</span>
+            <span class="n">msgs2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">msgs2</span></div>
+
+<div class="viewcode-block" id="MixCrypt.shuffle_decrypt"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.MixCrypt.shuffle_decrypt">[docs]</a>    <span class="k">def</span> <span class="nf">shuffle_decrypt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msgs</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Shuffles and decrypts a list of encrypted messages.</span>
+
+<span class="sd">        :param msgs: The list of messages to shuffle and decrypt.</span>
+<span class="sd">        :type msgs: list</span>
+<span class="sd">        :param last: If True, only the decrypted message is returned; if False, a tuple is returned with the original &#39;a&#39; value and the decrypted &#39;b&#39;.</span>
+<span class="sd">        :type last: bool</span>
+<span class="sd">        :return: The shuffled and decrypted list of messages.</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">msgs2</span> <span class="o">=</span> <span class="n">msgs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">msgs3</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="n">msgs2</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">StrongRandom</span><span class="p">()</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">msgs2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">msgs2</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+            <span class="n">clear</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decrypt</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">last</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">clear</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">clear</span><span class="p">)</span>
+            <span class="n">msgs3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">msgs3</span></div>
+    
+<div class="viewcode-block" id="MixCrypt.reencrypt"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.MixCrypt.reencrypt">[docs]</a>    <span class="k">def</span> <span class="nf">reencrypt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cipher</span><span class="p">,</span> <span class="n">pubkey</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Re-encrypts an encrypted message, optionally with a new public key.</span>
+
+<span class="sd">        :param cipher: The encrypted message to re-encrypt.</span>
+<span class="sd">        :type cipher: tuple</span>
+<span class="sd">        :param pubkey: Optional public key for re-encryption. If not provided, the instance&#39;s key is used.</span>
+<span class="sd">        :type pubkey: tuple, optional</span>
+<span class="sd">        :return: The re-encrypted message.</span>
+<span class="sd">        :rtype: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        &gt;&gt;&gt; B = 256</span>
+<span class="sd">        &gt;&gt;&gt; k = MixCrypt(bits=B)</span>
+<span class="sd">        &gt;&gt;&gt; clears = [random.StrongRandom().randint(1, B) for i in range(5)]</span>
+<span class="sd">        &gt;&gt;&gt; cipher = [k.encrypt(i) for i in clears]</span>
+<span class="sd">        &gt;&gt;&gt; cipher2 = [k.reencrypt(i) for i in cipher]</span>
+<span class="sd">        &gt;&gt;&gt; d = [k.decrypt(i) for i in cipher]</span>
+<span class="sd">        &gt;&gt;&gt; d2 = [k.decrypt(i) for i in cipher2]</span>
+<span class="sd">        &gt;&gt;&gt; clears == d == d2</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; cipher != cipher2</span>
+<span class="sd">        True</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="n">pubkey</span><span class="p">:</span>
+            <span class="n">p</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pubkey</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">ElGamal</span><span class="o">.</span><span class="n">construct</span><span class="p">((</span><span class="n">p</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span>
+
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">cipher</span><span class="p">)</span>
+        <span class="n">a1</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">))</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">p</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">((</span><span class="n">a</span> <span class="o">*</span> <span class="n">a1</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span><span class="p">,</span> <span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">b1</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MixCrypt.gen_perm"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.MixCrypt.gen_perm">[docs]</a>    <span class="k">def</span> <span class="nf">gen_perm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generates a permutation of indices for a given length.</span>
+
+<span class="sd">        :param l: The length of the list to generate a permutation for.</span>
+<span class="sd">        :type l: int</span>
+<span class="sd">        :return: A list of permuted indices.</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">StrongRandom</span><span class="p">()</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">d</span><span class="p">:</span>
+                <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">d</span><span class="p">]</span>
+                <span class="n">x</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">return</span> <span class="n">x</span></div>
+
+<div class="viewcode-block" id="MixCrypt.shuffle"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.mixcrypt.MixCrypt.shuffle">[docs]</a>    <span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msgs</span><span class="p">,</span> <span class="n">pubkey</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Re-encrypts and shuffles a list of messages.</span>
+
+<span class="sd">        :param msgs: The list of messages to re-encrypt and shuffle.</span>
+<span class="sd">        :type msgs: list</span>
+<span class="sd">        :param pubkey: Optional public key for re-encryption. If not provided, the instance&#39;s key is used.</span>
+<span class="sd">        :type pubkey: tuple, optional</span>
+<span class="sd">        :return: The shuffled and re-encrypted list of messages.</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">msgs2</span> <span class="o">=</span> <span class="n">msgs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">perm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_perm</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">msgs</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">perm</span><span class="p">):</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">msgs</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+            <span class="n">nm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reencrypt</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">pubkey</span><span class="p">)</span>
+            <span class="n">msgs2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">nm</span>
+
+        <span class="k">return</span> <span class="n">msgs2</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandro Medina Durán, Gonzalo Campos Mejías
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Alejandro Medina Durán, Gonzalo Campos Mejías.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

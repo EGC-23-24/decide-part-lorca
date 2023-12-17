@@ -1,0 +1,777 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>census.views &#8212; decide-part-lorca</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/census/views';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">decide-part-lorca</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Welcome to decide’s documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/index.html">Decide modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/booth.html">Booth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/census.html">Census Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/auth.html">Auth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/mixnet.html">Mixnet Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/postproc.html">Postproc Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/store.html">Store Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/visualizer.html">Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/voting.html">Voting Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../memes.html">Memes collection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/issues/new?title=Issue%20on%20page%20%2F_modules/census/views.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for census.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django.db.utils</span> <span class="kn">import</span> <span class="n">IntegrityError</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ObjectDoesNotExist</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.views.generic.base</span> <span class="kn">import</span> <span class="n">TemplateView</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
+<span class="kn">import</span> <span class="nn">openpyxl</span>
+<span class="kn">from</span> <span class="nn">openpyxl</span> <span class="kn">import</span> <span class="n">Workbook</span>
+<span class="kn">from</span> <span class="nn">openpyxl.styles</span> <span class="kn">import</span> <span class="n">PatternFill</span><span class="p">,</span> <span class="n">Font</span><span class="p">,</span> <span class="n">Alignment</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">generics</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">rest_framework.status</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">HTTP_201_CREATED</span> <span class="k">as</span> <span class="n">ST_201</span><span class="p">,</span>
+    <span class="n">HTTP_204_NO_CONTENT</span> <span class="k">as</span> <span class="n">ST_204</span><span class="p">,</span>
+    <span class="n">HTTP_401_UNAUTHORIZED</span> <span class="k">as</span> <span class="n">ST_401</span><span class="p">,</span>
+    <span class="n">HTTP_409_CONFLICT</span> <span class="k">as</span> <span class="n">ST_409</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">base.perms</span> <span class="kn">import</span> <span class="n">UserIsStaff</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">CreationCensusForm</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Census</span>
+<span class="kn">from</span> <span class="nn">voting.models</span> <span class="kn">import</span> <span class="n">Voting</span>
+<span class="kn">from</span> <span class="nn">openpyxl.styles</span> <span class="kn">import</span> <span class="n">Alignment</span><span class="p">,</span> <span class="n">Font</span><span class="p">,</span> <span class="n">PatternFill</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ValidationError</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+
+
+<div class="viewcode-block" id="census"><a class="viewcode-back" href="../../modules/census.html#census.views.census">[docs]</a><span class="k">def</span> <span class="nf">census</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Renders the census page.</span>
+
+<span class="sd">    :param request: The HTTP request object.</span>
+<span class="sd">    :return: Rendered web page for the census.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;census/census.html&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="is_admin"><a class="viewcode-back" href="../../modules/census.html#census.views.is_admin">[docs]</a><span class="k">def</span> <span class="nf">is_admin</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determines if the given user is an admin.</span>
+
+<span class="sd">    :param user: The user object to be checked.</span>
+<span class="sd">    :type user: User</span>
+<span class="sd">    :return: True if the user is authenticated and is a staff member, False otherwise.</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span> <span class="ow">and</span> <span class="n">user</span><span class="o">.</span><span class="n">is_staff</span></div>
+
+<div class="viewcode-block" id="CensusCreate"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusCreate">[docs]</a><span class="k">class</span> <span class="nc">CensusCreate</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListCreateAPIView</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    API view for listing and creating census records.</span>
+
+<span class="sd">    Inherits from ListCreateAPIView to provide handling for GET and POST requests for Census model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">UserIsStaff</span><span class="p">,)</span>
+
+<div class="viewcode-block" id="CensusCreate.create"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusCreate.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates new census records from the provided data.</span>
+
+<span class="sd">        :param request: The HTTP request object containing voting and voter data.</span>
+<span class="sd">        :param args: Variable arguments.</span>
+<span class="sd">        :param kwargs: Keyword arguments.</span>
+<span class="sd">        :return: A Response object with creation status.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">voting_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voting_id&quot;</span><span class="p">)</span>
+        <span class="n">voters</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voters&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">voter</span> <span class="ow">in</span> <span class="n">voters</span><span class="p">:</span>
+                <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">voter</span><span class="p">)</span>
+                <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;Error try to create census&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">ST_409</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;Census created&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">ST_201</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusCreate.list"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusCreate.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Lists voters in a census for a given voting.</span>
+
+<span class="sd">        :param request: The HTTP request object containing the voting_id parameter.</span>
+<span class="sd">        :param args: Variable arguments.</span>
+<span class="sd">        :param kwargs: Keyword arguments.</span>
+<span class="sd">        :return: A Response object with the list of voters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">voting_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voting_id&quot;</span><span class="p">)</span>
+        <span class="n">voters</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span>
+            <span class="s2">&quot;voter_id&quot;</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s2">&quot;voters&quot;</span><span class="p">:</span> <span class="n">voters</span><span class="p">})</span></div></div>
+
+
+<div class="viewcode-block" id="CensusDetail"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusDetail">[docs]</a><span class="k">class</span> <span class="nc">CensusDetail</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">RetrieveDestroyAPIView</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    API view for retrieving and deleting census records.</span>
+
+<span class="sd">    Inherits from RetrieveDestroyAPIView to provide handling for GET and DELETE requests for the Census model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+<div class="viewcode-block" id="CensusDetail.destroy"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusDetail.destroy">[docs]</a>    <span class="k">def</span> <span class="nf">destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">voting_id</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Deletes voters from a census based on provided voting_id and voter ids.</span>
+
+<span class="sd">        :param request: The HTTP request object containing voter data.</span>
+<span class="sd">        :param voting_id: The ID of the voting.</span>
+<span class="sd">        :param args: Variable arguments.</span>
+<span class="sd">        :param kwargs: Keyword arguments.</span>
+<span class="sd">        :return: A Response object confirming deletion.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">voters</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voters&quot;</span><span class="p">)</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voter_id__in</span><span class="o">=</span><span class="n">voters</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;Voters deleted from census&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">ST_204</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusDetail.retrieve"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusDetail.retrieve">[docs]</a>    <span class="k">def</span> <span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">voting_id</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves a specific voter in a census based on provided voting_id and voter id.</span>
+
+<span class="sd">        :param request: The HTTP request object containing the voter_id parameter.</span>
+<span class="sd">        :param voting_id: The ID of the voting.</span>
+<span class="sd">        :param args: Variable arguments.</span>
+<span class="sd">        :param kwargs: Keyword arguments.</span>
+<span class="sd">        :return: A Response object indicating if the voter is valid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">voter</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voter_id&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">voter</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">ObjectDoesNotExist</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;Invalid voter&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">ST_401</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;Valid voter&quot;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="GetId"><a class="viewcode-back" href="../../modules/census.html#census.views.GetId">[docs]</a><span class="k">def</span> <span class="nf">GetId</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieves and displays the census details for a given voting ID.</span>
+
+<span class="sd">    :param request: The HTTP request object containing the voting ID.</span>
+<span class="sd">    :return: Rendered web page with census details or an error message.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+
+    <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">id</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">census</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span>
+            <span class="n">request</span><span class="p">,</span>
+            <span class="s2">&quot;census/census.html&quot;</span><span class="p">,</span>
+            <span class="p">{</span><span class="s2">&quot;error_id&quot;</span><span class="p">:</span> <span class="s2">&quot;There is not a census with that voting_id&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;census/census_details.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;census&quot;</span><span class="p">:</span> <span class="n">census</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="createCensus"><a class="viewcode-back" href="../../modules/census.html#census.views.createCensus">[docs]</a><span class="k">def</span> <span class="nf">createCensus</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles the creation of a census record through a form submission.</span>
+
+<span class="sd">    :param request: The HTTP request object.</span>
+<span class="sd">    :return: Redirects to the census page on success or renders the creation form with errors.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">voting_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voting_id&quot;</span><span class="p">)</span>
+        <span class="n">voter_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voter_id&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">voter_id</span><span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;Census created successfully&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;census&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Si hay un ValidationError, muestra el mensaje de error en la página de creación del censo</span>
+        <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                <span class="k">return</span> <span class="n">render</span><span class="p">(</span>
+                    <span class="n">request</span><span class="p">,</span>
+                    <span class="s2">&quot;census/census_create.html&quot;</span><span class="p">,</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Voting with this ID does not exist.&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;form&quot;</span><span class="p">:</span> <span class="n">CreationCensusForm</span><span class="p">,</span>
+                    <span class="p">},</span>
+                <span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">voter_id</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                <span class="k">return</span> <span class="n">render</span><span class="p">(</span>
+                    <span class="n">request</span><span class="p">,</span>
+                    <span class="s2">&quot;census/census_create.html&quot;</span><span class="p">,</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;User with this ID does not exist.&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;form&quot;</span><span class="p">:</span> <span class="n">CreationCensusForm</span><span class="p">,</span>
+                    <span class="p">},</span>
+                <span class="p">)</span>
+
+    <span class="c1"># Si el método no es POST, muestra la página de creación del censo</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;census/census_create.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;form&quot;</span><span class="p">:</span> <span class="n">CreationCensusForm</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="deleteCensus"><a class="viewcode-back" href="../../modules/census.html#census.views.deleteCensus">[docs]</a><span class="k">def</span> <span class="nf">deleteCensus</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Deletes a specific census record based on the voting and voter ID provided in the request.</span>
+
+<span class="sd">    :param request: The HTTP request object containing the voting and voter IDs.</span>
+<span class="sd">    :return: Redirects to the census page on successful deletion or renders the census page with an error message.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">voting_id</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;voting_id&quot;</span><span class="p">],</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;voter_id&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">census</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span>
+            <span class="n">request</span><span class="p">,</span>
+            <span class="s2">&quot;census/census.html&quot;</span><span class="p">,</span>
+            <span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Census does not exist. Try other census&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">census</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;Census deleted successfully&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;census&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="censusList"><a class="viewcode-back" href="../../modules/census.html#census.views.censusList">[docs]</a><span class="k">def</span> <span class="nf">censusList</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Displays a list of all census records.</span>
+
+<span class="sd">    :param request: The HTTP request object.</span>
+<span class="sd">    :return: Rendered web page displaying a list of all census records.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;census/census_list.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;queryset&quot;</span><span class="p">:</span> <span class="n">queryset</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="CensusExportView"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusExportView">[docs]</a><span class="k">class</span> <span class="nc">CensusExportView</span><span class="p">(</span><span class="n">TemplateView</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    View for exporting census data to an Excel file.</span>
+
+<span class="sd">    Inherits from TemplateView to display a page for selecting the voting to export census data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;census/export_census.html&quot;</span>
+
+<div class="viewcode-block" id="CensusExportView.dispatch"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusExportView.dispatch">[docs]</a>    <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles the request before it reaches the get or post method. Redirects to home if the user is not an admin.</span>
+
+<span class="sd">        :param request: The HTTP request object.</span>
+<span class="sd">        :param args: Variable arguments.</span>
+<span class="sd">        :param kwargs: Keyword arguments.</span>
+<span class="sd">        :return: HttpResponse or redirection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_admin</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">):</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;You must be an admin to access this page!&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusExportView.get_context_data"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusExportView.get_context_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides the context data for rendering the template.</span>
+
+<span class="sd">        :param kwargs: Keyword arguments.</span>
+<span class="sd">        :return: Context data dictionary.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">context</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">votings</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">context</span><span class="p">[</span><span class="s2">&quot;votings&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">votings</span>
+        <span class="k">return</span> <span class="n">context</span></div></div>
+
+
+<div class="viewcode-block" id="export_census"><a class="viewcode-back" href="../../modules/census.html#census.views.export_census">[docs]</a><span class="k">def</span> <span class="nf">export_census</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">voting_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Exports the census data for a given voting to an Excel file.</span>
+
+<span class="sd">    :param request: The HTTP request object.</span>
+<span class="sd">    :param voting_id: The ID of the voting whose census data is to be exported.</span>
+<span class="sd">    :return: HttpResponse with the Excel file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span>
+    <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">(</span>
+        <span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">response</span><span class="p">[</span><span class="s2">&quot;Content-Disposition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;attachment; filename=census.xlsx&quot;</span>
+
+    <span class="n">workbook</span> <span class="o">=</span> <span class="n">Workbook</span><span class="p">()</span>
+    <span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">active</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Census&quot;</span>
+
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">merge_cells</span><span class="p">(</span><span class="s2">&quot;A1:B1&quot;</span><span class="p">)</span>
+    <span class="n">first_cell</span> <span class="o">=</span> <span class="n">worksheet</span><span class="p">[</span><span class="s2">&quot;A1&quot;</span><span class="p">]</span>
+    <span class="n">first_cell</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;Census for: &quot;</span> <span class="o">+</span> <span class="n">voting</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">first_cell</span><span class="o">.</span><span class="n">fill</span> <span class="o">=</span> <span class="n">PatternFill</span><span class="p">(</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span> <span class="n">fgColor</span><span class="o">=</span><span class="s2">&quot;0D98BA&quot;</span><span class="p">)</span>
+    <span class="n">first_cell</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="n">Font</span><span class="p">(</span><span class="n">bold</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;FFFFFF&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Calibri&quot;</span><span class="p">)</span>
+    <span class="n">first_cell</span><span class="o">.</span><span class="n">alignment</span> <span class="o">=</span> <span class="n">Alignment</span><span class="p">(</span><span class="n">horizontal</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+
+    <span class="n">voting_id_title</span> <span class="o">=</span> <span class="n">worksheet</span><span class="p">[</span><span class="s2">&quot;A2&quot;</span><span class="p">]</span>
+    <span class="n">voting_id_title</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;Voting ID&quot;</span>
+    <span class="n">voting_id_title</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="n">Font</span><span class="p">(</span><span class="n">bold</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;0D98BA&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Calibri&quot;</span><span class="p">)</span>
+    <span class="n">voting_id_title</span><span class="o">.</span><span class="n">alignment</span> <span class="o">=</span> <span class="n">Alignment</span><span class="p">(</span><span class="n">horizontal</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+
+    <span class="n">voter_id_title</span> <span class="o">=</span> <span class="n">worksheet</span><span class="p">[</span><span class="s2">&quot;B2&quot;</span><span class="p">]</span>
+    <span class="n">voter_id_title</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;Voter ID&quot;</span>
+    <span class="n">voter_id_title</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="n">Font</span><span class="p">(</span><span class="n">bold</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;0D98BA&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Calibri&quot;</span><span class="p">)</span>
+    <span class="n">voter_id_title</span><span class="o">.</span><span class="n">alignment</span> <span class="o">=</span> <span class="n">Alignment</span><span class="p">(</span><span class="n">horizontal</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">census</span><span class="p">:</span>
+        <span class="n">row_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">voter_id</span><span class="p">]</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row_data</span><span class="p">)</span>
+
+    <span class="n">workbook</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span></div>
+
+
+<div class="viewcode-block" id="CensusImportView"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusImportView">[docs]</a><span class="k">class</span> <span class="nc">CensusImportView</span><span class="p">(</span><span class="n">TemplateView</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    View for importing census data from an Excel file.</span>
+
+<span class="sd">    Inherits from TemplateView to display a page for selecting the voting and uploading the Excel file for census data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;census/import_census.html&quot;</span>
+
+<div class="viewcode-block" id="CensusImportView.dispatch"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusImportView.dispatch">[docs]</a>    <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles the request before it reaches the get or post method. Redirects to home if the user is not an admin.</span>
+
+<span class="sd">        :param request: The HTTP request object.</span>
+<span class="sd">        :param args: Variable arguments.</span>
+<span class="sd">        :param kwargs: Keyword arguments.</span>
+<span class="sd">        :return: HttpResponse or redirection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_admin</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">):</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;You must be an admin to access this page!&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusImportView.post"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusImportView.post">[docs]</a>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles the POST request for importing census data from an uploaded Excel file.</span>
+
+<span class="sd">        :param request: The HTTP request object.</span>
+<span class="sd">        :param args: Variable arguments.</span>
+<span class="sd">        :param kwargs: Keyword arguments.</span>
+<span class="sd">        :return: Redirects to the import page with a success or error message.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">voting_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voting_id&quot;</span><span class="p">)</span>
+        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">voting</span><span class="o">.</span><span class="n">end_date</span><span class="p">:</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;Voting has already ended!&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;import_census&quot;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">voting</span><span class="o">.</span><span class="n">start_date</span><span class="p">:</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;Voting should be started first!&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;import_census&quot;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">file</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">[</span><span class="s2">&quot;file&quot;</span><span class="p">]</span>
+                <span class="n">workbook</span> <span class="o">=</span> <span class="n">openpyxl</span><span class="o">.</span><span class="n">load_workbook</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+                <span class="n">sheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">active</span>
+
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sheet</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">min_row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">values_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                    <span class="n">voter_id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">voter_id</span><span class="p">)</span>
+
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Error importing data: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;import_census&quot;</span><span class="p">))</span>
+
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;Data imported successfully!&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;import_census&quot;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">:</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;No file selected!&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;import_census&quot;</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="CensusImportView.get_context_data"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusImportView.get_context_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provides the context data for rendering the template.</span>
+
+<span class="sd">        :param kwargs: Keyword arguments.</span>
+<span class="sd">        :return: Context data dictionary.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">context</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">votings</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">context</span><span class="p">[</span><span class="s2">&quot;votings&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">votings</span>
+        <span class="k">return</span> <span class="n">context</span></div></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandro Medina Durán, Gonzalo Campos Mejías
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Alejandro Medina Durán, Gonzalo Campos Mejías.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

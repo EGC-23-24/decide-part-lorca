@@ -1,0 +1,1397 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Mixnet Module &#8212; decide-part-lorca</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/mixnet';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Postproc Module" href="postproc.html" />
+    <link rel="prev" title="Auth Module" href="auth.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">decide-part-lorca</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Welcome to decide’s documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Decide modules</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="booth.html">Booth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census.html">Census Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth.html">Auth Module</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Mixnet Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postproc.html">Postproc Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="store.html">Store Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualizer.html">Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voting.html">Voting Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../memes.html">Memes collection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/edit/main/modules/mixnet.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/issues/new?title=Issue%20on%20page%20%2Fmodules/mixnet.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/modules/mixnet.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mixnet Module</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mixnet.models">models.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet"><code class="docutils literal notranslate"><span class="pre">Mixnet</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.voting_id"><code class="docutils literal notranslate"><span class="pre">Mixnet.voting_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.auth_position"><code class="docutils literal notranslate"><span class="pre">Mixnet.auth_position</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.auths"><code class="docutils literal notranslate"><span class="pre">Mixnet.auths</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.key"><code class="docutils literal notranslate"><span class="pre">Mixnet.key</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.pubkey"><code class="docutils literal notranslate"><span class="pre">Mixnet.pubkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Mixnet.DoesNotExist</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Mixnet.MultipleObjectsReturned</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Mixnet.auth_position</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">Mixnet.auths</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.chain_call"><code class="docutils literal notranslate"><span class="pre">Mixnet.chain_call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.decrypt"><code class="docutils literal notranslate"><span class="pre">Mixnet.decrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.gen_key"><code class="docutils literal notranslate"><span class="pre">Mixnet.gen_key()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.id"><code class="docutils literal notranslate"><span class="pre">Mixnet.id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Mixnet.key</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.key_id"><code class="docutils literal notranslate"><span class="pre">Mixnet.key_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.next_auths"><code class="docutils literal notranslate"><span class="pre">Mixnet.next_auths()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.objects"><code class="docutils literal notranslate"><span class="pre">Mixnet.objects</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Mixnet.pubkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.pubkey_id"><code class="docutils literal notranslate"><span class="pre">Mixnet.pubkey_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.shuffle"><code class="docutils literal notranslate"><span class="pre">Mixnet.shuffle()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">Mixnet.voting_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mixnet.mixcrypt">mixcrypt.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt"><code class="docutils literal notranslate"><span class="pre">MixCrypt</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.__init__"><code class="docutils literal notranslate"><span class="pre">MixCrypt.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.decrypt"><code class="docutils literal notranslate"><span class="pre">MixCrypt.decrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.encrypt"><code class="docutils literal notranslate"><span class="pre">MixCrypt.encrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.gen_perm"><code class="docutils literal notranslate"><span class="pre">MixCrypt.gen_perm()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.genk"><code class="docutils literal notranslate"><span class="pre">MixCrypt.genk()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.getk"><code class="docutils literal notranslate"><span class="pre">MixCrypt.getk()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.multiple_decrypt"><code class="docutils literal notranslate"><span class="pre">MixCrypt.multiple_decrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.reencrypt"><code class="docutils literal notranslate"><span class="pre">MixCrypt.reencrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.setk"><code class="docutils literal notranslate"><span class="pre">MixCrypt.setk()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.shuffle"><code class="docutils literal notranslate"><span class="pre">MixCrypt.shuffle()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.shuffle_decrypt"><code class="docutils literal notranslate"><span class="pre">MixCrypt.shuffle_decrypt()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.gen_multiple_key"><code class="docutils literal notranslate"><span class="pre">gen_multiple_key()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.multiple_decrypt"><code class="docutils literal notranslate"><span class="pre">multiple_decrypt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.multiple_decrypt_shuffle"><code class="docutils literal notranslate"><span class="pre">multiple_decrypt_shuffle()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.multiple_decrypt_shuffle2"><code class="docutils literal notranslate"><span class="pre">multiple_decrypt_shuffle2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.rand"><code class="docutils literal notranslate"><span class="pre">rand()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mixnet.views">views.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.Decrypt"><code class="docutils literal notranslate"><span class="pre">Decrypt</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.Decrypt.post"><code class="docutils literal notranslate"><span class="pre">Decrypt.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.MixnetViewSet"><code class="docutils literal notranslate"><span class="pre">MixnetViewSet</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.MixnetViewSet.create"><code class="docutils literal notranslate"><span class="pre">MixnetViewSet.create()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.MixnetViewSet.queryset"><code class="docutils literal notranslate"><span class="pre">MixnetViewSet.queryset</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.MixnetViewSet.serializer_class"><code class="docutils literal notranslate"><span class="pre">MixnetViewSet.serializer_class</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.Shuffle"><code class="docutils literal notranslate"><span class="pre">Shuffle</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.Shuffle.post"><code class="docutils literal notranslate"><span class="pre">Shuffle.post()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mixnet.tests">tests.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase"><code class="docutils literal notranslate"><span class="pre">MixnetCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.encrypt_msgs"><code class="docutils literal notranslate"><span class="pre">MixnetCase.encrypt_msgs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.setUp"><code class="docutils literal notranslate"><span class="pre">MixnetCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.tearDown"><code class="docutils literal notranslate"><span class="pre">MixnetCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.test_create"><code class="docutils literal notranslate"><span class="pre">MixnetCase.test_create()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.test_decrypt"><code class="docutils literal notranslate"><span class="pre">MixnetCase.test_decrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.test_multiple_auths"><code class="docutils literal notranslate"><span class="pre">MixnetCase.test_multiple_auths()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.test_multiple_auths_mock"><code class="docutils literal notranslate"><span class="pre">MixnetCase.test_multiple_auths_mock()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.test_shuffle"><code class="docutils literal notranslate"><span class="pre">MixnetCase.test_shuffle()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.test_shuffle2"><code class="docutils literal notranslate"><span class="pre">MixnetCase.test_shuffle2()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="mixnet-module">
+<h1>Mixnet Module<a class="headerlink" href="#mixnet-module" title="Permalink to this heading">#</a></h1>
+<p>The Mixnet module is a crucial part of the Decide application, focusing on the mix network functionality. The following sections provide documentation for its various components.</p>
+<section id="module-mixnet.models">
+<span id="models-py"></span><h2>models.py<a class="headerlink" href="#module-mixnet.models" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mixnet.models.</span></span><span class="sig-name descname"><span class="pre">Mixnet</span></span><a class="reference internal" href="../_modules/mixnet/models.html#Mixnet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.models.Mixnet" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Django Model representing a Mixnet entity in the context of electronic voting.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.voting_id">
+<span class="sig-name descname"><span class="pre">voting_id</span></span><a class="headerlink" href="#mixnet.models.Mixnet.voting_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Identifier for the voting instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>PositiveIntegerField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.auth_position">
+<span class="sig-name descname"><span class="pre">auth_position</span></span><a class="headerlink" href="#mixnet.models.Mixnet.auth_position" title="Permalink to this definition">#</a></dt>
+<dd><p>Position of the authorization in the mixnet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>PositiveIntegerField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.auths">
+<span class="sig-name descname"><span class="pre">auths</span></span><a class="headerlink" href="#mixnet.models.Mixnet.auths" title="Permalink to this definition">#</a></dt>
+<dd><p>Relation to multiple Auth instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ManyToManyField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.key">
+<span class="sig-name descname"><span class="pre">key</span></span><a class="headerlink" href="#mixnet.models.Mixnet.key" title="Permalink to this definition">#</a></dt>
+<dd><p>Foreign key to a Key instance, nullable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ForeignKey</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.pubkey">
+<span class="sig-name descname"><span class="pre">pubkey</span></span><a class="headerlink" href="#mixnet.models.Mixnet.pubkey" title="Permalink to this definition">#</a></dt>
+<dd><p>Foreign key to a Key instance for public key, nullable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ForeignKey</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#mixnet.models.Mixnet.DoesNotExist" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#mixnet.models.Mixnet.MultipleObjectsReturned" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">auth_position</span></span><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">auths</span></span><a class="headerlink" href="#id1" title="Permalink to this definition">#</a></dt>
+<dd><p>Accessor to the related objects manager on the forward and reverse sides of
+a many-to-many relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">toppings</span> <span class="o">=</span> <span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Topping</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;pizzas&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Pizza.toppings</span></code> and <code class="docutils literal notranslate"><span class="pre">Topping.pizzas</span></code> are <code class="docutils literal notranslate"><span class="pre">ManyToManyDescriptor</span></code>
+instances.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.chain_call">
+<span class="sig-name descname"><span class="pre">chain_call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/models.html#Mixnet.chain_call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.models.Mixnet.chain_call" title="Permalink to this definition">#</a></dt>
+<dd><p>Makes a chained API call to the next authorization in the mixnet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – The API path for the call.</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – Data to be sent in the API call.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The response from the API call or None.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.decrypt">
+<span class="sig-name descname"><span class="pre">decrypt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/models.html#Mixnet.decrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.models.Mixnet.decrypt" title="Permalink to this definition">#</a></dt>
+<dd><p>Decrypts the provided messages using the mixnet’s cryptographic settings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msgs</strong> (<em>list</em>) – The messages to decrypt.</p></li>
+<li><p><strong>pk</strong> (<em>Key</em>) – Public key used in the decryption process.</p></li>
+<li><p><strong>last</strong> (<em>bool</em>) – Indicates if this is the last decryption step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Decrypted messages.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.gen_key">
+<span class="sig-name descname"><span class="pre">gen_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/models.html#Mixnet.gen_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.models.Mixnet.gen_key" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a cryptographic key for the mixnet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>int</em><em>, </em><em>optional</em>) – Prime number, part of the cryptographic key.</p></li>
+<li><p><strong>g</strong> (<em>int</em><em>, </em><em>optional</em>) – Generator number, part of the cryptographic key.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#mixnet.models.Mixnet.id" title="Permalink to this definition">#</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">key</span></span><a class="headerlink" href="#id2" title="Permalink to this definition">#</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.key_id">
+<span class="sig-name descname"><span class="pre">key_id</span></span><a class="headerlink" href="#mixnet.models.Mixnet.key_id" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.next_auths">
+<span class="sig-name descname"><span class="pre">next_auths</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/models.html#Mixnet.next_auths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.models.Mixnet.next_auths" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieves the next set of authorizations in the mixnet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The next set of Auth instances.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>QuerySet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#mixnet.models.Mixnet.objects" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">pubkey</span></span><a class="headerlink" href="#id3" title="Permalink to this definition">#</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.pubkey_id">
+<span class="sig-name descname"><span class="pre">pubkey_id</span></span><a class="headerlink" href="#mixnet.models.Mixnet.pubkey_id" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.models.Mixnet.shuffle">
+<span class="sig-name descname"><span class="pre">shuffle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/models.html#Mixnet.shuffle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.models.Mixnet.shuffle" title="Permalink to this definition">#</a></dt>
+<dd><p>Shuffles the provided messages using the mixnet’s cryptographic settings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msgs</strong> (<em>list</em>) – The messages to shuffle.</p></li>
+<li><p><strong>pk</strong> (<em>Key</em>) – Public key used in the shuffling process.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Shuffled messages.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">voting_id</span></span><a class="headerlink" href="#id4" title="Permalink to this definition">#</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mixnet.mixcrypt">
+<span id="mixcrypt-py"></span><h2>mixcrypt.py<a class="headerlink" href="#module-mixnet.mixcrypt" title="Permalink to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k1</span> <span class="o">=</span> <span class="n">MixCrypt</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k2</span> <span class="o">=</span> <span class="n">MixCrypt</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">k1</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k3</span> <span class="o">=</span> <span class="n">gen_multiple_key</span><span class="p">(</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">N</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clears</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">StrongRandom</span><span class="p">()</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cipher</span> <span class="o">=</span> <span class="p">[</span><span class="n">k3</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">clears</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">multiple_decrypt_shuffle</span><span class="p">(</span><span class="n">cipher</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clears</span> <span class="o">==</span> <span class="n">d</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">clears</span><span class="p">)</span> <span class="o">==</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k1</span> <span class="o">=</span> <span class="n">MixCrypt</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k1</span><span class="o">.</span><span class="n">setk</span><span class="p">(</span><span class="mi">167</span><span class="p">,</span><span class="mi">156</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="mi">130</span><span class="p">)</span> 
+<span class="go">&lt;Crypto.PublicKey.ElGamal.ElGamalobj object at 0x...&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k2</span> <span class="o">=</span> <span class="n">MixCrypt</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k2</span><span class="o">.</span><span class="n">setk</span><span class="p">(</span><span class="mi">167</span><span class="p">,</span><span class="mi">156</span><span class="p">,</span><span class="mi">53</span><span class="p">,</span><span class="mi">161</span><span class="p">)</span> 
+<span class="go">&lt;Crypto.PublicKey.ElGamal.ElGamalobj object at 0x...&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k3</span> <span class="o">=</span> <span class="n">MixCrypt</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k3</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">ElGamal</span><span class="o">.</span><span class="n">construct</span><span class="p">((</span><span class="mi">167</span><span class="p">,</span> <span class="mi">156</span><span class="p">,</span> <span class="mi">4717</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k3</span><span class="o">.</span><span class="n">k</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="n">k3</span><span class="o">.</span><span class="n">k</span><span class="o">.</span><span class="n">g</span><span class="p">,</span> <span class="n">k3</span><span class="o">.</span><span class="n">k</span><span class="o">.</span><span class="n">y</span>
+<span class="go">(167, 156, 4717)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">N</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clears</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cipher</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">161</span><span class="p">,</span> <span class="mi">109</span><span class="p">),</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">101</span><span class="p">),</span> <span class="p">(</span><span class="mi">148</span><span class="p">,</span> <span class="mi">163</span><span class="p">),</span> <span class="p">(</span><span class="mi">71</span><span class="p">,</span> <span class="mi">37</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">multiple_decrypt_shuffle</span><span class="p">(</span><span class="n">cipher</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">k1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clears</span> <span class="o">==</span> <span class="n">d</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">clears</span><span class="p">)</span> <span class="o">==</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.MixCrypt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mixnet.mixcrypt.</span></span><span class="sig-name descname"><span class="pre">MixCrypt</span></span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#MixCrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.MixCrypt" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class for cryptographic operations based on the ElGamal encryption scheme.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k</strong> (<em>ElGamal key</em><em>, </em><em>optional</em>) – Optional pre-existing key to initialize the MixCrypt.</p></li>
+<li><p><strong>bits</strong> (<em>int</em>) – Bit size for the key generation.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.MixCrypt.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#MixCrypt.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.MixCrypt.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.MixCrypt.decrypt">
+<span class="sig-name descname"><span class="pre">decrypt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#MixCrypt.decrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.MixCrypt.decrypt" title="Permalink to this definition">#</a></dt>
+<dd><p>Decrypts an ElGamal encrypted message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>c</strong> (<em>tuple</em>) – The encrypted message tuple.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The decrypted message.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.MixCrypt.encrypt">
+<span class="sig-name descname"><span class="pre">encrypt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#MixCrypt.encrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.MixCrypt.encrypt" title="Permalink to this definition">#</a></dt>
+<dd><p>Encrypts a message using ElGamal encryption.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m</strong> (<em>int</em>) – The message to encrypt.</p></li>
+<li><p><strong>k</strong> (<em>ElGamal key</em><em>, </em><em>optional</em>) – Optional key to use for encryption. If not provided, use the instance’s key.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The encrypted message.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.MixCrypt.gen_perm">
+<span class="sig-name descname"><span class="pre">gen_perm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#MixCrypt.gen_perm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.MixCrypt.gen_perm" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a permutation of indices for a given length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>l</strong> (<em>int</em>) – The length of the list to generate a permutation for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of permuted indices.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.MixCrypt.genk">
+<span class="sig-name descname"><span class="pre">genk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#MixCrypt.genk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.MixCrypt.genk" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a new ElGamal key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The generated ElGamal key.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>ElGamal key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.MixCrypt.getk">
+<span class="sig-name descname"><span class="pre">getk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#MixCrypt.getk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.MixCrypt.getk" title="Permalink to this definition">#</a></dt>
+<dd><p>Constructs an ElGamal key from given parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>int</em>) – Prime number.</p></li>
+<li><p><strong>g</strong> (<em>int</em>) – Generator number.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The constructed ElGamal key.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ElGamal key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.MixCrypt.multiple_decrypt">
+<span class="sig-name descname"><span class="pre">multiple_decrypt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#MixCrypt.multiple_decrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.MixCrypt.multiple_decrypt" title="Permalink to this definition">#</a></dt>
+<dd><p>Decrypts multiple messages, optionally leaving them in tuple form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msgs</strong> (<em>list</em>) – List of encrypted message tuples.</p></li>
+<li><p><strong>last</strong> (<em>bool</em>) – If True, return the clear message; if False, return a tuple with the original ‘a’ value and the decrypted ‘b’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of decrypted messages or message tuples.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.MixCrypt.reencrypt">
+<span class="sig-name descname"><span class="pre">reencrypt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cipher</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pubkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#MixCrypt.reencrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.MixCrypt.reencrypt" title="Permalink to this definition">#</a></dt>
+<dd><p>Re-encrypts an encrypted message, optionally with a new public key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cipher</strong> (<em>tuple</em>) – The encrypted message to re-encrypt.</p></li>
+<li><p><strong>pubkey</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Optional public key for re-encryption. If not provided, the instance’s key is used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The re-encrypted message.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.MixCrypt.setk">
+<span class="sig-name descname"><span class="pre">setk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#MixCrypt.setk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.MixCrypt.setk" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the ElGamal key with specified parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>int</em>) – Prime number.</p></li>
+<li><p><strong>g</strong> (<em>int</em>) – Generator number.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Public key component.</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – Private key component.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The set ElGamal key.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ElGamal key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.MixCrypt.shuffle">
+<span class="sig-name descname"><span class="pre">shuffle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pubkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#MixCrypt.shuffle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.MixCrypt.shuffle" title="Permalink to this definition">#</a></dt>
+<dd><p>Re-encrypts and shuffles a list of messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msgs</strong> (<em>list</em>) – The list of messages to re-encrypt and shuffle.</p></li>
+<li><p><strong>pubkey</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Optional public key for re-encryption. If not provided, the instance’s key is used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The shuffled and re-encrypted list of messages.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.MixCrypt.shuffle_decrypt">
+<span class="sig-name descname"><span class="pre">shuffle_decrypt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#MixCrypt.shuffle_decrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.MixCrypt.shuffle_decrypt" title="Permalink to this definition">#</a></dt>
+<dd><p>Shuffles and decrypts a list of encrypted messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msgs</strong> (<em>list</em>) – The list of messages to shuffle and decrypt.</p></li>
+<li><p><strong>last</strong> (<em>bool</em>) – If True, only the decrypted message is returned; if False, a tuple is returned with the original ‘a’ value and the decrypted ‘b’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The shuffled and decrypted list of messages.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.gen_multiple_key">
+<span class="sig-prename descclassname"><span class="pre">mixnet.mixcrypt.</span></span><span class="sig-name descname"><span class="pre">gen_multiple_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">crypts</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#gen_multiple_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.gen_multiple_key" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a combined MixCrypt object from multiple MixCrypt objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>crypts</strong> (<em>tuple</em>) – Variable number of MixCrypt objects.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new MixCrypt object with combined properties.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#mixnet.mixcrypt.MixCrypt" title="mixnet.mixcrypt.MixCrypt">MixCrypt</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.multiple_decrypt">
+<span class="sig-prename descclassname"><span class="pre">mixnet.mixcrypt.</span></span><span class="sig-name descname"><span class="pre">multiple_decrypt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">crypts</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#multiple_decrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.multiple_decrypt" title="Permalink to this definition">#</a></dt>
+<dd><p>Sequentially decrypts a cipher using multiple MixCrypt objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>c</strong> (<em>tuple</em>) – The cipher to decrypt.</p></li>
+<li><p><strong>crypts</strong> (<em>tuple</em>) – Variable number of MixCrypt objects for decryption.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The decrypted message.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.multiple_decrypt_shuffle">
+<span class="sig-prename descclassname"><span class="pre">mixnet.mixcrypt.</span></span><span class="sig-name descname"><span class="pre">multiple_decrypt_shuffle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ciphers</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">crypts</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#multiple_decrypt_shuffle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.multiple_decrypt_shuffle" title="Permalink to this definition">#</a></dt>
+<dd><p>Sequentially decrypts and shuffles a list of ciphers using multiple MixCrypt objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ciphers</strong> (<em>list</em>) – The list of ciphers to decrypt and shuffle.</p></li>
+<li><p><strong>crypts</strong> (<em>tuple</em>) – Variable number of MixCrypt objects for decryption and shuffling.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of decrypted and shuffled messages.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.multiple_decrypt_shuffle2">
+<span class="sig-prename descclassname"><span class="pre">mixnet.mixcrypt.</span></span><span class="sig-name descname"><span class="pre">multiple_decrypt_shuffle2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ciphers</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">crypts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pubkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#multiple_decrypt_shuffle2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.multiple_decrypt_shuffle2" title="Permalink to this definition">#</a></dt>
+<dd><p>Decrypts and shuffles a list of ciphers using multiple MixCrypt objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ciphers</strong> (<em>list</em>) – The list of ciphers to decrypt and shuffle.</p></li>
+<li><p><strong>crypts</strong> (<em>tuple</em>) – Variable number of MixCrypt objects for decryption and shuffling.</p></li>
+<li><p><strong>pubkey</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Optional public key used in the shuffling process.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of decrypted and shuffled messages.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mixnet.mixcrypt.rand">
+<span class="sig-prename descclassname"><span class="pre">mixnet.mixcrypt.</span></span><span class="sig-name descname"><span class="pre">rand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/mixcrypt.html#rand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.mixcrypt.rand" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a random integer k where GCD(k, p-1) == 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>p</strong> (<em>int</em>) – A prime number.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A random integer k.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-mixnet.views">
+<span id="views-py"></span><h2>views.py<a class="headerlink" href="#module-mixnet.views" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mixnet.views.Decrypt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mixnet.views.</span></span><span class="sig-name descname"><span class="pre">Decrypt</span></span><a class="reference internal" href="../_modules/mixnet/views.html#Decrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.views.Decrypt" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.views.Decrypt.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voting_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/views.html#Decrypt.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.views.Decrypt.post" title="Permalink to this definition">#</a></dt>
+<dd><ul class="simple">
+<li><p>voting_id: id</p></li>
+<li><p>msgs: [ [int, int] ]</p></li>
+<li><p>pk: { “p”: int, “g”: int, “y”: int } / nullable</p></li>
+<li><p>position: int / nullable</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mixnet.views.MixnetViewSet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mixnet.views.</span></span><span class="sig-name descname"><span class="pre">MixnetViewSet</span></span><a class="reference internal" href="../_modules/mixnet/views.html#MixnetViewSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.views.MixnetViewSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelViewSet</span></code></p>
+<p>API endpoint that allows mixnets to be viewed or edited.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.views.MixnetViewSet.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/views.html#MixnetViewSet.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.views.MixnetViewSet.create" title="Permalink to this definition">#</a></dt>
+<dd><p>This create a new mixnet and public key</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>auths: [ {“name”: str, “url”: str} ]</p></li>
+<li><p>voting: id</p></li>
+<li><p>position: int / nullable</p></li>
+<li><p>key: { “p”: int, “g”: int } / nullable</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mixnet.views.MixnetViewSet.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><a class="headerlink" href="#mixnet.views.MixnetViewSet.queryset" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mixnet.views.MixnetViewSet.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#mixnet.views.MixnetViewSet.serializer_class" title="Permalink to this definition">#</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">MixnetSerializer</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mixnet.views.Shuffle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mixnet.views.</span></span><span class="sig-name descname"><span class="pre">Shuffle</span></span><a class="reference internal" href="../_modules/mixnet/views.html#Shuffle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.views.Shuffle" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.views.Shuffle.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voting_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/views.html#Shuffle.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.views.Shuffle.post" title="Permalink to this definition">#</a></dt>
+<dd><ul class="simple">
+<li><p>voting_id: id</p></li>
+<li><p>msgs: [ [int, int] ]</p></li>
+<li><p>pk: { “p”: int, “g”: int, “y”: int } / nullable</p></li>
+<li><p>position: int / nullable</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mixnet.tests">
+<span id="tests-py"></span><h2>tests.py<a class="headerlink" href="#module-mixnet.tests" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mixnet.tests.MixnetCase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mixnet.tests.</span></span><span class="sig-name descname"><span class="pre">MixnetCase</span></span><a class="reference internal" href="../_modules/mixnet/tests.html#MixnetCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.tests.MixnetCase" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APITestCase</span></code></p>
+<p>Test case class for Mixnet related operations.</p>
+<p>This class contains several test methods for testing Mixnet functionalities including encryption,
+shuffling, and decryption in various scenarios.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.tests.MixnetCase.encrypt_msgs">
+<span class="sig-name descname"><span class="pre">encrypt_msgs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/tests.html#MixnetCase.encrypt_msgs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.tests.MixnetCase.encrypt_msgs" title="Permalink to this definition">#</a></dt>
+<dd><p>Encrypts a list of messages using the provided public key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msgs</strong> (<em>list</em>) – Messages to be encrypted.</p></li>
+<li><p><strong>pk</strong> (<em>tuple</em>) – Public key used for encryption.</p></li>
+<li><p><strong>bits</strong> (<em>int</em>) – Bit size for encryption.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of encrypted messages.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.tests.MixnetCase.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/tests.html#MixnetCase.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.tests.MixnetCase.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up function for test case.</p>
+<p>Initializes the test client and applies necessary mocks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.tests.MixnetCase.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/tests.html#MixnetCase.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.tests.MixnetCase.tearDown" title="Permalink to this definition">#</a></dt>
+<dd><p>Tear down function for test case.</p>
+<p>Cleans up resources after each test method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.tests.MixnetCase.test_create">
+<span class="sig-name descname"><span class="pre">test_create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/tests.html#MixnetCase.test_create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.tests.MixnetCase.test_create" title="Permalink to this definition">#</a></dt>
+<dd><p>Test case for creating a Mixnet instance.</p>
+<p>Validates the creation and key types of a new Mixnet instance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.tests.MixnetCase.test_decrypt">
+<span class="sig-name descname"><span class="pre">test_decrypt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/tests.html#MixnetCase.test_decrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.tests.MixnetCase.test_decrypt" title="Permalink to this definition">#</a></dt>
+<dd><p>Test case for decrypting shuffled messages in Mixnet.</p>
+<p>Validates decryption functionality and ensures decrypted messages match the original pre-shuffled messages.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.tests.MixnetCase.test_multiple_auths">
+<span class="sig-name descname"><span class="pre">test_multiple_auths</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/tests.html#MixnetCase.test_multiple_auths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.tests.MixnetCase.test_multiple_auths" title="Permalink to this definition">#</a></dt>
+<dd><p>This test emulates a two authorities shuffle and decryption.</p>
+<p>We create two votings, one with id 1 and another one with id 2, to
+have this separated in the test db.</p>
+<p>Then we compose the PublicKey of both auths.</p>
+<p>Then we encrypt the text with the PK and shuffle two times, once
+with each voting/auth.</p>
+<p>Then we decrypt with the first voting/auth and decrypt the result
+with the second voting/auth.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.tests.MixnetCase.test_multiple_auths_mock">
+<span class="sig-name descname"><span class="pre">test_multiple_auths_mock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/tests.html#MixnetCase.test_multiple_auths_mock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.tests.MixnetCase.test_multiple_auths_mock" title="Permalink to this definition">#</a></dt>
+<dd><p>Test case for emulating shuffle and decryption with multiple authorities using mocks.</p>
+<p>Similar to ‘test_multiple_auths’ but uses mocked data and settings.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.tests.MixnetCase.test_shuffle">
+<span class="sig-name descname"><span class="pre">test_shuffle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/tests.html#MixnetCase.test_shuffle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.tests.MixnetCase.test_shuffle" title="Permalink to this definition">#</a></dt>
+<dd><p>Test case for shuffling encrypted messages in Mixnet.</p>
+<p>Validates the shuffling functionality and ensures the shuffled messages are different from the original.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mixnet.tests.MixnetCase.test_shuffle2">
+<span class="sig-name descname"><span class="pre">test_shuffle2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mixnet/tests.html#MixnetCase.test_shuffle2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mixnet.tests.MixnetCase.test_shuffle2" title="Permalink to this definition">#</a></dt>
+<dd><p>Second test case for shuffling encrypted messages in Mixnet.</p>
+<p>Similar to ‘test_shuffle’ but includes additional public key parameter.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="auth.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Auth Module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="postproc.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Postproc Module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mixnet.models">models.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet"><code class="docutils literal notranslate"><span class="pre">Mixnet</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.voting_id"><code class="docutils literal notranslate"><span class="pre">Mixnet.voting_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.auth_position"><code class="docutils literal notranslate"><span class="pre">Mixnet.auth_position</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.auths"><code class="docutils literal notranslate"><span class="pre">Mixnet.auths</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.key"><code class="docutils literal notranslate"><span class="pre">Mixnet.key</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.pubkey"><code class="docutils literal notranslate"><span class="pre">Mixnet.pubkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Mixnet.DoesNotExist</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Mixnet.MultipleObjectsReturned</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Mixnet.auth_position</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">Mixnet.auths</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.chain_call"><code class="docutils literal notranslate"><span class="pre">Mixnet.chain_call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.decrypt"><code class="docutils literal notranslate"><span class="pre">Mixnet.decrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.gen_key"><code class="docutils literal notranslate"><span class="pre">Mixnet.gen_key()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.id"><code class="docutils literal notranslate"><span class="pre">Mixnet.id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Mixnet.key</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.key_id"><code class="docutils literal notranslate"><span class="pre">Mixnet.key_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.next_auths"><code class="docutils literal notranslate"><span class="pre">Mixnet.next_auths()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.objects"><code class="docutils literal notranslate"><span class="pre">Mixnet.objects</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Mixnet.pubkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.pubkey_id"><code class="docutils literal notranslate"><span class="pre">Mixnet.pubkey_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.models.Mixnet.shuffle"><code class="docutils literal notranslate"><span class="pre">Mixnet.shuffle()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">Mixnet.voting_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mixnet.mixcrypt">mixcrypt.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt"><code class="docutils literal notranslate"><span class="pre">MixCrypt</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.__init__"><code class="docutils literal notranslate"><span class="pre">MixCrypt.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.decrypt"><code class="docutils literal notranslate"><span class="pre">MixCrypt.decrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.encrypt"><code class="docutils literal notranslate"><span class="pre">MixCrypt.encrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.gen_perm"><code class="docutils literal notranslate"><span class="pre">MixCrypt.gen_perm()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.genk"><code class="docutils literal notranslate"><span class="pre">MixCrypt.genk()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.getk"><code class="docutils literal notranslate"><span class="pre">MixCrypt.getk()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.multiple_decrypt"><code class="docutils literal notranslate"><span class="pre">MixCrypt.multiple_decrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.reencrypt"><code class="docutils literal notranslate"><span class="pre">MixCrypt.reencrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.setk"><code class="docutils literal notranslate"><span class="pre">MixCrypt.setk()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.shuffle"><code class="docutils literal notranslate"><span class="pre">MixCrypt.shuffle()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.MixCrypt.shuffle_decrypt"><code class="docutils literal notranslate"><span class="pre">MixCrypt.shuffle_decrypt()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.gen_multiple_key"><code class="docutils literal notranslate"><span class="pre">gen_multiple_key()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.multiple_decrypt"><code class="docutils literal notranslate"><span class="pre">multiple_decrypt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.multiple_decrypt_shuffle"><code class="docutils literal notranslate"><span class="pre">multiple_decrypt_shuffle()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.multiple_decrypt_shuffle2"><code class="docutils literal notranslate"><span class="pre">multiple_decrypt_shuffle2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.mixcrypt.rand"><code class="docutils literal notranslate"><span class="pre">rand()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mixnet.views">views.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.Decrypt"><code class="docutils literal notranslate"><span class="pre">Decrypt</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.Decrypt.post"><code class="docutils literal notranslate"><span class="pre">Decrypt.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.MixnetViewSet"><code class="docutils literal notranslate"><span class="pre">MixnetViewSet</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.MixnetViewSet.create"><code class="docutils literal notranslate"><span class="pre">MixnetViewSet.create()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.MixnetViewSet.queryset"><code class="docutils literal notranslate"><span class="pre">MixnetViewSet.queryset</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.MixnetViewSet.serializer_class"><code class="docutils literal notranslate"><span class="pre">MixnetViewSet.serializer_class</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.Shuffle"><code class="docutils literal notranslate"><span class="pre">Shuffle</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.views.Shuffle.post"><code class="docutils literal notranslate"><span class="pre">Shuffle.post()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mixnet.tests">tests.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase"><code class="docutils literal notranslate"><span class="pre">MixnetCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.encrypt_msgs"><code class="docutils literal notranslate"><span class="pre">MixnetCase.encrypt_msgs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.setUp"><code class="docutils literal notranslate"><span class="pre">MixnetCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.tearDown"><code class="docutils literal notranslate"><span class="pre">MixnetCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.test_create"><code class="docutils literal notranslate"><span class="pre">MixnetCase.test_create()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.test_decrypt"><code class="docutils literal notranslate"><span class="pre">MixnetCase.test_decrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.test_multiple_auths"><code class="docutils literal notranslate"><span class="pre">MixnetCase.test_multiple_auths()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.test_multiple_auths_mock"><code class="docutils literal notranslate"><span class="pre">MixnetCase.test_multiple_auths_mock()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.test_shuffle"><code class="docutils literal notranslate"><span class="pre">MixnetCase.test_shuffle()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixnet.tests.MixnetCase.test_shuffle2"><code class="docutils literal notranslate"><span class="pre">MixnetCase.test_shuffle2()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandro Medina Durán, Gonzalo Campos Mejías
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Alejandro Medina Durán, Gonzalo Campos Mejías.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

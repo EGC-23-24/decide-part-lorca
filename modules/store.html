@@ -1,0 +1,1548 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Store Module &#8212; decide-part-lorca</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/store';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Visualizer Module" href="visualizer.html" />
+    <link rel="prev" title="Postproc Module" href="postproc.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">decide-part-lorca</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Welcome to decide’s documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Decide modules</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="booth.html">Booth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census.html">Census Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth.html">Auth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mixnet.html">Mixnet Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postproc.html">Postproc Module</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Store Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualizer.html">Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voting.html">Voting Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../memes.html">Memes collection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/edit/main/modules/store.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/issues/new?title=Issue%20on%20page%20%2Fmodules/store.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/modules/store.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Store Module</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-store.models">models.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote"><code class="docutils literal notranslate"><span class="pre">Vote</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.voting_id"><code class="docutils literal notranslate"><span class="pre">Vote.voting_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.voter_id"><code class="docutils literal notranslate"><span class="pre">Vote.voter_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.a"><code class="docutils literal notranslate"><span class="pre">Vote.a</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.b"><code class="docutils literal notranslate"><span class="pre">Vote.b</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.voted"><code class="docutils literal notranslate"><span class="pre">Vote.voted</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Vote.DoesNotExist</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Vote.MultipleObjectsReturned</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Vote.a</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">Vote.b</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.get_next_by_voted"><code class="docutils literal notranslate"><span class="pre">Vote.get_next_by_voted()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.get_previous_by_voted"><code class="docutils literal notranslate"><span class="pre">Vote.get_previous_by_voted()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.id"><code class="docutils literal notranslate"><span class="pre">Vote.id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.objects"><code class="docutils literal notranslate"><span class="pre">Vote.objects</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Vote.voted</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Vote.voter_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">Vote.voting_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-store.utils">utils.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.utils.choices_store"><code class="docutils literal notranslate"><span class="pre">choices_store()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.utils.classic_store"><code class="docutils literal notranslate"><span class="pre">classic_store()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-store.views">views.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView"><code class="docutils literal notranslate"><span class="pre">StoreView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView.queryset"><code class="docutils literal notranslate"><span class="pre">StoreView.queryset</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView.serializer_class"><code class="docutils literal notranslate"><span class="pre">StoreView.serializer_class</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView.filter_backends"><code class="docutils literal notranslate"><span class="pre">StoreView.filter_backends</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView.filterset_fields"><code class="docutils literal notranslate"><span class="pre">StoreView.filterset_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">StoreView.filter_backends</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">StoreView.filterset_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView.get"><code class="docutils literal notranslate"><span class="pre">StoreView.get()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView.post"><code class="docutils literal notranslate"><span class="pre">StoreView.post()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><code class="docutils literal notranslate"><span class="pre">StoreView.queryset</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><code class="docutils literal notranslate"><span class="pre">StoreView.serializer_class</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-store.tests">tests.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.question"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.question</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.question_choices"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.question_choices</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.voting"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.voting</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.voting_choices"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.voting_choices</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.gen_votes"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.gen_votes()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.gen_voting"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.gen_voting()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.get_or_create_user"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.get_or_create_user()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.setUp"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.tearDown"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_filter"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_filter()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_gen_vote_invalid"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_gen_vote_invalid()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.data"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_hasvote"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_hasvote()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_store_vote"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_store_vote()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.VOTING_PK"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.VOTING_PK</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.CTE_A"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.CTE_A</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.CTE_B"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.CTE_B</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_store_vote_choices"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_store_vote_choices()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.CTE_A</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.CTE_B</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_store_vote_text"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_store_vote_text()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.CTE_A</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.CTE_B</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_vote"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_vote()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_voting_invalid_type"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_voting_invalid_type()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_voting_status"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_voting_status()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.data</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.question"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.question</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.question_preference"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.question_preference</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.voting"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.voting</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.voting_preference"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.voting_preference</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.get_or_create_user"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.get_or_create_user()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.setUp"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.tearDown"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.test_store_vote_preference"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.test_store_vote_preference()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.test_voting_invalid_type"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.test_voting_invalid_type()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase"><code class="docutils literal notranslate"><span class="pre">StoreTextCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.question"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.question</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.question_text"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.question_text</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.voting"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.voting</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.voting_text"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.voting_text</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.get_or_create_user"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.get_or_create_user()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.setUp"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.tearDown"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.test_store_vote_text"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.test_store_vote_text()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.question"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.question</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.question_yesno"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.question_yesno</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.voting"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.voting</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.voting_yesno"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.voting_yesno</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.get_or_create_user"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.get_or_create_user()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.setUp"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.tearDown"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.test_store_vote_yesno"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.test_store_vote_yesno()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="store-module">
+<h1>Store Module<a class="headerlink" href="#store-module" title="Permalink to this heading">#</a></h1>
+<p>The Store module is part of the Decide application, handling aspects related to data storage and management. Below is the Sphinx documentation for its components.</p>
+<section id="module-store.models">
+<span id="models-py"></span><h2>models.py<a class="headerlink" href="#module-store.models" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="store.models.Vote">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.models.</span></span><span class="sig-name descname"><span class="pre">Vote</span></span><a class="reference internal" href="../_modules/store/models.html#Vote"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.models.Vote" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>A model representing a vote in a voting system.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Vote.voting_id">
+<span class="sig-name descname"><span class="pre">voting_id</span></span><a class="headerlink" href="#store.models.Vote.voting_id" title="Permalink to this definition">#</a></dt>
+<dd><p>The ID of the voting session this vote is associated with.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>PositiveIntegerField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Vote.voter_id">
+<span class="sig-name descname"><span class="pre">voter_id</span></span><a class="headerlink" href="#store.models.Vote.voter_id" title="Permalink to this definition">#</a></dt>
+<dd><p>The ID of the voter who cast this vote.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>PositiveIntegerField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Vote.a">
+<span class="sig-name descname"><span class="pre">a</span></span><a class="headerlink" href="#store.models.Vote.a" title="Permalink to this definition">#</a></dt>
+<dd><p>Encrypted data part A representing the vote.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BigBigField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Vote.b">
+<span class="sig-name descname"><span class="pre">b</span></span><a class="headerlink" href="#store.models.Vote.b" title="Permalink to this definition">#</a></dt>
+<dd><p>Encrypted data part B representing the vote.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BigBigField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Vote.voted">
+<span class="sig-name descname"><span class="pre">voted</span></span><a class="headerlink" href="#store.models.Vote.voted" title="Permalink to this definition">#</a></dt>
+<dd><p>The timestamp of when the vote was cast.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DateTimeField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="store.models.Vote.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#store.models.Vote.DoesNotExist" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="store.models.Vote.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#store.models.Vote.MultipleObjectsReturned" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">a</span></span><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">b</span></span><a class="headerlink" href="#id1" title="Permalink to this definition">#</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.models.Vote.get_next_by_voted">
+<span class="sig-name descname"><span class="pre">get_next_by_voted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">voted&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#store.models.Vote.get_next_by_voted" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.models.Vote.get_previous_by_voted">
+<span class="sig-name descname"><span class="pre">get_previous_by_voted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">voted&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#store.models.Vote.get_previous_by_voted" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Vote.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#store.models.Vote.id" title="Permalink to this definition">#</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Vote.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#store.models.Vote.objects" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">voted</span></span><a class="headerlink" href="#id2" title="Permalink to this definition">#</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">voter_id</span></span><a class="headerlink" href="#id3" title="Permalink to this definition">#</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">voting_id</span></span><a class="headerlink" href="#id4" title="Permalink to this definition">#</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-store.utils">
+<span id="utils-py"></span><h2>utils.py<a class="headerlink" href="#module-store.utils" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="store.utils.choices_store">
+<span class="sig-prename descclassname"><span class="pre">store.utils.</span></span><span class="sig-name descname"><span class="pre">choices_store</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/utils.html#choices_store"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.utils.choices_store" title="Permalink to this definition">#</a></dt>
+<dd><p>Processes and stores votes for a voting of type ‘choices’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – Django HttpRequest object containing votes data.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>The request should contain:</dt><dd><ul class="simple">
+<li><p>voting (int): The ID of the voting.</p></li>
+<li><p>voter (int): The ID of the voter.</p></li>
+<li><p>votes (list): A list of dictionaries, each containing the ‘a’ and ‘b’ keys representing individual encrypted votes.</p></li>
+<li><p>voting_type (str): A string representing the type of voting (‘choices’).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HTTP status code indicating the result of the operation.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>HTTP_401_UNAUTHORIZED</strong> – If the voting is not found, or has not started, or is closed.</p></li>
+<li><p><strong>HTTP_400_BAD_REQUEST</strong> – If the voting ID, voter ID, or votes data is missing or invalid.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="store.utils.classic_store">
+<span class="sig-prename descclassname"><span class="pre">store.utils.</span></span><span class="sig-name descname"><span class="pre">classic_store</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/utils.html#classic_store"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.utils.classic_store" title="Permalink to this definition">#</a></dt>
+<dd><p>Processes and stores a classic type vote.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – Django HttpRequest object containing vote data.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>The request should contain:</dt><dd><ul class="simple">
+<li><p>voting (int): The ID of the voting.</p></li>
+<li><p>voter (int): The ID of the voter.</p></li>
+<li><p>vote (dict): A dictionary containing the ‘a’ and ‘b’ keys representing the encrypted vote.</p></li>
+<li><p>voting_type (str): A string representing the type of voting (‘yesno’, ‘classic’, ‘comment’, ‘preference’).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HTTP status code indicating the result of the operation.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>HTTP_401_UNAUTHORIZED</strong> – If the voting is not found, or has not started, or is closed.</p></li>
+<li><p><strong>HTTP_400_BAD_REQUEST</strong> – If the voting ID, voter ID, or vote data is missing or invalid.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-store.views">
+<span id="views-py"></span><h2>views.py<a class="headerlink" href="#module-store.views" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="store.views.StoreView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.views.</span></span><span class="sig-name descname"><span class="pre">StoreView</span></span><a class="reference internal" href="../_modules/store/views.html#StoreView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.views.StoreView" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListAPIView</span></code></p>
+<p>API view for listing and creating votes.</p>
+<p>Inherits from Django Rest Framework’s ListAPIView to provide a method for listing existing votes
+and a method for creating new votes based on the voting type.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.views.StoreView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><a class="headerlink" href="#store.views.StoreView.queryset" title="Permalink to this definition">#</a></dt>
+<dd><p>A queryset that includes all Vote objects.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.views.StoreView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#store.views.StoreView.serializer_class" title="Permalink to this definition">#</a></dt>
+<dd><p>Serializer class used to serialize Vote objects.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.views.StoreView.filter_backends">
+<span class="sig-name descname"><span class="pre">filter_backends</span></span><a class="headerlink" href="#store.views.StoreView.filter_backends" title="Permalink to this definition">#</a></dt>
+<dd><p>Set of filter backends to be used for the queryset.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.views.StoreView.filterset_fields">
+<span class="sig-name descname"><span class="pre">filterset_fields</span></span><a class="headerlink" href="#store.views.StoreView.filterset_fields" title="Permalink to this definition">#</a></dt>
+<dd><p>Fields of the Vote model that can be filtered.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">filter_backends</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'django_filters.rest_framework.backends.DjangoFilterBackend'&gt;,)</span></em><a class="headerlink" href="#id5" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">filterset_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('voting_id',</span> <span class="pre">'voter_id')</span></em><a class="headerlink" href="#id6" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.views.StoreView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/views.html#StoreView.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.views.StoreView.get" title="Permalink to this definition">#</a></dt>
+<dd><p>Handles GET requests to retrieve a list of votes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – HttpRequest object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Response object containing serialized Vote data.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>PermissionDenied</strong> – If the user is not staff.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.views.StoreView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/views.html#StoreView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.views.StoreView.post" title="Permalink to this definition">#</a></dt>
+<dd><p>Handles POST requests to create a new vote based on the voting type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – HttpRequest object containing voting_type and vote data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Response object with an HTTP status code.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>HTTP_400_BAD_REQUEST</strong> – If voting_type is not in the predefined voting types.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">queryset</span></span><a class="headerlink" href="#id7" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#id8" title="Permalink to this definition">#</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">VoteSerializer</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-store.tests">
+<span id="tests-py"></span><h2>tests.py<a class="headerlink" href="#module-store.tests" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">StoreChoiceCase</span></span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTestCase</span></code></p>
+<p>Test case for storing votes with choices.</p>
+<p>This class tests the functionality of storing votes for different types of voting,
+including classic, choices, text, yes/no, and preference types.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.question">
+<span class="sig-name descname"><span class="pre">question</span></span><a class="headerlink" href="#store.tests.StoreChoiceCase.question" title="Permalink to this definition">#</a></dt>
+<dd><p>A Question object for classic type voting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Question" title="voting.models.Question">Question</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.question_choices">
+<span class="sig-name descname"><span class="pre">question_choices</span></span><a class="headerlink" href="#store.tests.StoreChoiceCase.question_choices" title="Permalink to this definition">#</a></dt>
+<dd><p>A Question object for multiple choices type voting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Question" title="voting.models.Question">Question</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.voting">
+<span class="sig-name descname"><span class="pre">voting</span></span><a class="headerlink" href="#store.tests.StoreChoiceCase.voting" title="Permalink to this definition">#</a></dt>
+<dd><p>A Voting object for classic type voting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Voting" title="voting.models.Voting">Voting</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.voting_choices">
+<span class="sig-name descname"><span class="pre">voting_choices</span></span><a class="headerlink" href="#store.tests.StoreChoiceCase.voting_choices" title="Permalink to this definition">#</a></dt>
+<dd><p>A Voting object for multiple choices type voting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Voting" title="voting.models.Voting">Voting</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.gen_votes">
+<span class="sig-name descname"><span class="pre">gen_votes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.gen_votes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.gen_votes" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate random votes for testing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple containing lists of generated voting IDs and user IDs.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.gen_voting">
+<span class="sig-name descname"><span class="pre">gen_voting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.gen_voting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.gen_voting" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate a voting object for testing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pk</strong> (<em>int</em>) – Primary key for the voting object.</p>
+</dd>
+</dl>
+<p>Creates a Voting object with specified primary key and saves it to the database.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.get_or_create_user">
+<span class="sig-name descname"><span class="pre">get_or_create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.get_or_create_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.get_or_create_user" title="Permalink to this definition">#</a></dt>
+<dd><p>Get an existing user or create a new one for testing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pk</strong> (<em>int</em>) – Primary key of the user.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The fetched or created User object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>User</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up necessary objects for testing.</p>
+<p>Creates Question and Voting objects for both classic and multiple choices type voting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.tearDown" title="Permalink to this definition">#</a></dt>
+<dd><p>Clean up after tests.</p>
+<p>Clears the created objects to ensure isolation of tests.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.test_filter">
+<span class="sig-name descname"><span class="pre">test_filter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.test_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.test_filter" title="Permalink to this definition">#</a></dt>
+<dd><p>Test case for filtering votes.</p>
+<p>This method generates votes and then tests filtering them by voting_id and voter_id via GET requests, verifying the response status codes and content.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.test_gen_vote_invalid">
+<span class="sig-name descname"><span class="pre">test_gen_vote_invalid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.test_gen_vote_invalid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.test_gen_vote_invalid" title="Permalink to this definition">#</a></dt>
+<dd><p>Test case for generating an invalid vote.</p>
+<p>This method sends a POST request with invalid vote data and expects to receive a 401 Unauthorized status code.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.data">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#store.tests.StoreChoiceCase.data" title="Permalink to this definition">#</a></dt>
+<dd><p>A dictionary containing the invalid vote data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.test_hasvote">
+<span class="sig-name descname"><span class="pre">test_hasvote</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.test_hasvote"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.test_hasvote" title="Permalink to this definition">#</a></dt>
+<dd><p>Test case for checking if a specific vote exists.</p>
+<p>This method tests the existence of a specific vote by voter_id and voting_id, verifying the response status codes and content.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.test_store_vote">
+<span class="sig-name descname"><span class="pre">test_store_vote</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.test_store_vote"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.test_store_vote" title="Permalink to this definition">#</a></dt>
+<dd><p>Test case for storing a valid vote.</p>
+<p>This method creates a voting instance and a user, then sends a POST request to store a vote and expects to receive a 200 OK status code. It also checks the count and content of the Vote objects in the database to ensure the vote is stored correctly.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.VOTING_PK">
+<span class="sig-name descname"><span class="pre">VOTING_PK</span></span><a class="headerlink" href="#store.tests.StoreChoiceCase.VOTING_PK" title="Permalink to this definition">#</a></dt>
+<dd><p>Primary key for the voting instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.CTE_A">
+<span class="sig-name descname"><span class="pre">CTE_A</span></span><a class="headerlink" href="#store.tests.StoreChoiceCase.CTE_A" title="Permalink to this definition">#</a></dt>
+<dd><p>Test constant for ‘a’ field in vote.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.CTE_B">
+<span class="sig-name descname"><span class="pre">CTE_B</span></span><a class="headerlink" href="#store.tests.StoreChoiceCase.CTE_B" title="Permalink to this definition">#</a></dt>
+<dd><p>Test constant for ‘b’ field in vote.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#id9" title="Permalink to this definition">#</a></dt>
+<dd><p>A dictionary containing the vote data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.test_store_vote_choices">
+<span class="sig-name descname"><span class="pre">test_store_vote_choices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.test_store_vote_choices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.test_store_vote_choices" title="Permalink to this definition">#</a></dt>
+<dd><p>Test case for storing multiple choice votes.</p>
+<p>This method tests the storage of multiple choice votes by creating relevant data, sending a POST request, and verifying the response and database records.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">CTE_A</span></span><a class="headerlink" href="#id10" title="Permalink to this definition">#</a></dt>
+<dd><p>Test constant for ‘a’ field in vote.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id11">
+<span class="sig-name descname"><span class="pre">CTE_B</span></span><a class="headerlink" href="#id11" title="Permalink to this definition">#</a></dt>
+<dd><p>Test constant for ‘b’ field in vote.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id12">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#id12" title="Permalink to this definition">#</a></dt>
+<dd><p>A dictionary containing multiple votes data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.test_store_vote_text">
+<span class="sig-name descname"><span class="pre">test_store_vote_text</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.test_store_vote_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.test_store_vote_text" title="Permalink to this definition">#</a></dt>
+<dd><p>Test case for storing a text vote.</p>
+<p>This method tests storing a text-based vote by creating relevant data, sending a POST request, and verifying the response and database records.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id13">
+<span class="sig-name descname"><span class="pre">CTE_A</span></span><a class="headerlink" href="#id13" title="Permalink to this definition">#</a></dt>
+<dd><p>Test constant for ‘a’ field in vote.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id14">
+<span class="sig-name descname"><span class="pre">CTE_B</span></span><a class="headerlink" href="#id14" title="Permalink to this definition">#</a></dt>
+<dd><p>Test constant for ‘b’ field in vote.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id15">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#id15" title="Permalink to this definition">#</a></dt>
+<dd><p>A dictionary containing the text vote data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.test_vote">
+<span class="sig-name descname"><span class="pre">test_vote</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.test_vote"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.test_vote" title="Permalink to this definition">#</a></dt>
+<dd><p>Test case for retrieving stored votes.</p>
+<p>This method generates votes and then tests retrieving them via GET requests, verifying the response status codes and content.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.test_voting_invalid_type">
+<span class="sig-name descname"><span class="pre">test_voting_invalid_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.test_voting_invalid_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.test_voting_invalid_type" title="Permalink to this definition">#</a></dt>
+<dd><p>Test case for retrieving stored votes.</p>
+<p>This method generates votes and then tests retrieving them via GET requests, verifying the response status codes and content.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreChoiceCase.test_voting_status">
+<span class="sig-name descname"><span class="pre">test_voting_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreChoiceCase.test_voting_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreChoiceCase.test_voting_status" title="Permalink to this definition">#</a></dt>
+<dd><p>Test case for verifying voting status during vote storage.</p>
+<p>This method checks the response status code when attempting to store a vote based on the voting’s opening and closing status.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id16">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#id16" title="Permalink to this definition">#</a></dt>
+<dd><p>A dictionary containing the vote data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.StorePreferenceCase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">StorePreferenceCase</span></span><a class="reference internal" href="../_modules/store/tests.html#StorePreferenceCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StorePreferenceCase" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTestCase</span></code></p>
+<p>Test case for storing preference-type votes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StorePreferenceCase.question">
+<span class="sig-name descname"><span class="pre">question</span></span><a class="headerlink" href="#store.tests.StorePreferenceCase.question" title="Permalink to this definition">#</a></dt>
+<dd><p>A classic question instance for the test.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Question" title="voting.models.Question">Question</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StorePreferenceCase.question_preference">
+<span class="sig-name descname"><span class="pre">question_preference</span></span><a class="headerlink" href="#store.tests.StorePreferenceCase.question_preference" title="Permalink to this definition">#</a></dt>
+<dd><p>A preference-type question instance for the test.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Question" title="voting.models.Question">Question</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StorePreferenceCase.voting">
+<span class="sig-name descname"><span class="pre">voting</span></span><a class="headerlink" href="#store.tests.StorePreferenceCase.voting" title="Permalink to this definition">#</a></dt>
+<dd><p>A voting instance associated with the classic question.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Voting" title="voting.models.Voting">Voting</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StorePreferenceCase.voting_preference">
+<span class="sig-name descname"><span class="pre">voting_preference</span></span><a class="headerlink" href="#store.tests.StorePreferenceCase.voting_preference" title="Permalink to this definition">#</a></dt>
+<dd><p>A voting instance associated with the preference-type question.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Voting" title="voting.models.Voting">Voting</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StorePreferenceCase.get_or_create_user">
+<span class="sig-name descname"><span class="pre">get_or_create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StorePreferenceCase.get_or_create_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StorePreferenceCase.get_or_create_user" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StorePreferenceCase.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StorePreferenceCase.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StorePreferenceCase.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up method to initialize test data before each test is run.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StorePreferenceCase.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StorePreferenceCase.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StorePreferenceCase.tearDown" title="Permalink to this definition">#</a></dt>
+<dd><p>Tear down method to clean up after each test is run.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StorePreferenceCase.test_store_vote_preference">
+<span class="sig-name descname"><span class="pre">test_store_vote_preference</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StorePreferenceCase.test_store_vote_preference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StorePreferenceCase.test_store_vote_preference" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests the storage of a preference-type vote.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StorePreferenceCase.test_voting_invalid_type">
+<span class="sig-name descname"><span class="pre">test_voting_invalid_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StorePreferenceCase.test_voting_invalid_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StorePreferenceCase.test_voting_invalid_type" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests the behavior when attempting to store a vote with an invalid voting type.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.StoreTextCase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">StoreTextCase</span></span><a class="reference internal" href="../_modules/store/tests.html#StoreTextCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreTextCase" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTestCase</span></code></p>
+<p>Test case for storing text-type votes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreTextCase.question">
+<span class="sig-name descname"><span class="pre">question</span></span><a class="headerlink" href="#store.tests.StoreTextCase.question" title="Permalink to this definition">#</a></dt>
+<dd><p>A classic question instance for the test.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Question" title="voting.models.Question">Question</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreTextCase.question_text">
+<span class="sig-name descname"><span class="pre">question_text</span></span><a class="headerlink" href="#store.tests.StoreTextCase.question_text" title="Permalink to this definition">#</a></dt>
+<dd><p>A text-type question instance for the test.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Question" title="voting.models.Question">Question</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreTextCase.voting">
+<span class="sig-name descname"><span class="pre">voting</span></span><a class="headerlink" href="#store.tests.StoreTextCase.voting" title="Permalink to this definition">#</a></dt>
+<dd><p>A voting instance associated with the classic question.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Voting" title="voting.models.Voting">Voting</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreTextCase.voting_text">
+<span class="sig-name descname"><span class="pre">voting_text</span></span><a class="headerlink" href="#store.tests.StoreTextCase.voting_text" title="Permalink to this definition">#</a></dt>
+<dd><p>A voting instance associated with the text-type question.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Voting" title="voting.models.Voting">Voting</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreTextCase.get_or_create_user">
+<span class="sig-name descname"><span class="pre">get_or_create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreTextCase.get_or_create_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreTextCase.get_or_create_user" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieves or creates a user for the given primary key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pk</strong> (<em>int</em>) – The primary key of the user.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The retrieved or created user.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>User</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreTextCase.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreTextCase.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreTextCase.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up method to initialize test data before each test is run.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreTextCase.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreTextCase.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreTextCase.tearDown" title="Permalink to this definition">#</a></dt>
+<dd><p>Tear down method to clean up after each test is run.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreTextCase.test_store_vote_text">
+<span class="sig-name descname"><span class="pre">test_store_vote_text</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreTextCase.test_store_vote_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreTextCase.test_store_vote_text" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests the storage of a text-type vote.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.StoreYesNoCase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">StoreYesNoCase</span></span><a class="reference internal" href="../_modules/store/tests.html#StoreYesNoCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreYesNoCase" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTestCase</span></code></p>
+<p>Test case for storing yes/no-type votes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreYesNoCase.question">
+<span class="sig-name descname"><span class="pre">question</span></span><a class="headerlink" href="#store.tests.StoreYesNoCase.question" title="Permalink to this definition">#</a></dt>
+<dd><p>A classic question instance for the test.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Question" title="voting.models.Question">Question</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreYesNoCase.question_yesno">
+<span class="sig-name descname"><span class="pre">question_yesno</span></span><a class="headerlink" href="#store.tests.StoreYesNoCase.question_yesno" title="Permalink to this definition">#</a></dt>
+<dd><p>A yes/no-type question instance for the test.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Question" title="voting.models.Question">Question</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreYesNoCase.voting">
+<span class="sig-name descname"><span class="pre">voting</span></span><a class="headerlink" href="#store.tests.StoreYesNoCase.voting" title="Permalink to this definition">#</a></dt>
+<dd><p>A voting instance associated with the classic question.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Voting" title="voting.models.Voting">Voting</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.tests.StoreYesNoCase.voting_yesno">
+<span class="sig-name descname"><span class="pre">voting_yesno</span></span><a class="headerlink" href="#store.tests.StoreYesNoCase.voting_yesno" title="Permalink to this definition">#</a></dt>
+<dd><p>A voting instance associated with the yes/no-type question.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="voting.html#voting.models.Voting" title="voting.models.Voting">Voting</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreYesNoCase.get_or_create_user">
+<span class="sig-name descname"><span class="pre">get_or_create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreYesNoCase.get_or_create_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreYesNoCase.get_or_create_user" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreYesNoCase.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreYesNoCase.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreYesNoCase.setUp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up method to initialize test data before each test is run.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreYesNoCase.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreYesNoCase.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreYesNoCase.tearDown" title="Permalink to this definition">#</a></dt>
+<dd><p>Tear down method to clean up after each test is run.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.StoreYesNoCase.test_store_vote_yesno">
+<span class="sig-name descname"><span class="pre">test_store_vote_yesno</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/store/tests.html#StoreYesNoCase.test_store_vote_yesno"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.StoreYesNoCase.test_store_vote_yesno" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests the storage of a yes/no-type vote.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="postproc.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Postproc Module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="visualizer.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visualizer Module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-store.models">models.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote"><code class="docutils literal notranslate"><span class="pre">Vote</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.voting_id"><code class="docutils literal notranslate"><span class="pre">Vote.voting_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.voter_id"><code class="docutils literal notranslate"><span class="pre">Vote.voter_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.a"><code class="docutils literal notranslate"><span class="pre">Vote.a</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.b"><code class="docutils literal notranslate"><span class="pre">Vote.b</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.voted"><code class="docutils literal notranslate"><span class="pre">Vote.voted</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Vote.DoesNotExist</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Vote.MultipleObjectsReturned</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Vote.a</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">Vote.b</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.get_next_by_voted"><code class="docutils literal notranslate"><span class="pre">Vote.get_next_by_voted()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.get_previous_by_voted"><code class="docutils literal notranslate"><span class="pre">Vote.get_previous_by_voted()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.id"><code class="docutils literal notranslate"><span class="pre">Vote.id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.models.Vote.objects"><code class="docutils literal notranslate"><span class="pre">Vote.objects</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Vote.voted</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Vote.voter_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">Vote.voting_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-store.utils">utils.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.utils.choices_store"><code class="docutils literal notranslate"><span class="pre">choices_store()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.utils.classic_store"><code class="docutils literal notranslate"><span class="pre">classic_store()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-store.views">views.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView"><code class="docutils literal notranslate"><span class="pre">StoreView</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView.queryset"><code class="docutils literal notranslate"><span class="pre">StoreView.queryset</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView.serializer_class"><code class="docutils literal notranslate"><span class="pre">StoreView.serializer_class</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView.filter_backends"><code class="docutils literal notranslate"><span class="pre">StoreView.filter_backends</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView.filterset_fields"><code class="docutils literal notranslate"><span class="pre">StoreView.filterset_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">StoreView.filter_backends</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">StoreView.filterset_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView.get"><code class="docutils literal notranslate"><span class="pre">StoreView.get()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.views.StoreView.post"><code class="docutils literal notranslate"><span class="pre">StoreView.post()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><code class="docutils literal notranslate"><span class="pre">StoreView.queryset</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><code class="docutils literal notranslate"><span class="pre">StoreView.serializer_class</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-store.tests">tests.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.question"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.question</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.question_choices"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.question_choices</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.voting"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.voting</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.voting_choices"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.voting_choices</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.gen_votes"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.gen_votes()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.gen_voting"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.gen_voting()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.get_or_create_user"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.get_or_create_user()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.setUp"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.tearDown"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_filter"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_filter()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_gen_vote_invalid"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_gen_vote_invalid()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.data"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_hasvote"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_hasvote()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_store_vote"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_store_vote()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.VOTING_PK"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.VOTING_PK</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.CTE_A"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.CTE_A</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.CTE_B"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.CTE_B</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_store_vote_choices"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_store_vote_choices()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.CTE_A</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.CTE_B</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_store_vote_text"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_store_vote_text()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.CTE_A</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.CTE_B</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_vote"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_vote()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_voting_invalid_type"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_voting_invalid_type()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreChoiceCase.test_voting_status"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.test_voting_status()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><code class="docutils literal notranslate"><span class="pre">StoreChoiceCase.data</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.question"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.question</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.question_preference"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.question_preference</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.voting"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.voting</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.voting_preference"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.voting_preference</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.get_or_create_user"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.get_or_create_user()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.setUp"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.tearDown"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.test_store_vote_preference"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.test_store_vote_preference()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StorePreferenceCase.test_voting_invalid_type"><code class="docutils literal notranslate"><span class="pre">StorePreferenceCase.test_voting_invalid_type()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase"><code class="docutils literal notranslate"><span class="pre">StoreTextCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.question"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.question</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.question_text"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.question_text</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.voting"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.voting</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.voting_text"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.voting_text</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.get_or_create_user"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.get_or_create_user()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.setUp"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.tearDown"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreTextCase.test_store_vote_text"><code class="docutils literal notranslate"><span class="pre">StoreTextCase.test_store_vote_text()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.question"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.question</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.question_yesno"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.question_yesno</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.voting"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.voting</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.voting_yesno"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.voting_yesno</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.get_or_create_user"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.get_or_create_user()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.setUp"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.tearDown"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.tearDown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#store.tests.StoreYesNoCase.test_store_vote_yesno"><code class="docutils literal notranslate"><span class="pre">StoreYesNoCase.test_store_vote_yesno()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandro Medina Durán, Gonzalo Campos Mejías
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Alejandro Medina Durán, Gonzalo Campos Mejías.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

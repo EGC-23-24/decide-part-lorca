@@ -1,0 +1,1574 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>census.tests &#8212; decide-part-lorca</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/census/tests';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">decide-part-lorca</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Welcome to decide’s documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/index.html">Decide modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/booth.html">Booth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/census.html">Census Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/auth.html">Auth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/mixnet.html">Mixnet Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/postproc.html">Postproc Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/store.html">Store Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/visualizer.html">Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/voting.html">Voting Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../memes.html">Memes collection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/issues/new?title=Issue%20on%20page%20%2F_modules/census/tests.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for census.tests</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
+<span class="kn">from</span> <span class="nn">django.contrib.staticfiles.testing</span> <span class="kn">import</span> <span class="n">StaticLiveServerTestCase</span>
+<span class="kn">from</span> <span class="nn">openpyxl</span> <span class="kn">import</span> <span class="n">load_workbook</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span> <span class="nn">openpyxl</span> <span class="kn">import</span> <span class="n">Workbook</span>
+<span class="kn">from</span> <span class="nn">django.core.files.uploadedfile</span> <span class="kn">import</span> <span class="n">SimpleUploadedFile</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Census</span>
+<span class="kn">from</span> <span class="nn">voting.models</span> <span class="kn">import</span> <span class="n">Voting</span><span class="p">,</span> <span class="n">Question</span><span class="p">,</span> <span class="n">QuestionOption</span>
+<span class="kn">from</span> <span class="nn">base.models</span> <span class="kn">import</span> <span class="n">Auth</span>
+<span class="kn">from</span> <span class="nn">base.tests</span> <span class="kn">import</span> <span class="n">BaseTestCase</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+
+<div class="viewcode-block" id="CensusTestCase"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase">[docs]</a><span class="k">class</span> <span class="nc">CensusTestCase</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test case for census-related operations.</span>
+
+<span class="sd">    This class inherits from TestCase and provides test methods for creating, </span>
+<span class="sd">    validating, and deleting census records.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+<div class="viewcode-block" id="CensusTestCase.setUp"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set up the test environment before each test method.</span>
+
+<span class="sd">        Creates a voting instance, a user, and a census record.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un censo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_create_census"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_create_census">[docs]</a>    <span class="k">def</span> <span class="nf">test_create_census</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the creation of a census record.</span>
+
+<span class="sd">        Validates that the census record is correctly created and its attributes </span>
+<span class="sd">        match the expected values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un censo</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="c1"># Comprobar que se ha creado correctamente</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">census</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">census</span><span class="o">.</span><span class="n">voter_id</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">voter_id</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_create_census_invalid_voting_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_create_census_invalid_voting_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_create_census_invalid_voting_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the creation of a census record with an invalid voting ID.</span>
+
+<span class="sd">        Expects a ValueError when trying to create a census with an invalid voting ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="c1"># Crear un censo</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span>  <span class="c1"># This should raise a ValidationError exception</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_create_census_invalid_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_create_census_invalid_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_create_census_invalid_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the creation of a census record with an invalid voter ID.</span>
+
+<span class="sd">        Expects a ValueError when trying to create a census with an invalid voter ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="c1"># Attempt to create a census with an invalid voter_id</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span><span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_create_census_invalid_voting_id_and_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_create_census_invalid_voting_id_and_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_create_census_invalid_voting_id_and_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the creation of a census record with both invalid voting and voter IDs.</span>
+
+<span class="sd">        Expects a ValueError when trying to create a census with invalid voting and </span>
+<span class="sd">        voter IDs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="c1"># Attempt to create a census with an invalid voting_id and voter_id</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span>
+            <span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_delete_census"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_delete_census">[docs]</a>    <span class="k">def</span> <span class="nf">test_delete_census</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the deletion of a census record.</span>
+
+<span class="sd">        Validates that the census record is successfully deleted and no longer exists </span>
+<span class="sd">        in the database.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Delete any existing Census objects to avoid IntegrityError</span>
+        <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Create a Census object to delete</span>
+        <span class="n">census_to_delete</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="c1"># Define the URL and the data</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;census_deleted&quot;</span><span class="p">)</span>  <span class="c1"># replace with your URL name</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;voting_id&quot;</span><span class="p">:</span> <span class="n">census_to_delete</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span>
+            <span class="s2">&quot;voter_id&quot;</span><span class="p">:</span> <span class="n">census_to_delete</span><span class="o">.</span><span class="n">voter_id</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Make the POST request</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">follow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Check the status code and the response data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span>
+            <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="n">census_to_delete</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">census_to_delete</span><span class="o">.</span><span class="n">voter_id</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_delete_census_invalid_voting_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_delete_census_invalid_voting_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_delete_census_invalid_voting_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the deletion of a census record with an invalid voting ID.</span>
+
+<span class="sd">        Expects a ValueError when trying to delete a census with an invalid voting ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="c1"># Attempt to delete a census with an invalid voting_id</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_delete_census_invalid_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_delete_census_invalid_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_delete_census_invalid_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the deletion of a census record with an invalid voter ID.</span>
+
+<span class="sd">        Expects a ValueError when trying to delete a census with an invalid voter ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="c1"># Attempt to delete a census with an invalid voter_id</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span><span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_delete_census_invalid_voting_id_and_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_delete_census_invalid_voting_id_and_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_delete_census_invalid_voting_id_and_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the deletion of a census record with both invalid voting and voter IDs.</span>
+
+<span class="sd">        Expects a ValueError when trying to delete a census with invalid voting and </span>
+<span class="sd">        voter IDs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="c1"># Attempt to delete a census with an invalid voting_id and voter_id</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span>
+            <span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_list_census"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_list_census">[docs]</a>    <span class="k">def</span> <span class="nf">test_list_census</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test listing of all census records.</span>
+
+<span class="sd">        Validates that the census records can be retrieved and their attributes match </span>
+<span class="sd">        the expected values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Eliminar todos los objetos Census existentes</span>
+        <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Agregar el votante al censo</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Define the URL and the data</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;census_list&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Make the POST request</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">follow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Check the status code and the response data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Comprobar que el voting_id del objeto Census es el correcto</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">voter_id</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_list_census_invalid_voting_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_list_census_invalid_voting_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_list_census_invalid_voting_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test listing of census records with an invalid voting ID.</span>
+
+<span class="sd">        Expects a ValueError when trying to list census records with an invalid voting ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="c1"># Attempt to list a census with an invalid voting_id</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_list_census_invalid_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_list_census_invalid_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_list_census_invalid_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test listing of census records with an invalid voter ID.</span>
+
+<span class="sd">        Expects a ValueError when trying to list census records with an invalid voter ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="c1"># Attempt to list a census with an invalid voter_id</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span><span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_list_census_invalid_voting_id_and_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_list_census_invalid_voting_id_and_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_list_census_invalid_voting_id_and_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test listing of census records with both invalid voting and voter IDs.</span>
+
+<span class="sd">        Expects a ValueError when trying to list census records with invalid voting and </span>
+<span class="sd">        voter IDs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="c1"># Attempt to list a census with an invalid voting_id and voter_id</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span>
+            <span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_get_census"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_get_census">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_census</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test retrieval of a specific census record.</span>
+
+<span class="sd">        Validates that a specific census record can be retrieved and its attributes match </span>
+<span class="sd">        the expected values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Eliminar todos los objetos Census existentes</span>
+        <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Agregar el votante al censo</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Define the URL and the data</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;census_details&quot;</span><span class="p">)</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">census</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+        <span class="c1"># Make the POST request</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># Check the status code and the response data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">latest</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">voter_id</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_get_census_invalid_voting_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_get_census_invalid_voting_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_census_invalid_voting_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test retrieval of a census record with an invalid voting ID.</span>
+
+<span class="sd">        Expects a ValueError when trying to retrieve a census record with an invalid </span>
+<span class="sd">        voting ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="c1"># Attempt to get a census with an invalid voting_id</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_get_census_invalid_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_get_census_invalid_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_census_invalid_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test retrieval of a census record with an invalid voter ID.</span>
+
+<span class="sd">        Expects a ValueError when trying to retrieve a census record with an invalid </span>
+<span class="sd">        voter ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="c1"># Attempt to get a census with an invalid voter_id</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span><span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_get_census_invalid_voting_id_and_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_get_census_invalid_voting_id_and_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_census_invalid_voting_id_and_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test retrieval of a census record with both invalid voting and voter IDs.</span>
+
+<span class="sd">        Expects a ValueError when trying to retrieve a census record with invalid </span>
+<span class="sd">        voting and voter IDs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="c1"># Attempt to get a census with an invalid voting_id and voter_id</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span>
+            <span class="p">)</span>
+            <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.tearDown"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tear down the test environment after each test method.</span>
+
+<span class="sd">        Cleans up any created test data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">census</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_check_vote_permissions"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_check_vote_permissions">[docs]</a>    <span class="k">def</span> <span class="nf">test_check_vote_permissions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test to check voting permissions for a user.</span>
+
+<span class="sd">        Validates that a user has permission to vote in a specific voting.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Autorizar al votante para votar</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s2">&quot;/census/</span><span class="si">{}</span><span class="s2">/?voter_id=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;json&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="s2">&quot;Valid voter&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_list_voting"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_list_voting">[docs]</a>    <span class="k">def</span> <span class="nf">test_list_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test listing all votings.</span>
+
+<span class="sd">        Validates that all votings can be listed and their attributes match the </span>
+<span class="sd">        expected values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un censo</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/census/?voting_id=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="p">{</span><span class="s2">&quot;voters&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">]})</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_add_new_voters_conflict"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_add_new_voters_conflict">[docs]</a>    <span class="k">def</span> <span class="nf">test_add_new_voters_conflict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test adding new voters to a voting when there&#39;s a conflict.</span>
+
+<span class="sd">        Validates the behavior when adding a voter who no longer exists.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un censo</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="c1"># Borrar el votante</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;voting_id&quot;</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;voters&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">]}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/census/&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">409</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_add_new_voters"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_add_new_voters">[docs]</a>    <span class="k">def</span> <span class="nf">test_add_new_voters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test adding new voters to a voting.</span>
+
+<span class="sd">        Validates that new voters can be added to a voting successfully.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter2&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;voting_id&quot;</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;voters&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">]}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/census/&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">201</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voters&quot;</span><span class="p">)),</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusTestCase.test_destroy_voter"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_destroy_voter">[docs]</a>    <span class="k">def</span> <span class="nf">test_destroy_voter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test destroying a voter in a voting.</span>
+
+<span class="sd">        Validates that a voter can be removed from a voting successfully.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Eliminar todos los objetos Census existentes</span>
+        <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+        <span class="c1"># Crear un votante</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Crear una votación</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Agregar el votante al censo</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="n">census_to_delete</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">deletion</span> <span class="o">=</span> <span class="n">census_to_delete</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">deletion</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Comprobar que se eliminó un objeto</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+        <span class="p">)</span>  <span class="c1"># Comprobar que no hay objetos Census</span></div></div>
+
+
+<div class="viewcode-block" id="CensusTest"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest">[docs]</a><span class="k">class</span> <span class="nc">CensusTest</span><span class="p">(</span><span class="n">StaticLiveServerTestCase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test case for census creation using Selenium and a live server.</span>
+
+<span class="sd">    This class inherits from StaticLiveServerTestCase to provide a test environment</span>
+<span class="sd">    for web-based interactions using Selenium WebDriver.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+<div class="viewcode-block" id="CensusTest.setUp"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set up the test environment before each test method.</span>
+
+<span class="sd">        Initializes the WebDriver and sets up the base test environment.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Load base test functionality for decide</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="n">BaseTestCase</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+
+        <span class="n">options</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">ChromeOptions</span><span class="p">()</span>
+        <span class="n">options</span><span class="o">.</span><span class="n">headless</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTest.tearDown"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tear down the test environment after each test method.</span>
+
+<span class="sd">        Closes the WebDriver and tears down the base test environment.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusTest.createCensusSuccess"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest.createCensusSuccess">[docs]</a>    <span class="k">def</span> <span class="nf">createCensusSuccess</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the successful creation of a census entry in the admin interface.</span>
+
+<span class="sd">        This method simulates the process of logging into the admin site and </span>
+<span class="sd">        creating a new census entry with valid data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/login/?next=/admin/&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;decide&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;decide&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Keys.ENTER&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census/add&quot;</span><span class="p">)</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voting_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voting_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span>
+            <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m</span><span class="si">%d</span><span class="s2">%M%S&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voter_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voter_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span>
+            <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m</span><span class="si">%d</span><span class="s2">%M%S&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census&quot;</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusTest.createCensusEmptyError"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest.createCensusEmptyError">[docs]</a>    <span class="k">def</span> <span class="nf">createCensusEmptyError</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the behavior when attempting to create a census entry with empty fields.</span>
+
+<span class="sd">        This method checks if the correct error message is displayed when trying </span>
+<span class="sd">        to save a census entry without filling out the required fields.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/login/?next=/admin/&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;decide&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;decide&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Keys.ENTER&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census/add&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span>
+                <span class="s2">&quot;/html/body/div/div[3]/div/div[1]/div/form/div/p&quot;</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">text</span>
+            <span class="o">==</span> <span class="s2">&quot;Please correct the errors below.&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">current_url</span>
+            <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census/add&quot;</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusTest.createCensusValueError"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest.createCensusValueError">[docs]</a>    <span class="k">def</span> <span class="nf">createCensusValueError</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the behavior when attempting to create a census entry with invalid values.</span>
+
+<span class="sd">        This method simulates the creation of a census entry with invalid values </span>
+<span class="sd">        and checks if the appropriate error message is displayed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/login/?next=/admin/&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;decide&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;decide&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Keys.ENTER&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census/add&quot;</span><span class="p">)</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voting_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voting_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;64654654654654&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voter_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voter_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;64654654654654&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span>
+                <span class="s2">&quot;/html/body/div/div[3]/div/div[1]/div/form/div/p&quot;</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">text</span>
+            <span class="o">==</span> <span class="s2">&quot;Please correct the errors below.&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">current_url</span>
+            <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census/add&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="CensusExportViewTest"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusExportViewTest">[docs]</a><span class="k">class</span> <span class="nc">CensusExportViewTest</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test suite for the CensusExportView functionality.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+<div class="viewcode-block" id="CensusExportViewTest.setUp"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusExportViewTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set up the test environment for each test method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusExportViewTest.create_voting"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusExportViewTest.create_voting">[docs]</a>    <span class="k">def</span> <span class="nf">create_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Voting instance with associated questions and options.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Voting: The Voting instance that was created.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;me&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test auth&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">v</span></div>
+
+<div class="viewcode-block" id="CensusExportViewTest.test_census_export_view_for_admin"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusExportViewTest.test_census_export_view_for_admin">[docs]</a>    <span class="k">def</span> <span class="nf">test_census_export_view_for_admin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the CensusExportView for admin users.</span>
+
+<span class="sd">        Ensures that admin users can access the export census view and</span>
+<span class="sd">        that the context contains the correct data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">))</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;export_census&quot;</span><span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="s2">&quot;votings&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">)</span>
+
+        <span class="n">votings</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;votings&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">votings</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s2">&quot;census/export_census.html&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusExportViewTest.test_census_export_view_for_non_admin"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusExportViewTest.test_census_export_view_for_non_admin">[docs]</a>    <span class="k">def</span> <span class="nf">test_census_export_view_for_non_admin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the CensusExportView for non-admin users.</span>
+
+<span class="sd">        Ensures that non-admin users are redirected when trying to access</span>
+<span class="sd">        the export census view.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;noadmin&quot;</span><span class="p">))</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;export_census&quot;</span><span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ExportCensusTest"><a class="viewcode-back" href="../../modules/census.html#census.tests.ExportCensusTest">[docs]</a><span class="k">class</span> <span class="nc">ExportCensusTest</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test suite for exporting census data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+<div class="viewcode-block" id="ExportCensusTest.setUp"><a class="viewcode-back" href="../../modules/census.html#census.tests.ExportCensusTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set up the test environment for each test method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ExportCensusTest.create_voting"><a class="viewcode-back" href="../../modules/census.html#census.tests.ExportCensusTest.create_voting">[docs]</a>    <span class="k">def</span> <span class="nf">create_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Voting instance with associated questions and options.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Voting: The Voting instance that was created.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;me&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test auth&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">v</span></div>
+
+<div class="viewcode-block" id="ExportCensusTest.create_voters"><a class="viewcode-back" href="../../modules/census.html#census.tests.ExportCensusTest.create_voters">[docs]</a>    <span class="k">def</span> <span class="nf">create_voters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates voters and adds them to the census of a given voting.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            v (Voting): The Voting instance to which the voters will be added.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+            <span class="n">u</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">u</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ExportCensusTest.test_export_census"><a class="viewcode-back" href="../../modules/census.html#census.tests.ExportCensusTest.test_export_census">[docs]</a>    <span class="k">def</span> <span class="nf">test_export_census</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the functionality of exporting census data to an Excel file.</span>
+
+<span class="sd">        Ensures that the response contains the correct content type and</span>
+<span class="sd">        disposition, and the Excel file contains the correct data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_voters</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;export_census_of_voting&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">])</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="n">response</span><span class="p">[</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="n">response</span><span class="p">[</span><span class="s2">&quot;Content-Disposition&quot;</span><span class="p">],</span> <span class="s2">&quot;attachment; filename=census.xlsx&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">workbook</span> <span class="o">=</span> <span class="n">load_workbook</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+        <span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">active</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">worksheet</span><span class="p">[</span><span class="s2">&quot;A1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Census for: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">worksheet</span><span class="p">[</span><span class="s2">&quot;A2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;Voting ID&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">worksheet</span><span class="p">[</span><span class="s2">&quot;B2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;Voter ID&quot;</span><span class="p">)</span>
+
+        <span class="n">census_data</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">census_data</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">worksheet</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;A</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">voting_id</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">worksheet</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;B</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">voter_id</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="CensusImportViewTest"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusImportViewTest">[docs]</a><span class="k">class</span> <span class="nc">CensusImportViewTest</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test suite for the CensusImportView functionality.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CensusImportViewTest.setUp"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusImportViewTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set up the test environment for each test method by creating a user and initializing the base test case.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CensusImportViewTest.create_voting"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusImportViewTest.create_voting">[docs]</a>    <span class="k">def</span> <span class="nf">create_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Voting instance with associated questions and options.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Voting: The Voting instance that was created.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;me&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test auth&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">v</span></div>
+
+<div class="viewcode-block" id="CensusImportViewTest.test_census_import_view_success"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusImportViewTest.test_census_import_view_success">[docs]</a>    <span class="k">def</span> <span class="nf">test_census_import_view_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the successful import of census data from an Excel file.</span>
+
+<span class="sd">        Ensures that census data is correctly imported into the database</span>
+<span class="sd">        and appropriate success message is displayed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">create_pubkey</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="n">user1</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;noadmin&quot;</span><span class="p">)</span>
+        <span class="n">user2</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+
+        <span class="n">workbook</span> <span class="o">=</span> <span class="n">Workbook</span><span class="p">()</span>
+        <span class="n">sheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">active</span>
+        <span class="n">sheet</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;Voter ID&quot;</span><span class="p">])</span>
+        <span class="n">sheet</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">user1</span><span class="o">.</span><span class="n">id</span><span class="p">])</span>
+        <span class="n">sheet</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">user2</span><span class="o">.</span><span class="n">id</span><span class="p">])</span>
+
+        <span class="n">file_buffer</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+        <span class="n">workbook</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">file_buffer</span><span class="p">)</span>
+        <span class="n">file_buffer</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">excel_file</span> <span class="o">=</span> <span class="n">SimpleUploadedFile</span><span class="p">(</span><span class="s2">&quot;census.xlsx&quot;</span><span class="p">,</span> <span class="n">file_buffer</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">))</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;import_census&quot;</span><span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">url</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="n">excel_file</span><span class="p">,</span> <span class="s2">&quot;voting_id&quot;</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">},</span> <span class="n">follow</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="n">census_data</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">census_data</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">census_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">census_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">voter_id</span><span class="p">,</span> <span class="n">user1</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">census_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">census_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">voter_id</span><span class="p">,</span> <span class="n">user2</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="n">messages</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">messages</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;Data imported successfully!&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusImportViewTest.test_census_import_view_fail"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusImportViewTest.test_census_import_view_fail">[docs]</a>    <span class="k">def</span> <span class="nf">test_census_import_view_fail</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the failure case of importing census data from an Excel file with incorrect data.</span>
+
+<span class="sd">        Ensures that an error message is displayed when incorrect data is imported.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">create_pubkey</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="n">workbook</span> <span class="o">=</span> <span class="n">Workbook</span><span class="p">()</span>
+        <span class="n">sheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">active</span>
+        <span class="n">sheet</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;Voter ID&quot;</span><span class="p">])</span>
+        <span class="n">sheet</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">])</span>
+
+        <span class="n">file_buffer</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+        <span class="n">workbook</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">file_buffer</span><span class="p">)</span>
+        <span class="n">file_buffer</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">excel_file</span> <span class="o">=</span> <span class="n">SimpleUploadedFile</span><span class="p">(</span><span class="s2">&quot;census.xlsx&quot;</span><span class="p">,</span> <span class="n">file_buffer</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">))</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;import_census&quot;</span><span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">url</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="n">excel_file</span><span class="p">,</span> <span class="s2">&quot;voting_id&quot;</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">},</span> <span class="n">follow</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="n">messages</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">messages</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="s2">&quot;Error importing data&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span></div>
+
+<div class="viewcode-block" id="CensusImportViewTest.test_census_import_view_no_file"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusImportViewTest.test_census_import_view_no_file">[docs]</a>    <span class="k">def</span> <span class="nf">test_census_import_view_no_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the case where no file is provided for importing census data.</span>
+
+<span class="sd">        Ensures that an appropriate error message is displayed when no file is selected.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">create_pubkey</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">))</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;import_census&quot;</span><span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;voting_id&quot;</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">},</span> <span class="n">follow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="n">messages</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">messages</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;No file selected!&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusImportViewTest.test_census_import_view_voting_ended"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusImportViewTest.test_census_import_view_voting_ended">[docs]</a>    <span class="k">def</span> <span class="nf">test_census_import_view_voting_ended</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the case where an attempt is made to import census data for a voting that has already ended.</span>
+
+<span class="sd">        Ensures that an appropriate error message is displayed when trying to import data for an ended voting.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">create_pubkey</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">))</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;import_census&quot;</span><span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">url</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;voting_id&quot;</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">},</span> <span class="n">follow</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="n">messages</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">messages</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;Voting has already ended!&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusImportViewTest.test_census_import_view_voting_not_started"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusImportViewTest.test_census_import_view_voting_not_started">[docs]</a>    <span class="k">def</span> <span class="nf">test_census_import_view_voting_not_started</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the case where an attempt is made to import census data for a voting that has not started yet.</span>
+
+<span class="sd">        Ensures that an appropriate error message is displayed when trying to import data for a not-started voting.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
+
+        <span class="n">workbook</span> <span class="o">=</span> <span class="n">Workbook</span><span class="p">()</span>
+        <span class="n">sheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">active</span>
+        <span class="n">sheet</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;Voter ID&quot;</span><span class="p">])</span>
+        <span class="n">sheet</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">file_buffer</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+        <span class="n">workbook</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">file_buffer</span><span class="p">)</span>
+        <span class="n">file_buffer</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">excel_file</span> <span class="o">=</span> <span class="n">SimpleUploadedFile</span><span class="p">(</span><span class="s2">&quot;census.xlsx&quot;</span><span class="p">,</span> <span class="n">file_buffer</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">))</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;import_census&quot;</span><span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">url</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="n">excel_file</span><span class="p">,</span> <span class="s2">&quot;voting_id&quot;</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">},</span> <span class="n">follow</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="n">messages</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">messages</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;Voting should be started first!&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CensusImportViewTest.test_census_import_view_not_admin"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusImportViewTest.test_census_import_view_not_admin">[docs]</a>    <span class="k">def</span> <span class="nf">test_census_import_view_not_admin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the access control for the import census view to ensure only admins can access it.</span>
+
+<span class="sd">        Ensures that non-admin users receive an appropriate error message when trying to access the import view.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">create_pubkey</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;noadmin&quot;</span><span class="p">))</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;import_census&quot;</span><span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">url</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;voting_id&quot;</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">},</span> <span class="n">follow</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="n">messages</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">messages</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;You must be an admin to access this page!&quot;</span><span class="p">)</span></div></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandro Medina Durán, Gonzalo Campos Mejías
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Alejandro Medina Durán, Gonzalo Campos Mejías.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
