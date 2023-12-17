@@ -1,4 +1,4 @@
-{% extends "base.html" %} 
+{% extends 'base2.html' %}
 {% load i18n static %} 
 
 {% block extrahead %}
@@ -11,66 +11,107 @@
 {% endblock %} 
 
 {% block content %}
-<div class="voting container">
+<div class="voting container mt-4">
   <h3>Import census</h3>
 
- <div class="d-flex justify-content-between">
-  <div>
-    <p>The file must be an Excel file (.xlsx).</p>
-    <p>
-      The first column must contain the ID of the voting.
-    </p>
-    <p>
-      The second column must contain the ID of the voter.
-    <p>Please note that the first row of the file will be ignored.</p>
-  </div>
-  <div>
-    <p>File example:</p>
-    <img  src="{% static "census/img/import_census_example.png" %}" class="img-fluid rounded border" />
-  </div>
- </div>
-
-
-  <hr />
-
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="file" accept=".xlsx" />
-    <button class="btn btn-primary btn-sm" type="submit">Import census</button>
-  </form>
+  <div class="d-flex justify-content-between mb-3">
+    <div>
+      <br />
+      <p>The file must be an Excel file (.xlsx).</p>
+      <p>The first column must contain the ID of the voters.</p>
+      <p>Please note that the first row of the file will be ignored.</p>
+    </div>
+    <div>
+      <p>File example:</p>
+      <img  src="{% static "census/img/import_example.png" %}" class="img-fluid rounded border" />
+    </div>
+   </div>
 
   {% if messages %}
-    {% for message in messages %}
-      {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-        <div class="alert alert-danger"
-          {%
-          if message.tags
-          %}
-          class="{{ message.tags }}"
-          {%
-          endif
-          %}
-        >
-          {{ message }}
-        </div>
-      {% endif %}
+  {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+      <div class="alert alert-danger"
+        {%
+        if message.tags
+        %}
+        class="{{ message.tags }}"
+        {%
+        endif
+        %}
+      >
+        {{ message }}
+      </div>
+    {% endif %}
 
-      {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-        <div class="alert alert-success"
-          {%
-          if message.tags
-          %}
-          class="{{ message.tags }}"
-          {%
-          endif
-          %}
-        >
-          {{ message }}
-        </div>
-      {% endif %}
-    {% endfor %}
-  {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+      <div class="alert alert-success"
+        {%
+        if message.tags
+        %}
+        class="{{ message.tags }}"
+        {%
+        endif
+        %}
+      >
+        {{ message }}
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
 
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Voting</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for voting in votings %}
+      <tr>
+        <td class="d-flex justify-content-between">
+          <div>{{ voting.name }}</div>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="voting_id" value="{{ voting.id }}" />
+            <div class="d-flex gap-2">
+              <div class="file">
+                <input type="file" name="file" accept=".xlsx" id="file_input_{{ voting.id }}" data-voting-id="{{ voting.id }}" style="display: none;" />
+                <label class="btn btn-secondary btn-sm" for="file_input_{{ voting.id }}" id="file_label_{{ voting.id }}">Choose file</label>
+              </div>
+              <button class="btn btn-primary btn-sm" type="submit">Import census</button>
+            </div>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
+{% endblock %}
 
+{% block extrabody %}
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+    let fileInputs = document.querySelectorAll("input[type='file']");
+
+    fileInputs.forEach(function(fileInput) {
+      let votingId = fileInput.getAttribute("data-voting-id");
+
+      let labelId = "file_label_" + votingId;
+      let inputId = "file_input_" + votingId;
+      
+      let label = document.getElementById(labelId);
+      let input = document.getElementById(inputId);
+      
+      fileInput.addEventListener("change", function() {
+        let file = fileInput.files[0];
+        if (file) {
+          label.innerHTML = file.name;
+        } else {
+          label.innerHTML = '';
+        }
+      });
+    });
+  });
+</script>
 {% endblock %}

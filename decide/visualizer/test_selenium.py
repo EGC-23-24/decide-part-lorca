@@ -61,6 +61,23 @@ class VisualizerTestCase(StaticLiveServerTestCase):
         v.start_date = timezone.now()
 
         return v
+    
+    def create_preference_voting_started(self):
+        q = Question(desc='test multiple choice question', type='R')
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option='option {}'.format(i+1))
+            opt.save()
+        v = Voting(name='test voting', question=q)
+        v.save()
+
+        a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
+                                          defaults={'me': True, 'name': 'test auth'})
+        a.save()
+        v.auths.add(a)
+        v.start_date = timezone.now()
+
+        return v
 
     def create_comment_voting_started(self):
         q = Question(desc='Text test question', type='T')
@@ -328,3 +345,56 @@ class VisualizerTestCase(StaticLiveServerTestCase):
             chart_element = self.driver.find_element(By.ID, chart_id)
             self.assertTrue(chart_element.is_displayed())
 
+    def test_visualizer_started_preference_with_census(self):        
+        voting = self.create_preference_voting_started()
+        voting.save()
+
+        user, created = User.objects.get_or_create(username='testvoter')
+        user.is_active = True
+        user.save()
+
+        census1 = Census.objects.create(voting_id=voting.id, voter_id=user.id)
+
+        user2, created2 = User.objects.get_or_create(username='testvoter2')
+        user2.is_active = True
+        user2.save()
+
+        census2 = Census.objects.create(voting_id=voting.id, voter_id=user2.id)
+
+        self.driver.get(f'{self.live_server_url}/visualizer/{voting.pk}/')
+        self.assertEqual(self.driver.find_element(By.ID, "participation").text, "0.0%")
+        
+        
+    def test_visualizer_preference_finished(self):        
+        voting = self.create_preference_voting_started()
+        voting.end_date = timezone.now() + timezone.timedelta(days=1)
+        voting.save()
+
+        self.driver.get(f'{self.live_server_url}/visualizer/{voting.pk}/')
+        
+        chart_select = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.ID, "chart-select"))
+        )
+        
+        chart_select = Select(chart_select)
+
+        default_option = chart_select.first_selected_option.text
+        self.assertEqual(default_option, "Doughnut Chart (Score)")
+
+        chart_options = [
+            ("Polar Chart (Score)", "polar-chart-post"),
+            ("Polar Chart (Votes)", "polar-chart-votes"),
+            ("Radar Chart (Score)", "radar-chart-post"),
+            ("Radar Chart (Votes)", "radar-chart-votes"),
+            ("Bar Chart", "bar-chart"),
+            ("Doughnut Chart (Votes)", "doughnut-chart-votes"),
+        ]
+
+        for option_text, chart_id in chart_options:
+            chart_select.select_by_visible_text(option_text)
+            
+            selected_option = chart_select.first_selected_option.text
+            self.assertEqual(selected_option, option_text)
+
+            chart_element = self.driver.find_element(By.ID, chart_id)
+            self.assertTrue(chart_element.is_displayed())
