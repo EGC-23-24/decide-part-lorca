@@ -51,6 +51,30 @@ filters.py
    :undoc-members:
    :show-inheritance:
 
+signals.py
+----------
+
+.. automodule:: voting.signals
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tasks.py
+--------
+
+.. automodule:: voting.tasks
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+utils.py
+--------
+
+.. automodule:: voting.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 tests.py
 --------
 
