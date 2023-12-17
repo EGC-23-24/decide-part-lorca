@@ -45,7 +45,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Informe de pruebas" href="Informe-de-pruebas.html" />
-    <link rel="prev" title="Decide doc files" href="index.html" />
+    <link rel="prev" title="decide-part-lorca" href="diario-de-equipo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -155,17 +155,15 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Decide doc files</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="diario-de-equipo.html">decide-part-lorca</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Gestión de repositorio y código</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Informe-de-pruebas.html">Informe de pruebas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Manual-de-Git.html">Manual de git</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SPEC.html">SPEC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="diario-de-equipo.html">decide-part-lorca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="issues.html">Issues</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="Manual-de-Git.html">Manual de git</a></li>
 <li class="toctree-l2"><a class="reference internal" href="proceso-de-gestion-de-incidencias.html">Proceso de Gestión de Incidencias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SPEC.html">SPEC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="subsistemas.html">Subsistemas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wiki-cover.html">decide-part-lorca-1</a></li>
-
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../memes.html">Memes collection</a></li>
@@ -413,20 +411,19 @@ document.write(`
 </section>
 <section id="tabla-de-contenidos">
 <h2>Tabla de Contenidos<a class="headerlink" href="#tabla-de-contenidos" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><a class="reference internal" href="#id1"><span class="xref myst">Política de <em>Commits</em></span></a></p></li>
-<li><p><a class="reference internal" href="#id2"><span class="xref myst">Estructura del Repositorio</span></a></p></li>
-<li><p><a class="reference internal" href="#id3"><span class="xref myst">Estrategia de Ramificación</span></a></p>
-<ol class="arabic simple">
-<li><p><a class="reference internal" href="#id3.1"><span class="xref myst">Ramas principales</span></a></p></li>
-<li><p><a class="reference internal" href="#id3.2"><span class="xref myst">Ramas épicas y <em>features</em></span></a></p></li>
-<li><p><a class="reference internal" href="#id3.3"><span class="xref myst">Otras ramas</span></a></p></li>
-</ol>
+<ul class="simple">
+<li><p><a class="reference internal" href="#1-pol%C3%ADtica-de-commits"><span class="xref myst">1. Política de Commits</span></a></p></li>
+<li><p><a class="reference internal" href="#2-estructura-del-repositorio"><span class="xref myst">2. Estructura del Repositorio</span></a></p></li>
+<li><p><a class="reference internal" href="#3-estrategia-de-ramificaci%C3%B3n"><span class="xref myst">3. Estrategia de ramificación</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#31-ramas-principales"><span class="xref myst">3.1. Ramas principales</span></a></p></li>
+<li><p><a class="reference internal" href="#32-ramas-%C3%A9picas-y-features"><span class="xref myst">3.2. Ramas épicas y <em>features</em></span></a></p></li>
+<li><p><a class="reference internal" href="#33-otras-ramas"><span class="xref myst">3.3. Otras ramas</span></a></p></li>
+</ul>
 </li>
-<li><p><a class="reference internal" href="#id4"><span class="xref myst">Estrategia de Revisiones de código y <em>Pull Requests</em></span></a></p></li>
-<li><p><a class="reference internal" href="#id5"><span class="xref myst">Política de Versionado</span></a></p></li>
-</ol>
- <div id='id1'/>
+<li><p><a class="reference internal" href="#4-estrategia-de-revisiones-de-c%C3%B3digo-y-pull-requests"><span class="xref myst">4. Estrategia de revisiones de código y <em>pull requests</em></span></a></p></li>
+<li><p><a class="reference internal" href="#5-pol%C3%ADtica-de-versionado"><span class="xref myst">5. Política de versionado</span></a></p></li>
+</ul>
 <section id="politica-de-commits">
 <h3>1. Política de Commits<a class="headerlink" href="#politica-de-commits" title="Permalink to this heading">#</a></h3>
 <p>Es importante establecer una política de commits para el proyecto, ya que mensajes de commit claros y descriptivos ayudarán a los miembros del equipo a comprender los cambios realizados en el commit y a rastrear el progreso del proyecto. La plantilla que usaremos, siguiendo las mejores prácticas, será de la forma:</p>
@@ -458,7 +455,6 @@ document.write(`
 <span class="c1"># conf: Actualizar docker-compose.yml</span>
 </pre></div>
 </div>
-<div id='id2'/>
 </section>
 <section id="estructura-del-repositorio">
 <h3>2. Estructura del Repositorio<a class="headerlink" href="#estructura-del-repositorio" title="Permalink to this heading">#</a></h3>
@@ -499,15 +495,12 @@ document.write(`
 <span class="o">-</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<div id='id3'/>
 </section>
 <section id="estrategia-de-ramificacion">
 <h3>3. Estrategia de ramificación<a class="headerlink" href="#estrategia-de-ramificacion" title="Permalink to this heading">#</a></h3>
-<div id='id3.1'/>
 <section id="ramas-principales">
 <h4>3.1. Ramas principales<a class="headerlink" href="#ramas-principales" title="Permalink to this heading">#</a></h4>
 <p>Las ramas principales del proyecto serán <em>main</em> y <em>develop</em>, donde se reunirán la funcionalidad estable y la funcionalidad en desarrollo, respectivamente. Ambas ramas están protegidas para permitir la fusión únicamente tras 2 aprobaciones del código y la ejecución exitosa de las pruebas en GitHub Actions.</p>
-<div id='id3.2'/>
 </section>
 <section id="ramas-epicas-y-features">
 <h4>3.2. Ramas épicas y <em>features</em><a class="headerlink" href="#ramas-epicas-y-features" title="Permalink to this heading">#</a></h4>
@@ -515,7 +508,6 @@ document.write(`
 <li><p>Las ramas épicas se utilizarán para desarrollar funcionalidades que requieran modificar varios módulos del proyecto. Estas ramas se crearán a partir de <em>develop</em> y se fusionarán en <em>develop</em> una vez finalizadas. Deberán seguir la siguiente nomenclatura: <code class="docutils literal notranslate"><span class="pre">epic/id_issue-titulo-descriptivo</span></code>.</p></li>
 <li><p>Las ramas <em>features</em> se utilizarán para desarrollar funcionalidades que requieran modificar un único módulo del proyecto. Estas ramas se crearán o bien a partir de <em>develop</em> o bien a partir de una rama épica y se fusionarán en <em>develop</em> o en la rama épica correspondiente una vez finalizadas. Deberán seguir la siguiente nomenclatura: <code class="docutils literal notranslate"><span class="pre">feature/id_issue-titulo-descriptivo</span></code>. En caso de que se creen varias ramas <em>features</em> a partir de una rama épica, se deberá añadir el módulo al que pertenece la rama <em>feature</em> en la nomenclatura. Por ejemplo: <code class="docutils literal notranslate"><span class="pre">feature/id_issue-titulo-descriptivo-modulo</span></code>.</p></li>
 </ul>
-<div id='id3.3'/>
 </section>
 <section id="otras-ramas">
 <h4>3.3. Otras ramas<a class="headerlink" href="#otras-ramas" title="Permalink to this heading">#</a></h4>
@@ -525,13 +517,11 @@ document.write(`
 <li><p>Las ramas <em>doc</em> se utilizarán para realizar cambios en la documentación. Estas ramas se crearán a partir de <em>develop</em> y se fusionarán en <em>develop</em> una vez finalizadas. Deberán seguir la siguiente nomenclatura: <code class="docutils literal notranslate"><span class="pre">doc/titulo-descriptivo</span></code>.</p></li>
 <li><p>Las ramas <em>conf</em> se utilizarán para realizar cambios en archivos de configuración. Estas ramas se crearán a partir de <em>develop</em> y se fusionarán en <em>develop</em> una vez finalizadas. Deberán seguir la siguiente nomenclatura: <code class="docutils literal notranslate"><span class="pre">conf/titulo-descriptivo</span></code>.</p></li>
 </ul>
-<div id='id4'/>
 </section>
 </section>
 <section id="estrategia-de-revisiones-de-codigo-y-pull-requests">
 <h3>4. Estrategia de revisiones de código y <em>pull requests</em><a class="headerlink" href="#estrategia-de-revisiones-de-codigo-y-pull-requests" title="Permalink to this heading">#</a></h3>
 <p>Cuando haya un incremento funcional en una épica, se creará una solicitud de extracción para fusionarlo en <em>develop</em>. Una vez creada, se revisará el incremento en busca de errores y se fusionará. Solo cuando dos revisores hayan verificado los cambios y las acciones de GitHub se hayan completado correctamente, se fusionará la solicitud de extracción.</p>
-<div id='id5'/>
 </section>
 <section id="politica-de-versionado">
 <h3>5. Política de versionado<a class="headerlink" href="#politica-de-versionado" title="Permalink to this heading">#</a></h3>
@@ -586,12 +576,12 @@ Teniendo la rama main actualizada, debes ejecutar estos comandos para crear un n
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="diario-de-equipo.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Decide doc files</p>
+        <p class="prev-next-title">decide-part-lorca</p>
       </div>
     </a>
     <a class="right-next"

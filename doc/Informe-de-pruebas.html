@@ -44,7 +44,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'doc/Informe-de-pruebas';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Manual de git" href="Manual-de-Git.html" />
+    <link rel="next" title="Issues" href="issues.html" />
     <link rel="prev" title="Gestión de repositorio y código" href="Gestion-de-repositorio.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -155,17 +155,15 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Decide doc files</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="diario-de-equipo.html">decide-part-lorca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Gestion-de-repositorio.html">Gestión de repositorio y código</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Informe de pruebas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Manual-de-Git.html">Manual de git</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SPEC.html">SPEC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="diario-de-equipo.html">decide-part-lorca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="issues.html">Issues</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="Manual-de-Git.html">Manual de git</a></li>
 <li class="toctree-l2"><a class="reference internal" href="proceso-de-gestion-de-incidencias.html">Proceso de Gestión de Incidencias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SPEC.html">SPEC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="subsistemas.html">Subsistemas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wiki-cover.html">decide-part-lorca-1</a></li>
-
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../memes.html">Memes collection</a></li>
@@ -407,24 +405,30 @@ document.write(`
                   
   <section id="informe-de-pruebas">
 <h1>Informe de pruebas<a class="headerlink" href="#informe-de-pruebas" title="Permalink to this heading">#</a></h1>
-<h1 align="center">Informe de pruebas</h1>
-<p align="center">Este documento recopila y detalla las pruebas implementadas en el proyecto de <b><i>decide-part-lorca</i></b>, proporcionando información crucial sobre la validación y funcionamiento de sus componentes. Además, presenta ejemplos prácticos que ilustran el uso correcto y las funcionalidades clave del proyecto.</p>
+<p>Este documento recopila y detalla las pruebas implementadas en el proyecto de <b><i>decide-part-lorca</i></b>, proporcionando información crucial sobre la validación y funcionamiento de sus componentes. Además, presenta ejemplos prácticos que ilustran el uso correcto y las funcionalidades clave del proyecto.</p>
 <section id="tabla-de-contenidos">
 <h2>Tabla de Contenidos<a class="headerlink" href="#tabla-de-contenidos" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><a class="reference internal" href="#id1"><span class="xref myst">Introducción</span></a></p></li>
-<li><p><a class="reference internal" href="#id2"><span class="xref myst">Pruebas</span></a></p>
-<ol class="arabic simple">
-<li><p><a class="reference internal" href="#id2.1"><span class="xref myst">Pruebas de vistas dinámicas</span></a></p></li>
-<li><p><a class="reference internal" href="#id2.2"><span class="xref myst">Pruebas de vistas estáticas</span></a></p></li>
-<li><p><a class="reference internal" href="#id2.3"><span class="xref myst">Pruebas de integración</span></a></p></li>
-<li><p><a class="reference internal" href="#id2.4"><span class="xref myst">Pruebas unitarias</span></a></p></li>
-<li><p><a class="reference internal" href="#id2.5"><span class="xref myst">Pruebas de carga</span></a></p></li>
-</ol>
+<ul class="simple">
+<li><p><a class="reference internal" href="#informe-de-pruebas"><span class="xref myst">Informe de pruebas</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#tabla-de-contenidos"><span class="xref myst">Tabla de Contenidos</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#1-introducci%C3%B3n"><span class="xref myst">1. Introducción</span></a></p></li>
+<li><p><a class="reference internal" href="#2-pruebas"><span class="xref myst">2. Pruebas</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#21-pruebas-de-vistas-din%C3%A1micas"><span class="xref myst">2.1. Pruebas de vistas dinámicas</span></a></p></li>
+<li><p><a class="reference internal" href="#22-pruebas-de-vistas-est%C3%A1ticas"><span class="xref myst">2.2. Pruebas de vistas estáticas</span></a></p></li>
+<li><p><a class="reference internal" href="#23-pruebas-de-integraci%C3%B3n"><span class="xref myst">2.3. Pruebas de integración</span></a></p></li>
+<li><p><a class="reference internal" href="#24-pruebas-unitarias"><span class="xref myst">2.4. Pruebas unitarias</span></a></p></li>
+<li><p><a class="reference internal" href="#25-pruebas-de-carga"><span class="xref myst">2.5. Pruebas de carga</span></a></p></li>
+</ul>
 </li>
-<li><p><a class="reference internal" href="#id3"><span class="xref myst">Técnica de Diseño de Casos de Prueba</span></a></p></li>
-</ol>
- <div id='id1'/>
+<li><p><a class="reference internal" href="#3-t%C3%A9cnica-de-dise%C3%B1o-de-casos-de-prueba"><span class="xref myst">3. Técnica de Diseño de Casos de Prueba</span></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <section id="introduccion">
 <h3>1. Introducción<a class="headerlink" href="#introduccion" title="Permalink to this heading">#</a></h3>
 <p>Para nuestro proyecto hemos decidido implementar tipos diferentes pruebas en función del módulo al que pertenezcan. En concreto:</p>
@@ -437,11 +441,9 @@ document.write(`
 <li><p>Visualizer: Pruebas de vistas dinámicas.
 Además, consideramos importante comentar que debido a que Github Actions algunas veces no ejecuta correctamente las pruebas de vista, hemos decidido no ejecutarlas de forma automática, sino que se ejecutan de forma manual en el entorno de desarrollo. Se ha utilizado <code class="docutils literal notranslate"><span class="pre">&#64;nottest</span></code> para que no se ejecuten de forma automática.</p></li>
 </ul>
- <div id='id2'/>
 </section>
 <section id="pruebas">
 <h3>2. Pruebas<a class="headerlink" href="#pruebas" title="Permalink to this heading">#</a></h3>
- <div id='id2.1'/>
 <section id="pruebas-de-vistas-dinamicas">
 <h4>2.1. Pruebas de vistas dinámicas<a class="headerlink" href="#pruebas-de-vistas-dinamicas" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
@@ -465,7 +467,6 @@ Además, consideramos importante comentar que debido a que Github Actions alguna
 <li><p><strong>Registro negativo</strong>
 <code class="docutils literal notranslate"><span class="pre">./manage.py</span> <span class="pre">test</span> <span class="pre">authentication.test_selenium.TestRegisterNegative</span>&#160; <span class="pre">-v</span> <span class="pre">2</span></code></p></li>
 </ul>
- <div id='id2.2'/>
 </section>
 <section id="pruebas-de-vistas-estaticas">
 <h4>2.2. Pruebas de vistas estáticas<a class="headerlink" href="#pruebas-de-vistas-estaticas" title="Permalink to this heading">#</a></h4>
@@ -476,7 +477,6 @@ Además, consideramos importante comentar que debido a que Github Actions alguna
 <img  src="./images/test_create_voting_from_api_ranked.png">
 </p>
 Prueba la funcionalidad expuesta a través de una API, verificando las respuestas y el comportamiento ante solicitudes a la API para crear una votación por preferencia.
- <div id='id2.3'/>
 </section>
 <section id="pruebas-de-integracion">
 <h4>2.3. Pruebas de integración<a class="headerlink" href="#pruebas-de-integracion" title="Permalink to this heading">#</a></h4>
@@ -487,7 +487,6 @@ Prueba la funcionalidad expuesta a través de una API, verificando las respuesta
 <img  src="./images/test_complete_multiple_choice_voting.png">
 </p>
 Estas pruebas verifican la interacción entre componentes más grandes del sistema, en concreto el proceso de realización de una votación de opción múltiple completa.
- <div id='id2.4'/>
 </section>
 <section id="pruebas-unitarias">
 <h4>2.4. Pruebas unitarias<a class="headerlink" href="#pruebas-unitarias" title="Permalink to this heading">#</a></h4>
@@ -498,7 +497,6 @@ Estas pruebas verifican la interacción entre componentes más grandes del siste
 <img  src="./images/test_question_option_ranked_error_str.png">
 </p>
 <p>Estas pruebas se centran en funciones o métodos específicos para asegurar que cada unidad funcione correctamente. En este caso en concreto, una prueba negativa de creación de una pregunta de preferencia. <strong>Además, también son pruebas sin persistencia, ya que no almacenan en la base de datos ninguna información</strong></p>
- <div id='id2.5'/>
 </section>
 <section id="pruebas-de-carga">
 <h4>2.5. Pruebas de carga<a class="headerlink" href="#pruebas-de-carga" title="Permalink to this heading">#</a></h4>
@@ -515,7 +513,6 @@ Esta prueba simula las peticiones de usuarios que acceden a la página de inicio
 Esta prueba simplemente simula las peticiones de un usuario que accede a la cabina de votación. Para ejecutar esta prueba de carga, ejecute el siguiente comando (requiere tener una votación abierta, cuyo id debe indicarse en la variable VOTING):
 <code class="docutils literal notranslate"><span class="pre">locust</span> <span class="pre">Booth</span></code></p></li>
 </ul>
- <div id='id3'/>
 </section>
 </section>
 <section id="tecnica-de-diseno-de-casos-de-prueba">
@@ -546,11 +543,11 @@ Esta prueba simplemente simula las peticiones de un usuario que accede a la cabi
       </div>
     </a>
     <a class="right-next"
-       href="Manual-de-Git.html"
+       href="issues.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Manual de git</p>
+        <p class="prev-next-title">Issues</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

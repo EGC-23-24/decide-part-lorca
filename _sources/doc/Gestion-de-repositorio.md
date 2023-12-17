@@ -1,18 +1,18 @@
 # Gestión de repositorio y código
+
 ###### Documento que contiene la estrategia de ramificación, política de commits, estrategia de pull requests, política de versionado y estructura de carpetas
 
 ## Tabla de Contenidos
 
-1. [Política de *Commits*](#id1)
-2. [Estructura del Repositorio](#id2)
-3. [Estrategia de Ramificación](#id3)
-    1. [Ramas principales](#id3.1)
-    2. [Ramas épicas y *features*](#id3.2)
-    3. [Otras ramas](#id3.3)
-4. [Estrategia de Revisiones de código y *Pull Requests*](#id4)
-5. [Política de Versionado](#id5)
+- [1. Política de Commits](#1-política-de-commits)
+- [2. Estructura del Repositorio](#2-estructura-del-repositorio)
+- [3. Estrategia de ramificación](#3-estrategia-de-ramificación)
+	- [3.1. Ramas principales](#31-ramas-principales)
+	- [3.2. Ramas épicas y *features*](#32-ramas-épicas-y-features)
+	- [3.3. Otras ramas](#33-otras-ramas)
+- [4. Estrategia de revisiones de código y *pull requests*](#4-estrategia-de-revisiones-de-código-y-pull-requests)
+- [5. Política de versionado](#5-política-de-versionado)
 
- <div id='id1'/>
 
 ### 1. Política de Commits
 Es importante establecer una política de commits para el proyecto, ya que mensajes de commit claros y descriptivos ayudarán a los miembros del equipo a comprender los cambios realizados en el commit y a rastrear el progreso del proyecto. La plantilla que usaremos, siguiendo las mejores prácticas, será de la forma:
@@ -45,7 +45,6 @@ cuerpo
 ### Ejemplo
 # conf: Actualizar docker-compose.yml
 ```
-<div id='id2'/>
 
 ### 2. Estructura del Repositorio
 La estructura del proyecto se compone de diversas carpetas que contienen elementos clave para su funcionamiento. El directorio principal alberga subcarpetas como `.github` con flujos de trabajo para GitHub Actions, `decide` con módulos de autenticación, visualización y procesamiento de datos, junto con directorios como `doc` para documentación, `docker` para configuraciones relacionadas, y `loadtest` para herramientas de pruebas de carga. Además, se incluyen archivos fundamentales como `README.md` para información básica, `requirements.txt` con las dependencias de Python y archivos de configuración como `.gitignore` y `LICENSE`, delineando la estructura organizativa y funcional del proyecto.
@@ -86,23 +85,17 @@ La estructura del proyecto se compone de diversas carpetas que contienen element
 - launch.sh
 - requirements.txt
 ```
-<div id='id3'/>
 
 ### 3. Estrategia de ramificación
-<div id='id3.1'/>
 
 #### 3.1. Ramas principales
 
 Las ramas principales del proyecto serán *main* y *develop*, donde se reunirán la funcionalidad estable y la funcionalidad en desarrollo, respectivamente. Ambas ramas están protegidas para permitir la fusión únicamente tras 2 aprobaciones del código y la ejecución exitosa de las pruebas en GitHub Actions.
 
-<div id='id3.2'/>
-
 #### 3.2. Ramas épicas y *features*
 
 - Las ramas épicas se utilizarán para desarrollar funcionalidades que requieran modificar varios módulos del proyecto. Estas ramas se crearán a partir de *develop* y se fusionarán en *develop* una vez finalizadas. Deberán seguir la siguiente nomenclatura: `epic/id_issue-titulo-descriptivo`.
 - Las ramas *features* se utilizarán para desarrollar funcionalidades que requieran modificar un único módulo del proyecto. Estas ramas se crearán o bien a partir de *develop* o bien a partir de una rama épica y se fusionarán en *develop* o en la rama épica correspondiente una vez finalizadas. Deberán seguir la siguiente nomenclatura: `feature/id_issue-titulo-descriptivo`. En caso de que se creen varias ramas *features* a partir de una rama épica, se deberá añadir el módulo al que pertenece la rama *feature* en la nomenclatura. Por ejemplo: `feature/id_issue-titulo-descriptivo-modulo`.
-
-<div id='id3.3'/>
 
 #### 3.3. Otras ramas
 
@@ -111,13 +104,9 @@ Las ramas principales del proyecto serán *main* y *develop*, donde se reunirán
 - Las ramas *doc* se utilizarán para realizar cambios en la documentación. Estas ramas se crearán a partir de *develop* y se fusionarán en *develop* una vez finalizadas. Deberán seguir la siguiente nomenclatura: `doc/titulo-descriptivo`.
 - Las ramas *conf* se utilizarán para realizar cambios en archivos de configuración. Estas ramas se crearán a partir de *develop* y se fusionarán en *develop* una vez finalizadas. Deberán seguir la siguiente nomenclatura: `conf/titulo-descriptivo`.
 
-<div id='id4'/>
-
 ### 4. Estrategia de revisiones de código y *pull requests*
 
 Cuando haya un incremento funcional en una épica, se creará una solicitud de extracción para fusionarlo en *develop*. Una vez creada, se revisará el incremento en busca de errores y se fusionará. Solo cuando dos revisores hayan verificado los cambios y las acciones de GitHub se hayan completado correctamente, se fusionará la solicitud de extracción.
-
-<div id='id5'/>
 
 ### 5. Política de versionado
 
