@@ -46,7 +46,7 @@ class CensusCreate(generics.ListCreateAPIView):
             for voter in voters:
                 census = Census(voting_id=voting_id, voter_id=voter)
                 census.save()
-        except IntegrityError:
+        except Exception:
             return Response("Error try to create census", status=ST_409)
         return Response("Census created", status=ST_201)
 
