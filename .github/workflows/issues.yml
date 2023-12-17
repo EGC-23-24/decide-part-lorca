@@ -17,22 +17,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 
         run: |
-          # Título y cuerpo de la issue
           issue_title="Error in CI ${{ github.event.workflow.name }} - Decide"
           issue_body="The workflow '${{ github.event.workflow.name }}' has failed and the PR cannot be merged. Don't forget to add the group label and assign an assignee."
 
-          # Determinar la etiqueta basada en el GitHub.actor
           if [[ "${{ github.actor }}" == "alblopnov" || "${{ github.actor }}" == "alejandromd" || "${{ github.actor }}" == "davdelpal1" || "${{ github.actor }}" == "goncammej" || "${{ github.actor }}" == "JuanAntonioJimenezdelVillar" || "${{ github.actor }}" == "Thealean28" ]]; then
-              labels='"labels": ["Error", "Medium", "lorca-1"]'
+              labels='["Error", "Medium", "lorca-1"]'
           elif [[ "${{ github.actor }}" == "alvarobernal2412" || "${{ github.actor }}" == "josgarber6" || "${{ github.actor }}" == "alvgonfri" || "${{ github.actor }}" == "mangarrui" || "${{ github.actor }}" == "jmartinacu" || "${{ github.actor }}" == "sebasruii" ]]; then
-              labels='"labels": ["Error", "Medium", "lorca-2"]'
+              labels='["Error", "Medium", "lorca-2"]'
           else
-              labels='"labels": ["Error", "Medium"]'
+              labels='["Error", "Medium"]'
           fi
 
-          # Crear la issue utilizando la API de GitHub y asignarla al usuario que activó el flujo de trabajo
           issue_number=$(curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Content-Type: application/json" \
-            -d '{'"$labels"', "title": "'"$issue_title"'", "body": "'"$issue_body"'", "assignees": ["'${{ github.actor }}'"]}' \
+            -d "{\"labels\": $labels, \"title\": \"$issue_title\", \"body\": \"$issue_body\", \"assignees\": [\"${{ github.actor }}\"]}" \
             "https://api.github.com/repos/${{ github.repository }}/issues" | jq '.number')
