@@ -19,12 +19,26 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 @nottest
 class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
-    # Clase de prueba para verificar la funcionalidad del sistema de selección múltiple en una cabina de votación.
+    """
+    Selenium-based test case for the Multiple Choice Question booth in the voting app.
 
+    This test case covers the behavior of the Multiple Choice Question booth, including
+    the setup, user creation, and the interaction with the web interface.
+
+    :ivar base: An instance of BaseTestCase for common test setup and teardown.
+    :vartype base: BaseTestCase
+    :ivar v: The Voting instance created for testing.
+    :vartype v: Voting
+    :ivar driver: The Selenium WebDriver instance for browser automation.
+    :vartype driver: webdriver.Chrome
+    """
     def create_voting(self):
-        # Método para crear una instancia de votación de prueba con una pregunta y opciones.
-        # Crea una pregunta con cinco opciones y la guarda en la base de datos junto con una instancia de votación.
-        
+        """
+        Create a test voting with a multiple-choice question and options.
+
+        :return: The created Voting instance.
+        :rtype: Voting
+        """
         q = Question(desc='test question')
         q.save()
         for i in range(5):
@@ -41,8 +55,14 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         return v
     
     def get_or_create_user(self, pk):
-        # Método para obtener o crear un usuario en la base de datos con un ID específico.
+        """
+        Get or create a test user.
 
+        :param pk: The primary key for the user.
+        :type pk: int
+        :return: The User instance.
+        :rtype: User
+        """
         user, _ = User.objects.get_or_create(pk=pk)
         user.username = 'user{}'.format(pk)
         user.set_password('qwerty')
@@ -50,12 +70,13 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         return user
       
     def setUp(self):
-        # Preparación de la configuración inicial para las pruebas.
-        # Crea un entorno básico para las pruebas con un usuario administrador y uno no administrador.
-        # Configura una instancia de votación con una pregunta, opciones y comienza la votación.
-        # Inicializa un navegador Chrome en modo headless para simular interacciones.
+        """
+        Set up the test environment before each test method is run.
 
-        #Crea un usuario admin y otro no admin
+        This method is called before each test method in the test case.
+
+        :return: None
+        """
         self.base = BaseTestCase()
         self.base.setUp()
         
@@ -63,7 +84,6 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         self.v.question.type = 'M'
         self.v.question.save()
 
-        #Añadimos al usuario noadmin al censo y empezamos la votacion
         user = self.get_or_create_user(1)
         user.is_active = True
         user.save()
@@ -75,26 +95,34 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         self.v.start_date = timezone.now()
         self.v.save()
 
-        #Opciones de Chrome
         options = webdriver.ChromeOptions()
         options.headless = True
         self.driver = webdriver.Chrome(options=options)
 
-        super().setUp()            
+        super().setUp()             
             
-    def tearDown(self):       
-        # Método para limpiar y cerrar los recursos después de cada prueba.
-        # Cierra el navegador y realiza la limpieza necesaria en la base de datos.   
-            
+    def tearDown(self): 
+        """
+        Clean up the test environment after each test method is run.
+
+        This method is called after each test method in the test case.
+
+        :return: None
+        """          
         super().tearDown()
         self.driver.quit()
 
         self.base.tearDown()
     
-    def test_question_multiple_options(self):
-        # Prueba el proceso de selección múltiple donde se seleccionan tres opciones.
-        # Verifica si las opciones se muestran correctamente en la interfaz.
+    def test_testquestionmultipleoptions(self):
+        """
+        Test the behavior of selecting multiple options in a multiple-choice question booth.
 
+        This test navigates to the booth for a specific voting, logs in as a user, selects multiple options,
+        submits the form, and then verifies that the correct number of options is selected and that the form count is as expected.
+
+        :return: None
+        """
         self.driver.get(f'{self.live_server_url}/booth/{self.v.id}/')
         self.driver.set_window_size(910, 1016)
 
@@ -134,14 +162,30 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         self.assertTrue(len(selected_checkboxes)==3)
         self.assertTrue(len(self.driver.find_elements(By.CSS_SELECTOR, 'form'))==5)
     
-@nottest
-class CommentBoothTest(StaticLiveServerTestCase):
-    # Clase de prueba para verificar la funcionalidad del sistema de comentarios en una cabina de votación.
-    
-    def create_voting(self):
-        # Método para crear una instancia de votación de prueba con una pregunta y opciones.
-        # Crea una pregunta y la guarda en la base de datos junto con una instancia de votación.
 
+
+@nottest
+class CommentBoothTestCase(StaticLiveServerTestCase):
+    """
+    Selenium-based test case for the Comment Booth in the voting app.
+
+    This test case covers the behavior of the Comment Booth, including
+    the setup, user creation, and interaction with the web interface.
+
+    :ivar base: An instance of BaseTestCase for common test setup and teardown.
+    :vartype base: BaseTestCase
+    :ivar v: The Voting instance created for testing.
+    :vartype v: Voting
+    :ivar driver: The Selenium WebDriver instance for browser automation.
+    :vartype driver: webdriver.Chrome
+    """
+    def create_voting(self):
+        """
+        Create a test voting with a text-type question.
+
+        :return: The created Voting instance.
+        :rtype: Voting
+        """
         q = Question(desc='test question', type='T')
         q.save()
         v = Voting(name='test voting', question=q)
@@ -154,8 +198,14 @@ class CommentBoothTest(StaticLiveServerTestCase):
         return v
 
     def get_or_create_user(self,pk):
-        # Método para obtener o crear un usuario en la base de datos con un ID específico.
+        """
+        Get or create a test user.
 
+        :param pk: The primary key for the user.
+        :type pk: int
+        :return: The User instance.
+        :rtype: User
+        """
         user, _ = User.objects.get_or_create(pk=pk)
         user.username = 'user{}'.format(pk)
         user.set_password('qwerty')
@@ -163,12 +213,13 @@ class CommentBoothTest(StaticLiveServerTestCase):
         return user
 
     def setUp(self):
-        # Preparación de la configuración inicial para las pruebas.
-        # Crea un entorno básico para las pruebas con un usuario administrador y uno no administrador.
-        # Configura una instancia de votación con una pregunta, opciones y comienza la votación.
-        # Inicializa un navegador Chrome en modo headless para simular interacciones.
+        """
+        Set up the test environment before each test method is run.
 
-        #Crea un usuario admin y otro no admin
+        This method is called before each test method in the test case.
+
+        :return: None
+        """
         self.base = BaseTestCase()
         self.base.setUp()
 
@@ -195,19 +246,28 @@ class CommentBoothTest(StaticLiveServerTestCase):
 
         super().setUp()            
             
-    def tearDown(self):
-        # Método para limpiar y cerrar los recursos después de cada prueba.
-        # Cierra el navegador y realiza la limpieza necesaria en la base de datos.   
-                
+    def tearDown(self): 
+        """
+        Clean up the test environment after each test method is run.
+
+        This method is called after each test method in the test case.
+
+        :return: None
+        """          
         super().tearDown()
         self.driver.quit()
 
         self.base.tearDown()
 
-    def test_comment_question(self):
-        # Prueba el proceso de comentarios donde se escribe un comentario.
-        # Verifica si el comentario se muestra correctamente en la interfaz.
+    def test_commentquestion(self):
+        """
+        Test the behavior of submitting a comment in a text-type question booth.
 
+        This test navigates to the booth for a specific voting, logs in as a user, submits a comment,
+        and verifies the success alert indicating that the vote has been sent.
+
+        :return: None
+        """
         self.driver.get(f'{self.live_server_url}/booth/{self.v.id}/')
         self.driver.set_window_size(910, 1016)
 
@@ -235,19 +295,32 @@ class CommentBoothTest(StaticLiveServerTestCase):
         text_area.send_keys("Comentario de prueba")
         self.driver.find_element(By.ID, "send-vote").click()
         
-        # Verificar que la votación se realizó correctamente
         self.assertTrue(self.driver.find_element(By.XPATH, "//h1[contains(.,'Voting ID:')]").is_displayed())
         self.assertTrue(self.driver.find_element(By.ID, "floatingTextarea2").is_displayed())
         self.assertEquals(text_area.get_attribute('value'),"Comentario de prueba")
 
 @nottest
-class YesNoBoothTest(StaticLiveServerTestCase):
-    # Clase de prueba para verificar la funcionalidad del sistema de si/no en una cabina de votación.
+class YesNoBoothTestCase(StaticLiveServerTestCase):
+    """
+    Selenium-based test case for the Yes/No Question booth in the voting app.
 
+    This test case covers the behavior of the Yes/No Question booth, including
+    the setup, user creation, and interaction with the web interface.
+
+    :ivar base: An instance of BaseTestCase for common test setup and teardown.
+    :vartype base: BaseTestCase
+    :ivar v: The Voting instance created for testing.
+    :vartype v: Voting
+    :ivar driver: The Selenium WebDriver instance for browser automation.
+    :vartype driver: webdriver.Chrome
+    """
     def create_voting(self):
-        # Método para crear una instancia de votación de prueba con una pregunta y opciones.
-        # Crea una pregunta y la guarda en la base de datos junto con una instancia de votación.
+        """
+        Create a test voting with a Yes/No type question.
 
+        :return: The created Voting instance.
+        :rtype: Voting
+        """
         q = Question(desc='test question', type='Y')
         q.save()
         v = Voting(name='test voting', question=q)
@@ -260,8 +333,14 @@ class YesNoBoothTest(StaticLiveServerTestCase):
         return v
 
     def get_or_create_user(self,pk):
-        # Método para obtener o crear un usuario en la base de datos con un ID específico.
+        """
+        Get or create a test user.
 
+        :param pk: The primary key for the user.
+        :type pk: int
+        :return: The User instance.
+        :rtype: User
+        """
         user, _ = User.objects.get_or_create(pk=pk)
         user.username = 'user{}'.format(pk)
         user.set_password('qwerty')
@@ -269,12 +348,13 @@ class YesNoBoothTest(StaticLiveServerTestCase):
         return user
     
     def setUp(self):
-        # Preparación de la configuración inicial para las pruebas.
-        # Crea un entorno básico para las pruebas con un usuario administrador y uno no administrador.
-        # Configura una instancia de votación con una pregunta, opciones y comienza la votación.
-        # Inicializa un navegador Chrome en modo headless para simular interacciones.
+        """
+        Set up the test environment before each test method is run.
 
-        #Crea un usuario admin y otro no admin
+        This method is called before each test method in the test case.
+
+        :return: None
+        """
         self.base = BaseTestCase()
         self.base.setUp()
 
@@ -282,7 +362,6 @@ class YesNoBoothTest(StaticLiveServerTestCase):
         v.question.type = 'Y'
         v.question.save()
         self.v = v
-        #Añadimos al usuario noadmin al censo y empezamos la votacion
         user = self.get_or_create_user(1)
         user.is_active = True
         user.save()
@@ -293,26 +372,34 @@ class YesNoBoothTest(StaticLiveServerTestCase):
         v.start_date = timezone.now()
         v.save()
     
-        #Opciones de Chrome
         options = webdriver.ChromeOptions()
         options.headless = True
         self.driver = webdriver.Chrome(options=options)
 
-        super().setUp()            
+        super().setUp()              
             
-    def tearDown(self):    
-        # Método para limpiar y cerrar los recursos después de cada prueba.
-        # Cierra el navegador y realiza la limpieza necesaria en la base de datos.   
+    def tearDown(self):     
+        """
+        Clean up the test environment after each test method is run.
 
+        This method is called after each test method in the test case.
+
+        :return: None
+        """      
         super().tearDown()
         self.driver.quit()
 
         self.base.tearDown()  
     
-    def test_question_yesno(self):
-        # Prueba el proceso de si/no donde se selecciona la opción "Sí".
-        # Verifica si la opción se muestra correctamente en la interfaz.
+    def test_testquestionyesno(self):
+        """
+        Test the behavior of submitting a Yes/No response in a Yes/No type question booth.
 
+        This test navigates to the booth for a specific voting, logs in as a user, submits a Yes response,
+        and verifies the success alert indicating that the vote has been sent.
+
+        :return: None
+        """
         self.driver.get(f'{self.live_server_url}/booth/{self.v.id}/')
         self.driver.set_window_size(910, 1016)
 
@@ -341,14 +428,29 @@ class YesNoBoothTest(StaticLiveServerTestCase):
         self.assertTrue(self.driver.find_element(By.ID, "yesbutton").is_displayed())
         self.assertTrue(self.driver.find_element(By.ID, "nobutton").is_displayed())
 
+
 @nottest
 class PreferenceBoothTest(StaticLiveServerTestCase):
-    # Clase de prueba para verificar la funcionalidad del sistema de preferencias en una cabina de votación.
+    """
+    Selenium-based test case for the Preference Question booth in the voting app.
 
+    This test case covers the behavior of the Preference Question booth, including
+    the setup, user creation, and interaction with the web interface.
+
+    :ivar base: An instance of BaseTestCase for common test setup and teardown.
+    :vartype base: BaseTestCase
+    :ivar v: The Voting instance created for testing.
+    :vartype v: Voting
+    :ivar driver: The Selenium WebDriver instance for browser automation.
+    :vartype driver: webdriver.Chrome
+    """
     def create_voting(self):
-        # Método para crear una instancia de votación de prueba con una pregunta y opciones.
-        # Crea una pregunta con tres opciones y la guarda en la base de datos junto con una instancia de votación.
+        """
+        Create a test voting with a Preference type question.
 
+        :return: The created Voting instance.
+        :rtype: Voting
+        """
         q = Question(desc='test question', type='R')
         q.save()
         opt1 = QuestionOptionRanked(question=q, option='Test 1', number=1)
@@ -366,19 +468,30 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         v.auths.add(a)
         return v
 
+
     def get_or_create_user(self,pk):
-        # Método para obtener o crear un usuario en la base de datos con un ID específico.
+        """
+        Get or create a test user.
+
+        :param pk: The primary key for the user.
+        :type pk: int
+        :return: The User instance.
+        :rtype: User
+        """
         user, _ = User.objects.get_or_create(pk=pk)
-        user.username = f'user{pk}'
+        user.username = f'user: {pk}'
         user.set_password('qwerty')
         user.save()
         return user
 
     def setUp(self):
-        # Preparación de la configuración inicial para las pruebas.
-        # Crea un entorno básico para las pruebas con un usuario administrador y uno no administrador.
-        # Configura una instancia de votación con una pregunta, opciones y comienza la votación.
-        # Inicializa un navegador Chrome en modo headless para simular interacciones.
+        """
+        Set up the test environment before each test method is run.
+
+        This method is called before each test method in the test case.
+
+        :return: None
+        """
         self.base = BaseTestCase()
         self.base.setUp()
 
@@ -386,7 +499,7 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         v.question.type = 'R'
         v.question.save()
         self.v = v
-        #Añadimos al usuario noadmin al censo y empezamos la votacion
+
         user = self.get_or_create_user(1)
         user.is_active = True
         user.save()
@@ -397,23 +510,36 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         v.start_date = timezone.now()
         v.save()
     
-        #Opciones de Chrome
         options = webdriver.ChromeOptions()
         options.headless = True
         self.driver = webdriver.Chrome(options=options)
 
         super().setUp()            
+           
             
-    def tearDown(self):        
-        # Método para limpiar y cerrar los recursos después de cada prueba.
-        # Cierra el navegador y realiza la limpieza necesaria en la base de datos.   
+    def tearDown(self):   
+        """
+        Clean up the test environment after each test method is run.
+
+        This method is called after each test method in the test case.
+
+        :return: None
+        """        
         super().tearDown()
         self.driver.quit()
 
         self.base.tearDown()
-
+    
     def login_user(self, username, password):
-        # Método para realizar el inicio de sesión de un usuario en el sistema de votación simulando la interacción con la interfaz.
+        """
+        Log in a user with the provided username and password.
+
+        :param username: The username of the user.
+        :type username: str
+        :param password: The password of the user.
+        :type password: str
+        :return: None
+        """
         self.driver.find_element(By.ID, "menu-toggle").click()
         
         goto_logging = WebDriverWait(self.driver, 10).until(
@@ -435,7 +561,13 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         login.click()
 
     def select_preferences(self, preferences):
-        # Método para seleccionar preferencias en la interfaz de usuario durante la votación.
+        """
+        Select preferences based on the provided list.
+
+        :param preferences: List of preferences to be selected.
+        :type preferences: list
+        :return: None
+        """
         inputs = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located((By.ID, "rankingInput"))
         )
@@ -445,8 +577,15 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
             input_element.send_keys(str(preferences[index]))
 
     def perform_preference(self, preferences, expected_values):
-        # Método que simula el proceso completo de preferencias durante una votación.
-        # Inicia sesión, elige las preferencias y verifica si se muestran correctamente en la interfaz.
+        """
+        Perform a preference vote with the given preferences and verify the results.
+
+        :param preferences: List of preferences to be voted.
+        :type preferences: list
+        :param expected_values: Dictionary containing expected values for each preference.
+        :type expected_values: dict
+        :return: None
+        """
         self.driver.get(f'{self.live_server_url}/booth/{self.v.id}/')
         self.driver.set_window_size(910, 1016)
         self.login_user("user1", "qwerty")
@@ -465,23 +604,31 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
             self.assertEquals(actual_value, expected_value)
 
     def test_question_preference(self):
-        # Prueba el proceso de preferencias donde se asignan valores consecutivos a las opciones.
-        # Verifica si las preferencias se muestran correctamente en la interfaz.
+        """
+        Test the preference voting with a list of preferences.
+
+        :return: None
+        """
         preferences = [1, 2, 3]
         expected_values = {0: '1', 1: '2', 2: '3'}
         self.perform_preference(preferences, expected_values)
-
+            
     def test_preference_booth_same_preference(self):
-        # Prueba el proceso de preferencias donde se asignan valores repetidos a las opciones.
-        # Verifica si las preferencias se muestran correctamente en la interfaz.
+        """
+        Test the preference voting with the same preference for multiple options.
 
+        :return: None
+        """
         preferences = [1, 1, 2]
         expected_values = {0: '1', 1: '1', 2: '2'}
         self.perform_preference(preferences, expected_values)
+        
+    def test_preference_booth_no_fullfile_all_preferences(self):
+        """
+        Test the preference voting with some preferences not fully filled.
 
-    def test_preference_booth_no_fullfill_all_preferences(self):
-        # Prueba el proceso de preferencias donde no se completan todas las preferencias.
-        # Verifica si las preferencias se muestran correctamente en la interfaz.
+        :return: None
+        """
         preferences = [1,"",""]
         expected_values = {0: '1', 1: '', 2: ''}
         self.perform_preference(preferences, expected_values)
