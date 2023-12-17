@@ -1,5 +1,6 @@
 from django.urls import reverse
 from django.contrib.messages import get_messages
+from django.contrib.auth.models import User
 from base.tests import BaseTestCase
 from .forms import (
     ClassicForm,
@@ -11,10 +12,20 @@ from .forms import (
 
 
 class ConfiguratorViewTest(BaseTestCase):
-    def test_configurator_view(self):
+    def test_configurator_view_admin(self):
+        self.client.force_login(User.objects.get(username="admin"))
         response = self.client.get(reverse("configurator"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "configurator/configurator.html")
+
+
+    def test_configurator_view_not_admin(self):
+        response = self.client.get(reverse("configurator"))
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, "/")
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(str(messages[0]), "You must be an admin to access this page!")
 
 
 class CreateClassicViewTest(BaseTestCase):

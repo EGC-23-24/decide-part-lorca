@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 from .forms import (
     ClassicForm,
     YesNoForm,
@@ -14,6 +15,9 @@ from voting.models import Voting
 
 
 def configurator(request):
+    if not (request.user.is_authenticated and request.user.is_staff):
+        messages.error(request, "You must be an admin to access this page!")
+        return HttpResponseRedirect("/")
     return render(request, "configurator/configurator.html")
 
 
