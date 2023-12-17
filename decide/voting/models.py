@@ -59,7 +59,7 @@ class QuestionOptionRanked(models.Model):
 
     def save(self):
         if not self.number:
-            self.number = self.question.options.count() + 2
+            self.number = self.question.ranked_options.count() + 1
         if self.question.type == 'R':
             return super().save()
 
