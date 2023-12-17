@@ -321,7 +321,7 @@
                             this.showAlert("danger", '{% trans "Error: " %}' + error);
                         });
                 },
-                textoAHexadecimal(cadena) {
+                stringToASCII(cadena) {
                     let resultado = '';
                     for (let i = 0; i < cadena.length; i++) {
                         let valorAscii = cadena.charCodeAt(i) + '';
@@ -379,18 +379,7 @@
                             voting_type: "classic",
                             voter: this.user.id,
                             token: this.token
-                        }
-                        this.postData("{% url "gateway" "store" "/" %}", data)
-                            .then(data => {
-                                this.successVote = true;
-                                this.alertShow = false;
-                                this.showAlert("success", '{% trans "Congratulations. Your vote has been sent" %}');
-                            })
-                            .catch(error => {
-                                this.succesVote = false;
-                                this.showAlert("danger", '{% trans "Error: " %}' + error);
-                            });
-                        
+                        };
                     } else if (this.voting.question.type === 'Y') {
                         // Votación 'Si' o 'No'
                         var selectedOption = this.voting.question.options.find(opt => opt.option === valor);
@@ -405,22 +394,10 @@
                             voter: this.user.id,
                             token: this.token
                         };
-
-                        this.postData("{% url "gateway" "store" "/" %}", data)
-                            .then(data => {
-                                this.successVote = true;
-                                this.alertShow = false;
-                                this.showAlert("success", '{% trans "Congratulations. Your vote has been sent" %}');
-                            })
-                            .catch(error => {
-                                this.successVote = false;
-                                this.showAlert("danger", '{% trans "Error: " %}' + error);
-                            });
-
                     } else if (this.voting.question.type === 'T') {
                         var textAreaValue = document.getElementById('floatingTextarea2').value;
                         evt.preventDefault();
-                        this.selected = this.textoAHexadecimal(textAreaValue);
+                        this.selected = this.stringToASCII(textAreaValue);
                         var v = this.decideEncrypt();
                         var data = {
                             vote: { a: v.alpha.toString(), b: v.beta.toString() },
@@ -429,17 +406,6 @@
                             voter: this.user.id,
                             token: this.token
                         };
-
-                        this.postData("{% url "gateway" "store" "/" %}", data)
-                            .then(data => {
-                                this.successVote = true;
-                                this.alertShow = false;
-                                this.showAlert("success", '{% trans "Congratulations. Your vote has been sent" %}');
-                            })
-                            .catch(error => {
-                                this.successVote = false;
-                                this.showAlert("danger", '{% trans "Error: " %}' + error);
-                            });
                     } else if (this.voting.question.type === 'R') {
                         evt.preventDefault();
                         var values = document.getElementsByClassName('form-ranked-input');
@@ -459,8 +425,12 @@
                             voter: this.user.id,
                             voting_type: 'preference',
                             token: this.token,
-                        }
-                        this.postData("{% url "gateway" "store" "/" %}", data)
+                        };
+                    } else {
+                        // Tipo de votación no reconocido
+                        this.showAlert("danger", "Unknown voting type");
+                    }
+                    this.postData("{% url "gateway" "store" "/" %}", data)
                             .then(data => {
                                 this.successVote = true;
                                 this.alertShow = false;
@@ -470,10 +440,6 @@
                                 this.succesVote = false;
                                 this.showAlert("danger", '{% trans "Error: " %}' + error);
                             });
-                    } else {
-                        // Tipo de votación no reconocido
-                        this.showAlert("danger", "Unknown voting type");
-                    }
                 },
                 submitMultipleChoice(evt) {
                     evt.preventDefault();
@@ -500,17 +466,6 @@
                     this.alertLvl = lvl;
                     this.alertMsg = msg;
                     this.alertShow = true;
-                },
-                stringToASCII(value) {
-                  let result = '';
-                  for (let i = 0; i < value.length; i++) {
-                    let valueASCII = value.charCodeAt(i) + '';
-                    if (valueASCII.length <= 2) {
-                      valueASCII = valueASCII.length === 2 ? '0' + valueASCII: valueASCII
-                    }     
-                    result +=  valueASCII;
-                  }
-                  return result;
                 },
                 checkVote(v) {
                   if (v.some(x => isNaN(parseInt(x)))) {
