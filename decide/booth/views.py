@@ -30,5 +30,7 @@ class BoothView(TemplateView):
         if r[0]['question']['type'] == 'R':
             maxNumberOption = len(r[0]['question']['options'])
             context['maxOption'] = maxNumberOption
+        else:
+            context['maxOption'] = 0
 
         return context
