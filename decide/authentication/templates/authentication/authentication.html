@@ -10,63 +10,32 @@
 {% endblock %}
 
 {% block content %}
-        <!-- Register -->
-        <form action="" method="post">
-            {% csrf_token %}
+<div class="row h-100 justify-content-center align-items-center">
 
-            {% if errors|length < 1 %}
-                <h1>Register form</h1>
-            {% else %}
-                <h1>Errors detected!</h1>
-            {% endif %}
+  {% if authenticated == False %}
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">App Decide</h1>
+      <p class="lead">Welcome to module authentication of App Decide</p>
+      <p class="lead">Create an user or sign in</p>
+      <p class="lead">
+        <a href="/authentication/register-view" class="btn btn-lg btn-primary">Register</a>
+      </p>
+      <p class="lead">
+        <a href="/authentication/login-view" class="btn btn-lg btn-primary">Sign in</a>
+      </p>
+    </main>
+    {% endif %}
 
-            <div class="fieldWrapper">
-                {{ form.username.label_tag }}
-                {{ form.username }}
-            </div>
-            
-            <div class="fieldWrapper">
-                {{ form.password1.label_tag }}
-                {{ form.password1 }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.password2.label_tag }}
-                {{ form.password2 }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.email.label_tag }}
-                {{ form.email }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.first_name.label_tag }}
-                {{ form.first_name }}
-            </div>
-            
-            <div class="fieldWrapper">
-                {{ form.last_name.label_tag }}
-                {{ form.last_name }}
-            </div>
-
-            {% if errors|length < 1 %}
-
-                <input type="submit" class="btn btn-primary" value="Register">
-        
-            {% endif %}
-
-        </form>
-
-        {% for error in errors %}
-            <div class="alert alert-danger">
-                {{error}}
-                <br>
-            </div>
-        {% endfor %}
-
-
-        {% if errors|length > 0 %}
-        <h3>Return back and try again.</h3>
-        {% endif %}
-
-</div>
+    {% if authenticated == True %}
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">App Decide</h1>
+      <p class="lead">Welcome to module authentication of App Decide</p>
+      <p class="lead">Your current user is {{ username }}</p>
+      <p class="lead">
+        <a href="/authentication/logout-view" class="btn btn-lg btn-primary">Logout</a>
+      </p>
+    </main>
+    {% endif %}
+</div> 
 
 {% endblock %}

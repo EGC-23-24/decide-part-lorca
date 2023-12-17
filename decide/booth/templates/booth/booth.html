@@ -15,7 +15,7 @@
     <nav class="navbar navbar-dark bg-primary">
         <div class="container-fluid">
             <div class="navbar-brand" >Decide</div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button id="menu-toggle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -25,7 +25,7 @@
                     </li>
                     <li class="nav-item" v-if="signup">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#registerModal">
+                        <button id="goto-logging-button" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#registerModal">
                             Login
                         </button>
                     </li>
@@ -106,7 +106,7 @@
                                         v-model="form.password"
                                         required />
                                 </div>
-                                <button class="btn btn-primary mt-3" type="submit" data-bs-dismiss="modal">{% trans "Login" %}</button>
+                                <button id="process-login-button" class="btn btn-primary mt-3" type="submit" data-bs-dismiss="modal">{% trans "Login" %}</button>
                             </form>
                         </div>
                     </div>
@@ -115,25 +115,101 @@
         </div>
 
         <!-- Voting -->
-        <div v-if="!signup">
-            <h1>[[ voting.id ]] - [[ voting.name ]]</h1>
-            <h2>[[ voting.question.desc ]]</h2>
-            <form v-for="opt in voting.question.options" :key="opt.number">
-                <div class="form-group">
-                    <input type="radio" v-model="selected"
-                                :id="'q' + opt.number"
-                                name="question"
-                                :value="opt.number">
-                        [[ opt.option ]]
+        <div v-if="!signup" class="container text-center mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title display-3">Voting ID: [[ voting.id ]]</h1>
+                    <h2 class="card-subtitle mb-3 display-4">[[ voting.name ]]</h2>
+                    <p class="card-text">[[ voting.question.desc ]]</p>
+                    <div v-if="voting.question.type === 'C'" class="mb-3">
+                        <!-- Votación normal con opciones -->
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <form v-for="opt in voting.question.options" :key="opt.number">
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" v-model="selected" :id="'q' + opt.number"
+                                        class="form-check-input" name="question" :value="opt.number">
+                                    <label class="form-check-label" :for="'q' + opt.number">[[ opt.option ]]</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <button class="btn btn-primary btn-lg" @click="decideSend($event,'')">
+                                {{ 'Vote' }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div v-else-if="voting.question.type === 'R'">
+                        {% comment %} Votación Ranking {% endcomment %}
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <form v-for="opt in voting.question.options" :key="opt.number">
+                                <div class="form-check form-check-inline">
+                                    <input type="number" class="form-ranked-input" name="raking-question" min="1" max="{{maxOption}}">
+                                    <label class="form-check-label" :for="'q' + opt.number">[[ opt.option ]]</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <button class="btn btn-primary btn-lg" @click="decideSend">
+                                {{ 'Vote' }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div v-else-if="voting.question.type === 'Y'" class="d-flex justify-content-center mt-3">
+                        <!-- Votación 'Yes' o 'No' -->
+                        <button class="btn btn-success btn-lg me-3" @click="decideSend($event,'Si')">
+                            {{ 'Si' }}
+                        </button>
+                        <button class="btn btn-danger btn-lg" @click="decideSend($event,'No')">
+                            {{ 'No' }}
+                        </button>
+                    </div>
+
+                    <div v-else-if="voting.question.type === 'M'" class="mb-3">
+                        <!-- Votación Pregunta con múltiples opciones -->
+                        <div >
+                            <form v-for="opt in voting.question.options" :key="opt.number">
+                                <div class="form-check form-check-inline">
+                                    <!-- Inside the template loop for checkboxes -->
+                                    <input type="checkbox" 
+                                        :id="'q' + opt.number"
+                                        class="form-check-input" 
+                                        :name="'q' + opt.number" 
+                                        :value="opt.number"
+                                        :checked="selectedOptions.includes(opt.number)"
+                                        @change="toggleSelection(opt.number)">
+                                    <label class="form-check-label" :for="'q' + opt.number">[[ opt.option ]]</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <button class="btn btn-primary btn-lg" @click="submitMultipleChoice($event,'')">
+                                {{ 'Vote' }}
+                            </button>
+                        </div>
+                    </div>
+                    <div v-else-if="voting.question.type === 'T'" class="d-flex justify-content-center mt-3">
+                        <!-- <h2>[[voting.question]]</h2> -->
+                        <!-- Votación 'Yes' o 'No' -->
+                        <div class="form-floating">
+                            <textarea class="form-control" id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Deja aquí tu comentario</label>
+                            <br>
+                            <button id="send-vote" class="btn btn-primary btn-lg" @click="decideSend($event,'')">
+                                {{ 'Vote' }}
+                            </button>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div v-else class="text-center mt-3">
+                        <h2 class="card-subtitle display-4">Wrongly rendered vote</h2>
+                    </div>
                 </div>
-            </form>
-            <button class="btn btn-primary mt-3" v-on:click="decideSend">
-                {% trans "Vote" %}
-            </button>
+            </div>
         </div>
-
     </div>
-
 </div>
     
 {% endblock %}
@@ -150,8 +226,9 @@
     <!-- ElGamal encrypt -->
     <script src="{% static "crypto/elgamal.js" %}"></script>
 
+
     <!-- Vuejs -->
-    <script src="https://unpkg.com/vue@latest"</script>
+    <script src="https://unpkg.com/vue@latest"></script>
     <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
     <script src="https://unpkg.com/bootstrap@5.2.2/dist/js/bootstrap.js"></script>
 
@@ -180,7 +257,8 @@
                         g: BigInt.fromJSONObject(voting.pub_key.g.toString()),
                         y: BigInt.fromJSONObject(voting.pub_key.y.toString()),
                     },
-                    keybits: {{ KEYBITS }}
+                    keybits: {{ KEYBITS }},
+                    selectedOptions: []
                 }
             },
             beforeMount() {
@@ -197,6 +275,15 @@
                             this.getUser();
                         }
                     });
+                },
+                toggleSelection(optionNumber) {
+                    // Check if the option is already in the array, if yes, remove it; if not, add it
+                    const index = this.selectedOptions.indexOf(optionNumber);
+                    if (index > -1) {
+                        this.selectedOptions.splice(index, 1);
+                    } else {
+                        this.selectedOptions.push(optionNumber);
+                    }
                 },
                 postData(url, data) {
                     // Default options are marked with *
@@ -234,6 +321,17 @@
                             this.showAlert("danger", '{% trans "Error: " %}' + error);
                         });
                 },
+                textoAHexadecimal(cadena) {
+                    let resultado = '';
+                    for (let i = 0; i < cadena.length; i++) {
+                        let valorAscii = cadena.charCodeAt(i) + '';
+                        if (valorAscii.length <= 2) {
+                        valorAscii = valorAscii.length === 2 ? '0' + valorAscii: valorAscii
+                        }     
+                        resultado +=  valorAscii;
+                    }
+                    return resultado;
+                },
                 getUser(evt) {
                     var data = {token: this.token};
                     this.postData("{% url "gateway" "authentication" "/getuser/" %}", data)
@@ -261,14 +359,131 @@
                     var cipher = ElGamal.encrypt(this.bigpk, bigmsg);
                     return cipher;
                 },
-                decideSend(evt) {
+                decideEncryptMultipleChoices() {
+                    var encryptedVotes = []
+                    for (opt of this.selectedOptions) {
+                        var bigmsg = BigInt.fromJSONObject(opt.toString());
+                        var cipher = ElGamal.encrypt(this.bigpk, bigmsg);
+                        var vote = {a: cipher.alpha.toString(), b: cipher.beta.toString()}
+                        encryptedVotes.push(vote);
+                    }
+                    return encryptedVotes;
+                },
+                decideSend(evt, valor) {
+                    if (this.voting.question.type === 'C') {
+                        evt.preventDefault();
+                        var v = this.decideEncrypt();
+                        var data = {
+                            vote: {a: v.alpha.toString(), b: v.beta.toString()},
+                            voting: this.voting.id,
+                            voting_type: "classic",
+                            voter: this.user.id,
+                            token: this.token
+                        }
+                        this.postData("{% url "gateway" "store" "/" %}", data)
+                            .then(data => {
+                                this.successVote = true;
+                                this.alertShow = false;
+                                this.showAlert("success", '{% trans "Congratulations. Your vote has been sent" %}');
+                            })
+                            .catch(error => {
+                                this.succesVote = false;
+                                this.showAlert("danger", '{% trans "Error: " %}' + error);
+                            });
+                        
+                    } else if (this.voting.question.type === 'Y') {
+                        // Votación 'Si' o 'No'
+                        var selectedOption = this.voting.question.options.find(opt => opt.option === valor);
+                        
+                        this.selected = selectedOption.number;
+                        evt.preventDefault();
+                        var v = this.decideEncrypt();
+                        var data = {
+                            vote: { a: v.alpha.toString(), b: v.beta.toString() },
+                            voting: this.voting.id,
+                            voting_type: "yesno",
+                            voter: this.user.id,
+                            token: this.token
+                        };
+
+                        this.postData("{% url "gateway" "store" "/" %}", data)
+                            .then(data => {
+                                this.successVote = true;
+                                this.alertShow = false;
+                                this.showAlert("success", '{% trans "Congratulations. Your vote has been sent" %}');
+                            })
+                            .catch(error => {
+                                this.successVote = false;
+                                this.showAlert("danger", '{% trans "Error: " %}' + error);
+                            });
+
+                    } else if (this.voting.question.type === 'T') {
+                        var textAreaValue = document.getElementById('floatingTextarea2').value;
+                        evt.preventDefault();
+                        this.selected = this.textoAHexadecimal(textAreaValue);
+                        var v = this.decideEncrypt();
+                        var data = {
+                            vote: { a: v.alpha.toString(), b: v.beta.toString() },
+                            voting: this.voting.id,
+                            voting_type: 'comment',
+                            voter: this.user.id,
+                            token: this.token
+                        };
+
+                        this.postData("{% url "gateway" "store" "/" %}", data)
+                            .then(data => {
+                                this.successVote = true;
+                                this.alertShow = false;
+                                this.showAlert("success", '{% trans "Congratulations. Your vote has been sent" %}');
+                            })
+                            .catch(error => {
+                                this.successVote = false;
+                                this.showAlert("danger", '{% trans "Error: " %}' + error);
+                            });
+                    } else if (this.voting.question.type === 'R') {
+                      evt.preventDefault();
+                      var values = document.getElementsByClassName('form-ranked-input')
+                      var listValues = Array.prototype.slice.call(values).map(x => x.value)
+                      let max = {{maxOption}}
+                      var check = this.checkVote(listValues)
+                      if (check.error) {
+                        this.showAlert("danger", '{% trans "Error: " %}' + check.msg);
+                        return
+                      }
+                      var vote = listValues.join('-')
+                      this.selected = this.stringToASCII(vote)
+                      var v = this.decideEncrypt();
+                      var data = {
+                          vote: {a: v.alpha.toString(), b: v.beta.toString()},
+                          voting: this.voting.id,
+                          voter: this.user.id,
+                          voting_type: 'preference',
+                          token: this.token,
+                      }
+                      this.postData("{% url "gateway" "store" "/" %}", data)
+                          .then(data => {
+                              this.successVote = true;
+                              this.alertShow = false;
+                              this.showAlert("success", '{% trans "Congratulations. Your vote has been sent" %}');
+                          })
+                          .catch(error => {
+                              this.succesVote = false;
+                              this.showAlert("danger", '{% trans "Error: " %}' + error);
+                          });
+                    } else {
+                        // Tipo de votación no reconocido
+                        this.showAlert("danger", "Unknown voting type");
+                    }
+                },
+                submitMultipleChoice(evt) {
                     evt.preventDefault();
-                    var v = this.decideEncrypt();
+                    var votes = this.decideEncryptMultipleChoices();
                     var data = {
-                        vote: {a: v.alpha.toString(), b: v.beta.toString()},
+                        votes: votes,
                         voting: this.voting.id,
                         voter: this.user.id,
-                        token: this.token
+                        token: this.token,
+                        voting_type: 'choices'
                     }
                     this.postData("{% url "gateway" "store" "/" %}", data)
                         .then(data => {
@@ -285,6 +500,31 @@
                     this.alertLvl = lvl;
                     this.alertMsg = msg;
                     this.alertShow = true;
+                },
+                stringToASCII(value) {
+                  let result = '';
+                  for (let i = 0; i < value.length; i++) {
+                    let valueASCII = value.charCodeAt(i) + '';
+                    if (valueASCII.length <= 2) {
+                      valueASCII = valueASCII.length === 2 ? '0' + valueASCII: valueASCII
+                    }     
+                    result +=  valueASCII;
+                  }
+                  return result;
+                },
+                checkVote(v) {
+                  if (v.some(x => isNaN(parseInt(x)))) {
+                    return { error: true, msg: 'Se tienen que escoger la preferencia de todas las opciones'}
+                  }
+                  vSet = new Set(v)
+                  if (v.length !== vSet.size) {
+                    return { error: true, msg: 'No puede haber preferencias repetidas entre opciones'}
+                  }
+                  let max = {{maxOption}}
+                  if (v.some(x => x < 1 || x > max)) {
+                    return { error: true, msg: `No se pueden escoger preferencias que no existen el rango de prefenrecias es 1-${max}`}
+                  }
+                  return { error: false, msg: ''}
                 }
             },
         }).mount('#app-booth')

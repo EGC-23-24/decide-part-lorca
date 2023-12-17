@@ -4,18 +4,22 @@ services:
   db:
     restart: always
     container_name: decide_db
-    image: postgres:11.18-bullseye
+    image: postgres:14.9-alpine
     volumes:
       - db:/var/lib/postgresql/data
     networks:
       - decide
     environment:
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=postgres
   web:
     restart: always
     container_name: decide_web
     image: decide_web:latest
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - BRANCH=main
     command: ash -c "python manage.py migrate && gunicorn -w 5 decide.wsgi --timeout=500 -b 0.0.0.0:5000"
     expose:
       - "5000"
@@ -25,6 +29,9 @@ services:
       - db
     networks:
       - decide
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
   nginx:
     restart: always
     container_name: decide_nginx
@@ -40,6 +47,29 @@ services:
       - web
     networks:
       - decide
+  redis:
+    restart: always
+    container_name: decide_redis
+    image: redis:alpine
+    expose:
+      - 6379
+    networks:
+      - decide
+  worker:
+    restart: always
+    container_name: decide_celery
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ash -c "python -m celery -A decide worker --uid=nobody"
+    depends_on:
+      - redis
+    networks:
+      - decide
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+
 
 volumes:
   static:

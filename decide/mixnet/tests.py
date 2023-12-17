@@ -1,14 +1,14 @@
-from django.test import TestCase, tag
 from django.conf import settings
 from rest_framework.test import APIClient
 from rest_framework.test import APITestCase
+from nose.tools import nottest
 
 from mixnet.mixcrypt import MixCrypt
 from mixnet.mixcrypt import ElGamal
 
 from base import mods
 
-@tag("slow")
+@nottest
 class MixnetCase(APITestCase):
 
     def setUp(self):

@@ -27,4 +27,8 @@ class BoothView(TemplateView):
 
         context['KEYBITS'] = settings.KEYBITS
 
+        if r[0]['question']['type'] == 'R':
+            maxNumberOption = len(r[0]['question']['options'])
+            context['maxOption'] = maxNumberOption
+
         return context

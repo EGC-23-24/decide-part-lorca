@@ -4,7 +4,8 @@
 
 tipo: asunto #id
 
-cuerpo
+
+### recordatorio: los commits se realizarán en inglés.
 
 ### recordatorio: los commits se realizarán en inglés.
 
@@ -17,12 +18,9 @@ cuerpo
 # test (incorporación o modificación de tests)
 # conf (modificación de archivos de configuración)
 
-### asunto
-# Consiste en una breve descripción del problema que se ha tratado y que debe de comenzar con un verbo en participio. 
-# Se referenciará la issue correspondiente (en caso de existir) tal que: `#<ID_issue>`
+# Body: Explain *what* and *why* (not *how*). Include task ID.
+# Wrap at 72 chars. ################################## which is here:  #
 
-### cuerpo (opcional)
-# Se utilizará en caso de que el asunto no sea suficientemente descriptivo.
 
 ### Ejemplo
 # conf : Updated docker-compose.yml #1

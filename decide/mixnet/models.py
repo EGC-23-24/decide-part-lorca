@@ -7,7 +7,6 @@ from base.models import Auth, Key
 from base.serializers import AuthSerializer
 from django.conf import settings
 
-
 # number of bits for the key, all auths should use the same number of bits
 B = settings.KEYBITS
 
@@ -22,7 +21,7 @@ class Mixnet(models.Model):
     pubkey = models.ForeignKey(Key, blank=True, null=True,
                                related_name="mixnets_pub",
                                on_delete=models.SET_NULL)
-
+    
     def __str__(self):
         auths = ", ".join(a.name for a in self.auths.all())
         return "Voting: {}, Auths: {}\nPubKey: {}".format(self.voting_id,
@@ -38,7 +37,7 @@ class Mixnet(models.Model):
         crypt = MixCrypt(bits=B)
         k = crypt.setk(self.key.p, self.key.g, self.key.y, self.key.x)
         return crypt.shuffle_decrypt(msgs, last)
-
+    
     def gen_key(self, p=0, g=0):
         crypt = MixCrypt(bits=B)
         if self.key:

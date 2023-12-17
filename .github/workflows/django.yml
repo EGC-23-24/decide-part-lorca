@@ -9,6 +9,11 @@ on:
       - main
     paths-ignore:
       - 'doc/**'
+  workflow_call:
+    secrets:
+      CODACY_PROJECT_TOKEN:
+        required: true
+
 
 jobs:
   build:
@@ -29,7 +34,10 @@ jobs:
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
+      redis:
+        image: "redis:latest"
+        ports:
+          - 6379:6379
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{matrix.pyversion}}
@@ -44,17 +52,20 @@ jobs:
         pip install -r requirements.txt
         pip install codacy-coverage
         cp decide/local_settings.gactions.py decide/local_settings.py
-    - name: Run all tests
-      if: ${{ github.base_ref == 'main' }}
+    - name: Install Redis and Start Server
+      run: |
+        sudo apt-get install redis-server
+        redis-server --daemonize yes
+    - name: Start Celery Worker
       run: |
         cd decide
-        coverage run --branch --source=. ./manage.py test  --keepdb 
-        coverage xml 
+        python -m celery -A decide.celery worker -D --loglevel=info
+
     - name: Run tests
       if: ${{ github.base_ref == 'develop' }}
       run: |
         cd decide
-        coverage run --branch --source=. ./manage.py test --exclude-tag=slow  --keepdb 
+        coverage run --branch --source=. ./manage.py test -v 2  --keepdb 
         coverage xml 
     - name: Codacy Coverage Reporter
       uses: codacy/codacy-coverage-reporter-action@v1

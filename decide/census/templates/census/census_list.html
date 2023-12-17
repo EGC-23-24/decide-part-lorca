@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% load i18n static %} {% block extrahead %}
+<link
+  type="text/css"
+  rel="stylesheet"
+  href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css"
+/>
+<link type="text/css" rel="stylesheet" href="{% static "booth/style.css" %}" />
+<style>
+    table {
+        border-collapse: collapse;
+        margin-bottom: 10px; /* Add margin to the bottom of the table */
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+</style>
+{% endblock %} {% block content %}
+    
+    {% if queryset %}
+        <h2>Census List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>voting_id</th> 
+                    <th>voter_id</th>  
+                </tr>
+            </thead>
+            <tbody>
+                {% for census in queryset %}
+                    <tr>
+                        <td>{{ census.id }}</td>
+                        <td>{{ census.voting_id }}</td> 
+                        <td>{{ census.voter_id }}</td> 
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h1>No hay datos registrados</h1>
+    {% endif %}
+
+    <a class="btn btn-primary btn-sm" href="/census/export" >Export census</a>
+
+{% endblock %}

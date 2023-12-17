@@ -40,6 +40,7 @@ from Crypto.PublicKey import ElGamal
 from Crypto.Random import random
 from Crypto import Random
 from Crypto.Util.number import GCD
+from Crypto.Cipher import AES
 
 
 def rand(p):
@@ -124,7 +125,7 @@ class MixCrypt:
     def setk(self, p, g, y, x):
         self.k = ElGamal.construct((p, g, y, x))
         return self.k
-
+    
     def encrypt(self, m, k=None):
         r = rand(self.k.p)
         if not k:
@@ -135,7 +136,7 @@ class MixCrypt:
     def decrypt(self, c):
         m = self.k._decrypt(c)
         return m
-
+    
     def multiple_decrypt(self, msgs, last=True):
         msgs2 = []
         for a, b in msgs:
@@ -161,7 +162,7 @@ class MixCrypt:
             msgs3.append(msg)
 
         return msgs3
-
+    
     def reencrypt(self, cipher, pubkey=None):
         '''
         >>> B = 256

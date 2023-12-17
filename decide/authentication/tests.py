@@ -167,7 +167,7 @@ class TestRegisterPositive(StaticLiveServerTestCase):
         self.cleaner.find_element(By.ID, "id_last_name").send_keys("Smith")
         self.cleaner.find_element(By.CSS_SELECTOR, ".btn").click()
 
-        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/authentication/")
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/")
 
 class TestRegisterNegative(StaticLiveServerTestCase):
 
@@ -428,7 +428,7 @@ class TestLoginPositive(StaticLiveServerTestCase):
         self.cleaner.find_element(By.ID, "id_last_name").send_keys("Smith")
         self.cleaner.find_element(By.CSS_SELECTOR, ".btn").click()
 
-        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/authentication/")
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/")
 
         self.cleaner.get(self.live_server_url+"/authentication/login-view/")
 
@@ -438,7 +438,7 @@ class TestLoginPositive(StaticLiveServerTestCase):
         self.cleaner.find_element(By.ID, "id_password1").send_keys("login1234")
         self.cleaner.find_element(By.CSS_SELECTOR, ".btn").click()
 
-        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/authentication/")
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/")
 
 class TestLoginNegative(StaticLiveServerTestCase):
 

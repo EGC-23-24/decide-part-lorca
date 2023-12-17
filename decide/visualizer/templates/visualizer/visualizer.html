@@ -42,43 +42,88 @@
                     </tbody>
                 </table>
             </div>
-            <div v-else>
-                <h2 class="heading">Results:</h2>
+            <div v-else>    
+                <div v-if="voting.question.type === 'C' || voting.question.type === 'R' || voting.question.type === 'M'" class="mb-3">
+                    <h2 class="heading">Results:</h2>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Score</th>
+                                <th>Votes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="opt in voting.postproc" :key="opt.number">
+                                <th>[[opt.option]]</th>
+                                <td>[[opt.postproc]]</td>
+                                <td class="text-muted">[[opt.votes]]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <select id="chart-select" onchange="showChart()">
+                        <option value="doughnut-chart-post">Doughnut Chart (Score)</option>
+                        <option value="doughnut-chart-votes">Doughnut Chart (Votes)</option>
+                        <option value="polar-chart-post">Polar Chart (Score)</option>
+                        <option value="polar-chart-votes">Polar Chart (Votes)</option>
+                        <option value="radar-chart-post">Radar Chart (Score)</option>
+                        <option value="radar-chart-votes">Radar Chart (Votes)</option>
+                        <option value="bar-chart">Bar Chart</option>
+                    </select>
 
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Option</th>
-                            <th>Score</th>
-                            <th>Votes</th>
+                    <canvas id="bar-chart" style="display:none"></canvas>
+                    <canvas id="polar-chart-post" style="display:none"></canvas>
+                    <canvas id="polar-chart-votes" style="display:none"></canvas>
+                    <canvas id="radar-chart-votes" style="display:none"></canvas>
+                    <canvas id="doughnut-chart-votes" style="display:none"></canvas>
+                    <canvas id="radar-chart-post" style="display:none"></canvas>
+                    <canvas id="doughnut-chart-post"></canvas>
+                </div>
+                <div v-else-if="voting.question.type === 'T'" class="d-flex justify-content-center mt-3">
+                    <h3>Text Voting Results:</h3>
+                    <table class="table">
+                        <tr v-for="(opt, index) in voting.postproc" :key="index">
+                            <td class="bg-primary text-white p-2 rounded">
+                                <span class="badge bg-secondary">[[ index + 1 ]]</span>
+                                [[ opt.postproc ]]
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="opt in voting.postproc" :key="opt.number">
-                            <th>[[opt.option]]</th>
-                            <td>[[opt.postproc]]</td>
-                            <td class="text-muted">[[opt.votes]]</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <select id="chart-select" onchange="showChart()">
-                    <option value="bar-chart">Bar Chart</option>
-                    <option value="polar-chart-post">Polar Chart (Score)</option>
-                    <option value="polar-chart-votes">Polar Chart (Votes)</option>
-                    <option value="radar-chart-post">Radar Chart (Score)</option>
-                    <option value="radar-chart-votes">Radar Chart (Votes)</option>
-                    <option value="doughnut-chart-post">Doughnut Chart (Score)</option>
-                    <option value="doughnut-chart-votes">Doughnut Chart (Votes)</option>
-                </select>
+                    </table>
 
-                <canvas id="bar-chart"></canvas>
-                <canvas id="polar-chart-post" style="display:none"></canvas>
-                <canvas id="polar-chart-votes" style="display:none"></canvas>
-                <canvas id="radar-chart-votes" style="display:none"></canvas>
-                <canvas id="doughnut-chart-votes" style="display:none"></canvas>
-                <canvas id="radar-chart-post" style="display:none"></canvas>
-                <canvas id="doughnut-chart-post" style="display:none"></canvas>
-
+                </div>
+                <div v-else-if="voting.question.type === 'Y'" class="d-flex justify-content-center mt-3">
+                    <h3>Yes/No voting Results:</h3>
+                    <div class="container mt-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table">
+                                    <tr v-for="(opt, index) in voting.postproc" :key="index">
+                                        <td class="bg-primary text-white p-2 rounded">
+                                            <strong>[[ opt.option ]]:</strong> <span class="text-muted">[[ opt.postproc ]] votes</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    
+                        <div class="row">
+                            <div class="col-md-12">
+                                <select id="chart-select" onchange="showChart()" class="mb-2">
+                                    <option value="bar-chart">Bar Chart</option>
+                                    <option value="polar-chart-post">Polar Chart (Score)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="chart-container">
+                                    <canvas id="bar-chart"></canvas>
+                                    <canvas id="polar-chart-post" style="display:none"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                 
+                </div>
             </div>
         </div>
     </div>
@@ -123,7 +168,7 @@
         let labels = voting.postproc.map((opt) => opt.option)
         let postproc = voting.postproc.map((opt) => opt.postproc)
         let votes = voting.postproc.map((opt) => opt.votes)
-
+        
         let ctx = document.getElementById("bar-chart").getContext("2d");
         let chart = new Chart(ctx, {
             type: "bar",
