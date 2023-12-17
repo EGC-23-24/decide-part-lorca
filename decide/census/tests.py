@@ -434,6 +434,9 @@ class CensusTestCase(BaseTestCase):
         # Crear un censo
         census = Census.objects.create(voting_id=v.id, voter_id=u.id)
 
+        # Borrar el votante
+        u.delete()
+
         self.login()
         data = {"voting_id": v.id, "voters": [u.id]}
         response = self.client.post("/census/", data, format="json")

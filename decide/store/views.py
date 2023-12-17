@@ -10,12 +10,13 @@ from base.perms import UserIsStaff
 from . import utils
 
 VOTING_TYPES = {
-  'preference': utils.classic_store,
-  'yesno': utils.classic_store,
-  'choices': utils.choices_store,
-  'comment': utils.classic_store,
-  'classic': utils.classic_store,
+    'preference': utils.classic_store,
+    'yesno': utils.classic_store,
+    'choices': utils.choices_store,
+    'comment': utils.classic_store,
+    'classic': utils.classic_store,
 }
+
 
 class StoreView(generics.ListAPIView):
     queryset = Vote.objects.all()
@@ -33,4 +34,4 @@ class StoreView(generics.ListAPIView):
         if voting_type not in VOTING_TYPES.keys():
             return Response({}, status=status.HTTP_400_BAD_REQUEST)
         status_code = VOTING_TYPES[voting_type](request)
-        return  Response({}, status=status_code)
+        return Response({}, status=status_code)

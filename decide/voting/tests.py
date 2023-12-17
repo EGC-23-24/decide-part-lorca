@@ -1,5 +1,6 @@
 import random
 import itertools
+import time
 from django.utils import timezone
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -18,6 +19,7 @@ from mixnet.mixcrypt import MixCrypt
 from mixnet.models import Auth
 from voting.models import Voting, Question, QuestionOption, QuestionOptionRanked, QuestionOptionYesNo
 
+from .tasks import future_stop_voting_task
 
 class VotingTestCase(BaseTestCase):
 
@@ -815,3 +817,32 @@ class PostProcTest(TestCase):
 
         with self.assertRaises(ValueError):
             v.do_postproc()
+
+class FutureClosureTests(BaseTestCase):
+    def setUp(self):
+        q = Question(desc='test question')
+        q.save()
+        for i in range(5):
+            opt = QuestionOption(question=q, option='option {}'.format(i+1))
+            opt.save()
+        v = Voting(name='test voting', question=q)
+        v.save()
+
+        a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
+                                          defaults={'me': True, 'name': 'test auth'})
+        a.save()
+        v.auths.add(a)
+        
+        self.res = future_stop_voting_task.delay(v.id, v.created_at)
+        self.v = v
+        
+        super().setUp()
+
+    def tearDown(self):
+        super().tearDown()
+        
+    def test_task_status(self):
+        self.assertEqual(self.res.status, "SUCCESS")
+    
+    def test_end_date(self):
+        self.assertEqual(self.v.end_date, self.v.future_stop)
