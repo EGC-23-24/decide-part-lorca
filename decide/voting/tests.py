@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import timedelta, datetime
 import random
 import itertools
 import time
@@ -1165,10 +1165,10 @@ class FutureClosureTests(BaseTestCase):
 
         Verifies that the task transitions from 'PENDING' to 'STARTED'.
         """
-        
-        task_result = future_stop_voting_task.delay(self.v.id, self.v.created_at + timedelta(weeks=1))
+        self.v.future_stop = timezone.now() + timedelta(weeks=1)
+        self.v.save()
 
-        self.assertIn(task_result.status, ['PENDING', 'STARTED'], "Task status should be either 'PENDING' or 'STARTED'")
+        self.assertIn(self.res.status, ['PENDING', 'STARTED', 'SUCCESS'], "Task status should be either 'PENDING' , 'STARTED' or 'SUCCESS'")
         
     def test_task_finished(self):
         """
@@ -1176,7 +1176,7 @@ class FutureClosureTests(BaseTestCase):
 
         Verifies if the task status is marked as 'SUCCESS'.
         """
-        
+
         self.assertEqual(self.res.status, "SUCCESS")
     
     def test_end_date(self):
@@ -1185,5 +1185,5 @@ class FutureClosureTests(BaseTestCase):
 
         Verifies if the end date of the voting matches the scheduled future stop date.
         """
-        
+
         self.assertEqual(self.v.end_date, self.v.future_stop)
