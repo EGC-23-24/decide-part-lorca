@@ -151,9 +151,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../modules/voting.html">Voting Module</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../doc/index.html">Decide doc files</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../../memes.html">Memes collection</a></li>
 </ul>
 
@@ -308,21 +305,18 @@ document.write(`
 <span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
 <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
-<span class="kn">from</span> <span class="nn">django.contrib.staticfiles.testing</span> <span class="kn">import</span> <span class="n">StaticLiveServerTestCase</span>
+<span class="kn">from</span> <span class="nn">rest_framework.test</span> <span class="kn">import</span> <span class="n">APIClient</span>
+
 <span class="kn">from</span> <span class="nn">openpyxl</span> <span class="kn">import</span> <span class="n">load_workbook</span>
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
 <span class="kn">from</span> <span class="nn">openpyxl</span> <span class="kn">import</span> <span class="n">Workbook</span>
 <span class="kn">from</span> <span class="nn">django.core.files.uploadedfile</span> <span class="kn">import</span> <span class="n">SimpleUploadedFile</span>
 <span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
 
-<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
-
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Census</span>
 <span class="kn">from</span> <span class="nn">voting.models</span> <span class="kn">import</span> <span class="n">Voting</span><span class="p">,</span> <span class="n">Question</span><span class="p">,</span> <span class="n">QuestionOption</span>
 <span class="kn">from</span> <span class="nn">base.models</span> <span class="kn">import</span> <span class="n">Auth</span>
 <span class="kn">from</span> <span class="nn">base.tests</span> <span class="kn">import</span> <span class="n">BaseTestCase</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
 
 <div class="viewcode-block" id="CensusTestCase"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase">[docs]</a><span class="k">class</span> <span class="nc">CensusTestCase</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
@@ -955,152 +949,6 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
             <span class="mi">0</span><span class="p">,</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
         <span class="p">)</span>  <span class="c1"># Comprobar que no hay objetos Census</span></div></div>
-
-
-<div class="viewcode-block" id="CensusTest"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest">[docs]</a><span class="k">class</span> <span class="nc">CensusTest</span><span class="p">(</span><span class="n">StaticLiveServerTestCase</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Test case for census creation using Selenium and a live server.</span>
-
-<span class="sd">    This class inherits from StaticLiveServerTestCase to provide a test environment</span>
-<span class="sd">    for web-based interactions using Selenium WebDriver.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    
-<div class="viewcode-block" id="CensusTest.setUp"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Set up the test environment before each test method.</span>
-
-<span class="sd">        Initializes the WebDriver and sets up the base test environment.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="c1"># Load base test functionality for decide</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="n">BaseTestCase</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
-
-        <span class="n">options</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">ChromeOptions</span><span class="p">()</span>
-        <span class="n">options</span><span class="o">.</span><span class="n">headless</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
-
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
-
-<div class="viewcode-block" id="CensusTest.tearDown"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Tear down the test environment after each test method.</span>
-
-<span class="sd">        Closes the WebDriver and tears down the base test environment.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
-
-<div class="viewcode-block" id="CensusTest.createCensusSuccess"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest.createCensusSuccess">[docs]</a>    <span class="k">def</span> <span class="nf">createCensusSuccess</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Test the successful creation of a census entry in the admin interface.</span>
-
-<span class="sd">        This method simulates the process of logging into the admin site and </span>
-<span class="sd">        creating a new census entry with valid data.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/login/?next=/admin/&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;decide&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;decide&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Keys.ENTER&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census/add&quot;</span><span class="p">)</span>
-        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voting_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voting_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span>
-            <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m</span><span class="si">%d</span><span class="s2">%M%S&quot;</span><span class="p">)</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voter_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voter_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span>
-            <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m</span><span class="si">%d</span><span class="s2">%M%S&quot;</span><span class="p">)</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census&quot;</span>
-        <span class="p">)</span></div>
-
-<div class="viewcode-block" id="CensusTest.createCensusEmptyError"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest.createCensusEmptyError">[docs]</a>    <span class="k">def</span> <span class="nf">createCensusEmptyError</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Test the behavior when attempting to create a census entry with empty fields.</span>
-
-<span class="sd">        This method checks if the correct error message is displayed when trying </span>
-<span class="sd">        to save a census entry without filling out the required fields.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/login/?next=/admin/&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;decide&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;decide&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Keys.ENTER&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census/add&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span>
-                <span class="s2">&quot;/html/body/div/div[3]/div/div[1]/div/form/div/p&quot;</span>
-            <span class="p">)</span><span class="o">.</span><span class="n">text</span>
-            <span class="o">==</span> <span class="s2">&quot;Please correct the errors below.&quot;</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">current_url</span>
-            <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census/add&quot;</span>
-        <span class="p">)</span></div>
-
-<div class="viewcode-block" id="CensusTest.createCensusValueError"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest.createCensusValueError">[docs]</a>    <span class="k">def</span> <span class="nf">createCensusValueError</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Test the behavior when attempting to create a census entry with invalid values.</span>
-
-<span class="sd">        This method simulates the creation of a census entry with invalid values </span>
-<span class="sd">        and checks if the appropriate error message is displayed.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/login/?next=/admin/&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;decide&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;decide&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Keys.ENTER&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census/add&quot;</span><span class="p">)</span>
-        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voting_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voting_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;64654654654654&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voter_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voter_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;64654654654654&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span>
-                <span class="s2">&quot;/html/body/div/div[3]/div/div[1]/div/form/div/p&quot;</span>
-            <span class="p">)</span><span class="o">.</span><span class="n">text</span>
-            <span class="o">==</span> <span class="s2">&quot;Please correct the errors below.&quot;</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">current_url</span>
-            <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census/add&quot;</span>
-        <span class="p">)</span></div></div>
-
 
 <div class="viewcode-block" id="CensusExportViewTest"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusExportViewTest">[docs]</a><span class="k">class</span> <span class="nc">CensusExportViewTest</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>

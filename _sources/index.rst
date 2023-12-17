@@ -25,6 +25,5 @@ This Django project will be divided into apps (subsystems and base project), whe
    :titlesonly:
 
    modules/index
-   doc/index
    memes
 

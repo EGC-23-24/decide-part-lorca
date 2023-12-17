@@ -154,9 +154,6 @@
 <li class="toctree-l2"><a class="reference internal" href="voting.html">Voting Module</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../doc/index.html">Decide doc files</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../memes.html">Memes collection</a></li>
 </ul>
 
@@ -471,14 +468,6 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_success"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_success()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_voting_ended"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_voting_ended()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_voting_not_started"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_voting_not_started()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest"><code class="docutils literal notranslate"><span class="pre">CensusTest</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.createCensusEmptyError"><code class="docutils literal notranslate"><span class="pre">CensusTest.createCensusEmptyError()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.createCensusSuccess"><code class="docutils literal notranslate"><span class="pre">CensusTest.createCensusSuccess()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.createCensusValueError"><code class="docutils literal notranslate"><span class="pre">CensusTest.createCensusValueError()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.setUp"><code class="docutils literal notranslate"><span class="pre">CensusTest.setUp()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.tearDown"><code class="docutils literal notranslate"><span class="pre">CensusTest.tearDown()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase"><code class="docutils literal notranslate"><span class="pre">CensusTestCase</span></code></a><ul class="nav section-nav flex-column">
@@ -1219,53 +1208,6 @@ and appropriate success message is displayed.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="census.tests.CensusTest">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.tests.</span></span><span class="sig-name descname"><span class="pre">CensusTest</span></span><a class="reference internal" href="../_modules/census/tests.html#CensusTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTest" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StaticLiveServerTestCase</span></code></p>
-<p>Test case for census creation using Selenium and a live server.</p>
-<p>This class inherits from StaticLiveServerTestCase to provide a test environment
-for web-based interactions using Selenium WebDriver.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="census.tests.CensusTest.createCensusEmptyError">
-<span class="sig-name descname"><span class="pre">createCensusEmptyError</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTest.createCensusEmptyError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTest.createCensusEmptyError" title="Permalink to this definition">#</a></dt>
-<dd><p>Test the behavior when attempting to create a census entry with empty fields.</p>
-<p>This method checks if the correct error message is displayed when trying
-to save a census entry without filling out the required fields.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="census.tests.CensusTest.createCensusSuccess">
-<span class="sig-name descname"><span class="pre">createCensusSuccess</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTest.createCensusSuccess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTest.createCensusSuccess" title="Permalink to this definition">#</a></dt>
-<dd><p>Test the successful creation of a census entry in the admin interface.</p>
-<p>This method simulates the process of logging into the admin site and
-creating a new census entry with valid data.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="census.tests.CensusTest.createCensusValueError">
-<span class="sig-name descname"><span class="pre">createCensusValueError</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTest.createCensusValueError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTest.createCensusValueError" title="Permalink to this definition">#</a></dt>
-<dd><p>Test the behavior when attempting to create a census entry with invalid values.</p>
-<p>This method simulates the creation of a census entry with invalid values
-and checks if the appropriate error message is displayed.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="census.tests.CensusTest.setUp">
-<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTest.setUp" title="Permalink to this definition">#</a></dt>
-<dd><p>Set up the test environment before each test method.</p>
-<p>Initializes the WebDriver and sets up the base test environment.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="census.tests.CensusTest.tearDown">
-<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/census/tests.html#CensusTest.tearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTest.tearDown" title="Permalink to this definition">#</a></dt>
-<dd><p>Tear down the test environment after each test method.</p>
-<p>Closes the WebDriver and tears down the base test environment.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="census.tests.CensusTestCase">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">census.tests.</span></span><span class="sig-name descname"><span class="pre">CensusTestCase</span></span><a class="reference internal" href="../_modules/census/tests.html#CensusTestCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#census.tests.CensusTestCase" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTestCase</span></code></p>
@@ -1640,14 +1582,6 @@ disposition, and the Excel file contains the correct data.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_success"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_success()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_voting_ended"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_voting_ended()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusImportViewTest.test_census_import_view_voting_not_started"><code class="docutils literal notranslate"><span class="pre">CensusImportViewTest.test_census_import_view_voting_not_started()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest"><code class="docutils literal notranslate"><span class="pre">CensusTest</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.createCensusEmptyError"><code class="docutils literal notranslate"><span class="pre">CensusTest.createCensusEmptyError()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.createCensusSuccess"><code class="docutils literal notranslate"><span class="pre">CensusTest.createCensusSuccess()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.createCensusValueError"><code class="docutils literal notranslate"><span class="pre">CensusTest.createCensusValueError()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.setUp"><code class="docutils literal notranslate"><span class="pre">CensusTest.setUp()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTest.tearDown"><code class="docutils literal notranslate"><span class="pre">CensusTest.tearDown()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#census.tests.CensusTestCase"><code class="docutils literal notranslate"><span class="pre">CensusTestCase</span></code></a><ul class="nav section-nav flex-column">
