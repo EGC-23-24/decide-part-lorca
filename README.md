@@ -122,11 +122,11 @@ Una vez iniciada la aplicación, si accedemos a http://localhost:8000/ podremos 
 
 ![Imagen 01: Inicio](./resources/lorca/inicio.png)
 
-Si hemos inciado sesión correctamente, nos debería aparecer la siguiente vista:
+Si hemos iniciado sesión correctamente, nos debería aparecer la siguiente vista:
 
 ![Imagen 02: Incio logueado](./resources/lorca/user.png)
 
-SI hemos iniciado sesión con administrador, nos aparece la siguiente vista:
+Si hemos iniciado sesión con administrador, nos aparece la siguiente vista:
 
 ![Imagen 03: Incio logueado](./resources/lorca/admin.png)
 
