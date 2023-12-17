@@ -1,0 +1,651 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Autenticación &#8212; decide-part-lorca</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'doc/issues';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">decide-part-lorca</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Welcome to decide’s documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modules/index.html">Decide modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/booth.html">Booth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/census.html">Census Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/auth.html">Auth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/mixnet.html">Mixnet Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/postproc.html">Postproc Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/store.html">Store Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/visualizer.html">Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/voting.html">Voting Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">Decide doc files</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../memes.html">Memes collection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/edit/main/doc/issues.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/issues/new?title=Issue%20on%20page%20%2Fdoc/issues.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/doc/issues.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Autenticación</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Autenticación</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#censo">Censo</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#votaciones">Votaciones</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cabina-de-votacion">Cabina de votación</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#almacenamiento-de-votos-cifrados">Almacenamiento de votos (cifrados)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recuento-mixnet">Recuento / MixNet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#post-procesado">Post-procesado</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-resultados">Visualización de resultados</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interfaz-de-administracion">Interfaz de administración</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-agrupaciones">Otras agrupaciones</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion">Integración</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seguridad">Seguridad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentacion">Documentación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traducciones">Traducciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diseno-y-usabilidad">Diseño y usabilidad</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p>Listado de posibles tareas a desarrollar, agrupadas por subsistema.</p>
+<p>Cada tarea está etiquetada según dificultad como:</p>
+<ul class="simple">
+<li><p>Fácil (F)</p></li>
+<li><p>Media (M)</p></li>
+<li><p>Avanzada (A)</p></li>
+</ul>
+<section id="autenticacion">
+<h1>Autenticación<a class="headerlink" href="#autenticacion" title="Permalink to this heading">#</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Autenticación por email (F)
+* Autenticación por certificado digital (A)
+* Autenticación con redes sociales (M)
+* Autenticación LDAP externo (M)
+* Registro de usuarios. Formulario de registro que crea nuevos usuarios
+* Creación de API para usuarios
+* Autenticación con OAuth
+</pre></div>
+</div>
+</section>
+<section id="censo">
+<h1>Censo<a class="headerlink" href="#censo" title="Permalink to this heading">#</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Frontend de administración de censo
+* Reutilización de censo entre diferentes votaciones
+* Grupos en censo para filtrado y agrupar
+* Importación de censo desde excel (F)
+* Importación de censo de LDAP (M)
+* Exportación de censo (F)
+</pre></div>
+</div>
+</section>
+<section id="votaciones">
+<h1>Votaciones<a class="headerlink" href="#votaciones" title="Permalink to this heading">#</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Definición/Administración Votación Sí/No (M)
+* Definición/Administración Varias preguntas en la misma votación (M), afectaría al postprocesado, porque se tiene que mapear cada posible respuesta a un número y luego ese número se tiene que invertir.
+* Definición/Administración Votación por preferencia, definir una ordenación (M)
+* Almacenar tally y postprocesado en fichero del sistema y comprimir
+* URL de votación configurable/personalizable
+</pre></div>
+</div>
+</section>
+<section id="cabina-de-votacion">
+<h1>Cabina de votación<a class="headerlink" href="#cabina-de-votacion" title="Permalink to this heading">#</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Implementar un cliente de escritorio, Gtk+, Qt, etc. (M)
+* Implementar clientes móviles, android, iphone, etc. (M)
+* Implementar una interfaz mejorada con tecnología javascript moderna,
+  React, angular, etc. (M)
+* Interfaz de Votación Sí/No (M)
+* Interfaz de Varias preguntas en la misma votación (M)
+* Interfaz de Votación por preferencia, definir una ordenación (M)
+* Interfaz de votación de telegram / slack / Matrix.org (Riot)
+* Usabilidad de cabina, que haya un proceso de votación, guiado
+</pre></div>
+</div>
+</section>
+<section id="almacenamiento-de-votos-cifrados">
+<h1>Almacenamiento de votos (cifrados)<a class="headerlink" href="#almacenamiento-de-votos-cifrados" title="Permalink to this heading">#</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Implementación con una base de datos no relacional, mongodb (A)
+* Distribución y escalado con una base de datos distribuida / Cassandra (A)
+* Panel de control general, con información en tiempo real, por sexo, por IP/región. Esto está relacionado con el censo.
+* Edición del voto por el mismo votantes
+* Realización de backups
+* Alta disponibilidad
+</pre></div>
+</div>
+</section>
+<section id="recuento-mixnet">
+<h1>Recuento / MixNet<a class="headerlink" href="#recuento-mixnet" title="Permalink to this heading">#</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Optimizar cifrado, hacerlo multiproceso (M)
+* Implementar las pruebas de cero conocimiento (A)
+* Estudiar otros métodos de anonimización, otras mixnet con otros tipos
+  de cifrado (A)
+* Implementar una autoridad en otro lenguaje
+* Simplificar el cifrado, usar cifrado simétrico
+</pre></div>
+</div>
+</section>
+<section id="post-procesado">
+<h1>Post-procesado<a class="headerlink" href="#post-procesado" title="Permalink to this heading">#</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Aplicar paridad a los resultados (F)
+* Aplicar la ley d&#39;Hont (M)
+* Aplicar algoritmo de recuento borda, esto afecta al módulo de votación
+* Soportar diferentes tipos de votación, multiples preguntas, etc
+</pre></div>
+</div>
+</section>
+<section id="visualizacion-de-resultados">
+<h1>Visualización de resultados<a class="headerlink" href="#visualizacion-de-resultados" title="Permalink to this heading">#</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Pintado de gráficas y estudio de datos (F)
+* Mostrar información relevante en tiempo real, como el número de
+  votos, porcentaje del censo, estadísticas de votantes, según
+  perfiles, etc. (F)
+* Implementar los diferentes tipos de votaciones
+* Implementar visualizaciones para diferentes plataformas, telegram, slack
+</pre></div>
+</div>
+</section>
+<section id="interfaz-de-administracion">
+<h1>Interfaz de administración<a class="headerlink" href="#interfaz-de-administracion" title="Permalink to this heading">#</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Implementar las llamadas API REST para administración
+* Interfaz propia para crear una votación completa
+* Gestión del censo
+</pre></div>
+</div>
+</section>
+<section id="otras-agrupaciones">
+<h1>Otras agrupaciones<a class="headerlink" href="#otras-agrupaciones" title="Permalink to this heading">#</a></h1>
+<section id="integracion">
+<h2>Integración<a class="headerlink" href="#integracion" title="Permalink to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Versionar la API (F)
+* Autenticación entre servidores con token (M)
+* Implementar tests completos, mejorar la cobertura de código (M)
+* Implementar pruebas de rendimiento y benchmarks (M)
+* Definir scripts de despliegue automático con ansible (M)
+* Definir despliegue con docker para desarrollo y producción (M)
+</pre></div>
+</div>
+</section>
+<section id="seguridad">
+<h2>Seguridad<a class="headerlink" href="#seguridad" title="Permalink to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Firmado y comprobación de código (tanto cliente como servidor) (A)
+* Protección contra ataques ddos (A)
+* Hacer todo el proceso distribuido para eliminar el punto único de
+  fallo, censo distribuido, votos almacenados distribuidos y sólo
+  se podrán en común para el recuento. (A)
+</pre></div>
+</div>
+</section>
+<section id="documentacion">
+<h2>Documentación<a class="headerlink" href="#documentacion" title="Permalink to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Completar documentación de API (F)
+* Completar documentación de todas las clases y funciones (F)
+</pre></div>
+</div>
+</section>
+<section id="traducciones">
+<h2>Traducciones<a class="headerlink" href="#traducciones" title="Permalink to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Hacer la interfaz traducible (M)
+* Traducir la interfaz al español (F)
+* Traducir la interfaz a otros idiomas (F)
+</pre></div>
+</div>
+</section>
+<section id="diseno-y-usabilidad">
+<h2>Diseño y usabilidad<a class="headerlink" href="#diseno-y-usabilidad" title="Permalink to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Estudiar la usabilidad y definir una nueva interfaz usable, con
+  componentes css. (M)
+* Hacer la interfaz responsive, para que funcione en móviles. (M)
+* Estudiar la accesibilidad de la interfaz y hacerla accesible (M)
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Autenticación</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#censo">Censo</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#votaciones">Votaciones</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cabina-de-votacion">Cabina de votación</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#almacenamiento-de-votos-cifrados">Almacenamiento de votos (cifrados)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recuento-mixnet">Recuento / MixNet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#post-procesado">Post-procesado</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-resultados">Visualización de resultados</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interfaz-de-administracion">Interfaz de administración</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-agrupaciones">Otras agrupaciones</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion">Integración</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seguridad">Seguridad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentacion">Documentación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traducciones">Traducciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diseno-y-usabilidad">Diseño y usabilidad</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandro Medina Durán, Gonzalo Campos Mejías
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Alejandro Medina Durán, Gonzalo Campos Mejías.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
