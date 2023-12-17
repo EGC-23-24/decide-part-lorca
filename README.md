@@ -172,7 +172,7 @@ Una vez creada nos aparecerá esta vista para configurar el censo de la votació
 
 ### 4. Creación del censo
 
-Una vez creada la votacion, debemos añadir un censo para que los usuarios puedan registar sus votaciones. Para ello, estando logueado como administrador pulsamos el botón list votings y luego pulsamos el botón census. Esto nos llevará a la vista de gestión del censo:
+Una vez creada la votacion, debemos añadir un censo para que los usuarios puedan registrar sus votaciones. Para ello, estando logueado como administrador pulsamos el botón list votings y luego pulsamos el botón census. Esto nos llevará a la vista de gestión del censo:
 
 ![Imagen 04: Login form](./resources/lorca/census.png)
 
@@ -183,14 +183,16 @@ En esta vista podremos crear un nuevo censo indicando el id de la votación y el
 También podremos eliminar a una persona del censo, ver los detalles del censo de una votación, importar un censo a partir un archivo excel así como exportar un censo ya existente. También, podremos listar todos los censos que tenemos creados.
 
 ### 5. Inciar y gestionar una votación
-Una vez añadido el censo, si pulsamos en el botón list votings de la página de incio podremos ver todas las votaciones creadas por el adminsitrador y nos llevará a la vista de gestión de votaciones. En esta vista podremos finalizar, eliminar y editar una votación. 
+Una vez añadido el censo, si pulsamos en el botón list votings de la página de inicio podremos ver todas las votaciones creadas por el adminsitrador y nos llevará a la vista de gestión de votaciones. En esta vista podremos finalizar, eliminar y editar una votación. 
 
 ![Imagen 04: Login form](./resources/lorca/delete_voting.png)
 
 A partir de este momento, los usuarios registrados en el censo ya pueden votar en todas las votaciones que aparezcan en dicha vista. 
 
 ### 6. Votar en los diferentes tipos de votaciones
-Una vez inciada la votación, los usarios del censo podrán registrar su voto. Para ello, inciamos sesión con un usario y pulsamos el botón list votings. En la vista que nos aparece, sólo aparecen las votaciones en las que ese usuario esta incluido en el censo. Para votar, simplementa pulsamos en el botón vote.
+Una vez inciada la votación, los usarios del censo podrán registrar su voto. Para ello, iniciamos sesión con un usuario y pulsamos el botón list votings. En la vista que nos aparece, sólo aparecen las votaciones en las que ese usuario está incluido en el censo. Para votar, simplemente pulsamos en el botón vote. Si la votación ya ha finalizado, podremos ver los resultados de dicha votación pulsando en el botón results.
+
+![Imagen 04: Login form](./resources/lorca/vote.png)
 
 Dependiendo del tipo de votación, nos aparecerá la cabina de votación correspondiente.
 
@@ -210,7 +212,7 @@ Dependiendo del tipo de votación, nos aparecerá la cabina de votación corresp
 
 ![Imagen 04: Login form](./resources/lorca/preference.png)
 
-* Votación de respues abierta: podremos responder a la votación escribiendo lo que queramos en el cuadro de texto.
+* Votación de respuesta abierta: podremos responder a la votación escribiendo lo que queramos en el cuadro de texto.
 
 ![Imagen 04: Login form](./resources/lorca/comment.png)
 
@@ -219,7 +221,7 @@ Una vez que todos los usarios han votado, accedemos como administrador a la vist
 
 Una vez finalizada la votación, pulsamos en el botón Tally para realizar el conteo de los votos.
 
-![Imagen 04: Login form](./resources/lorca/.png)
+![Imagen 04: Login form](./resources/lorca/tally.png)
 
 ### 8. Visualizar los resultados
 
