@@ -19,8 +19,18 @@ from selenium.webdriver.support import expected_conditions as EC
 
 @nottest
 class ConfiguratorTests(StaticLiveServerTestCase):
+    """
+    Test case class for testing the configurator functionalities using Selenium.
+
+    This class includes methods to test the configuration and manipulation of votings through the web interface.
+    """
 
     def setUp(self):
+        """
+        Sets up necessary data and configurations before each test method.
+        Initializes Selenium WebDriver for browser-based testing.
+        """
+        
         # Load base test functionality for decide
         self.base = BaseTestCase()
         self.client = APIClient()
@@ -34,12 +44,21 @@ class ConfiguratorTests(StaticLiveServerTestCase):
         super().setUp()
 
     def tearDown(self):
+        """
+        Cleans up after each test method.
+        Quits the Selenium WebDriver.
+        """
+        
         super().tearDown()
         self.driver.quit()
 
         self.base.tearDown()
 
     def create_yesno_voting(self):
+        """
+        Creates a Yes/No type voting instance for testing.
+        """
+        
         q = Question(desc='Yes/No test question', type='Y')
         q.save()
         v = Voting(name='test Yes/No voting', question=q)
@@ -52,6 +71,12 @@ class ConfiguratorTests(StaticLiveServerTestCase):
         return v
     
     def create_users(self):
+        """
+        Creates user instances for testing, including admin and non-admin users.
+        :return: Returns the non-admin user.
+        :rtype: User
+        """
+        
         user_admin = User(username='admin', is_staff=True, is_superuser=True)
         user_admin.set_password('qwerty')
         user_admin.save()
@@ -61,12 +86,26 @@ class ConfiguratorTests(StaticLiveServerTestCase):
         return user_noadmin
 
     def add_user_to_census(self,pk):
+        """
+        Adds a user to the census for a particular voting.
+
+        :param pk: Primary key of the user to be added.
+        :type pk: int
+        :return: The created Census instance.
+        :rtype: Census
+        """
+        
         user = self.create_users()
         c = Census(voter_id=user.id, voting_id=self.yesno_voting.id)
         c.save()
         return c
     
     def test_access_to_voting_lists_view_as_admin(self):
+        """
+        Tests admin access to the list of votings through the web interface.
+        Verifies if the admin user can view the list of votings.
+        """
+        
         self.create_yesno_voting()
         self.add_user_to_census(1)
         self.driver.get(f'{self.live_server_url}/')
@@ -87,6 +126,11 @@ class ConfiguratorTests(StaticLiveServerTestCase):
         self.driver.get(f'{self.live_server_url}{list_voting_url}')
    
     def test_access_to_voting_lists_view_as_user(self):
+        """
+        Tests non-admin user access to the list of votings through the web interface.
+        Verifies if the non-admin user can view the list of votings.
+        """
+
         v = self.create_yesno_voting()
         self.add_user_to_census(1)
         v.create_pubkey()
@@ -111,17 +155,32 @@ class ConfiguratorTests(StaticLiveServerTestCase):
         self.assertTrue(self.driver.find_element(By.XPATH, "//a[contains(.,'Vote')]").is_displayed())
    
     def test_start_voting_from_votings_list(self):
+        """
+        Tests the functionality to start a voting from the list of votings as an admin.
+        Verifies if the voting can be started successfully.
+        """
+        
         self.test_access_to_voting_lists_view_as_admin()
         self.driver.find_element(By.XPATH, "//button[contains(.,'Start')]").click()
         self.assertTrue(self.driver.find_element(By.XPATH, "//button[contains(.,'End')]").is_displayed())
     
     def test_stop_voting_from_votings_list(self):
+        """
+        Tests the functionality to stop a voting from the list of votings as an admin.
+        Verifies if the voting can be stopped successfully.
+        """
+        
         self.test_access_to_voting_lists_view_as_admin()
         self.driver.find_element(By.XPATH, "//button[contains(.,'Start')]").click()
         self.driver.find_element(By.XPATH, "//button[contains(.,'End')]").click()
         self.assertTrue(self.driver.find_element(By.XPATH, "//button[contains(.,'Tally')]").is_displayed())
     
     def test_update_voting_from_votings_list(self):
+        """
+        Tests the functionality to update a voting from the list of votings as an admin.
+        Verifies if the voting can be updated successfully.
+        """
+
         self.test_access_to_voting_lists_view_as_admin()
         self.driver.find_element(By.XPATH, "//button[contains(.,'Update')]").click()
         self.driver.find_element(By.ID, "id_name").click()
@@ -135,6 +194,11 @@ class ConfiguratorTests(StaticLiveServerTestCase):
         self.assertTrue(updated_element.__contains__("Yes/No voting UPDATED"))
 
     def test_results_from_voting_list(self):
+        """
+        Tests viewing the results of a voting from the list of votings as an admin.
+        Verifies if the voting results can be accessed and displayed correctly.
+        """
+        
         self.test_access_to_voting_lists_view_as_admin()
         self.driver.find_element(By.XPATH, "//button[contains(.,'Start')]").click()
         self.driver.find_element(By.XPATH, "//button[contains(.,'End')]").click()
