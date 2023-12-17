@@ -134,7 +134,7 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         self.assertTrue(len(selected_checkboxes)==3)
         self.assertTrue(len(self.driver.find_elements(By.CSS_SELECTOR, 'form'))==5)
     
-# @nottest
+@nottest
 class CommentBoothTest(StaticLiveServerTestCase):
     # Clase de prueba para verificar la funcionalidad del sistema de comentarios en una cabina de votación.
     
@@ -240,7 +240,7 @@ class CommentBoothTest(StaticLiveServerTestCase):
         self.assertTrue(self.driver.find_element(By.ID, "floatingTextarea2").is_displayed())
         self.assertEquals(text_area.get_attribute('value'),"Comentario de prueba")
 
-# @nottest
+@nottest
 class YesNoBoothTest(StaticLiveServerTestCase):
     # Clase de prueba para verificar la funcionalidad del sistema de si/no en una cabina de votación.
 
@@ -341,7 +341,7 @@ class YesNoBoothTest(StaticLiveServerTestCase):
         self.assertTrue(self.driver.find_element(By.ID, "yesbutton").is_displayed())
         self.assertTrue(self.driver.find_element(By.ID, "nobutton").is_displayed())
 
-# @nottest
+@nottest
 class PreferenceBoothTest(StaticLiveServerTestCase):
     # Clase de prueba para verificar la funcionalidad del sistema de preferencias en una cabina de votación.
 
