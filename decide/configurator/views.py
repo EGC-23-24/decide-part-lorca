@@ -1,9 +1,11 @@
+from typing import Any
+from django.http.response import HttpResponse as HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpRequest, HttpResponseRedirect
 from .forms import (
     ClassicForm,
     YesNoForm,
@@ -14,8 +16,12 @@ from .forms import (
 from voting.models import Voting
 
 
+def is_admin(user):
+    return user.is_authenticated and user.is_staff
+
+
 def configurator(request):
-    if not (request.user.is_authenticated and request.user.is_staff):
+    if not is_admin(request.user):
         messages.error(request, "You must be an admin to access this page!")
         return HttpResponseRedirect("/")
     return render(request, "configurator/configurator.html")
@@ -39,6 +45,12 @@ class CreateClassicView(TemplateView):
         else:
             return self.render_to_response(self.get_context_data(form=form))
 
+    def dispatch(self, request, *args, **kwargs):
+        if not is_admin(request.user):
+            messages.error(request, "You must be an admin to access this page!")
+            return HttpResponseRedirect("/")
+        return super().dispatch(request, *args, **kwargs)
+
 
 class CreateYesNoView(TemplateView):
     template_name = "configurator/create_yes_no.html"
@@ -57,6 +69,12 @@ class CreateYesNoView(TemplateView):
             return redirect(reverse("manage_census"))
         else:
             return self.render_to_response(self.get_context_data(form=form))
+
+    def dispatch(self, request, *args, **kwargs):
+        if not is_admin(request.user):
+            messages.error(request, "You must be an admin to access this page!")
+            return HttpResponseRedirect("/")
+        return super().dispatch(request, *args, **kwargs)
 
 
 class CreateMultipleChoiceView(TemplateView):
@@ -77,6 +95,12 @@ class CreateMultipleChoiceView(TemplateView):
         else:
             return self.render_to_response(self.get_context_data(form=form))
 
+    def dispatch(self, request, *args, **kwargs):
+        if not is_admin(request.user):
+            messages.error(request, "You must be an admin to access this page!")
+            return HttpResponseRedirect("/")
+        return super().dispatch(request, *args, **kwargs)
+
 
 class CreatePreferenceView(TemplateView):
     template_name = "configurator/create_preference.html"
@@ -95,6 +119,12 @@ class CreatePreferenceView(TemplateView):
             return redirect(reverse("manage_census"))
         else:
             return self.render_to_response(self.get_context_data(form=form))
+
+    def dispatch(self, request, *args, **kwargs):
+        if not is_admin(request.user):
+            messages.error(request, "You must be an admin to access this page!")
+            return HttpResponseRedirect("/")
+        return super().dispatch(request, *args, **kwargs)
 
 
 class CreateOpenQuestionView(TemplateView):
@@ -115,6 +145,12 @@ class CreateOpenQuestionView(TemplateView):
         else:
             return self.render_to_response(self.get_context_data(form=form))
 
+    def dispatch(self, request, *args, **kwargs):
+        if not is_admin(request.user):
+            messages.error(request, "You must be an admin to access this page!")
+            return HttpResponseRedirect("/")
+        return super().dispatch(request, *args, **kwargs)
+
 
 class ManageCensusView(TemplateView):
     template_name = "configurator/manage_census.html"
@@ -124,3 +160,9 @@ class ManageCensusView(TemplateView):
         voting_id = self.request.session.get("voting_id")
         context["voting"] = Voting.objects.get(id=voting_id)
         return context
+
+    def dispatch(self, request, *args, **kwargs):
+        if not is_admin(request.user):
+            messages.error(request, "You must be an admin to access this page!")
+            return HttpResponseRedirect("/")
+        return super().dispatch(request, *args, **kwargs)

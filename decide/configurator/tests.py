@@ -28,6 +28,10 @@ class ConfiguratorViewTest(BaseTestCase):
 
 
 class CreateClassicViewTest(BaseTestCase):
+    def setUp(self):
+        super().setUp()
+        self.client.force_login(User.objects.get(username="admin"))
+
     def test_get_request(self):
         response = self.client.get(reverse("create_classic"))
 
@@ -77,6 +81,10 @@ class CreateClassicViewTest(BaseTestCase):
 
 
 class CreateYesNoViewTest(BaseTestCase):
+    def setUp(self):
+        super().setUp()
+        self.client.force_login(User.objects.get(username="admin"))
+
     def test_get_request(self):
         response = self.client.get(reverse("create_yes_no"))
 
@@ -120,6 +128,10 @@ class CreateYesNoViewTest(BaseTestCase):
 
 
 class CreateMultipleChoiceViewTest(BaseTestCase):
+    def setUp(self):
+        super().setUp()
+        self.client.force_login(User.objects.get(username="admin"))
+
     def test_get_request(self):
         response = self.client.get(reverse("create_multiple_choice"))
 
@@ -171,6 +183,10 @@ class CreateMultipleChoiceViewTest(BaseTestCase):
 
 
 class CreatePreferenceViewTest(BaseTestCase):
+    def setUp(self):
+        super().setUp()
+        self.client.force_login(User.objects.get(username="admin"))
+
     def test_get_request(self):
         response = self.client.get(reverse("create_preference"))
 
@@ -220,6 +236,10 @@ class CreatePreferenceViewTest(BaseTestCase):
 
 
 class CreateOpenQuestionViewTest(BaseTestCase):
+    def setUp(self):
+        super().setUp()
+        self.client.force_login(User.objects.get(username="admin"))
+
     def test_get_request(self):
         response = self.client.get(reverse("create_open_question"))
 
