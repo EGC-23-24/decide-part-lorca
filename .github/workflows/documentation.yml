@@ -24,6 +24,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Add All Documentation
+      run: |
+        cp -r doc/* decide/sphinx_docs/source/doc/
+
     - name: Generate Documentation
       run: |
         cd decide
