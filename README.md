@@ -118,7 +118,7 @@ Aclaración: En esta guía vamos a usar como url de base: "localhost:8000".
 
 ### 1. Página de inicio de Decide
 
-Una vez iniciada la aplicación, si accedemos a http://localhost:8000/ podremos ver la página de inicio de Decide. En ella podremos inciar sesión si ya tenemos un usuario o podremos registrarnos. Si tenemos un usuario administrador, podremos iniciar sesión directamente con dicho usuario.
+Una vez iniciada la aplicación, si accedemos a http://localhost:8000/ podremos ver la página de inicio de Decide. En ella podremos iniciar sesión si ya tenemos un usuario o podremos registrarnos. Si tenemos un usuario administrador, podremos iniciar sesión directamente con dicho usuario.
 
 ![Imagen 01: Inicio](./resources/lorca/inicio.png)
 
