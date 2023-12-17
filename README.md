@@ -12,6 +12,13 @@ votación, por lo que prima la simplicidad por encima de la eficiencia
 cuando sea posible. Por lo tanto se asumen algunas carencias para permitir
 que sea entendible y extensible.
 
+Esta versión de Decide implementa 5 tipos de votaciones posibles:
+* Votación clasica
+* Votación de respuesta con múltiple opción
+* Votación con respuesta si/no
+* Votación por orden de preferencia
+* Votación de respuesta abierta
+
 
 Subsistemas, apps y proyecto base
 ---------------------------------
@@ -109,110 +116,92 @@ Guía rápida
 
 Aclaración: En esta guía vamos a usar como url de base: "localhost:8000".
 
-### 1. Login como administrador del sistema
+### 1. Página de incio de Decide
 
-Una vez iniciada la aplicación, accedemos a http://localhost:8000/admin/ e ingresamos las credenciales 
-del super usuario creado anteriormente.
+Una vez iniciada la aplicación, si accedemos a http://localhost:8000/ podremos ver la página de incio de Decide. En ella podremos inciar sesión si ya tenemos un usuario o podremos registrarnos. Si tenemos un usuario administrador, podremos iniciar sesión directamente con dicho usuario
 
-![Imagen 01: Login](./resources/quickstart/00_login.png)
+![Imagen 01: Incio](./resources/quickstart/00_login.png)
 
-Si nos hemos conectado con éxito como un administrador, nos debería aparecer la siguiente vista:
+Si hemos inciado sesión correctamente, nos debería aparecer la siguiente vista:
 
-![Imagen 02: Menu](./resources/quickstart/01_menu.png)
+![Imagen 02: Incio logueado](./resources/quickstart/01_menu.png)
 
-### 2. Creación de questions
+### 2. Autenticación de usuarios
 
-Buscamos el botón "add" dentro del apartado "questions" de la categoría "voting". En el textarea 
-etiquetado como "Desc" se añade la pregunta a realizar en la futura votación. Después en los
-apartados de "question options" añadimos todas las posibles respuestas a la pregunta definida 
-anteriormente. Estas "questions options" se pueden eliminar clickando a la "X" situada a la derecha y
-se pueden añadir mas opciones pulsando en "add questions options" situado mas abajo. 
+Si en la página de incio pulsamos el botón register, nos debería llevar al siguiente formulario para registarnos en Decide:
 
-No es necesario rellenar todas las "question options" que aparezcan en la vista. Una vez tengamos 
-todas las posibles respuestas que deseamos podemos guardar haciendo click en el botón "Save".
+![Imagen 03: Register form](./resources/quickstart/02_question.png)
 
-![Imagen 03: Questions](./resources/quickstart/02_question.png)
+Una vez registrados correctamente, deberemos inciar sesión en Decide para empezar a utilizar la aplicación. El formulario que aparece es el siguiente, dónde también podremos identificarnos en Decide usando nuestra cuenta de Google o Facebook: 
 
-### 3. Creación de votings
+![Imagen 04: Login form](./resources/quickstart/02_question.png)
 
-Hacemos click al botón "add" dentro de "Votings" en la categoría "Voting" y nos aparecerá el formulario
-de creacion de votaciones.
+### 3. Creación de las preguntas
 
-En dicho formulario le ponemos un nombre a la votación, la descripción es opcional, en el desplegable
-"question" nos debe aparecer la pregunta generada en el apartado anterior de esta guía y la 
-seleccionamos. 
+(completar)
 
-![Imagen 04: Voting](./resources/quickstart/03_voting.png)
+### 4. Creación de las votaciones
 
-En el apartado "Auths" de su primera votación deberá crear uno. Para ello, debe clickar en el "+" a la 
-derecha de la lista de "Auths". Aparecerá una ventana nueva donde deberá rellenar un formulario con el
-nombre que desee y la url, en nuestro caso es "http://localhost:8000".
+(completar)
 
-![Imagen 05: Auth](./resources/quickstart/04_auth.png)
+### 5. Creación del censo
 
-Pulsamos en el botón "Save" y ya tenemos nuestra votación creada.
+(completar)
 
-### 4. Creacion de census
+### 7. Inciar y gestionar una votación
 
-En "votings" buscamos la votación que hemos generado y entramos en ella para mirar en la barra de 
-direcciones la id de nuestra votación. En el siguiente ejemplo, la id es 19.
+Una vez creada la votación, si pulsamos en el botón list votings de la página de incio podremos ver todas las votaciones creadas por el adminsitrador y nos llevará a la vista de gestión de votaciones. En esta vista podremos inciar, finalizar, eliminar y editar una votación. 
 
-    http://localhost:8000/admin/voting/voting/19/change/
+(imagen iniciar)
 
-Nos dirigimos al apartado "censuss" en la categoría "census" y clickamos en "add". Ponemos la id de 
-nuestra votacion en "voting id" y en "voter id" ponemos la id del votante que queremos añadir. 
+Pulsando en el botón start voting, podremos inciar la votación. A partir de este momento, los usuarios registrados en el censo ya pueden votar. También, podemos modificar o eliminar la votación pulsando en los botones Update o Delete.
 
-NOTA: el administrador si es el primer usuario creado tendrá la id 1.
+### 8. Votar en los diferentes tipos de votaciones
+Una vez inciada la votación, los usarios del censo podrán registrar su voto. Para ello, inciamos sesión con un usario y pulsamos el botón list votings. En la vista que nos aparece, sólo aparecen las votaciones en las que ese usuario esta incluido en el censo. Para votar, simplementa pulsamos en el botón vote.
 
-![Imagen 06: Census](./resources/quickstart/05_census.png)
+(imagen list votings usuario)
 
-### 5. Comenzar la votación
+Dependiendo del tipo de votación, nos aparecerá la cabina de votación correspondiente.
 
-Llegados a este punto necesitamos abrir una votación, para ello debemos marcar el checkbox a la 
-izquierda de nuestra votación. Una vez seleccionado, tenemos que ir al desplegable de "action",
-seleccionamos la opción "Start" y pulsamos en el boton "Go". Esperamos a que aparezca el "Start date" 
-y ya tendríamos la votación abierta y lista para votar. 
+* Votación clásica: simplemente seleccionamos una de las opciones y registramos nuestro voto.
 
-![Imagen 07: Start voting](./resources/quickstart/06_start.png)
+(imagen booth clásico)
 
-### 6. Votar
+* Votación de múltiple opción: podremos seleccionar varias opciones y registar nuestro voto.
 
-Para poder votar primero debemos ingresar en la barra de direcciones de nuestro navegador lo siguiente:
+(imagen booth multiple)
 
-    http://localhost:8000/booth/[id de la votación]/
+* Votación si/no: seleccionamos la opción Si o No y registramos nuestro voto.
 
-![Imagen 08: Booth](./resources/quickstart/07_booth.png)
+(imagen booth yes/no)
 
-Una vez accedemos, debemos iniciar sesión con un usuario que esté incluido en el censo.
+* Votación por preferencia: seleccionamos cada opción estableciendo un orden de preferencia.
 
-Cuando nos aparezca la pregunta, ya podemos seleccionar la respuesta y guardarla como un voto. 
-Al confirmar el voto, nos aparecerá lo siguiente:
+(imagen booth preference)
 
-![Imagen 09: Vote success](./resources/quickstart/08_voted.png)
+* Votación de respues abierta: podremos responder a la votación escribiendo lo que queramos en el cuadro de texto.
 
-El mensaje de "Congratulations. Your vote has been sent" nos confirma que nuestro voto ha sido 
-registrado correctamente.
+(imagen booth open)
 
-### 7. Conteo de votos
+### 9. Realizar el conteo de votos
+Una vez que todos los usarios han votado, accedemos como administrador a la vista de gestión de votaciones. Para ello, pulsamos en el votón list votings de la página de incio. Primero hay que finalizar la votación, para ello pulsamos en el botón End Voting. 
 
-Nos dirigimos nuevamente al apartado "voting" desde nuestro perfil de administrador. Primero tenemos 
-que cerrar la votación, para ello seleccionamos el checkbox a la izquierda de nuestra votación
-marcamos "Stop" y pulsamos el botón "Go". Notará que en el apartado "End Date" ahora aparece
-la fecha actual, esto nos indica que la votación ha sido cerrada y está lista para el conteo.
+(imagen end voting)
 
-Una vez cerrada la votación, volvemos a seleccionar el checkbox de la izquierda de nuestra votación
-marcamos la opción "Tally" en el desplegable de "Actions" y pulsamos nuevamente en el botón "Go".
+Una vez finalizada la votación, pulsamos en el botón Tally para realizar el conteo de los votos.
 
-![Imagen 10: Tally](./resources/quickstart/09_tally.png)
+(imagen tally)
 
-### 8. Visualización de resultado
+### 10. Visualizar los resultados
 
-Una vez tenemos la votación cerrada y con el conteo de votos realizado, ya podemos visualizar el
-resultado accediendo a la siguiente url:
+Una vez contados todos los votos, podremos visualizar los resultados pulsando en el botón Results. Por ejemplo, si visualizamos los resultados de la votación yes/no nos aparecerá una tabla con la puntuación y el número de votos para cada opción. Además disponemos de diferentes gráficos para visualizar los resultados.
 
-    http://localhost:8000/visualizer/[id de la votación]/
+(imagenes visualizer)
 
-![Imagen 11: Visualizer](./resources/quickstart/10_visualizer.png)
+Además, mientras la votación está en curso podemos ver los resultados en tiempo real sin finalizar la votación.
+
+(imagenes visualizer tiempo real)
+
 
 Ejecutar con docker
 -------------------
