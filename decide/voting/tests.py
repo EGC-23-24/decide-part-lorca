@@ -1166,7 +1166,7 @@ class FutureClosureTests(BaseTestCase):
         Verifies that the task transitions from 'PENDING' to 'STARTED'.
         """
         
-        task_result = future_stop_voting_task.delay(v.id, v.created_at + timedelta(weeks=1))
+        task_result = future_stop_voting_task.delay(self.v.id, self.v.created_at + timedelta(weeks=1))
 
         self.assertIn(task_result.status, ['PENDING', 'STARTED'], "Task status should be either 'PENDING' or 'STARTED'")
         
