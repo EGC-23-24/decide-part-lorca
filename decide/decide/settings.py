@@ -75,6 +75,7 @@ MODULES = [
     'base',
     'booth',
     'census',
+    'configurator',
     'mixnet',
     'postproc',
     'store',

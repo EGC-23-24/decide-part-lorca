@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+
+{% load i18n static %}
+
+{% block extrahead %}
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-6 mx-auto">
+        <h1 class="display-4 mb-4 text-center">Manage census for {{ voting.name }}</h1>
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <div class="d-flex justify-content-center border rounded p-4 gap-4">
+            <a href="{% url 'census' %}" class="btn btn-primary">Add voters</a>
+            <a href="{% url 'import_census' %}" class="btn btn-primary">Import census from Excel</a>
+            <a href="{% url 'configurator' %}" class="btn btn-primary">Manage census later</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
