@@ -20,7 +20,7 @@
             <h1>[[ voting.id ]] - [[ voting.name ]]</h1>
 
             <h2 v-if="!voting.start_date">Voting not started</h2>
-            <div v-else-if="!voting.end_date">
+            <div v-else-if="!voting.postproc">
                 <h2>Voting in progress</h2>
                 <p>Real-time data:</p>
 
@@ -40,6 +40,9 @@
                         </tr>
                     </tbody>
                 </table>
+                <div v-if="voting.end_date && !voting.future_stop">
+                    <h3>Voting has been closed, we need to recount!</h3>
+                </div>
             </div>
             <div v-else>    
                 <div v-if="voting.question.type === 'C' || voting.question.type === 'R' || voting.question.type === 'M'" class="mb-3">
@@ -80,6 +83,10 @@
                 </div>
                 <div v-else-if="voting.question.type === 'T'" class="d-flex justify-content-center mt-3">
                     <h3>Text Voting Results:</h3>
+                    <div v-if="voting.postproc.length === 0">
+                        <br>
+                        <h5>Oops, it seems that nobody has voted</h5>
+                    </div>
                     <table class="table">
                         <tr v-for="(opt, index) in voting.postproc" :key="index">
                             <td class="bg-primary text-white p-2 rounded">
