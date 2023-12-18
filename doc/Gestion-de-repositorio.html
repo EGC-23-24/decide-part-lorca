@@ -1,0 +1,686 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Gestión de repositorio y código &#8212; decide-part-lorca</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'doc/Gestion-de-repositorio';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Informe de pruebas" href="Informe-de-pruebas.html" />
+    <link rel="prev" title="Decide doc files" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">decide-part-lorca</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Welcome to decide’s documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modules/index.html">Decide modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/booth.html">Booth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/census.html">Census Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/auth.html">Auth Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/mixnet.html">Mixnet Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/postproc.html">Postproc Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/store.html">Store Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/visualizer.html">Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/voting.html">Voting Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Decide doc files</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Gestión de repositorio y código</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Informe-de-pruebas.html">Informe de pruebas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Manual-de-Git.html">Manual de Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SPEC.html">SPEC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="despliegue-integracion.html">1. Control de versiones y gestión del código fuente</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="diario-de-equipo.html">Diario de equipo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issues.html">Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proceso-de-gestion-de-incidencias.html">Proceso de Gestión de Incidencias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subsistemas.html">Subsistemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiki-cover.html">decide-part-lorca</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../memes.html">Memes collection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/edit/main/doc/Gestion-de-repositorio.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EGC-23-24/decide-part-lorca/issues/new?title=Issue%20on%20page%20%2Fdoc/Gestion-de-repositorio.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/doc/Gestion-de-repositorio.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Gestión de repositorio y código</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documento-que-contiene-la-estrategia-de-ramificacion-politica-de-commits-estrategia-de-pull-requests-politica-de-versionado-y-estructura-de-carpetas">Documento que contiene la estrategia de ramificación, política de commits, estrategia de pull requests, política de versionado y estructura de carpetas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-de-contenidos">Tabla de Contenidos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#politica-de-commits">1. Política de Commits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-del-repositorio">2. Estructura del Repositorio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estrategia-de-ramificacion">3. Estrategia de ramificación</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ramas-principales">3.1. Ramas principales</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ramas-epicas-y-features">3.2. Ramas épicas y <em>features</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-ramas">3.3. Otras ramas</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estrategia-de-revisiones-de-codigo-y-pull-requests">4. Estrategia de revisiones de código y <em>pull requests</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#politica-de-versionado">5. Política de versionado</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="gestion-de-repositorio-y-codigo">
+<h1>Gestión de repositorio y código<a class="headerlink" href="#gestion-de-repositorio-y-codigo" title="Permalink to this heading">#</a></h1>
+<section id="documento-que-contiene-la-estrategia-de-ramificacion-politica-de-commits-estrategia-de-pull-requests-politica-de-versionado-y-estructura-de-carpetas">
+<h2>Documento que contiene la estrategia de ramificación, política de commits, estrategia de pull requests, política de versionado y estructura de carpetas<a class="headerlink" href="#documento-que-contiene-la-estrategia-de-ramificacion-politica-de-commits-estrategia-de-pull-requests-politica-de-versionado-y-estructura-de-carpetas" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="tabla-de-contenidos">
+<h2>Tabla de Contenidos<a class="headerlink" href="#tabla-de-contenidos" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#1-pol%C3%ADtica-de-commits"><span class="xref myst">1. Política de Commits</span></a></p></li>
+<li><p><a class="reference internal" href="#2-estructura-del-repositorio"><span class="xref myst">2. Estructura del Repositorio</span></a></p></li>
+<li><p><a class="reference internal" href="#3-estrategia-de-ramificaci%C3%B3n"><span class="xref myst">3. Estrategia de ramificación</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#31-ramas-principales"><span class="xref myst">3.1. Ramas principales</span></a></p></li>
+<li><p><a class="reference internal" href="#32-ramas-%C3%A9picas-y-features"><span class="xref myst">3.2. Ramas épicas y <em>features</em></span></a></p></li>
+<li><p><a class="reference internal" href="#33-otras-ramas"><span class="xref myst">3.3. Otras ramas</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#4-estrategia-de-revisiones-de-c%C3%B3digo-y-pull-requests"><span class="xref myst">4. Estrategia de revisiones de código y <em>pull requests</em></span></a></p></li>
+<li><p><a class="reference internal" href="#5-pol%C3%ADtica-de-versionado"><span class="xref myst">5. Política de versionado</span></a></p></li>
+</ul>
+<section id="politica-de-commits">
+<h3>1. Política de Commits<a class="headerlink" href="#politica-de-commits" title="Permalink to this heading">#</a></h3>
+<p>Es importante establecer una política de commits para el proyecto, ya que mensajes de commit claros y descriptivos ayudarán a los miembros del equipo a comprender los cambios realizados en el commit y a rastrear el progreso del proyecto. La plantilla que usaremos, siguiendo las mejores prácticas, será de la forma:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># No más de 50 caracteres. #### Aquí hay 50 caracteres: #</span>
+
+<span class="c1"># Ajustar a 72 caracteres. ################################## Esto está aquí: #</span>
+
+<span class="n">tipo</span><span class="p">:</span> <span class="n">asunto</span> <span class="c1">#id</span>
+
+<span class="n">cuerpo</span>
+
+<span class="c1">### tipo</span>
+<span class="c1"># feat (nueva funcionalidad)</span>
+<span class="c1"># fix (corrección de errores)</span>
+<span class="c1"># research (incorporación de código experimental, puede no ser funcional)</span>
+<span class="c1"># refactor (refactorización de código)</span>
+<span class="c1"># docs (actualización de documentación)</span>
+<span class="c1"># test (incorporación o modificación de pruebas)</span>
+<span class="c1"># conf (modificación de archivos de configuración)</span>
+
+<span class="c1">### issue</span>
+<span class="c1"># Consiste en una breve descripción del problema abordado y debe comenzar con un verbo en participio pasado.</span>
+<span class="c1"># Se hará referencia al problema correspondiente (si lo hay) de la siguiente manera: `#&lt;ID_issue&gt;`.</span>
+
+<span class="c1">### cuerpo (opcional)</span>
+<span class="c1"># Se utilizará en caso de que el problema no sea lo suficientemente descriptivo.</span>
+
+<span class="c1">### Ejemplo</span>
+<span class="c1"># conf: Actualizar docker-compose.yml</span>
+</pre></div>
+</div>
+</section>
+<section id="estructura-del-repositorio">
+<h3>2. Estructura del Repositorio<a class="headerlink" href="#estructura-del-repositorio" title="Permalink to this heading">#</a></h3>
+<p>La estructura del proyecto se compone de diversas carpetas que contienen elementos clave para su funcionamiento. El directorio principal alberga subcarpetas como <code class="docutils literal notranslate"><span class="pre">.github</span></code> con flujos de trabajo para GitHub Actions, <code class="docutils literal notranslate"><span class="pre">decide</span></code> con módulos de autenticación, visualización y procesamiento de datos, junto con directorios como <code class="docutils literal notranslate"><span class="pre">doc</span></code> para documentación, <code class="docutils literal notranslate"><span class="pre">docker</span></code> para configuraciones relacionadas, y <code class="docutils literal notranslate"><span class="pre">loadtest</span></code> para herramientas de pruebas de carga. Además, se incluyen archivos fundamentales como <code class="docutils literal notranslate"><span class="pre">README.md</span></code> para información básica, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> con las dependencias de Python y archivos de configuración como <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> y <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code>, delineando la estructura organizativa y funcional del proyecto.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">.</span><span class="n">github</span><span class="o">/</span><span class="n">workflows</span>
+<span class="o">-</span> <span class="n">decide</span>
+	<span class="o">-</span> <span class="n">authentication</span>
+	<span class="o">-</span> <span class="n">base</span>
+	<span class="o">-</span> <span class="n">booth</span>
+	<span class="o">-</span> <span class="n">census</span>
+	<span class="o">-</span> <span class="n">configurator</span>
+	<span class="o">-</span> <span class="n">decide</span>
+	<span class="o">-</span> <span class="n">gateway</span>
+	<span class="o">-</span> <span class="n">mixnet</span>
+	<span class="o">-</span> <span class="n">postproc</span>
+	<span class="o">-</span> <span class="n">store</span>
+	<span class="o">-</span> <span class="n">test</span><span class="o">-</span><span class="n">scripts</span>
+	<span class="o">-</span> <span class="n">visualizer</span>
+	<span class="o">-</span> <span class="n">voting</span>
+	<span class="o">-</span> <span class="n">config</span><span class="o">.</span><span class="n">jsonne</span><span class="o">.</span><span class="n">example</span>
+	<span class="o">-</span> <span class="n">local_settings</span><span class="o">.</span><span class="n">py</span>
+	<span class="o">-</span> <span class="n">local_settings_example</span><span class="o">.</span><span class="n">py</span>
+	<span class="o">-</span> <span class="n">local_settings_gactions</span><span class="o">.</span><span class="n">py</span>
+	<span class="o">-</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span>
+	<span class="o">-</span> <span class="n">populate</span><span class="o">.</span><span class="n">json</span>
+	<span class="o">-</span> <span class="n">secondauth</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">doc</span>
+<span class="o">-</span> <span class="n">docker</span>
+<span class="o">-</span> <span class="n">loadtest</span>
+<span class="o">-</span> <span class="n">resources</span>
+<span class="o">-</span> <span class="n">vagrant</span>
+<span class="o">-</span> <span class="o">.</span><span class="n">gitignore</span>
+<span class="o">-</span> <span class="o">.</span><span class="n">gitmessage</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">-</span> <span class="o">.</span><span class="n">travis</span><span class="o">.</span><span class="n">yml</span>
+<span class="o">-</span> <span class="n">LICENSE</span>
+<span class="o">-</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="o">-</span> <span class="n">launch</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="estrategia-de-ramificacion">
+<h3>3. Estrategia de ramificación<a class="headerlink" href="#estrategia-de-ramificacion" title="Permalink to this heading">#</a></h3>
+<section id="ramas-principales">
+<h4>3.1. Ramas principales<a class="headerlink" href="#ramas-principales" title="Permalink to this heading">#</a></h4>
+<p>Las ramas principales del proyecto serán <em>main</em> y <em>develop</em>, donde se reunirán la funcionalidad estable y la funcionalidad en desarrollo, respectivamente. Ambas ramas están protegidas para permitir la fusión únicamente tras 2 aprobaciones del código y la ejecución exitosa de las pruebas en GitHub Actions.</p>
+</section>
+<section id="ramas-epicas-y-features">
+<h4>3.2. Ramas épicas y <em>features</em><a class="headerlink" href="#ramas-epicas-y-features" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Las ramas épicas se utilizarán para desarrollar funcionalidades que requieran modificar varios módulos del proyecto. Estas ramas se crearán a partir de <em>develop</em> y se fusionarán en <em>develop</em> una vez finalizadas. Deberán seguir la siguiente nomenclatura: <code class="docutils literal notranslate"><span class="pre">epic/id_issue-titulo-descriptivo</span></code>.</p></li>
+<li><p>Las ramas <em>features</em> se utilizarán para desarrollar funcionalidades que requieran modificar un único módulo del proyecto. Estas ramas se crearán o bien a partir de <em>develop</em> o bien a partir de una rama épica y se fusionarán en <em>develop</em> o en la rama épica correspondiente una vez finalizadas. Deberán seguir la siguiente nomenclatura: <code class="docutils literal notranslate"><span class="pre">feature/id_issue-titulo-descriptivo</span></code>. En caso de que se creen varias ramas <em>features</em> a partir de una rama épica, se deberá añadir el módulo al que pertenece la rama <em>feature</em> en la nomenclatura. Por ejemplo: <code class="docutils literal notranslate"><span class="pre">feature/id_issue-titulo-descriptivo-modulo</span></code>.</p></li>
+</ul>
+</section>
+<section id="otras-ramas">
+<h4>3.3. Otras ramas<a class="headerlink" href="#otras-ramas" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Las ramas <em>hotfix</em> se utilizarán para corregir errores en producción. Estas ramas se crearán a partir de <em>main</em> y se fusionarán en <em>main</em> y <em>develop</em> una vez finalizadas. Deberán seguir la siguiente nomenclatura: <code class="docutils literal notranslate"><span class="pre">hotfix/titulo-descriptivo</span></code>.</p></li>
+<li><p>Las ramas <em>fix</em> se utilizarán para corregir errores o realizar mejoras en desarrollo. Estas ramas se crearán a partir de la rama sobre la que se quiera realizar la corrección o mejora y se fusionarán en la misma una vez finalizadas. Deberán seguir la siguiente nomenclatura: <code class="docutils literal notranslate"><span class="pre">fix/titulo-descriptivo</span></code>.</p></li>
+<li><p>Las ramas <em>doc</em> se utilizarán para realizar cambios en la documentación. Estas ramas se crearán a partir de <em>develop</em> y se fusionarán en <em>develop</em> una vez finalizadas. Deberán seguir la siguiente nomenclatura: <code class="docutils literal notranslate"><span class="pre">doc/titulo-descriptivo</span></code>.</p></li>
+<li><p>Las ramas <em>conf</em> se utilizarán para realizar cambios en archivos de configuración. Estas ramas se crearán a partir de <em>develop</em> y se fusionarán en <em>develop</em> una vez finalizadas. Deberán seguir la siguiente nomenclatura: <code class="docutils literal notranslate"><span class="pre">conf/titulo-descriptivo</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="estrategia-de-revisiones-de-codigo-y-pull-requests">
+<h3>4. Estrategia de revisiones de código y <em>pull requests</em><a class="headerlink" href="#estrategia-de-revisiones-de-codigo-y-pull-requests" title="Permalink to this heading">#</a></h3>
+<p>Cuando haya un incremento funcional en una épica, se creará una solicitud de extracción para fusionarlo en <em>develop</em>. Una vez creada, se revisará el incremento en busca de errores y se fusionará. Solo cuando dos revisores hayan verificado los cambios y las acciones de GitHub se hayan completado correctamente, se fusionará la solicitud de extracción.</p>
+</section>
+<section id="politica-de-versionado">
+<h3>5. Política de versionado<a class="headerlink" href="#politica-de-versionado" title="Permalink to this heading">#</a></h3>
+<p>Como política de versionado, utilizaremos un versionado semántico con la siguiente estructura:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[Mayor].[Menor].[Parche]</span></code>.
+En los siguientes casos se incrementará el número de versión:</p></li>
+<li><p>Mayor: cambios importantes en el proyecto. Por ejemplo: un cambio que rompe la compatibilidad.</p></li>
+<li><p>Menor: cambios en la funcionalidad del proyecto, ya sean mejoras o nuevas funcionalidades compatibles con versiones anteriores.</p></li>
+<li><p>Parche: correcciones de errores de versiones anteriores.
+Se pueden agregar etiquetas para versiones preliminares y para la compilación de metadatos, aunque puede significar que la versión no es estable o que no cumple con los requisitos de compatibilidad.</p></li>
+</ul>
+<p>Además, debe cumplir con los siguientes requisitos:</p>
+<ul class="simple">
+<li><p>Cuando se incrementa el <em>Mayor</em>, <em>Menor</em> y <em>Parche</em> se deben restablecer a 0.</p></li>
+<li><p>Cuando se incrementa el <em>Menor</em>, <em>Parche</em> se debe restablecer a 0.</p></li>
+<li><p>La precedencia se determina por la diferencia al comparar identificadores de izquierda a derecha. Por ejemplo: 1.0.0 &lt; 2.0.0 &lt; 2.1.0.</p></li>
+</ul>
+<p>En nuestro caso, las etiquetas se utilizarán principalmente en versiones de producción. Por ejemplo: la primera versión será 1.0.0.</p>
+<p>Una vez elegido el número de versión adecuado, es posible crear una nueva release de forma automática.
+Teniendo la rama main actualizada, debes ejecutar estos comandos para crear un nuevo tag:</p>
+<ul class="simple">
+<li><p>Recuerda estar siempre situado en la rama main</p></li>
+<li><p>Sutitye “v1.0.0.” por el número de versión escogido</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Creación del nuevo tag</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span> <span class="pre">-a</span> <span class="pre">v1.0.0</span> <span class="pre">-m</span> <span class="pre">“mensaje</span> <span class="pre">para</span> <span class="pre">añadir</span> <span class="pre">al</span> <span class="pre">tag</span> <span class="pre">que</span> <span class="pre">también</span> <span class="pre">aparecerá</span> <span class="pre">en</span> <span class="pre">la</span> <span class="pre">release”</span></code></p></li>
+</ul>
+</li>
+<li><p>Subir el nuevo tag</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">v1.0.0.</span></code></p></li>
+</ul>
+</li>
+</ol>
+<p>Una vez ejecutados estos comandos, se creará automáticamente un nuevo tag en el repositorio y automáticamente se generará una nueva release con el tag indicado.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Decide doc files</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Informe-de-pruebas.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Informe de pruebas</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documento-que-contiene-la-estrategia-de-ramificacion-politica-de-commits-estrategia-de-pull-requests-politica-de-versionado-y-estructura-de-carpetas">Documento que contiene la estrategia de ramificación, política de commits, estrategia de pull requests, política de versionado y estructura de carpetas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-de-contenidos">Tabla de Contenidos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#politica-de-commits">1. Política de Commits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-del-repositorio">2. Estructura del Repositorio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estrategia-de-ramificacion">3. Estrategia de ramificación</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ramas-principales">3.1. Ramas principales</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ramas-epicas-y-features">3.2. Ramas épicas y <em>features</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-ramas">3.3. Otras ramas</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estrategia-de-revisiones-de-codigo-y-pull-requests">4. Estrategia de revisiones de código y <em>pull requests</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#politica-de-versionado">5. Política de versionado</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandro Medina Durán, Gonzalo Campos Mejías
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Alejandro Medina Durán, Gonzalo Campos Mejías.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
