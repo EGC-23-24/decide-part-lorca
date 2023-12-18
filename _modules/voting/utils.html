@@ -324,20 +324,22 @@ document.write(`
 <span class="sd">        None: This function does not return anything but manages the scheduling and</span>
 <span class="sd">        revocation of Celery tasks based on the voting event&#39;s schedule.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
-    <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">voting</span><span class="o">.</span><span class="n">end_date</span><span class="p">:</span>
-    
-        <span class="n">future_stop</span> <span class="o">=</span> <span class="n">voting</span><span class="o">.</span><span class="n">future_stop</span>
-        
-        <span class="n">task</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;future_stop_voting_task-</span><span class="si">{</span><span class="n">voting_id</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">created_at</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">task</span><span class="p">:</span>
-            <span class="n">app</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">revoke</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;future_stop_voting_task-</span><span class="si">{</span><span class="n">voting_id</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">created_at</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">terminate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
+    <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">voting</span><span class="o">.</span><span class="n">end_date</span><span class="p">:</span>
+
+        <span class="n">future_stop</span> <span class="o">=</span> <span class="n">voting</span><span class="o">.</span><span class="n">future_stop</span>
+
+        <span class="n">task</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s1">&#39;future_stop_voting_task-</span><span class="si">{</span><span class="n">voting_id</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">created_at</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">task</span><span class="p">:</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">revoke</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;future_stop_voting_task-</span><span class="si">{</span><span class="n">voting_id</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">created_at</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">terminate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">future_stop</span><span class="p">:</span>
-            <span class="n">future_stop_voting_task</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voting</span><span class="o">.</span><span class="n">created_at</span><span class="p">],</span> <span class="n">eta</span><span class="o">=</span><span class="n">future_stop</span><span class="p">,</span> <span class="n">task_id</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;future_stop_voting_task-</span><span class="si">{</span><span class="n">voting_id</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">created_at</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+            <span class="n">future_stop_voting_task</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span>
+                <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voting</span><span class="o">.</span><span class="n">created_at</span><span class="p">],</span> <span class="n">eta</span><span class="o">=</span><span class="n">future_stop</span><span class="p">,</span> <span class="n">task_id</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;future_stop_voting_task-</span><span class="si">{</span><span class="n">voting_id</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">created_at</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
 </pre></div>
 
                 </article>
