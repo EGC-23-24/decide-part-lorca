@@ -104,6 +104,7 @@
                                     {% csrf_token %}
                                     <input type="hidden" name="voting_id" value="{{ voting.id }}" />
                                     <button type="submit" class="btn btn-primary btn-sm" name="end_voting_button">📆 End Voting</button>
+                                    <a class="btn btn-primary btn-sm" href="{% url 'visualizer' voting.id %}">📺 Live Results</a>
                                 </form>
                                 
                                 <form method="post" action="{% url 'update_voting' voting.id %}" class="d-inline">
@@ -131,6 +132,7 @@
                             </div>
                             <div class="col-md-4 text-center">
                                 <a class="btn btn-primary btn-sm" href="{% url 'booth' voting.id %}">🗳 Vote</a>
+                                <a class="btn btn-primary btn-sm" href="{% url 'visualizer' voting.id %}">📺 Live Results</a>
                             </div>
                         </div>
                     {% endif %}
