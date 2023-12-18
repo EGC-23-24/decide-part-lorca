@@ -1,4 +1,4 @@
-# decide-part-lorca-1
+# decide-part-lorca
 
 * grupo 1
 * Curso escolar: 2023/2024
