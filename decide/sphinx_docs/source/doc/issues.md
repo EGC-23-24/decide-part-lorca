@@ -1,6 +1,4 @@
-# Issues
-
-Listado de posibles tareas a desarrollar, agrupadas por subsistema.
+# Listado de posibles tareas a desarrollar, agrupadas por subsistema.
 
 Cada tarea está etiquetada según dificultad como:
  * Fácil (F)

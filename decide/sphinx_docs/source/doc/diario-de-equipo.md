@@ -36,7 +36,7 @@
 ## Acta 2023-01
 
 * Asistentes: Todos los integrantes del grupo.
-######  Acuerdos tomados: <br>
+###  Acuerdos tomados: <br>
 1. Acuerdo 2023-01-01: Si un miembro del equipo no cumple sus responsabilidades se le dará un aviso inicial para rectificar la falta de compromiso del miembro del equipo, y de persistir, se evaluará la expulsión con el profesor.
 2. Acuerdo 2023-01-02: Se convocará una reunión conjunta entre los grupos para alcanzar consenso en caso de tener diferentes opiniones sobre el proyecto y decidir la mejor opción.
 3. Acuerdo 2023-01-03: Se asignará un revisor por tarea y se empleará una escala del 1 al 10 para medir el nivel de implicación de cada miembro, abordando así los distintos niveles de interés en el equipo.
@@ -49,32 +49,32 @@
 ## Acta 2023-02
 
 * Miembros: Todos los integrantes del grupo.
-###### Acuerdos tomados: <br>
+### Acuerdos tomados: <br>
 1. Acuerdo 2023-02-01: Se consideró asiganar a una o dos personas a cada módulo, excepto mixnet.
 
 ## Acta 2023-03
 
 * Miembros: Todos los integrantes del grupo.
-###### Acuerdos tomados: <br>
+### Acuerdos tomados: <br>
 1. Acuerdo 2023-03-01: Se definieron las tareas y se repartieron entre los miembros del grupo.
 
 ## Acta 2023-04
 
 * Miembros: Todos los integrantes del grupo.
-###### Acuerdos tomados: <br>
+### Acuerdos tomados: <br>
 1. Acuerdo 2023-04-01: Se decidó que una épica estaría completa al estar toda la funcionalidad terminada de los módulos que intervienen en dicha épica, icluidos los tests.
 
 ## Acta 2023-05
 
 * Miembros: Todos los integrantes del grupo.
-###### Acuerdos tomados: <br>
+### Acuerdos tomados: <br>
 1. Acuerdo 2023-05-01: Se crea una carptea en la nube para subir las actas.
 2. Acuerdo 2023-05-02: Se repartieron algunas tareas que quedaban por asignar como plantilla de incidencias, integración continua, despliegue y diario del equipo.
 
 ## Acta 2023-06
 
 * Miembros: Todos los integrantes del grupo.
-###### Acuerdos tomados: <br>
+### Acuerdos tomados: <br>
 1. Acuerdo 2023-06-01: Se estableció una fecha límite para terminar todas las funcionalidades.
 2. Acuerdo 2023-06-02: Se acordó que dos miembros del quipo recibirán un aviso al no tener nada de su funcionalidad implementado.
 3. Acuerdo 2023-06-03: Se acordó que la aplicación será desplegada en docker y vagrant, aparte de onrender.
@@ -82,7 +82,7 @@
 ## Acta 2023-07
 
 * Miembros: Todos los integrantes del grupo.
-###### Acuerdos tomados: <br>
+### Acuerdos tomados: <br>
 1. Acuerdo 2023-07-01: Se decidió no implementar el tipo de votación "multiple questions" al considerar que su complejidad iba a requerir de un tiempo mayor al que se le podía dedicar al desarrollo de las tareas debido a la fecha de entrega.
 
 ## Decisiones importantes 

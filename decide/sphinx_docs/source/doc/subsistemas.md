@@ -1,5 +1,3 @@
-# Subsistemas
-
 Decide está compuesto por diferentes subsistemas que son más o menos independientes entre
 sí y que se interconectan implementando una API concreta.
 
@@ -7,6 +5,8 @@ Cada subsistema se encarga de una tarea concreta en el sistema de voto.
 Puede haber tareas que impliquen modificaciones en más de un subsistema,
 por lo que habrá que coordinar el desarrollo para que puedan comunicarse
 entre sí.
+
+# Subsistemas
 
 ## Autenticación
 

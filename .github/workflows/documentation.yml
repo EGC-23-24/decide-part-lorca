@@ -26,7 +26,8 @@ jobs:
 
     - name: Add All Documentation
       run: |
-        cp -r doc/* decide/sphinx_docs/source/doc/
+        cp doc/*.md decide/sphinx_docs/source/doc/
+        cp doc/images/* decide/sphinx_docs/source/doc/images/
 
     - name: Generate Documentation
       run: |

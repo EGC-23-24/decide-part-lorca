@@ -1,6 +1,6 @@
 # Manual de Git
 
-Por Álvaro Bernal Caunedo y Joaquín Martín Acuña
+##### Por Álvaro Bernal Caunedo y Joaquín Martín Acuña
 
 ### Copiar commits de otras ramas
 
