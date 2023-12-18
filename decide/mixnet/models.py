@@ -22,7 +22,7 @@ class Mixnet(models.Model):
         key (ForeignKey): Foreign key to a Key instance, nullable.
         pubkey (ForeignKey): Foreign key to a Key instance for public key, nullable.
     """
-    
+
     voting_id = models.PositiveIntegerField()
     auth_position = models.PositiveIntegerField(default=0)
     auths = models.ManyToManyField(Auth, related_name="mixnets")
@@ -32,7 +32,7 @@ class Mixnet(models.Model):
     pubkey = models.ForeignKey(Key, blank=True, null=True,
                                related_name="mixnets_pub",
                                on_delete=models.SET_NULL)
-    
+
     def __str__(self):
         """
         Returns a string representation of the Mixnet instance.
@@ -40,7 +40,7 @@ class Mixnet(models.Model):
         :return: A formatted string representing the Mixnet instance.
         :rtype: str
         """
-        
+
         auths = ", ".join(a.name for a in self.auths.all())
         return "Voting: {}, Auths: {}\nPubKey: {}".format(self.voting_id,
                                                           auths, self.pubkey)
@@ -56,7 +56,7 @@ class Mixnet(models.Model):
         :return: Shuffled messages.
         :rtype: list
         """
-        
+
         crypt = MixCrypt(bits=B)
         k = crypt.setk(self.key.p, self.key.g, self.key.y, self.key.x)
 
@@ -75,11 +75,11 @@ class Mixnet(models.Model):
         :return: Decrypted messages.
         :rtype: list
         """
-        
+
         crypt = MixCrypt(bits=B)
         k = crypt.setk(self.key.p, self.key.g, self.key.y, self.key.x)
         return crypt.shuffle_decrypt(msgs, last)
-    
+
     def gen_key(self, p=0, g=0):
         """
         Generates a cryptographic key for the mixnet.
@@ -89,7 +89,7 @@ class Mixnet(models.Model):
         :param g: Generator number, part of the cryptographic key.
         :type g: int, optional
         """
-        
+
         crypt = MixCrypt(bits=B)
         if self.key:
             k = crypt.setk(self.key.p, self.key.g, self.key.y, self.key.x)
@@ -119,8 +119,8 @@ class Mixnet(models.Model):
         :return: The response from the API call or None.
         :rtype: Response or None
         """
-        
-        next_auths=self.next_auths()
+
+        next_auths = self.next_auths()
 
         data.update({
             "auths": AuthSerializer(next_auths, many=True).data,
@@ -131,7 +131,7 @@ class Mixnet(models.Model):
         if next_auths:
             auth = next_auths.first().url
             r = mods.post('mixnet', entry_point=path,
-                           baseurl=auth, json=data)
+                          baseurl=auth, json=data)
             return r
 
         return None

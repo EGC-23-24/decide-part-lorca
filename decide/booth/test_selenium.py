@@ -17,6 +17,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 
+
 @nottest
 class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
     """
@@ -32,6 +33,7 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
     :ivar driver: The Selenium WebDriver instance for browser automation.
     :vartype driver: webdriver.Chrome
     """
+
     def create_voting(self):
         """
         Create a test voting with a multiple-choice question and options.
@@ -42,18 +44,19 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         q = Question(desc='test question')
         q.save()
         for i in range(5):
-            opt = QuestionOption(question=q, option='option {}'.format(i+1))
+            opt = QuestionOption(question=q, option='option {}'.format(i + 1))
             opt.save()
 
         v = Voting(name='test voting', question=q)
         v.save()
 
-        a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
-                                          defaults={'me': True, 'name': 'test auth'})
+        a, _ = Auth.objects.get_or_create(
+            url=settings.BASEURL, defaults={
+                'me': True, 'name': 'test auth'})
         a.save()
         v.auths.add(a)
         return v
-    
+
     def get_or_create_user(self, pk):
         """
         Get or create a test user.
@@ -68,7 +71,7 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         user.set_password('qwerty')
         user.save()
         return user
-      
+
     def setUp(self):
         """
         Set up the test environment before each test method is run.
@@ -79,7 +82,7 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         """
         self.base = BaseTestCase()
         self.base.setUp()
-        
+
         self.v = self.create_voting()
         self.v.question.type = 'M'
         self.v.question.save()
@@ -99,21 +102,21 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         options.headless = True
         self.driver = webdriver.Chrome(options=options)
 
-        super().setUp()             
-            
-    def tearDown(self): 
+        super().setUp()
+
+    def tearDown(self):
         """
         Clean up the test environment after each test method is run.
 
         This method is called after each test method in the test case.
 
         :return: None
-        """          
+        """
         super().tearDown()
         self.driver.quit()
 
         self.base.tearDown()
-    
+
     def test_testquestionmultipleoptions(self):
         """
         Test the behavior of selecting multiple options in a multiple-choice question booth.
@@ -127,41 +130,49 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
         self.driver.set_window_size(910, 1016)
 
         self.driver.find_element(By.ID, "menu-toggle").click()
-        
+
         goto_logging = WebDriverWait(self.driver, 10).until(
-        EC.element_to_be_clickable((By.ID, "goto-logging-button"))
-            )
+            EC.element_to_be_clickable((By.ID, "goto-logging-button"))
+        )
         goto_logging.click()
 
         username = WebDriverWait(self.driver, 10).until(
-        EC.element_to_be_clickable((By.ID, "username"))
-            )
+            EC.element_to_be_clickable((By.ID, "username"))
+        )
         username.click()
-        
+
         self.driver.find_element(By.ID, "username").send_keys("user1")
         self.driver.find_element(By.ID, "password").click()
         self.driver.find_element(By.ID, "password").send_keys("qwerty")
         self.driver.find_element(By.ID, "process-login-button").click()
 
-        WebDriverWait(self.driver, 10).until(
-        EC.visibility_of_element_located((By.CSS_SELECTOR, "form:nth-child(1) > .form-check"))
-            )
-        self.driver.find_element(By.CSS_SELECTOR, "form:nth-child(1) > .form-check").click()
-        WebDriverWait(self.driver, 10).until(
-        EC.visibility_of_element_located((By.CSS_SELECTOR, "form:nth-child(2) > .form-check"))
-            )
-        self.driver.find_element(By.CSS_SELECTOR, "form:nth-child(2) > .form-check").click()
-        WebDriverWait(self.driver, 10).until(
-        EC.visibility_of_element_located((By.CSS_SELECTOR, "form:nth-child(2) > .form-check"))
-            )
-        self.driver.find_element(By.CSS_SELECTOR, "form:nth-child(3) > .form-check").click()
-        
-        checkboxes = self.driver.find_elements(By.CSS_SELECTOR, '.form-check input[type="checkbox"]')
+        WebDriverWait(
+            self.driver, 10).until(
+            EC.visibility_of_element_located(
+                (By.CSS_SELECTOR, "form:nth-child(1) > .form-check")))
+        self.driver.find_element(By.CSS_SELECTOR,
+                                 "form:nth-child(1) > .form-check").click()
+        WebDriverWait(
+            self.driver, 10).until(
+            EC.visibility_of_element_located(
+                (By.CSS_SELECTOR, "form:nth-child(2) > .form-check")))
+        self.driver.find_element(By.CSS_SELECTOR,
+                                 "form:nth-child(2) > .form-check").click()
+        WebDriverWait(
+            self.driver, 10).until(
+            EC.visibility_of_element_located(
+                (By.CSS_SELECTOR, "form:nth-child(2) > .form-check")))
+        self.driver.find_element(By.CSS_SELECTOR,
+                                 "form:nth-child(3) > .form-check").click()
 
-        selected_checkboxes = [checkbox for checkbox in checkboxes if checkbox.is_selected()]
-        self.assertTrue(len(selected_checkboxes)==3)
-        self.assertTrue(len(self.driver.find_elements(By.CSS_SELECTOR, 'form'))==5)
-    
+        checkboxes = self.driver.find_elements(
+            By.CSS_SELECTOR, '.form-check input[type="checkbox"]')
+
+        selected_checkboxes = [
+            checkbox for checkbox in checkboxes if checkbox.is_selected()]
+        self.assertTrue(len(selected_checkboxes) == 3)
+        self.assertTrue(
+            len(self.driver.find_elements(By.CSS_SELECTOR, 'form')) == 5)
 
 
 @nottest
@@ -179,6 +190,7 @@ class CommentBoothTestCase(StaticLiveServerTestCase):
     :ivar driver: The Selenium WebDriver instance for browser automation.
     :vartype driver: webdriver.Chrome
     """
+
     def create_voting(self):
         """
         Create a test voting with a text-type question.
@@ -191,13 +203,14 @@ class CommentBoothTestCase(StaticLiveServerTestCase):
         v = Voting(name='test voting', question=q)
         v.save()
 
-        a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
-                                          defaults={'me': True, 'name': 'test auth'})
+        a, _ = Auth.objects.get_or_create(
+            url=settings.BASEURL, defaults={
+                'me': True, 'name': 'test auth'})
         a.save()
         v.auths.add(a)
         return v
 
-    def get_or_create_user(self,pk):
+    def get_or_create_user(self, pk):
         """
         Get or create a test user.
 
@@ -228,7 +241,7 @@ class CommentBoothTestCase(StaticLiveServerTestCase):
         v.question.save()
         self.v = v
 
-        #Añadimos al usuario noadmin al censo y empezamos la votacion
+        # Añadimos al usuario noadmin al censo y empezamos la votacion
         user = self.get_or_create_user(1)
         user.is_active = True
         user.save()
@@ -239,21 +252,21 @@ class CommentBoothTestCase(StaticLiveServerTestCase):
         v.start_date = timezone.now()
         v.save()
 
-        #Opciones de Chrome
+        # Opciones de Chrome
         options = webdriver.ChromeOptions()
         options.headless = True
         self.driver = webdriver.Chrome(options=options)
 
-        super().setUp()            
-            
-    def tearDown(self): 
+        super().setUp()
+
+    def tearDown(self):
         """
         Clean up the test environment after each test method is run.
 
         This method is called after each test method in the test case.
 
         :return: None
-        """          
+        """
         super().tearDown()
         self.driver.quit()
 
@@ -272,32 +285,43 @@ class CommentBoothTestCase(StaticLiveServerTestCase):
         self.driver.set_window_size(910, 1016)
 
         self.driver.find_element(By.ID, "menu-toggle").click()
-        
+
         goto_logging = WebDriverWait(self.driver, 10).until(
-        EC.element_to_be_clickable((By.ID, "goto-logging-button"))
-            )
+            EC.element_to_be_clickable((By.ID, "goto-logging-button"))
+        )
         goto_logging.click()
 
         username = WebDriverWait(self.driver, 10).until(
-        EC.element_to_be_clickable((By.ID, "username"))
-            )
+            EC.element_to_be_clickable((By.ID, "username"))
+        )
         username.click()
-        
+
         self.driver.find_element(By.ID, "username").send_keys("user1")
         self.driver.find_element(By.ID, "password").click()
-        self.driver.find_element(By.ID, "password").send_keys("qwerty", Keys.ENTER)
+        self.driver.find_element(
+            By.ID, "password").send_keys(
+            "qwerty", Keys.ENTER)
 
         WebDriverWait(self.driver, 10).until(
-        EC.visibility_of_element_located((By.ID, "floatingTextarea2"))
-            )
+            EC.visibility_of_element_located((By.ID, "floatingTextarea2"))
+        )
         text_area = self.driver.find_element(By.ID, "floatingTextarea2")
         text_area.click()
         text_area.send_keys("Comentario de prueba")
         self.driver.find_element(By.ID, "send-vote").click()
-        
-        self.assertTrue(self.driver.find_element(By.XPATH, "//h1[contains(.,'Voting ID:')]").is_displayed())
-        self.assertTrue(self.driver.find_element(By.ID, "floatingTextarea2").is_displayed())
-        self.assertEquals(text_area.get_attribute('value'),"Comentario de prueba")
+
+        self.assertTrue(
+            self.driver.find_element(
+                By.XPATH,
+                "//h1[contains(.,'Voting ID:')]").is_displayed())
+        self.assertTrue(
+            self.driver.find_element(
+                By.ID,
+                "floatingTextarea2").is_displayed())
+        self.assertEquals(
+            text_area.get_attribute('value'),
+            "Comentario de prueba")
+
 
 @nottest
 class YesNoBoothTestCase(StaticLiveServerTestCase):
@@ -314,6 +338,7 @@ class YesNoBoothTestCase(StaticLiveServerTestCase):
     :ivar driver: The Selenium WebDriver instance for browser automation.
     :vartype driver: webdriver.Chrome
     """
+
     def create_voting(self):
         """
         Create a test voting with a Yes/No type question.
@@ -326,13 +351,14 @@ class YesNoBoothTestCase(StaticLiveServerTestCase):
         v = Voting(name='test voting', question=q)
         v.save()
 
-        a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
-                                          defaults={'me': True, 'name': 'test auth'})
+        a, _ = Auth.objects.get_or_create(
+            url=settings.BASEURL, defaults={
+                'me': True, 'name': 'test auth'})
         a.save()
         v.auths.add(a)
         return v
 
-    def get_or_create_user(self,pk):
+    def get_or_create_user(self, pk):
         """
         Get or create a test user.
 
@@ -346,7 +372,7 @@ class YesNoBoothTestCase(StaticLiveServerTestCase):
         user.set_password('qwerty')
         user.save()
         return user
-    
+
     def setUp(self):
         """
         Set up the test environment before each test method is run.
@@ -371,26 +397,26 @@ class YesNoBoothTestCase(StaticLiveServerTestCase):
         v.create_pubkey()
         v.start_date = timezone.now()
         v.save()
-    
+
         options = webdriver.ChromeOptions()
         options.headless = True
         self.driver = webdriver.Chrome(options=options)
 
-        super().setUp()              
-            
-    def tearDown(self):     
+        super().setUp()
+
+    def tearDown(self):
         """
         Clean up the test environment after each test method is run.
 
         This method is called after each test method in the test case.
 
         :return: None
-        """      
+        """
         super().tearDown()
         self.driver.quit()
 
-        self.base.tearDown()  
-    
+        self.base.tearDown()
+
     def test_testquestionyesno(self):
         """
         Test the behavior of submitting a Yes/No response in a Yes/No type question booth.
@@ -404,29 +430,38 @@ class YesNoBoothTestCase(StaticLiveServerTestCase):
         self.driver.set_window_size(910, 1016)
 
         self.driver.find_element(By.ID, "menu-toggle").click()
-        
+
         goto_logging = WebDriverWait(self.driver, 10).until(
-        EC.element_to_be_clickable((By.ID, "goto-logging-button"))
-            )
+            EC.element_to_be_clickable((By.ID, "goto-logging-button"))
+        )
         goto_logging.click()
 
         username = WebDriverWait(self.driver, 10).until(
-        EC.element_to_be_clickable((By.ID, "username"))
-            )
+            EC.element_to_be_clickable((By.ID, "username"))
+        )
         username.click()
-        
+
         self.driver.find_element(By.ID, "username").send_keys("user1")
         self.driver.find_element(By.ID, "password").click()
-        self.driver.find_element(By.ID, "password").send_keys("qwerty", Keys.ENTER)
-        
+        self.driver.find_element(
+            By.ID, "password").send_keys(
+            "qwerty", Keys.ENTER)
+
         login = WebDriverWait(self.driver, 10).until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-success"))
-            )
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-success"))
+        )
         login.click()
 
-        self.assertTrue(self.driver.find_element(By.XPATH, "//h1[contains(.,'Voting ID:')]").is_displayed())
-        self.assertTrue(self.driver.find_element(By.ID, "yesbutton").is_displayed())
-        self.assertTrue(self.driver.find_element(By.ID, "nobutton").is_displayed())
+        self.assertTrue(
+            self.driver.find_element(
+                By.XPATH,
+                "//h1[contains(.,'Voting ID:')]").is_displayed())
+        self.assertTrue(
+            self.driver.find_element(
+                By.ID, "yesbutton").is_displayed())
+        self.assertTrue(
+            self.driver.find_element(
+                By.ID, "nobutton").is_displayed())
 
 
 @nottest
@@ -444,6 +479,7 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
     :ivar driver: The Selenium WebDriver instance for browser automation.
     :vartype driver: webdriver.Chrome
     """
+
     def create_voting(self):
         """
         Create a test voting with a Preference type question.
@@ -462,14 +498,14 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         v = Voting(name='test voting', question=q)
         v.save()
 
-        a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
-                                          defaults={'me': True, 'name': 'test auth'})
+        a, _ = Auth.objects.get_or_create(
+            url=settings.BASEURL, defaults={
+                'me': True, 'name': 'test auth'})
         a.save()
         v.auths.add(a)
         return v
 
-
-    def get_or_create_user(self,pk):
+    def get_or_create_user(self, pk):
         """
         Get or create a test user.
 
@@ -509,27 +545,26 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         v.create_pubkey()
         v.start_date = timezone.now()
         v.save()
-    
+
         options = webdriver.ChromeOptions()
         options.headless = True
         self.driver = webdriver.Chrome(options=options)
 
-        super().setUp()            
-           
-            
-    def tearDown(self):   
+        super().setUp()
+
+    def tearDown(self):
         """
         Clean up the test environment after each test method is run.
 
         This method is called after each test method in the test case.
 
         :return: None
-        """        
+        """
         super().tearDown()
         self.driver.quit()
 
         self.base.tearDown()
-    
+
     def login_user(self, username, password):
         """
         Log in a user with the provided username and password.
@@ -541,7 +576,7 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         :return: None
         """
         self.driver.find_element(By.ID, "menu-toggle").click()
-        
+
         goto_logging = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.ID, "goto-logging-button"))
         )
@@ -551,10 +586,12 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
             EC.element_to_be_clickable((By.ID, "username"))
         )
         username_field.click()
-        
+
         self.driver.find_element(By.ID, "username").send_keys(username)
         self.driver.find_element(By.ID, "password").click()
-        self.driver.find_element(By.ID, "password").send_keys(password, Keys.ENTER)
+        self.driver.find_element(
+            By.ID, "password").send_keys(
+            password, Keys.ENTER)
         login = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.ID, "process-login-button"))
         )
@@ -592,7 +629,10 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         self.select_preferences(preferences)
         self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
 
-        self.assertTrue(self.driver.find_element(By.XPATH, f"//h1[contains(.,'Voting ID:')]").is_displayed())
+        self.assertTrue(
+            self.driver.find_element(
+                By.XPATH,
+                f"//h1[contains(.,'Voting ID:')]").is_displayed())
 
         inputs = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located((By.ID, "rankingInput"))
@@ -612,7 +652,7 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         preferences = [1, 2, 3]
         expected_values = {0: '1', 1: '2', 2: '3'}
         self.perform_preference(preferences, expected_values)
-            
+
     def test_preference_booth_same_preference(self):
         """
         Test the preference voting with the same preference for multiple options.
@@ -622,13 +662,13 @@ class PreferenceBoothTest(StaticLiveServerTestCase):
         preferences = [1, 1, 2]
         expected_values = {0: '1', 1: '1', 2: '2'}
         self.perform_preference(preferences, expected_values)
-        
+
     def test_preference_booth_no_fullfile_all_preferences(self):
         """
         Test the preference voting with some preferences not fully filled.
 
         :return: None
         """
-        preferences = [1,"",""]
+        preferences = [1, "", ""]
         expected_values = {0: '1', 1: '', 2: ''}
         self.perform_preference(preferences, expected_values)

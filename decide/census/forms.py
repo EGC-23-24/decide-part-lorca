@@ -17,12 +17,11 @@ class CreationCensusForm(forms.Form):
     Inner class:
         Meta: Provides metadata for the form, including model association and fields.
     """
-    
+
     voting_id = forms.IntegerField()
     voter_id = forms.IntegerField()
 
-
-    class Meta: 
+    class Meta:
         """
         Meta class for CreationCensusForm.
 
@@ -32,14 +31,14 @@ class CreationCensusForm(forms.Form):
             model: The model associated with this form.
             fields: The fields of the model to include in this form.
         """
-        
+
         model = Census
         fields = (
             'voting_id',
             'voter_id',
         )
 
-    def save (self, commit = True):
+    def save(self, commit=True):
         """
         Saves the form instance as a Census model instance.
 
@@ -50,16 +49,11 @@ class CreationCensusForm(forms.Form):
         :return: The saved or unsaved Census instance, depending on the commit parameter.
         :rtype: Census
         """
-        
-        census = super(CreationCensusForm, self).save(commit = False)
+
+        census = super(CreationCensusForm, self).save(commit=False)
         census.voting_id = self.cleaned_data['voting_id']
         census.voter_id = self.cleaned_data['voter_id']
 
-        if commit : 
+        if commit:
             census.save()
         return census
-
-
-
-
-

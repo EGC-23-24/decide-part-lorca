@@ -37,7 +37,7 @@ class StoreChoiceCase(BaseTestCase):
 
         Creates Question and Voting objects for both classic and multiple choices type voting.
         """
-        
+
         super().setUp()
         self.question = Question(desc='qwerty', type='C')
         self.question_choices = Question(desc='qwerty', type='M')
@@ -62,7 +62,7 @@ class StoreChoiceCase(BaseTestCase):
 
         Clears the created objects to ensure isolation of tests.
         """
-        
+
         self.question = None
         self.question_choices = None
         self.voting = None
@@ -79,9 +79,16 @@ class StoreChoiceCase(BaseTestCase):
 
         Creates a Voting object with specified primary key and saves it to the database.
         """
-        
-        voting = Voting(pk=pk, name='v1', desc="v1 desc", question=self.question, start_date=timezone.now(),
-                        end_date=timezone.now() + datetime.timedelta(days=1))
+
+        voting = Voting(
+            pk=pk,
+            name='v1',
+            desc="v1 desc",
+            question=self.question,
+            start_date=timezone.now(),
+            end_date=timezone.now() +
+            datetime.timedelta(
+                days=1))
         voting.save()
 
     def get_or_create_user(self, pk):
@@ -94,7 +101,7 @@ class StoreChoiceCase(BaseTestCase):
         Returns:
             User: The fetched or created User object.
         """
-        
+
         user, _ = User.objects.get_or_create(pk=pk)
         user.username = 'user{}'.format(pk)
         user.set_password('qwerty')
@@ -108,7 +115,7 @@ class StoreChoiceCase(BaseTestCase):
         Returns:
             tuple: A tuple containing lists of generated voting IDs and user IDs.
         """
-        
+
         votings = [random.randint(1, 5000) for i in range(10)]
         users = [random.randint(3, 5002) for i in range(50)]
         for v in votings:
@@ -163,7 +170,7 @@ class StoreChoiceCase(BaseTestCase):
             CTE_B (int): Test constant for 'b' field in vote.
             data (dict): A dictionary containing the vote data.
         """
-        
+
         VOTING_PK = 345
         CTE_A = 96
         CTE_B = 184
@@ -204,7 +211,7 @@ class StoreChoiceCase(BaseTestCase):
             CTE_B (int): Test constant for 'b' field in vote.
             data (dict): A dictionary containing multiple votes data.
         """
-        
+
         CTE_A = 96
         CTE_B = 184
         user = self.get_or_create_user(1)
@@ -240,7 +247,7 @@ class StoreChoiceCase(BaseTestCase):
         Attributes:
             data (dict): A dictionary containing the vote data with an invalid voting type.
         """
-        
+
         user = self.get_or_create_user(2)
         census = Census(voting_id=self.voting_choices.id, voter_id=2)
         census.save()
@@ -265,7 +272,7 @@ class StoreChoiceCase(BaseTestCase):
             CTE_B (int): Test constant for 'b' field in vote.
             data (dict): A dictionary containing the text vote data.
         """
-        
+
         CTE_A = 96
         CTE_B = 184
         user = self.get_or_create_user(1)
@@ -294,7 +301,7 @@ class StoreChoiceCase(BaseTestCase):
 
         This method generates votes and then tests retrieving them via GET requests, verifying the response status codes and content.
         """
-        
+
         user = self.get_or_create_user(2)
         census = Census(voting_id=self.voting_choices.id, voter_id=2)
         census.save()
@@ -315,7 +322,7 @@ class StoreChoiceCase(BaseTestCase):
 
         This method generates votes and then tests retrieving them via GET requests, verifying the response status codes and content.
         """
-        
+
         self.gen_votes()
         response = self.client.get('/store/', format='json')
         self.assertEqual(response.status_code, 401)
@@ -339,7 +346,7 @@ class StoreChoiceCase(BaseTestCase):
 
         This method generates votes and then tests filtering them by voting_id and voter_id via GET requests, verifying the response status codes and content.
         """
-        
+
         votings, voters = self.gen_votes()
         v = votings[0]
 
@@ -374,7 +381,7 @@ class StoreChoiceCase(BaseTestCase):
 
         This method tests the existence of a specific vote by voter_id and voting_id, verifying the response status codes and content.
         """
-    
+
         votings, voters = self.gen_votes()
         vo = Vote.objects.first()
         v = vo.voting_id
@@ -408,7 +415,7 @@ class StoreChoiceCase(BaseTestCase):
         Attributes:
             data (dict): A dictionary containing the vote data.
         """
-    
+
         data = {
             "voting": 5001,
             "voter": 1,
@@ -456,7 +463,7 @@ class StoreTextCase(BaseTestCase):
         """
         Set up method to initialize test data before each test is run.
         """
-        
+
         super().setUp()
         self.question = Question(desc='qwerty', type='C')
         self.question_text = Question(desc='qwerty', type='T')
@@ -478,7 +485,7 @@ class StoreTextCase(BaseTestCase):
         """
         Tear down method to clean up after each test is run.
         """
-        
+
         self.question = None
         self.question_text = None
         self.voting = None
@@ -495,7 +502,7 @@ class StoreTextCase(BaseTestCase):
         Returns:
             User: The retrieved or created user.
         """
-        
+
         user, _ = User.objects.get_or_create(pk=pk)
         user.username = 'user{}'.format(pk)
         user.set_password('qwerty')
@@ -506,7 +513,7 @@ class StoreTextCase(BaseTestCase):
         """
         Tests the storage of a text-type vote.
         """
-        
+
         CTE_A = 96
         CTE_B = 184
 
@@ -545,7 +552,7 @@ class StoreYesNoCase(BaseTestCase):
         """
         Set up method to initialize test data before each test is run.
         """
-        
+
         super().setUp()
         self.question = Question(desc='qwerty', type="C")
         self.question_yesno = Question(desc='qwerty', type='Y')
@@ -567,7 +574,7 @@ class StoreYesNoCase(BaseTestCase):
         """
         Tear down method to clean up after each test is run.
         """
-        
+
         self.question = None
         self.question_yesno = None
         self.voting = None
@@ -585,7 +592,7 @@ class StoreYesNoCase(BaseTestCase):
         """
         Tests the storage of a yes/no-type vote.
         """
-        
+
         CTE_A = 96
         CTE_B = 184
 
@@ -619,12 +626,12 @@ class StorePreferenceCase(BaseTestCase):
         voting (Voting): A voting instance associated with the classic question.
         voting_preference (Voting): A voting instance associated with the preference-type question.
     """
-    
+
     def setUp(self):
         """
         Set up method to initialize test data before each test is run.
         """
-        
+
         super().setUp()
         self.question = Question(desc='qwerty', type="C")
         self.question_preference = Question(desc='qwerty', type='R')
@@ -646,7 +653,7 @@ class StorePreferenceCase(BaseTestCase):
         """
         Tear down method to clean up after each test is run.
         """
-        
+
         self.question = None
         self.question_preference = None
         self.voting = None
@@ -664,7 +671,7 @@ class StorePreferenceCase(BaseTestCase):
         """
         Tests the storage of a preference-type vote.
         """
-        
+
         CTE_A = 96
         CTE_B = 184
 
@@ -692,7 +699,7 @@ class StorePreferenceCase(BaseTestCase):
         """
         Tests the behavior when attempting to store a vote with an invalid voting type.
         """
-        
+
         user = self.get_or_create_user(2)
         census = Census(voting_id=self.voting_preference.id, voter_id=2)
         census.save()

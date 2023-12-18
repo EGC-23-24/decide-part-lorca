@@ -22,7 +22,8 @@ import re
 from django.contrib.auth import authenticate, login
 from django.core.mail import EmailMessage
 
-class CustomUserCreationForm(UserCreationForm):  
+
+class CustomUserCreationForm(UserCreationForm):
     """
     Custom form for user registration.
 
@@ -31,7 +32,7 @@ class CustomUserCreationForm(UserCreationForm):
     """
     class Meta(UserCreationForm.Meta):
         model = User
-        fields= (
+        fields = (
             'username',
             'password1',
             'password2',
@@ -41,14 +42,14 @@ class CustomUserCreationForm(UserCreationForm):
         )
 
         labels = {
-            'username':('Username'),
-            'password1':('Password'),
-            'password2':('Confirm Password'),
-            'email':('Email'),
-            'first_name':('First Name'),
-            'last_name':('Last Name')
+            'username': ('Username'),
+            'password1': ('Password'),
+            'password2': ('Confirm Password'),
+            'email': ('Email'),
+            'first_name': ('First Name'),
+            'last_name': ('Last Name')
         }
-  
+
     def username_clean_lenght(self, username):
         """
         Validate the length of the username.
@@ -57,14 +58,13 @@ class CustomUserCreationForm(UserCreationForm):
         :type username: str
         :return: True if the username is longer than 150 characters, False otherwise.
         :rtype: bool
-        """  
-        username = username.lower()  
+        """
+        username = username.lower()
 
         if len(username) > 150:
             return True
         else:
             return False
-        
 
     def username_clean_exits(self, username):
         """
@@ -77,8 +77,8 @@ class CustomUserCreationForm(UserCreationForm):
         """
         username = username.lower()
 
-        new = User.objects.filter(username = username)  
-        if new.count():  
+        new = User.objects.filter(username=username)
+        if new.count():
             return True
         else:
             return False
@@ -94,12 +94,12 @@ class CustomUserCreationForm(UserCreationForm):
         """
         username = username.lower()
 
-        username_val_regex = re.search("[^\w@.\-_+]", username)
-        if(username_val_regex != None):
+        username_val_regex = re.search("[^\\w@.\\-_+]", username)
+        if (username_val_regex is not None):
             return True
         return False
-  
-    def email_clean(self,email):
+
+    def email_clean(self, email):
         """
         Check if the email already exists in the database.
 
@@ -107,13 +107,13 @@ class CustomUserCreationForm(UserCreationForm):
         :type email: str
         :return: True if the email already exists, False otherwise.
         :rtype: bool
-        """  
-        email = email.lower()  
-        new = User.objects.filter(email=email)  
-        if new.count():  
+        """
+        email = email.lower()
+        new = User.objects.filter(email=email)
+        if new.count():
             return True
         return False
-  
+
     def clean_confirmation(self, password, confirm_password):
         """
         Validate that the entered passwords match.
@@ -124,11 +124,11 @@ class CustomUserCreationForm(UserCreationForm):
         :type confirm_password: str
         :return: True if the passwords do not match, False otherwise.
         :rtype: bool
-        """ 
-        if password and confirm_password and password != confirm_password:  
+        """
+        if password and confirm_password and password != confirm_password:
             return True
         return False
-    
+
     def clean_password_lenght(self, password):
         """
         Validate the length of the password.
@@ -138,7 +138,7 @@ class CustomUserCreationForm(UserCreationForm):
         :return: True if the password has fewer than 8 characters, False otherwise.
         :rtype: bool
         """
-        if len(password)<8:
+        if len(password) < 8:
             return True
         else:
             return False
@@ -152,20 +152,44 @@ class CustomUserCreationForm(UserCreationForm):
         :return: True if the password is common, False otherwise.
         :rtype: bool
         """
-        common_passwords = ['12345678', '11111111', '00000000', 'password', 'password0', 'password1', 'decide', 'decide password', '01234567', 
-        '2345678','password123', 'password12', 'cotraseña', 'contraseña123','adminadmin', 'admin123', '1234567890',
-        '0987654321', '87654321','lorca123','lorca_password']
+        common_passwords = [
+            '12345678',
+            '11111111',
+            '00000000',
+            'password',
+            'password0',
+            'password1',
+            'decide',
+            'decide password',
+            '01234567',
+            '2345678',
+            'password123',
+            'password12',
+            'cotraseña',
+            'contraseña123',
+            'adminadmin',
+            'admin123',
+            '1234567890',
+            '0987654321',
+            '87654321',
+            'lorca123',
+            'lorca_password']
 
         res = False
         for c in common_passwords:
 
-            if (password==c):
+            if (password == c):
                 res = True
                 break
-        
+
         return res
 
-    def clean_password_too_similar(self, password, username, first_name, last_name):
+    def clean_password_too_similar(
+            self,
+            password,
+            username,
+            first_name,
+            last_name):
         """
         Check if the password is too similar to personal data.
 
@@ -180,9 +204,10 @@ class CustomUserCreationForm(UserCreationForm):
         :return: True if the password is too similar to personal data, False otherwise.
         :rtype: bool
         """
-        if (password.__contains__(username) | password.__contains__(first_name) | password.__contains__(last_name)):
+        if (password.__contains__(username) | password.__contains__(
+                first_name) | password.__contains__(last_name)):
             return True
-            
+
         else:
             return False
 
@@ -208,6 +233,7 @@ class GetUserView(APIView):
     Handles POST requests to retrieve user information based on the provided user token.
 
     """
+
     def post(self, request):
         """
         Handle POST requests to retrieve user information.
@@ -229,6 +255,7 @@ class LogoutView(APIView):
     Handles POST requests to log out a user by deleting their authentication token.
 
     """
+
     def post(self, request):
         """
         Handle POST requests to log out a user.
@@ -255,6 +282,7 @@ class RegisterViewAPI(APIView):
     Handles POST requests to register a new user with admin privileges.
 
     """
+
     def post(self, request):
         """
         Handle POST requests to register a new user.
@@ -281,7 +309,9 @@ class RegisterViewAPI(APIView):
             token, _ = Token.objects.get_or_create(user=user)
         except IntegrityError:
             return Response({}, status=HTTP_400_BAD_REQUEST)
-        return Response({'user_pk': user.pk, 'token': token.key}, HTTP_201_CREATED)
+        return Response(
+            {'user_pk': user.pk, 'token': token.key}, HTTP_201_CREATED)
+
 
 class LoginView(CreateView):
     """
@@ -303,11 +333,11 @@ class LoginView(CreateView):
         :return: An HTTP response indicating the success or failure of the login operation.
         :rtype: HttpResponse
         """
-        values = request.POST  
+        values = request.POST
 
         username = values['username']
         password1 = values['password1']
-        
+
         user = authenticate(request, username=username, password=password1)
 
         response = redirect('/')
@@ -320,13 +350,13 @@ class LoginView(CreateView):
         else:
             incorrect = ["This username or password do not exist"]
             template = loader.get_template("authentication/login.html")
-            context = {"errors":incorrect}
+            context = {"errors": incorrect}
 
             return HttpResponse(template.render(context, request))
 
         return response
 
-    
+
 class RegisterView(CreateView):
     """
     View for user registration.
@@ -348,12 +378,36 @@ class RegisterView(CreateView):
         :rtype: CustomUserCreationForm
         """
         form = super(RegisterView, self).get_form()
-        form.fields['username'].widget = forms.TextInput(attrs={'class':'form-control mb-2', 'placeholder':'Less than 150 characters', 'required': 'required'})
-        form.fields['password1'].widget = forms.PasswordInput(attrs={'class':'form-control mb-2', 'placeholder':'8 characters or more', 'required': 'required'}) 
-        form.fields['password2'].widget = forms.PasswordInput(attrs={'class':'form-control mb-2', 'placeholder':'Confirm password', 'required': 'required'}) 
-        form.fields['first_name'].widget = forms.TextInput(attrs={'class':'form-control mb-2', 'placeholder':'Alex', 'required': 'required'}) 
-        form.fields['last_name'].widget = forms.TextInput(attrs={'class':'form-control mb-2', 'placeholder':'Smith', 'required': 'required'}) 
-        form.fields['email'].widget = forms.EmailInput(attrs={'class':'form-control mb-2', 'placeholder':'example@decide.com', 'required': 'required'}) 
+        form.fields['username'].widget = forms.TextInput(
+            attrs={
+                'class': 'form-control mb-2',
+                'placeholder': 'Less than 150 characters',
+                'required': 'required'})
+        form.fields['password1'].widget = forms.PasswordInput(
+            attrs={
+                'class': 'form-control mb-2',
+                'placeholder': '8 characters or more',
+                'required': 'required'})
+        form.fields['password2'].widget = forms.PasswordInput(
+            attrs={
+                'class': 'form-control mb-2',
+                'placeholder': 'Confirm password',
+                'required': 'required'})
+        form.fields['first_name'].widget = forms.TextInput(
+            attrs={
+                'class': 'form-control mb-2',
+                'placeholder': 'Alex',
+                'required': 'required'})
+        form.fields['last_name'].widget = forms.TextInput(
+            attrs={
+                'class': 'form-control mb-2',
+                'placeholder': 'Smith',
+                'required': 'required'})
+        form.fields['email'].widget = forms.EmailInput(
+            attrs={
+                'class': 'form-control mb-2',
+                'placeholder': 'example@decide.com',
+                'required': 'required'})
 
         return form
 
@@ -366,7 +420,7 @@ class RegisterView(CreateView):
         :return: An HTTP response indicating the success or failure of the registration.
         :rtype: HttpResponse
         """
-        values = request.POST   
+        values = request.POST
 
         username = values['username']
         password1 = values['password1']
@@ -378,38 +432,37 @@ class RegisterView(CreateView):
 
         errors = []
 
-        
-        if(form.clean_confirmation(password1, password2)):
+        if (form.clean_confirmation(password1, password2)):
             errors.append("Passwords must be the same")
 
-        if(form.username_clean_lenght(username)):
+        if (form.username_clean_lenght(username)):
             errors.append("This username is larger than 150 characters")
-           
-        if(form.username_clean_exits(username)):
+
+        if (form.username_clean_exits(username)):
             errors.append("This username has already taken")
 
-        if(form.username_clean_pattern(username)):
+        if (form.username_clean_pattern(username)):
             errors.append("This username not match with the pattern")
 
-        if(form.email_clean(email)):
+        if (form.email_clean(email)):
             errors.append("This email has already taken")
-            
-        if(form.clean_password_lenght(password1)):
+
+        if (form.clean_password_lenght(password1)):
             errors.append("This password must contain at least 8 characters")
 
-        if(form.clean_password_common(password1)):
+        if (form.clean_password_common(password1)):
             errors.append("This password is a common password")
 
-        if(form.clean_password_too_similar(password1,username,first_name,last_name)):
+        if (form.clean_password_too_similar(
+                password1, username, first_name, last_name)):
             errors.append("This password is too similar to your personal data")
 
-        if(form.clean_password_numeric(password1)):
+        if (form.clean_password_numeric(password1)):
             errors.append("This password is numeric")
 
-
-        if (len(errors)>0):
+        if (len(errors) > 0):
             template = loader.get_template("authentication/register.html")
-            context = {"errors":errors}
+            context = {"errors": errors}
 
             return HttpResponse(template.render(context, request))
         else:
@@ -420,19 +473,25 @@ class RegisterView(CreateView):
                 user.email = email
                 user.set_password(password1)
 
-                email=EmailMessage("Message from the app Decide", 
-
-                "This is a confirmation message: the user with name {} and email {} has registered in the app Decide recently.".format(user.first_name,user.email), 
-
-                "",[user.email], reply_to=[email])
+                email = EmailMessage(
+                    "Message from the app Decide",
+                    "This is a confirmation message: the user with name {} and email {} has registered in the app Decide recently.".format(
+                        user.first_name,
+                        user.email),
+                    "",
+                    [
+                        user.email],
+                    reply_to=[email])
 
                 email.send()
                 user.save()
                 token, _ = Token.objects.get_or_create(user=user)
 
             except IntegrityError:
-                return HttpResponse("Integrity Error raised", status=HTTP_400_BAD_REQUEST)
-            
+                return HttpResponse(
+                    "Integrity Error raised",
+                    status=HTTP_400_BAD_REQUEST)
+
             return redirect('/')
 
 
@@ -449,7 +508,7 @@ def main(request):
     context = {}
     is_authenticated = False
 
-    if request.user.is_authenticated == True:
+    if request.user.is_authenticated:
         is_authenticated = True
         context['username'] = request.user.username
 
@@ -468,7 +527,7 @@ def logout_view(request):
     :rtype: HttpResponse
     """
     response = redirect('/')
-    if request.user.is_authenticated == True:
+    if request.user.is_authenticated:
         logout(request)
         response.delete_cookie('token')
         response.delete_cookie('decide')

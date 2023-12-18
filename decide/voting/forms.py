@@ -5,7 +5,7 @@ from voting.models import Voting
 from django.forms import ModelForm
 from voting.filters import StartedFilter
 
-    
+
 class UpdateVotingForm(ModelForm):
     """
     A Django ModelForm for updating Voting instances.
@@ -15,7 +15,7 @@ class UpdateVotingForm(ModelForm):
     Attributes:
         Meta: An inner class that provides metadata to the ModelForm class. It defines the model associated with the form and the fields to be included in the form.
     """
-    
+
     class Meta:
         """
         Meta class for UpdateVotingForm.
@@ -26,6 +26,6 @@ class UpdateVotingForm(ModelForm):
             model: The model associated with this form.
             fields: The fields of the model to include in this form.
         """
-        
+
         model = Voting
-        fields = ['name', 'desc', 'question'] 
+        fields = ['name', 'desc', 'question']
