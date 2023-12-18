@@ -38,6 +38,17 @@ Además, consideramos importante comentar que debido a que Github Actions alguna
 </p>
 
 Estos tests pertenecen a una suite de pruebas de vista, ya que utilizan Selenium para simular la interacción de un usuario real con la interfaz de usuario en un navegador web. **Además, también son pruebas de persistencia, ya que almacenan información necesaria para las pruebas en la base de datos.**
+
+Para ejecutar estas pruebas en local, es necesario ejecutar los siguientes comandos:
+- **Votación múltiple**
+`./manage.py test booth.test_selenium.MultipleChoiceQuestionBoothTest  -v 2`
+- **Votación Sí/No**
+`./manage.py test booth.test_selenium.YesNoBoothTest  -v 2`
+- **Votación Comentario**
+`./manage.py test booth.test_selenium.CommentBoothTest  -v 2`
+- **Votación Preferencia**
+`./manage.py test booth.test_selenium.PreferenceBoothTest  -v 2`
+
  <div id='id2.2'/>
 
 #### 2.2. Pruebas de vistas estáticas
@@ -69,10 +80,21 @@ Estas pruebas se centran en funciones o métodos específicos para asegurar que 
  <div id='id2.5'/>
 
 #### 2.5. Pruebas de carga
-Al igual que hemos visto en las prácticas, se han diseñado dos pruebas de carga, una para la votación de opción múltiple y otra para el censo. Para ver las pruebas de carga, acceda a la carpeta `loadtests` en el directorio raíz del proyecto. Para ejecutar las pruebas de carga, ejecute el siguiente comando:
-- **Prueba de carga de votación de múltiples opciones**
-- **Prueba de carga de censo**
+Al igual que hemos visto en las prácticas, se han diseñado tres pruebas de carga, una para las votaciones, otra para el booth, y una última para la página de inicio. Para ver las pruebas de carga, acceda a la carpeta `loadtests` en el directorio raíz del proyecto.
 
+Antes de ejecutar las pruebas de carga, es necesario que decide esté ejecutansose en otra consola (si lo estamos probando en local), además de contar con una votación abierta y haber ejecutado el script de generación de censo `gen_census.py`.
+
+- **Prueba de carga de votación**
+Esta prueba se basa en la ya existente para probar votaciones. Para nuestro proyecto, hemos actualzado esta prueba de carga para que tenga en cuenta el tipo de votación a probar, además de simular peticiones de acceso a la cabina de votación. Para ejecutar esta prueba de carga, ejecute el siguiente comando(requiere tener una votación abierta, cuyo id y tipo deben indicarse en la variable VOTING, VOTING_TYPE):
+`locust Voters`
+
+- **Prueba de carga de página de inicio**
+Esta prueba simula las peticiones de usuarios que acceden a la página de inicio y posteriormente inician sesión. Para ejecutar esta prueba de carga, ejecute el siguiente comando:
+`locust Home`
+
+- **Prueba de carga de cabina de votación**
+Esta prueba simplemente simula las peticiones de un usuario que accede a la cabina de votación. Para ejecutar esta prueba de carga, ejecute el siguiente comando (requiere tener una votación abierta, cuyo id debe indicarse en la variable VOTING):
+`locust Booth`
  <div id='id3'/>
 
 ### 3. Técnica de Diseño de Casos de Prueba
