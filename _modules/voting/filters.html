@@ -315,7 +315,7 @@ document.write(`
 <span class="sd">        title (str): The title displayed on the filter interface.</span>
 <span class="sd">        parameter_name (str): The name of the parameter used in the query string.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;started&#39;</span>
     <span class="n">parameter_name</span> <span class="o">=</span> <span class="s1">&#39;started&#39;</span>
 
@@ -330,7 +330,7 @@ document.write(`
 <span class="sd">        :return: List of tuples, where each tuple represents a lookup option.</span>
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">return</span> <span class="p">[</span>
             <span class="p">(</span><span class="s1">&#39;NS&#39;</span><span class="p">,</span> <span class="s1">&#39;Not started&#39;</span><span class="p">),</span>
             <span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;Started&#39;</span><span class="p">),</span>
@@ -349,13 +349,15 @@ document.write(`
 <span class="sd">        :return: Filtered queryset based on the selected lookup option.</span>
 <span class="sd">        :rtype: QuerySet</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;NS&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">start_date__isnull</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;S&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">start_date__isnull</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">start_date__isnull</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">end_date__isnull</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span>
+                <span class="n">start_date__isnull</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+                <span class="n">end_date__isnull</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">end_date__isnull</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>

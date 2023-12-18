@@ -326,17 +326,17 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Test case for census-related operations.</span>
 
-<span class="sd">    This class inherits from TestCase and provides test methods for creating, </span>
+<span class="sd">    This class inherits from TestCase and provides test methods for creating,</span>
 <span class="sd">    validating, and deleting census records.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="CensusTestCase.setUp"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set up the test environment before each test method.</span>
 
 <span class="sd">        Creates a voting instance, a user, and a census record.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear una votación</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -360,10 +360,10 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the creation of a census record.</span>
 
-<span class="sd">        Validates that the census record is correctly created and its attributes </span>
+<span class="sd">        Validates that the census record is correctly created and its attributes</span>
 <span class="sd">        match the expected values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear una votación</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -393,7 +393,7 @@ document.write(`
 
 <span class="sd">        Expects a ValueError when trying to create a census with an invalid voting ID.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear una votación</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -410,7 +410,8 @@ document.write(`
 
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
             <span class="c1"># Crear un censo</span>
-            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
             <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span>  <span class="c1"># This should raise a ValidationError exception</span></div>
 
 <div class="viewcode-block" id="CensusTestCase.test_create_census_invalid_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_create_census_invalid_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_create_census_invalid_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -419,7 +420,7 @@ document.write(`
 
 <span class="sd">        Expects a ValueError when trying to create a census with an invalid voter ID.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear una votación</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -436,17 +437,18 @@ document.write(`
 
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
             <span class="c1"># Attempt to create a census with an invalid voter_id</span>
-            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span><span class="p">)</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span><span class="p">)</span>
             <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="CensusTestCase.test_create_census_invalid_voting_id_and_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_create_census_invalid_voting_id_and_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_create_census_invalid_voting_id_and_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the creation of a census record with both invalid voting and voter IDs.</span>
 
-<span class="sd">        Expects a ValueError when trying to create a census with invalid voting and </span>
+<span class="sd">        Expects a ValueError when trying to create a census with invalid voting and</span>
 <span class="sd">        voter IDs.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
             <span class="c1"># Attempt to create a census with an invalid voting_id and voter_id</span>
             <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
@@ -458,10 +460,10 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the deletion of a census record.</span>
 
-<span class="sd">        Validates that the census record is successfully deleted and no longer exists </span>
+<span class="sd">        Validates that the census record is successfully deleted and no longer exists</span>
 <span class="sd">        in the database.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Delete any existing Census objects to avoid IntegrityError</span>
         <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 
@@ -496,9 +498,8 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span>
             <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-                <span class="n">voting_id</span><span class="o">=</span><span class="n">census_to_delete</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">census_to_delete</span><span class="o">.</span><span class="n">voter_id</span>
-            <span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
-        <span class="p">)</span></div>
+                <span class="n">voting_id</span><span class="o">=</span><span class="n">census_to_delete</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span>
+                <span class="n">voter_id</span><span class="o">=</span><span class="n">census_to_delete</span><span class="o">.</span><span class="n">voter_id</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span></div>
 
 <div class="viewcode-block" id="CensusTestCase.test_delete_census_invalid_voting_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_delete_census_invalid_voting_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_delete_census_invalid_voting_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -506,7 +507,7 @@ document.write(`
 
 <span class="sd">        Expects a ValueError when trying to delete a census with an invalid voting ID.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear una votación</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -523,7 +524,8 @@ document.write(`
 
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
             <span class="c1"># Attempt to delete a census with an invalid voting_id</span>
-            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
             <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="CensusTestCase.test_delete_census_invalid_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_delete_census_invalid_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_delete_census_invalid_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -532,7 +534,7 @@ document.write(`
 
 <span class="sd">        Expects a ValueError when trying to delete a census with an invalid voter ID.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear una votación</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -549,17 +551,18 @@ document.write(`
 
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
             <span class="c1"># Attempt to delete a census with an invalid voter_id</span>
-            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span><span class="p">)</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span><span class="p">)</span>
             <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="CensusTestCase.test_delete_census_invalid_voting_id_and_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_delete_census_invalid_voting_id_and_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_delete_census_invalid_voting_id_and_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the deletion of a census record with both invalid voting and voter IDs.</span>
 
-<span class="sd">        Expects a ValueError when trying to delete a census with invalid voting and </span>
+<span class="sd">        Expects a ValueError when trying to delete a census with invalid voting and</span>
 <span class="sd">        voter IDs.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
             <span class="c1"># Attempt to delete a census with an invalid voting_id and voter_id</span>
             <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
@@ -571,10 +574,10 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test listing of all census records.</span>
 
-<span class="sd">        Validates that the census records can be retrieved and their attributes match </span>
+<span class="sd">        Validates that the census records can be retrieved and their attributes match</span>
 <span class="sd">        the expected values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Eliminar todos los objetos Census existentes</span>
         <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 
@@ -615,7 +618,7 @@ document.write(`
 
 <span class="sd">        Expects a ValueError when trying to list census records with an invalid voting ID.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear una votación</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -632,7 +635,8 @@ document.write(`
 
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
             <span class="c1"># Attempt to list a census with an invalid voting_id</span>
-            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
             <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="CensusTestCase.test_list_census_invalid_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_list_census_invalid_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_list_census_invalid_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -641,7 +645,7 @@ document.write(`
 
 <span class="sd">        Expects a ValueError when trying to list census records with an invalid voter ID.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear una votación</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -658,17 +662,18 @@ document.write(`
 
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
             <span class="c1"># Attempt to list a census with an invalid voter_id</span>
-            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span><span class="p">)</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span><span class="p">)</span>
             <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="CensusTestCase.test_list_census_invalid_voting_id_and_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_list_census_invalid_voting_id_and_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_list_census_invalid_voting_id_and_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test listing of census records with both invalid voting and voter IDs.</span>
 
-<span class="sd">        Expects a ValueError when trying to list census records with invalid voting and </span>
+<span class="sd">        Expects a ValueError when trying to list census records with invalid voting and</span>
 <span class="sd">        voter IDs.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
             <span class="c1"># Attempt to list a census with an invalid voting_id and voter_id</span>
             <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
@@ -680,10 +685,10 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test retrieval of a specific census record.</span>
 
-<span class="sd">        Validates that a specific census record can be retrieved and its attributes match </span>
+<span class="sd">        Validates that a specific census record can be retrieved and its attributes match</span>
 <span class="sd">        the expected values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Eliminar todos los objetos Census existentes</span>
         <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 
@@ -722,10 +727,10 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test retrieval of a census record with an invalid voting ID.</span>
 
-<span class="sd">        Expects a ValueError when trying to retrieve a census record with an invalid </span>
+<span class="sd">        Expects a ValueError when trying to retrieve a census record with an invalid</span>
 <span class="sd">        voting ID.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear una votación</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -742,17 +747,18 @@ document.write(`
 
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
             <span class="c1"># Attempt to get a census with an invalid voting_id</span>
-            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="s2">&quot;invalid_voting_id&quot;</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
             <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="CensusTestCase.test_get_census_invalid_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_get_census_invalid_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_census_invalid_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test retrieval of a census record with an invalid voter ID.</span>
 
-<span class="sd">        Expects a ValueError when trying to retrieve a census record with an invalid </span>
+<span class="sd">        Expects a ValueError when trying to retrieve a census record with an invalid</span>
 <span class="sd">        voter ID.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear una votación</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -769,17 +775,18 @@ document.write(`
 
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
             <span class="c1"># Attempt to get a census with an invalid voter_id</span>
-            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span><span class="p">)</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="s2">&quot;invalid_voter_id&quot;</span><span class="p">)</span>
             <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="CensusTestCase.test_get_census_invalid_voting_id_and_voter_id"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTestCase.test_get_census_invalid_voting_id_and_voter_id">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_census_invalid_voting_id_and_voter_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test retrieval of a census record with both invalid voting and voter IDs.</span>
 
-<span class="sd">        Expects a ValueError when trying to retrieve a census record with invalid </span>
+<span class="sd">        Expects a ValueError when trying to retrieve a census record with invalid</span>
 <span class="sd">        voting and voter IDs.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
             <span class="c1"># Attempt to get a census with an invalid voting_id and voter_id</span>
             <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
@@ -793,7 +800,7 @@ document.write(`
 
 <span class="sd">        Cleans up any created test data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">census</span> <span class="o">=</span> <span class="kc">None</span></div>
 
@@ -803,7 +810,7 @@ document.write(`
 
 <span class="sd">        Validates that a user has permission to vote in a specific voting.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear un votante</span>
         <span class="n">u</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;testvoter&quot;</span><span class="p">)</span>
         <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
@@ -832,10 +839,10 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test listing all votings.</span>
 
-<span class="sd">        Validates that all votings can be listed and their attributes match the </span>
+<span class="sd">        Validates that all votings can be listed and their attributes match the</span>
 <span class="sd">        expected values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear una votación</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -854,7 +861,8 @@ document.write(`
         <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/census/?voting_id=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s2">&quot;/census/?voting_id=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="p">{</span><span class="s2">&quot;voters&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">]})</span></div>
 
@@ -864,7 +872,7 @@ document.write(`
 
 <span class="sd">        Validates the behavior when adding a voter who no longer exists.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear una votación</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -896,7 +904,7 @@ document.write(`
 
 <span class="sd">        Validates that new voters can be added to a voting successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Crear una votación</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -923,7 +931,7 @@ document.write(`
 
 <span class="sd">        Validates that a voter can be removed from a voting successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Eliminar todos los objetos Census existentes</span>
         <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 
@@ -961,14 +969,14 @@ document.write(`
 <span class="sd">    This class inherits from StaticLiveServerTestCase to provide a test environment</span>
 <span class="sd">    for web-based interactions using Selenium WebDriver.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="CensusTest.setUp"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set up the test environment before each test method.</span>
 
 <span class="sd">        Initializes the WebDriver and sets up the base test environment.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Load base test functionality for decide</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="n">BaseTestCase</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
@@ -985,7 +993,7 @@ document.write(`
 
 <span class="sd">        Closes the WebDriver and tears down the base test environment.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 
@@ -995,10 +1003,10 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the successful creation of a census entry in the admin interface.</span>
 
-<span class="sd">        This method simulates the process of logging into the admin site and </span>
+<span class="sd">        This method simulates the process of logging into the admin site and</span>
 <span class="sd">        creating a new census entry with valid data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/login/?next=/admin/&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
 
@@ -1023,14 +1031,14 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census&quot;</span>
-        <span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span>
+            <span class="s2">&quot;/admin/census/census&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CensusTest.createCensusEmptyError"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusTest.createCensusEmptyError">[docs]</a>    <span class="k">def</span> <span class="nf">createCensusEmptyError</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the behavior when attempting to create a census entry with empty fields.</span>
 
-<span class="sd">        This method checks if the correct error message is displayed when trying </span>
+<span class="sd">        This method checks if the correct error message is displayed when trying</span>
 <span class="sd">        to save a census entry without filling out the required fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -1064,10 +1072,10 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the behavior when attempting to create a census entry with invalid values.</span>
 
-<span class="sd">        This method simulates the creation of a census entry with invalid values </span>
+<span class="sd">        This method simulates the creation of a census entry with invalid values</span>
 <span class="sd">        and checks if the appropriate error message is displayed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/login/?next=/admin/&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
 
@@ -1082,9 +1090,11 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/census/census/add&quot;</span><span class="p">)</span>
         <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voting_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voting_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;64654654654654&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voting_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;64654654654654&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voter_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voter_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;64654654654654&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_voter_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;64654654654654&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
@@ -1103,12 +1113,12 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Test suite for the CensusExportView functionality.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="CensusExportViewTest.setUp"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusExportViewTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set up the test environment for each test method.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="CensusExportViewTest.create_voting"><a class="viewcode-back" href="../../modules/census.html#census.tests.CensusExportViewTest.create_voting">[docs]</a>    <span class="k">def</span> <span class="nf">create_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1118,7 +1128,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            Voting: The Voting instance that was created.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
@@ -1142,7 +1152,7 @@ document.write(`
 <span class="sd">        Ensures that admin users can access the export census view and</span>
 <span class="sd">        that the context contains the correct data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">))</span>
@@ -1166,7 +1176,7 @@ document.write(`
 <span class="sd">        Ensures that non-admin users are redirected when trying to access</span>
 <span class="sd">        the export census view.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;noadmin&quot;</span><span class="p">))</span>
@@ -1181,12 +1191,12 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Test suite for exporting census data.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="ExportCensusTest.setUp"><a class="viewcode-back" href="../../modules/census.html#census.tests.ExportCensusTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set up the test environment for each test method.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="ExportCensusTest.create_voting"><a class="viewcode-back" href="../../modules/census.html#census.tests.ExportCensusTest.create_voting">[docs]</a>    <span class="k">def</span> <span class="nf">create_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1196,7 +1206,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            Voting: The Voting instance that was created.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
@@ -1235,7 +1245,7 @@ document.write(`
 <span class="sd">        Ensures that the response contains the correct content type and</span>
 <span class="sd">        disposition, and the Excel file contains the correct data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">create_voters</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
@@ -1277,7 +1287,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set up the test environment for each test method by creating a user and initializing the base test case.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
         <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
         <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
@@ -1290,7 +1300,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            Voting: The Voting instance that was created.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
@@ -1314,7 +1324,7 @@ document.write(`
 <span class="sd">        Ensures that census data is correctly imported into the database</span>
 <span class="sd">        and appropriate success message is displayed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">create_pubkey</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -1362,7 +1372,7 @@ document.write(`
 
 <span class="sd">        Ensures that an error message is displayed when incorrect data is imported.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">create_pubkey</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -1399,7 +1409,7 @@ document.write(`
 
 <span class="sd">        Ensures that an appropriate error message is displayed when no file is selected.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">create_pubkey</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -1423,7 +1433,7 @@ document.write(`
 
 <span class="sd">        Ensures that an appropriate error message is displayed when trying to import data for an ended voting.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">create_pubkey</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -1450,7 +1460,7 @@ document.write(`
 
 <span class="sd">        Ensures that an appropriate error message is displayed when trying to import data for a not-started voting.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
 
         <span class="n">workbook</span> <span class="o">=</span> <span class="n">Workbook</span><span class="p">()</span>
@@ -1484,7 +1494,7 @@ document.write(`
 
 <span class="sd">        Ensures that non-admin users receive an appropriate error message when trying to access the import view.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">create_pubkey</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -1502,7 +1512,8 @@ document.write(`
 
         <span class="n">messages</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">messages</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;You must be an admin to access this page!&quot;</span><span class="p">)</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                         <span class="s2">&quot;You must be an admin to access this page!&quot;</span><span class="p">)</span></div></div>
 </pre></div>
 
                 </article>

@@ -307,6 +307,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">voting.models</span> <span class="kn">import</span> <span class="n">Voting</span>
 <span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
 
+
 <div class="viewcode-block" id="Census"><a class="viewcode-back" href="../../modules/census.html#census.models.Census">[docs]</a><span class="k">class</span> <span class="nc">Census</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Model representing a voting census, associating voters with votings.</span>
@@ -319,7 +320,7 @@ document.write(`
 <span class="sd">        clean: Validates that both the Voting and User instances exist.</span>
 <span class="sd">        save: Saves the instance after validation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">voting_id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
     <span class="n">voter_id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
 
@@ -331,13 +332,15 @@ document.write(`
 
 <span class="sd">        :raises ValidationError: If the referenced voting or user do not exist.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Comprueba si el Voting y el User existen</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_id</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">({</span><span class="s1">&#39;voting_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Voting with this ID does not exist.&#39;</span><span class="p">})</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span>
+                <span class="p">{</span><span class="s1">&#39;voting_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Voting with this ID does not exist.&#39;</span><span class="p">})</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">voter_id</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">({</span><span class="s1">&#39;voter_id&#39;</span><span class="p">:</span> <span class="s1">&#39;User with this ID does not exist.&#39;</span><span class="p">})</span></div>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span>
+                <span class="p">{</span><span class="s1">&#39;voter_id&#39;</span><span class="p">:</span> <span class="s1">&#39;User with this ID does not exist.&#39;</span><span class="p">})</span></div>
 
 <div class="viewcode-block" id="Census.save"><a class="viewcode-back" href="../../modules/census.html#census.models.Census.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -349,10 +352,9 @@ document.write(`
 <span class="sd">        :param kwargs: Variable keyword arguments.</span>
 <span class="sd">        :return: The result of the save method from the superclass.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
-
 </pre></div>
 
                 </article>

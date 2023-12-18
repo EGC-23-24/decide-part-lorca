@@ -317,16 +317,17 @@ document.write(`
 <span class="sd">    Attributes:</span>
 <span class="sd">        Meta: Meta class with model and field specifications.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="QuestionOptionSerializer.Meta"><a class="viewcode-back" href="../../modules/voting.html#voting.views.QuestionOptionSerializer.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Meta class for QuestionOptionSerializer.</span>
 
 <span class="sd">        Specifies the model and fields to be serialized.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">model</span> <span class="o">=</span> <span class="n">QuestionOption</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">,</span> <span class="s1">&#39;option&#39;</span><span class="p">)</span></div></div>
+
 
 <div class="viewcode-block" id="QuestionOptionRankedSerializer"><a class="viewcode-back" href="../../modules/voting.html#voting.views.QuestionOptionRankedSerializer">[docs]</a><span class="k">class</span> <span class="nc">QuestionOptionRankedSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedModelSerializer</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -337,14 +338,14 @@ document.write(`
 <span class="sd">    Attributes:</span>
 <span class="sd">        Meta: Meta class with model and field specifications.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="QuestionOptionRankedSerializer.Meta"><a class="viewcode-back" href="../../modules/voting.html#voting.views.QuestionOptionRankedSerializer.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Meta class for QuestionOptionRankedSerializer.</span>
 
 <span class="sd">        Specifies the model and fields to be serialized.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">model</span> <span class="o">=</span> <span class="n">QuestionOptionRanked</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">,</span> <span class="s1">&#39;option&#39;</span><span class="p">)</span></div></div>
 
@@ -358,7 +359,7 @@ document.write(`
 <span class="sd">    Attributes:</span>
 <span class="sd">        Meta: Meta class with model and field specifications.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="QuestionOptionYesNoSerializer.Meta"><a class="viewcode-back" href="../../modules/voting.html#voting.views.QuestionOptionYesNoSerializer.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Meta class for QuestionOptionYesNoSerializer.</span>
@@ -368,7 +369,8 @@ document.write(`
 
         <span class="n">model</span> <span class="o">=</span> <span class="n">QuestionOptionYesNo</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">,</span> <span class="s1">&#39;option&#39;</span><span class="p">)</span></div></div>
-        
+
+
 <div class="viewcode-block" id="QuestionSerializer"><a class="viewcode-back" href="../../modules/voting.html#voting.views.QuestionSerializer">[docs]</a><span class="k">class</span> <span class="nc">QuestionSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedModelSerializer</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Serializer for Question model.</span>
@@ -379,7 +381,7 @@ document.write(`
 <span class="sd">        options (SerializerMethodField): Field to serialize related options.</span>
 <span class="sd">        Meta: Meta class with model and field specifications.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">options</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">SerializerMethodField</span><span class="p">()</span>
 
 <div class="viewcode-block" id="QuestionSerializer.get_options"><a class="viewcode-back" href="../../modules/voting.html#voting.views.QuestionSerializer.get_options">[docs]</a>    <span class="k">def</span> <span class="nf">get_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
@@ -391,26 +393,30 @@ document.write(`
 <span class="sd">        :return: Serialized data of related options.</span>
 <span class="sd">        :rtype: dict or None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>
-            <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionOptionSerializer</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionOptionSerializer</span><span class="p">(</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
         <span class="k">elif</span> <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span>
-            <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionOptionRankedSerializer</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">ranked_options</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionOptionRankedSerializer</span><span class="p">(</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">ranked_options</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
         <span class="k">elif</span> <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span>
-            <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionOptionYesNoSerializer</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">yesno_options</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionOptionYesNoSerializer</span><span class="p">(</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">yesno_options</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
         <span class="k">elif</span> <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span>
-            <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionOptionSerializer</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionOptionSerializer</span><span class="p">(</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
         <span class="k">elif</span> <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span>
             <span class="n">serializer</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">serializer</span></div>
-    
+
 <div class="viewcode-block" id="QuestionSerializer.Meta"><a class="viewcode-back" href="../../modules/voting.html#voting.views.QuestionSerializer.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Meta class for QuestionSerializer.</span>
 
 <span class="sd">        Specifies the model and fields to be serialized.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">model</span> <span class="o">=</span> <span class="n">Question</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">,</span> <span class="s1">&#39;options&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">)</span></div></div>
 
@@ -427,7 +433,7 @@ document.write(`
 <span class="sd">        auths (AuthSerializer): Nested serializer for related authorizations.</span>
 <span class="sd">        Meta: Meta class with model and field specifications.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">question</span> <span class="o">=</span> <span class="n">QuestionSerializer</span><span class="p">(</span><span class="n">many</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">pub_key</span> <span class="o">=</span> <span class="n">KeySerializer</span><span class="p">()</span>
     <span class="n">auths</span> <span class="o">=</span> <span class="n">AuthSerializer</span><span class="p">(</span><span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -438,10 +444,20 @@ document.write(`
 
 <span class="sd">        Specifies the model and fields to be serialized.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">model</span> <span class="o">=</span> <span class="n">Voting</span>
-        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">,</span> <span class="s1">&#39;question&#39;</span><span class="p">,</span> <span class="s1">&#39;start_date&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;end_date&#39;</span><span class="p">,</span> <span class="s1">&#39;future_stop&#39;</span><span class="p">,</span> <span class="s1">&#39;pub_key&#39;</span><span class="p">,</span> <span class="s1">&#39;auths&#39;</span><span class="p">,</span> <span class="s1">&#39;tally&#39;</span><span class="p">,</span> <span class="s1">&#39;postproc&#39;</span><span class="p">)</span></div></div>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s1">&#39;id&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;desc&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;question&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;start_date&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;end_date&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;future_stop&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;pub_key&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;auths&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;tally&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;postproc&#39;</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="SimpleVotingSerializer"><a class="viewcode-back" href="../../modules/voting.html#voting.views.SimpleVotingSerializer">[docs]</a><span class="k">class</span> <span class="nc">SimpleVotingSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedModelSerializer</span><span class="p">):</span>
@@ -454,7 +470,7 @@ document.write(`
 <span class="sd">        question (QuestionSerializer): Nested serializer for the related question.</span>
 <span class="sd">        Meta: Meta class with model and field specifications.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">question</span> <span class="o">=</span> <span class="n">QuestionSerializer</span><span class="p">(</span><span class="n">many</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <div class="viewcode-block" id="SimpleVotingSerializer.Meta"><a class="viewcode-back" href="../../modules/voting.html#voting.views.SimpleVotingSerializer.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
@@ -463,9 +479,15 @@ document.write(`
 
 <span class="sd">        Specifies the model and fields to be serialized.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">model</span> <span class="o">=</span> <span class="n">Voting</span>
-        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">,</span> <span class="s1">&#39;question&#39;</span><span class="p">,</span> <span class="s1">&#39;start_date&#39;</span><span class="p">,</span> <span class="s1">&#39;end_date&#39;</span><span class="p">,</span> <span class="s1">&#39;future_stop&#39;</span><span class="p">)</span></div></div>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;desc&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;question&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;start_date&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;end_date&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;future_stop&#39;</span><span class="p">)</span></div></div>
 </pre></div>
 
                 </article>

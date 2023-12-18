@@ -341,7 +341,7 @@ document.write(`
 
 <span class="sd">        Creates Question and Voting objects for both classic and multiple choices type voting.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">question_choices</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
@@ -366,7 +366,7 @@ document.write(`
 
 <span class="sd">        Clears the created objects to ensure isolation of tests.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">question_choices</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">voting</span> <span class="o">=</span> <span class="kc">None</span>
@@ -383,9 +383,16 @@ document.write(`
 
 <span class="sd">        Creates a Voting object with specified primary key and saves it to the database.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;v1&#39;</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;v1 desc&quot;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
-                        <span class="n">end_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span>
+            <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;v1&#39;</span><span class="p">,</span>
+            <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;v1 desc&quot;</span><span class="p">,</span>
+            <span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span>
+            <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+            <span class="n">end_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span>
+            <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span>
+                <span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="StoreChoiceCase.get_or_create_user"><a class="viewcode-back" href="../../modules/store.html#store.tests.StoreChoiceCase.get_or_create_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
@@ -398,7 +405,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            User: The fetched or created User object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">user</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
         <span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;user</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pk</span><span class="p">)</span>
         <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s1">&#39;qwerty&#39;</span><span class="p">)</span>
@@ -412,7 +419,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            tuple: A tuple containing lists of generated voting IDs and user IDs.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">votings</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
         <span class="n">users</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5002</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">votings</span><span class="p">:</span>
@@ -467,7 +474,7 @@ document.write(`
 <span class="sd">            CTE_B (int): Test constant for &#39;b&#39; field in vote.</span>
 <span class="sd">            data (dict): A dictionary containing the vote data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">VOTING_PK</span> <span class="o">=</span> <span class="mi">345</span>
         <span class="n">CTE_A</span> <span class="o">=</span> <span class="mi">96</span>
         <span class="n">CTE_B</span> <span class="o">=</span> <span class="mi">184</span>
@@ -508,7 +515,7 @@ document.write(`
 <span class="sd">            CTE_B (int): Test constant for &#39;b&#39; field in vote.</span>
 <span class="sd">            data (dict): A dictionary containing multiple votes data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">CTE_A</span> <span class="o">=</span> <span class="mi">96</span>
         <span class="n">CTE_B</span> <span class="o">=</span> <span class="mi">184</span>
         <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -544,7 +551,7 @@ document.write(`
 <span class="sd">        Attributes:</span>
 <span class="sd">            data (dict): A dictionary containing the vote data with an invalid voting type.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -569,7 +576,7 @@ document.write(`
 <span class="sd">            CTE_B (int): Test constant for &#39;b&#39; field in vote.</span>
 <span class="sd">            data (dict): A dictionary containing the text vote data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">CTE_A</span> <span class="o">=</span> <span class="mi">96</span>
         <span class="n">CTE_B</span> <span class="o">=</span> <span class="mi">184</span>
         <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -598,7 +605,7 @@ document.write(`
 
 <span class="sd">        This method generates votes and then tests retrieving them via GET requests, verifying the response status codes and content.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_choices</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -619,7 +626,7 @@ document.write(`
 
 <span class="sd">        This method generates votes and then tests retrieving them via GET requests, verifying the response status codes and content.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">gen_votes</span><span class="p">()</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/store/&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span>
@@ -643,7 +650,7 @@ document.write(`
 
 <span class="sd">        This method generates votes and then tests filtering them by voting_id and voter_id via GET requests, verifying the response status codes and content.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">votings</span><span class="p">,</span> <span class="n">voters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_votes</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">votings</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
@@ -678,7 +685,7 @@ document.write(`
 
 <span class="sd">        This method tests the existence of a specific vote by voter_id and voting_id, verifying the response status codes and content.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-    
+
         <span class="n">votings</span><span class="p">,</span> <span class="n">voters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_votes</span><span class="p">()</span>
         <span class="n">vo</span> <span class="o">=</span> <span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">vo</span><span class="o">.</span><span class="n">voting_id</span>
@@ -712,7 +719,7 @@ document.write(`
 <span class="sd">        Attributes:</span>
 <span class="sd">            data (dict): A dictionary containing the vote data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-    
+
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="mi">5001</span><span class="p">,</span>
             <span class="s2">&quot;voter&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
@@ -760,7 +767,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set up method to initialize test data before each test is run.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">question_text</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
@@ -782,7 +789,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tear down method to clean up after each test is run.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">question_text</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">voting</span> <span class="o">=</span> <span class="kc">None</span>
@@ -799,7 +806,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            User: The retrieved or created user.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">user</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
         <span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;user</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pk</span><span class="p">)</span>
         <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s1">&#39;qwerty&#39;</span><span class="p">)</span>
@@ -810,7 +817,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the storage of a text-type vote.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">CTE_A</span> <span class="o">=</span> <span class="mi">96</span>
         <span class="n">CTE_B</span> <span class="o">=</span> <span class="mi">184</span>
 
@@ -849,7 +856,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set up method to initialize test data before each test is run.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">question_yesno</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
@@ -871,7 +878,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tear down method to clean up after each test is run.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">question_yesno</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">voting</span> <span class="o">=</span> <span class="kc">None</span>
@@ -889,7 +896,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the storage of a yes/no-type vote.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">CTE_A</span> <span class="o">=</span> <span class="mi">96</span>
         <span class="n">CTE_B</span> <span class="o">=</span> <span class="mi">184</span>
 
@@ -923,12 +930,12 @@ document.write(`
 <span class="sd">        voting (Voting): A voting instance associated with the classic question.</span>
 <span class="sd">        voting_preference (Voting): A voting instance associated with the preference-type question.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="StorePreferenceCase.setUp"><a class="viewcode-back" href="../../modules/store.html#store.tests.StorePreferenceCase.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set up method to initialize test data before each test is run.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">question_preference</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;qwerty&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
@@ -950,7 +957,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tear down method to clean up after each test is run.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">question_preference</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">voting</span> <span class="o">=</span> <span class="kc">None</span>
@@ -968,7 +975,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the storage of a preference-type vote.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">CTE_A</span> <span class="o">=</span> <span class="mi">96</span>
         <span class="n">CTE_B</span> <span class="o">=</span> <span class="mi">184</span>
 
@@ -996,7 +1003,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the behavior when attempting to store a vote with an invalid voting type.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_preference</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>

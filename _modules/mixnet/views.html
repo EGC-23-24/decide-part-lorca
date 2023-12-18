@@ -352,7 +352,7 @@ document.write(`
 
         <span class="n">mn</span><span class="o">.</span><span class="n">gen_key</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
 
-        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">mn</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">:</span> <span class="n">mn</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">g</span> <span class="p">}</span> <span class="p">}</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">mn</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">:</span> <span class="n">mn</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">g</span><span class="p">}}</span>
         <span class="c1"># chained call to the next auth to gen the key</span>
         <span class="n">resp</span> <span class="o">=</span> <span class="n">mn</span><span class="o">.</span><span class="n">chain_call</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">resp</span><span class="p">:</span>
@@ -365,7 +365,7 @@ document.write(`
         <span class="n">mn</span><span class="o">.</span><span class="n">pubkey</span> <span class="o">=</span> <span class="n">pubkey</span>
         <span class="n">mn</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="k">return</span>  <span class="n">Response</span><span class="p">(</span><span class="n">KeySerializer</span><span class="p">(</span><span class="n">pubkey</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">KeySerializer</span><span class="p">(</span><span class="n">pubkey</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="Shuffle"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.views.Shuffle">[docs]</a><span class="k">class</span> <span class="nc">Shuffle</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
@@ -379,7 +379,10 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">position</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">mn</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Mixnet</span><span class="p">,</span> <span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">auth_position</span><span class="o">=</span><span class="n">position</span><span class="p">)</span>
+        <span class="n">mn</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span>
+            <span class="n">Mixnet</span><span class="p">,</span>
+            <span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span>
+            <span class="n">auth_position</span><span class="o">=</span><span class="n">position</span><span class="p">)</span>
 
         <span class="n">msgs</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;msgs&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="n">pk</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pk&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -392,14 +395,14 @@ document.write(`
 
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;msgs&quot;</span><span class="p">:</span> <span class="n">msgs</span><span class="p">,</span>
-            <span class="s2">&quot;pk&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span> <span class="p">},</span>
+            <span class="s2">&quot;pk&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span>
         <span class="p">}</span>
         <span class="c1"># chained call to the next auth to gen the key</span>
         <span class="n">resp</span> <span class="o">=</span> <span class="n">mn</span><span class="o">.</span><span class="n">chain_call</span><span class="p">(</span><span class="s2">&quot;/shuffle/</span><span class="si">{}</span><span class="s2">/&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">voting_id</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">resp</span><span class="p">:</span>
             <span class="n">msgs</span> <span class="o">=</span> <span class="n">resp</span>
 
-        <span class="k">return</span>  <span class="n">Response</span><span class="p">(</span><span class="n">msgs</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">msgs</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="Decrypt"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.views.Decrypt">[docs]</a><span class="k">class</span> <span class="nc">Decrypt</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
@@ -413,7 +416,10 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">position</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">mn</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Mixnet</span><span class="p">,</span> <span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">auth_position</span><span class="o">=</span><span class="n">position</span><span class="p">)</span>
+        <span class="n">mn</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span>
+            <span class="n">Mixnet</span><span class="p">,</span>
+            <span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span>
+            <span class="n">auth_position</span><span class="o">=</span><span class="n">position</span><span class="p">)</span>
 
         <span class="n">msgs</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;msgs&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="n">pk</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pk&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -432,15 +438,14 @@ document.write(`
 
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;msgs&quot;</span><span class="p">:</span> <span class="n">msgs</span><span class="p">,</span>
-            <span class="s2">&quot;pk&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span> <span class="p">},</span>
+            <span class="s2">&quot;pk&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span>
         <span class="p">}</span>
         <span class="c1"># chained call to the next auth to gen the key</span>
         <span class="n">resp</span> <span class="o">=</span> <span class="n">mn</span><span class="o">.</span><span class="n">chain_call</span><span class="p">(</span><span class="s2">&quot;/decrypt/</span><span class="si">{}</span><span class="s2">/&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">voting_id</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">resp</span><span class="p">:</span>
             <span class="n">msgs</span> <span class="o">=</span> <span class="n">resp</span>
 
-        <span class="k">return</span>  <span class="n">Response</span><span class="p">(</span><span class="n">msgs</span><span class="p">)</span></div></div>
-
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">msgs</span><span class="p">)</span></div></div>
 </pre></div>
 
                 </article>

@@ -317,7 +317,7 @@ document.write(`
 <span class="sd">        b (BigBigField): Encrypted data part B representing the vote.</span>
 <span class="sd">        voted (DateTimeField): The timestamp of when the vote was cast.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">voting_id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">()</span>
     <span class="n">voter_id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">()</span>
 
@@ -333,7 +333,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            str: A string showing the voting ID and the voter ID.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">voter_id</span><span class="p">)</span></div>
 </pre></div>
 

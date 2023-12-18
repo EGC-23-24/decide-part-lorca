@@ -321,12 +321,11 @@ document.write(`
 <span class="sd">    Inner class:</span>
 <span class="sd">        Meta: Provides metadata for the form, including model association and fields.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">voting_id</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
     <span class="n">voter_id</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
 
-
-<div class="viewcode-block" id="CreationCensusForm.Meta"><a class="viewcode-back" href="../../modules/census.html#census.forms.CreationCensusForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span> 
+<div class="viewcode-block" id="CreationCensusForm.Meta"><a class="viewcode-back" href="../../modules/census.html#census.forms.CreationCensusForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Meta class for CreationCensusForm.</span>
 
@@ -336,14 +335,14 @@ document.write(`
 <span class="sd">            model: The model associated with this form.</span>
 <span class="sd">            fields: The fields of the model to include in this form.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">model</span> <span class="o">=</span> <span class="n">Census</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span>
             <span class="s1">&#39;voting_id&#39;</span><span class="p">,</span>
             <span class="s1">&#39;voter_id&#39;</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="CreationCensusForm.save"><a class="viewcode-back" href="../../modules/census.html#census.forms.CreationCensusForm.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">commit</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="CreationCensusForm.save"><a class="viewcode-back" href="../../modules/census.html#census.forms.CreationCensusForm.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Saves the form instance as a Census model instance.</span>
 
@@ -354,19 +353,14 @@ document.write(`
 <span class="sd">        :return: The saved or unsaved Census instance, depending on the commit parameter.</span>
 <span class="sd">        :rtype: Census</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="n">census</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">CreationCensusForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">commit</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">census</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">CreationCensusForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">commit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">census</span><span class="o">.</span><span class="n">voting_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;voting_id&#39;</span><span class="p">]</span>
         <span class="n">census</span><span class="o">.</span><span class="n">voter_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;voter_id&#39;</span><span class="p">]</span>
 
-        <span class="k">if</span> <span class="n">commit</span> <span class="p">:</span> 
+        <span class="k">if</span> <span class="n">commit</span><span class="p">:</span>
             <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">census</span></div></div>
-
-
-
-
-
 </pre></div>
 
                 </article>

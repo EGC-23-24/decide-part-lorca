@@ -326,6 +326,7 @@ document.write(`
 
 <span class="kn">from</span> <span class="nn">.tasks</span> <span class="kn">import</span> <span class="n">future_stop_voting_task</span>
 
+
 <div class="viewcode-block" id="VotingTestCase"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.VotingTestCase">[docs]</a><span class="k">class</span> <span class="nc">VotingTestCase</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Test case class for Voting-related functionalities.</span>
@@ -337,14 +338,14 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets up necessary data before each test method.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="VotingTestCase.tearDown"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.VotingTestCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Cleans up after each test method.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="VotingTestCase.encrypt_msg"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.VotingTestCase.encrypt_msg">[docs]</a>    <span class="k">def</span> <span class="nf">encrypt_msg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">KEYBITS</span><span class="p">):</span>
@@ -360,7 +361,7 @@ document.write(`
 <span class="sd">        :return: The encrypted message.</span>
 <span class="sd">        :rtype: tuple</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">pk</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">pub_key</span>
         <span class="n">p</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">pk</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="n">pk</span><span class="o">.</span><span class="n">g</span><span class="p">,</span> <span class="n">pk</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
         <span class="n">k</span> <span class="o">=</span> <span class="n">MixCrypt</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="n">bits</span><span class="p">)</span>
@@ -376,7 +377,7 @@ document.write(`
 <span class="sd">        :return: A dictionary of the clear votes count.</span>
 <span class="sd">        :rtype: dict</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">voters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
         <span class="n">voter</span> <span class="o">=</span> <span class="n">voters</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
 
@@ -405,17 +406,18 @@ document.write(`
 <span class="sd">        :return: The created classic voting instance.</span>
 <span class="sd">        :rtype: Voting</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
@@ -428,12 +430,12 @@ document.write(`
 <span class="sd">        :return: The created ranked voting instance.</span>
 <span class="sd">        :rtype: Voting</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;ranked test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
             <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOptionRanked</span><span class="p">(</span>
-                <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test ranked voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -452,12 +454,12 @@ document.write(`
 <span class="sd">        :return: The created Yes/No voting instance.</span>
 <span class="sd">        :rtype: Voting</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Yes/No test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
             <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOptionYesNo</span><span class="p">(</span>
-                <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+                <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test Yes/No voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -476,17 +478,18 @@ document.write(`
 <span class="sd">        :return: The created multiple choice voting instance.</span>
 <span class="sd">        :rtype: Voting</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test multiple choice question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
@@ -499,7 +502,7 @@ document.write(`
 <span class="sd">        :return: The created text comment voting instance.</span>
 <span class="sd">        :rtype: Voting</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Text test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test text voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
@@ -519,7 +522,7 @@ document.write(`
 <span class="sd">        :param v: The voting instance.</span>
 <span class="sd">        :type v: Voting</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
             <span class="n">u</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;testvoter</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
             <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
@@ -534,7 +537,7 @@ document.write(`
 <span class="sd">        :param v: The voting instance.</span>
 <span class="sd">        :type v: Voting</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">user</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
         <span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;user</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pk</span><span class="p">)</span>
         <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s1">&#39;qwerty&#39;</span><span class="p">)</span>
@@ -579,7 +582,7 @@ document.write(`
 
 <span class="sd">        This method tests the creation of a classic voting, storing votes, and tallying them to verify the vote count.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_classic_voting</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">create_voters</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
@@ -592,8 +595,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>  <span class="c1"># set token</span>
         <span class="n">v</span><span class="o">.</span><span class="n">tally_votes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
 
-        <span class="n">tally</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">tally</span>
-        <span class="n">tally</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">tally</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">tally</span><span class="p">)</span>
         <span class="n">tally</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">tally</span><span class="p">)}</span>
 
         <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
@@ -611,20 +613,21 @@ document.write(`
 <span class="sd">        :return: A list of clear vote strings.</span>
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">def</span> <span class="nf">string_to_ascii</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
             <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
             <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
                 <span class="n">value_ascii</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">))</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value_ascii</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
-                    <span class="n">value_ascii</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="n">value_ascii</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value_ascii</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">value_ascii</span>
+                    <span class="n">value_ascii</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> \
+                        <span class="n">value_ascii</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value_ascii</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">value_ascii</span>
                 <span class="n">result</span> <span class="o">+=</span> <span class="n">value_ascii</span>
             <span class="k">return</span> <span class="n">result</span>
-        
+
         <span class="n">voters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
         <span class="n">voter</span> <span class="o">=</span> <span class="n">voters</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
 
-        <span class="n">answers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1-2-3-4-5&#39;</span><span class="p">,</span><span class="s1">&#39;2-3-4-5-1&#39;</span><span class="p">,</span><span class="s1">&#39;3-4-5-1-2&#39;</span><span class="p">]</span>
+        <span class="n">answers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1-2-3-4-5&#39;</span><span class="p">,</span> <span class="s1">&#39;2-3-4-5-1&#39;</span><span class="p">,</span> <span class="s1">&#39;3-4-5-1-2&#39;</span><span class="p">]</span>
         <span class="n">clear</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">answer</span> <span class="ow">in</span> <span class="n">answers</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)):</span>
@@ -641,14 +644,14 @@ document.write(`
                 <span class="n">voter</span> <span class="o">=</span> <span class="n">voters</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
                 <span class="n">mods</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;store&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">clear</span></div>
-    
+
 <div class="viewcode-block" id="VotingTestCase.test_complete_ranked_voting"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.VotingTestCase.test_complete_ranked_voting">[docs]</a>    <span class="k">def</span> <span class="nf">test_complete_ranked_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test method to verify the complete voting process for a ranked voting.</span>
 
 <span class="sd">        This method tests the creation of a ranked voting, storing votes, and tallying them to verify the vote count.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_ranked_voting</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">create_voters</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
@@ -661,13 +664,12 @@ document.write(`
         <span class="n">v</span><span class="o">.</span><span class="n">tally_votes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
 
         <span class="n">tally</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">tally</span>
-        <span class="n">answers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1-2-3-4-5&#39;</span><span class="p">,</span><span class="s1">&#39;2-3-4-5-1&#39;</span><span class="p">,</span><span class="s1">&#39;3-4-5-1-2&#39;</span><span class="p">]</span>
+        <span class="n">answers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1-2-3-4-5&#39;</span><span class="p">,</span> <span class="s1">&#39;2-3-4-5-1&#39;</span><span class="p">,</span> <span class="s1">&#39;3-4-5-1-2&#39;</span><span class="p">]</span>
 
         <span class="k">for</span> <span class="n">answer</span> <span class="ow">in</span> <span class="n">answers</span><span class="p">:</span>
             <span class="n">num_of_answer</span> <span class="o">=</span> <span class="n">clear</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">num_of_answer</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num_of_answer</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_of_answer</span><span class="p">,</span> <span class="n">tally</span><span class="p">[</span><span class="s1">&#39;msgs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">answer</span><span class="p">))</span></div>
-        
 
 <div class="viewcode-block" id="VotingTestCase.store_multiple_choice_votes"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.VotingTestCase.store_multiple_choice_votes">[docs]</a>    <span class="k">def</span> <span class="nf">store_multiple_choice_votes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -678,7 +680,7 @@ document.write(`
 <span class="sd">        :return: A dictionary of the clear votes count.</span>
 <span class="sd">        :rtype: dict</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">voters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
         <span class="n">voter</span> <span class="o">=</span> <span class="n">voters</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
         <span class="n">options</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
@@ -714,7 +716,7 @@ document.write(`
 
 <span class="sd">        This method tests the creation of a multiple choice voting, storing votes, and tallying them to verify the vote count.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_multiple_choice_voting</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">create_voters</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
@@ -727,8 +729,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>  <span class="c1"># set token</span>
         <span class="n">v</span><span class="o">.</span><span class="n">tally_votes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
 
-        <span class="n">tally</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">tally</span>
-        <span class="n">tally</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">tally</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">tally</span><span class="p">)</span>
         <span class="n">tally</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">tally</span><span class="p">)}</span>
 
         <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
@@ -736,7 +737,6 @@ document.write(`
 
         <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">postproc</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">tally</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">),</span> <span class="n">q</span><span class="p">[</span><span class="s2">&quot;votes&quot;</span><span class="p">])</span></div>
-
 
 <div class="viewcode-block" id="VotingTestCase.store_comment_votes"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.VotingTestCase.store_comment_votes">[docs]</a>    <span class="k">def</span> <span class="nf">store_comment_votes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -747,19 +747,20 @@ document.write(`
 <span class="sd">        :return: A list of clear vote strings.</span>
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">def</span> <span class="nf">string_to_ascii</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
             <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
             <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
                 <span class="n">value_ascii</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">))</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value_ascii</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
-                    <span class="n">value_ascii</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="n">value_ascii</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value_ascii</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">value_ascii</span>
+                    <span class="n">value_ascii</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> \
+                        <span class="n">value_ascii</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value_ascii</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">value_ascii</span>
                 <span class="n">result</span> <span class="o">+=</span> <span class="n">value_ascii</span>
             <span class="k">return</span> <span class="n">result</span>
 
         <span class="n">voters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
         <span class="n">voter</span> <span class="o">=</span> <span class="n">voters</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="n">answers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">]</span>
+        <span class="n">answers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
         <span class="n">clear</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">answer</span> <span class="ow">in</span> <span class="n">answers</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)):</span>
@@ -783,7 +784,7 @@ document.write(`
 
 <span class="sd">        This method tests the creation of a text comment voting, storing votes, and tallying them to verify the vote count.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_comment_voting</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">create_voters</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
@@ -797,13 +798,12 @@ document.write(`
         <span class="n">v</span><span class="o">.</span><span class="n">tally_votes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
 
         <span class="n">tally</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">tally</span>
-        <span class="n">answers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">]</span>
+        <span class="n">answers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
 
         <span class="k">for</span> <span class="n">answer</span> <span class="ow">in</span> <span class="n">answers</span><span class="p">:</span>
             <span class="n">num_of_answer</span> <span class="o">=</span> <span class="n">clear</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">num_of_answer</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num_of_answer</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_of_answer</span><span class="p">,</span> <span class="n">tally</span><span class="p">[</span><span class="s1">&#39;msgs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">answer</span><span class="p">))</span></div>
-        
 
 <div class="viewcode-block" id="VotingTestCase.test_create_voting_from_api"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.VotingTestCase.test_create_voting_from_api">[docs]</a>    <span class="k">def</span> <span class="nf">test_create_voting_from_api</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -811,7 +811,7 @@ document.write(`
 
 <span class="sd">        This method tests the creation of a voting using API endpoints and different user permissions.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Example&#39;</span><span class="p">}</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/voting/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span>
@@ -842,7 +842,7 @@ document.write(`
 
 <span class="sd">        This method tests the creation of a Yes/No voting, storing votes, and tallying them to verify the vote count.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_yesno_voting</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">create_voters</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
@@ -855,8 +855,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">tally_votes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
 
-        <span class="n">tally</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">tally</span>
-        <span class="n">tally</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">tally</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">tally</span><span class="p">)</span>
         <span class="n">tally</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">tally</span><span class="p">)}</span>
 
         <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
@@ -871,7 +870,7 @@ document.write(`
 
 <span class="sd">        This method tests the creation of a ranked voting using API endpoints and different user permissions.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Voting ranked&#39;</span><span class="p">}</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/voting/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span>
@@ -904,7 +903,7 @@ document.write(`
 
 <span class="sd">        This method tests the creation of a multiple choice voting using API endpoints and different user permissions.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Example&#39;</span><span class="p">}</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/voting/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span>
@@ -938,7 +937,7 @@ document.write(`
 
 <span class="sd">        This method tests the creation of a text comment voting using API endpoints and different user permissions.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Voting text&#39;</span><span class="p">}</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/voting/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span>
@@ -973,7 +972,7 @@ document.write(`
 
 <span class="sd">        This method tests updating a voting&#39;s status through various actions such as start, stop, and tally via API.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">voting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_classic_voting</span><span class="p">()</span>
 
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;action&#39;</span><span class="p">:</span> <span class="s1">&#39;start&#39;</span><span class="p">}</span>
@@ -1076,7 +1075,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets up necessary data before each test method.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="QuestionTestCases.tearDown"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.QuestionTestCases.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1090,15 +1089,15 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a classic question successfully for testing purposes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/login/?next=/admin/&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/login/?next=/admin/&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuestionTestCases.test_question_to_string"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.QuestionTestCases.test_question_to_string">[docs]</a>    <span class="k">def</span> <span class="nf">test_question_to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the string representation of the Question model.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="s1">&#39;test question&#39;</span><span class="p">)</span></div>
 
@@ -1106,7 +1105,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the string representation of the QuestionOption model for a classic question.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">opt</span><span class="p">),</span> <span class="s1">&#39;test option (1)&#39;</span><span class="p">)</span></div>
@@ -1115,7 +1114,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the string representation of the QuestionOptionRanked model.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOptionRanked</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">opt</span><span class="p">),</span> <span class="s1">&#39;test option (1)&#39;</span><span class="p">)</span></div>
@@ -1124,27 +1123,29 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the string representation error for the QuestionOptionRanked model when linked to a non-ranked question.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOptionRanked</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">opt</span><span class="p">),</span>
-                         <span class="s1">&#39;You cannot create a ranked option for a non-ranked question&#39;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">opt</span><span class="p">),</span>
+            <span class="s1">&#39;You cannot create a ranked option for a non-ranked question&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuestionTestCases.test_question_option_error_str"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.QuestionTestCases.test_question_option_error_str">[docs]</a>    <span class="k">def</span> <span class="nf">test_question_option_error_str</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the string representation error for the QuestionOption model when linked to a non-classic or multiple choice question.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">opt</span><span class="p">),</span>
-                         <span class="s1">&#39;You cannot create an option for a non-Classic or multiple choice question&#39;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">opt</span><span class="p">),</span>
+            <span class="s1">&#39;You cannot create an option for a non-Classic or multiple choice question&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuestionTestCases.test_question_option_yesno_to_string"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.QuestionTestCases.test_question_option_yesno_to_string">[docs]</a>    <span class="k">def</span> <span class="nf">test_question_option_yesno_to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the string representation of the QuestionOptionYesNo model.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOptionYesNo</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">opt</span><span class="p">),</span> <span class="s1">&#39;test question - test option (1) &#39;</span><span class="p">)</span></div>
@@ -1153,27 +1154,29 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the string representation error for the QuestionOptionYesNo model when linked to a non-Yes/No question.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOptionYesNo</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">opt</span><span class="p">),</span>
-                         <span class="s1">&#39;You cannot create a Yes/No option for a non-Yes/No question&#39;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">opt</span><span class="p">),</span>
+            <span class="s1">&#39;You cannot create a Yes/No option for a non-Yes/No question&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuestionTestCases.test_yes_no_question_option_error_str"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.QuestionTestCases.test_yes_no_question_option_error_str">[docs]</a>    <span class="k">def</span> <span class="nf">test_yes_no_question_option_error_str</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the string representation error for the QuestionOption model when linked to a Yes/No question.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">opt</span><span class="p">),</span>
-                         <span class="s1">&#39;You cannot create an option for a non-Classic or multiple choice question&#39;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">opt</span><span class="p">),</span>
+            <span class="s1">&#39;You cannot create an option for a non-Classic or multiple choice question&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuestionTestCases.test_question"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.QuestionTestCases.test_question">[docs]</a>    <span class="k">def</span> <span class="nf">test_question</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests creating and saving different types of questions.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q1</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
         <span class="n">q1</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
@@ -1200,7 +1203,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests creating and saving a QuestionOption for a classic question.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">)</span>
         <span class="n">QuestionOption</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -1214,7 +1217,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests creating a QuestionOption for a non-compatible question type and expecting an error.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">)</span>
         <span class="n">QuestionOption</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -1224,7 +1227,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests creating and saving a QuestionOptionRanked for a ranked question.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">)</span>
         <span class="n">QuestionOptionRanked</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -1238,7 +1241,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests creating a QuestionOptionRanked for a non-ranked question type and expecting an error.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">)</span>
         <span class="n">QuestionOptionRanked</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -1248,7 +1251,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests creating and saving a QuestionOptionYesNo for a Yes/No question.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">)</span>
         <span class="n">QuestionOptionYesNo</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -1262,7 +1265,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests creating a QuestionOption for a non-compatible question type and expecting an error.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">)</span>
         <span class="n">QuestionOption</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -1272,7 +1275,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests creating a QuestionOptionYesNo for a non-Yes/No question type and expecting an error.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">)</span>
         <span class="n">QuestionOptionYesNo</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -1282,11 +1285,13 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the string representation error for the QuestionOption model when linked to a text comment question.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;test option&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">opt</span><span class="p">),</span>
-                         <span class="s1">&#39;You cannot create an option for a non-Classic or multiple choice question&#39;</span><span class="p">)</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">opt</span><span class="p">),</span>
+            <span class="s1">&#39;You cannot create an option for a non-Classic or multiple choice question&#39;</span><span class="p">)</span></div></div>
+
 
 <div class="viewcode-block" id="PostProcTest"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.PostProcTest">[docs]</a><span class="nd">@nottest</span>
 <span class="k">class</span> <span class="nc">PostProcTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
@@ -1295,19 +1300,19 @@ document.write(`
 
 <span class="sd">    This class includes methods to test the post-processing of different types of votings such as comment and ranked votings.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="PostProcTest.setUp"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.PostProcTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets up necessary data before each test method.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
-        
+
 <div class="viewcode-block" id="PostProcTest.tearDown"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.PostProcTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Cleans up after each test method.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="PostProcTest.test_do_comment_postproc"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.PostProcTest.test_do_comment_postproc">[docs]</a>    <span class="k">def</span> <span class="nf">test_do_comment_postproc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1316,20 +1321,21 @@ document.write(`
 
 <span class="sd">        Verifies if the post-processing is done correctly for text comment votings.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q1</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question 1&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
         <span class="n">q1</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q1</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-    
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
         <span class="n">tally</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;msgs&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;text1&#39;</span><span class="p">,</span> <span class="s1">&#39;text2&#39;</span><span class="p">]}</span>
-        
+
         <span class="n">v</span><span class="o">.</span><span class="n">tally</span> <span class="o">=</span> <span class="n">tally</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
@@ -1344,15 +1350,16 @@ document.write(`
 
 <span class="sd">        Verifies if the correct exception is raised when there are no votes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q1</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question 1&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
         <span class="n">q1</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q1</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-    
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
@@ -1370,7 +1377,7 @@ document.write(`
 
 <span class="sd">        Verifies if the post-processing is done correctly for ranked votings, including the calculation of votes and post-processing results.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">op1</span> <span class="o">=</span> <span class="n">QuestionOptionRanked</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;Test 1&#39;</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1379,8 +1386,9 @@ document.write(`
         <span class="n">op2</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
@@ -1403,7 +1411,7 @@ document.write(`
 
 <span class="sd">        Verifies if the correct exception is raised when there is an invalid vote.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">op1</span> <span class="o">=</span> <span class="n">QuestionOptionRanked</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;Test 1&#39;</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1412,8 +1420,9 @@ document.write(`
         <span class="n">op2</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
@@ -1426,43 +1435,45 @@ document.write(`
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
             <span class="n">v</span><span class="o">.</span><span class="n">do_postproc</span><span class="p">()</span></div></div>
 
+
 <div class="viewcode-block" id="FutureClosureTests"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.FutureClosureTests">[docs]</a><span class="k">class</span> <span class="nc">FutureClosureTests</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Test case class for testing the future closure functionality of votings.</span>
 
 <span class="sd">    This class includes methods to test the task that handles the automatic closure of votings at a future date.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="FutureClosureTests.setUp"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.FutureClosureTests.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets up necessary data and schedules a future stop voting task before each test method.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="n">future_stop_voting_task</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">v</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="FutureClosureTests.tearDown"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.FutureClosureTests.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Cleans up after each test method.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
-    
+
 <div class="viewcode-block" id="FutureClosureTests.test_task_started"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.FutureClosureTests.test_task_started">[docs]</a>    <span class="k">def</span> <span class="nf">test_task_started</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests if the future stop voting task has started.</span>
@@ -1472,8 +1483,12 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">future_stop</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;PENDING&#39;</span><span class="p">,</span> <span class="s1">&#39;STARTED&#39;</span><span class="p">,</span> <span class="s1">&#39;SUCCESS&#39;</span><span class="p">],</span> <span class="s2">&quot;Task status should be either &#39;PENDING&#39; , &#39;STARTED&#39; or &#39;SUCCESS&#39;&quot;</span><span class="p">)</span></div>
-        
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
+                      <span class="p">[</span><span class="s1">&#39;PENDING&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;STARTED&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;SUCCESS&#39;</span><span class="p">],</span>
+                      <span class="s2">&quot;Task status should be either &#39;PENDING&#39; , &#39;STARTED&#39; or &#39;SUCCESS&#39;&quot;</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="FutureClosureTests.test_task_finished"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.FutureClosureTests.test_task_finished">[docs]</a>    <span class="k">def</span> <span class="nf">test_task_finished</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the status of the future stop voting task.</span>
@@ -1482,7 +1497,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">)</span></div>
-    
+
 <div class="viewcode-block" id="FutureClosureTests.test_end_date"><a class="viewcode-back" href="../../modules/voting.html#voting.tests.FutureClosureTests.test_end_date">[docs]</a>    <span class="k">def</span> <span class="nf">test_end_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests if the end date of the voting is set correctly after the execution of the future stop task.</span>

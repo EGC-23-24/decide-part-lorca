@@ -317,6 +317,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">base</span> <span class="kn">import</span> <span class="n">mods</span>
 <span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
 
+
 <div class="viewcode-block" id="VisualizerTestCase"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase">[docs]</a><span class="k">class</span> <span class="nc">VisualizerTestCase</span><span class="p">(</span><span class="n">StaticLiveServerTestCase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Test case for the Visualizer functionality.</span>
@@ -327,6 +328,7 @@ document.write(`
 <span class="sd">    :cvar base: An instance of BaseTestCase for common test setup.</span>
 <span class="sd">    :cvar driver: The Selenium WebDriver instance for browser automation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="VisualizerTestCase.create_classic_voting"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.create_classic_voting">[docs]</a>    <span class="k">def</span> <span class="nf">create_classic_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create and return a classic voting with a test question and options.</span>
@@ -337,18 +339,19 @@ document.write(`
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">v</span></div>
-    
+
 <div class="viewcode-block" id="VisualizerTestCase.create_yesno_voting_started"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.create_yesno_voting_started">[docs]</a>    <span class="k">def</span> <span class="nf">create_yesno_voting_started</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create and return a Yes/No voting with a test question and options, and set the start date.</span>
@@ -359,12 +362,17 @@ document.write(`
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Yes/No test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOptionYesNo</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOptionYesNo</span><span class="p">(</span>
+                <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span>
+                <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test Yes/No voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span><span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -380,19 +388,20 @@ document.write(`
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test multiple choice question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">v</span></div>
-    
+
 <div class="viewcode-block" id="VisualizerTestCase.create_preference_voting_started"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.create_preference_voting_started">[docs]</a>    <span class="k">def</span> <span class="nf">create_preference_voting_started</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create and return a preference voting with a test question and options, and set the start date.</span>
@@ -403,13 +412,14 @@ document.write(`
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test multiple choice question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -428,13 +438,15 @@ document.write(`
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test text voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span><span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">v</span></div>
-    
+
 <div class="viewcode-block" id="VisualizerTestCase.setUp"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set up the test environment.</span>
@@ -449,7 +461,7 @@ document.write(`
         <span class="n">options</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">ChromeOptions</span><span class="p">()</span>
         <span class="n">options</span><span class="o">.</span><span class="n">headless</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span></div>
-            
+
 <div class="viewcode-block" id="VisualizerTestCase.tearDown"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tear down the test environment.</span>
@@ -457,12 +469,12 @@ document.write(`
 <span class="sd">        Quit the WebDriver and call the tearDown method of the base class.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>           
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
-            
+
 <div class="viewcode-block" id="VisualizerTestCase.test_visualizer_not_started"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.test_visualizer_not_started">[docs]</a>    <span class="k">def</span> <span class="nf">test_visualizer_not_started</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the visualization when the voting is not started.</span>
@@ -470,15 +482,15 @@ document.write(`
 <span class="sd">        Access the visualization page, check the voting state, and assert that it is not started.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">voting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_classic_voting</span><span class="p">()</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/visualizer/</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">pk</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        <span class="n">voting_state</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span><span class="s2">&quot;h2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
-        
+        <span class="n">voting_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;h2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">voting_state</span><span class="p">,</span> <span class="s2">&quot;Voting not started&quot;</span><span class="p">)</span></div>
-    
+
 <div class="viewcode-block" id="VisualizerTestCase.test_visualizer_started_no_census"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.test_visualizer_started_no_census">[docs]</a>    <span class="k">def</span> <span class="nf">test_visualizer_started_no_census</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the visualization when the voting is started but there is no census.</span>
@@ -487,14 +499,19 @@ document.write(`
 <span class="sd">        and check the participation information.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
         <span class="n">question</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">question_id</span><span class="o">=</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span>
+            <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+            <span class="n">question_id</span><span class="o">=</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/visualizer/</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">pk</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;participation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;participation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="VisualizerTestCase.test_visualizer_census_change"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.test_visualizer_census_change">[docs]</a>    <span class="k">def</span> <span class="nf">test_visualizer_census_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -504,15 +521,21 @@ document.write(`
 <span class="sd">        record the census information, add new voters, and check if the census information changes.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
         <span class="n">question</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span>
+                <span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">,</span>
+                <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span><span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">)</span>
+        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span>
+            <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+            <span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">)</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/visualizer/</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">pk</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
         <span class="n">census_before</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;census&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 
@@ -541,13 +564,19 @@ document.write(`
 <span class="sd">        and check the participation percentage.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">&quot;test question&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
         <span class="n">question</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span>
+                <span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">,</span>
+                <span class="n">option</span><span class="o">=</span><span class="s2">&quot;option </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span><span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">)</span>
+        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;test voting&quot;</span><span class="p">,</span>
+            <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+            <span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">)</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
         <span class="n">user</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;testvoter&#39;</span><span class="p">)</span>
@@ -563,9 +592,12 @@ document.write(`
         <span class="n">census2</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">user2</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/visualizer/</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">pk</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;participation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;0.0%&quot;</span><span class="p">)</span></div>
-        
-        
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span>
+                <span class="s2">&quot;participation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+            <span class="s2">&quot;0.0%&quot;</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="VisualizerTestCase.test_visualizer_classic_finished"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.test_visualizer_classic_finished">[docs]</a>    <span class="k">def</span> <span class="nf">test_visualizer_classic_finished</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the visualization for a finished classic voting.</span>
@@ -574,18 +606,25 @@ document.write(`
 <span class="sd">        and check various chart options.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
         <span class="n">question</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">end_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">timezone</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">postproc</span><span class="o">=</span> <span class="p">[],</span> <span class="n">question_id</span><span class="o">=</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span>
+            <span class="n">start_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+            <span class="n">end_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span>
+            <span class="n">timezone</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span>
+                <span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">postproc</span><span class="o">=</span> <span class="p">[],</span>
+            <span class="n">question_id</span><span class="o">=</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/visualizer/</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">pk</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        
+
         <span class="n">chart_select</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
             <span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;chart-select&quot;</span><span class="p">))</span>
         <span class="p">)</span>
-        
+
         <span class="n">chart_select</span> <span class="o">=</span> <span class="n">Select</span><span class="p">(</span><span class="n">chart_select</span><span class="p">)</span>
 
         <span class="n">default_option</span> <span class="o">=</span> <span class="n">chart_select</span><span class="o">.</span><span class="n">first_selected_option</span><span class="o">.</span><span class="n">text</span>
@@ -602,7 +641,7 @@ document.write(`
 
         <span class="k">for</span> <span class="n">option_text</span><span class="p">,</span> <span class="n">chart_id</span> <span class="ow">in</span> <span class="n">chart_options</span><span class="p">:</span>
             <span class="n">chart_select</span><span class="o">.</span><span class="n">select_by_visible_text</span><span class="p">(</span><span class="n">option_text</span><span class="p">)</span>
-            
+
             <span class="n">selected_option</span> <span class="o">=</span> <span class="n">chart_select</span><span class="o">.</span><span class="n">first_selected_option</span><span class="o">.</span><span class="n">text</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">selected_option</span><span class="p">,</span> <span class="n">option_text</span><span class="p">)</span>
 
@@ -617,7 +656,7 @@ document.write(`
 <span class="sd">        and check the participation percentage.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">voting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_yesno_voting_started</span><span class="p">()</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
@@ -634,7 +673,11 @@ document.write(`
         <span class="n">census2</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">user2</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/visualizer/</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">pk</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;participation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;0.0%&quot;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span>
+                <span class="s2">&quot;participation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+            <span class="s2">&quot;0.0%&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="VisualizerTestCase.test_visualizer_yesno_finished"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.test_visualizer_yesno_finished">[docs]</a>    <span class="k">def</span> <span class="nf">test_visualizer_yesno_finished</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -644,20 +687,20 @@ document.write(`
 <span class="sd">        and check the chart options.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">voting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_yesno_voting_started</span><span class="p">()</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">timezone</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">postproc</span><span class="o">=</span><span class="p">[]</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/visualizer/</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">pk</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        <span class="n">voting_state</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span><span class="s2">&quot;h3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">voting_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;h3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">voting_state</span><span class="p">,</span> <span class="s2">&quot;Yes/No voting Results:&quot;</span><span class="p">)</span>
-        
+
         <span class="n">chart_select</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
             <span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;chart-select&quot;</span><span class="p">))</span>
         <span class="p">)</span>
-        
+
         <span class="n">chart_select</span> <span class="o">=</span> <span class="n">Select</span><span class="p">(</span><span class="n">chart_select</span><span class="p">)</span>
 
         <span class="n">default_option</span> <span class="o">=</span> <span class="n">chart_select</span><span class="o">.</span><span class="n">first_selected_option</span><span class="o">.</span><span class="n">text</span>
@@ -666,13 +709,13 @@ document.write(`
         <span class="n">chart_option</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Polar Chart (Score)&quot;</span><span class="p">,</span> <span class="s2">&quot;polar-chart-post&quot;</span><span class="p">)</span>
 
         <span class="n">chart_select</span><span class="o">.</span><span class="n">select_by_visible_text</span><span class="p">(</span><span class="n">chart_option</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        
+
         <span class="n">selected_option</span> <span class="o">=</span> <span class="n">chart_select</span><span class="o">.</span><span class="n">first_selected_option</span><span class="o">.</span><span class="n">text</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">selected_option</span><span class="p">,</span> <span class="n">chart_option</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
         <span class="n">chart_element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="n">chart_option</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">chart_element</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span></div>
-        
+
 <div class="viewcode-block" id="VisualizerTestCase.test_visualizer_started_comment_with_census"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.test_visualizer_started_comment_with_census">[docs]</a>    <span class="k">def</span> <span class="nf">test_visualizer_started_comment_with_census</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the visualization for a comment voting with a census.</span>
@@ -681,7 +724,7 @@ document.write(`
 <span class="sd">        and check the participation percentage.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">voting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_comment_voting_started</span><span class="p">()</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
@@ -698,8 +741,12 @@ document.write(`
         <span class="n">census2</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">user2</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/visualizer/</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">pk</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;participation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;0.0%&quot;</span><span class="p">)</span></div>
-        
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span>
+                <span class="s2">&quot;participation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+            <span class="s2">&quot;0.0%&quot;</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="VisualizerTestCase.test_visualizer_comment_finished"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.test_visualizer_comment_finished">[docs]</a>    <span class="k">def</span> <span class="nf">test_visualizer_comment_finished</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the visualization for a finished comment voting.</span>
@@ -708,20 +755,20 @@ document.write(`
 <span class="sd">        and check if there are no select elements.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">voting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_comment_voting_started</span><span class="p">()</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">timezone</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">postproc</span><span class="o">=</span><span class="p">[]</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/visualizer/</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">pk</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        
-        <span class="n">voting_state</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span><span class="s2">&quot;h3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+
+        <span class="n">voting_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;h3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">voting_state</span><span class="p">,</span> <span class="s2">&quot;Text Voting Results:&quot;</span><span class="p">)</span>
-        
+
         <span class="n">select_elements</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;select&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">select_elements</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span></div>
-        
+
 <div class="viewcode-block" id="VisualizerTestCase.test_visualizer_started_multiple_choice_with_census"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.test_visualizer_started_multiple_choice_with_census">[docs]</a>    <span class="k">def</span> <span class="nf">test_visualizer_started_multiple_choice_with_census</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the visualization for a multiple-choice voting with a census.</span>
@@ -730,7 +777,7 @@ document.write(`
 <span class="sd">        and check the participation percentage.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">voting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_multiple_choice_voting_started</span><span class="p">()</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
@@ -747,7 +794,11 @@ document.write(`
         <span class="n">census2</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">user2</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/visualizer/</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">pk</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;participation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;0.0%&quot;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span>
+                <span class="s2">&quot;participation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+            <span class="s2">&quot;0.0%&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="VisualizerTestCase.test_visualizer_multiple_choice_finished"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.test_visualizer_multiple_choice_finished">[docs]</a>    <span class="k">def</span> <span class="nf">test_visualizer_multiple_choice_finished</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -757,18 +808,18 @@ document.write(`
 <span class="sd">        and check various chart options.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">voting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_multiple_choice_voting_started</span><span class="p">()</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">timezone</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">postproc</span><span class="o">=</span><span class="p">[]</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/visualizer/</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">pk</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        
+
         <span class="n">chart_select</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
             <span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;chart-select&quot;</span><span class="p">))</span>
         <span class="p">)</span>
-        
+
         <span class="n">chart_select</span> <span class="o">=</span> <span class="n">Select</span><span class="p">(</span><span class="n">chart_select</span><span class="p">)</span>
 
         <span class="n">default_option</span> <span class="o">=</span> <span class="n">chart_select</span><span class="o">.</span><span class="n">first_selected_option</span><span class="o">.</span><span class="n">text</span>
@@ -785,7 +836,7 @@ document.write(`
 
         <span class="k">for</span> <span class="n">option_text</span><span class="p">,</span> <span class="n">chart_id</span> <span class="ow">in</span> <span class="n">chart_options</span><span class="p">:</span>
             <span class="n">chart_select</span><span class="o">.</span><span class="n">select_by_visible_text</span><span class="p">(</span><span class="n">option_text</span><span class="p">)</span>
-            
+
             <span class="n">selected_option</span> <span class="o">=</span> <span class="n">chart_select</span><span class="o">.</span><span class="n">first_selected_option</span><span class="o">.</span><span class="n">text</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">selected_option</span><span class="p">,</span> <span class="n">option_text</span><span class="p">)</span>
 
@@ -800,7 +851,7 @@ document.write(`
 <span class="sd">        and check the participation percentage.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">voting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_preference_voting_started</span><span class="p">()</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
@@ -817,9 +868,12 @@ document.write(`
         <span class="n">census2</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">user2</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/visualizer/</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">pk</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;participation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;0.0%&quot;</span><span class="p">)</span></div>
-        
-        
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span>
+                <span class="s2">&quot;participation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+            <span class="s2">&quot;0.0%&quot;</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="VisualizerTestCase.test_visualizer_preference_finished"><a class="viewcode-back" href="../../modules/visualizer.html#visualizer.test_selenium.VisualizerTestCase.test_visualizer_preference_finished">[docs]</a>    <span class="k">def</span> <span class="nf">test_visualizer_preference_finished</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the visualization for a finished preference voting.</span>
@@ -828,18 +882,18 @@ document.write(`
 <span class="sd">        and check various chart options.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">voting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_preference_voting_started</span><span class="p">()</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">timezone</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">postproc</span><span class="o">=</span><span class="p">[]</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/visualizer/</span><span class="si">{</span><span class="n">voting</span><span class="o">.</span><span class="n">pk</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        
+
         <span class="n">chart_select</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
             <span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;chart-select&quot;</span><span class="p">))</span>
         <span class="p">)</span>
-        
+
         <span class="n">chart_select</span> <span class="o">=</span> <span class="n">Select</span><span class="p">(</span><span class="n">chart_select</span><span class="p">)</span>
 
         <span class="n">default_option</span> <span class="o">=</span> <span class="n">chart_select</span><span class="o">.</span><span class="n">first_selected_option</span><span class="o">.</span><span class="n">text</span>
@@ -856,7 +910,7 @@ document.write(`
 
         <span class="k">for</span> <span class="n">option_text</span><span class="p">,</span> <span class="n">chart_id</span> <span class="ow">in</span> <span class="n">chart_options</span><span class="p">:</span>
             <span class="n">chart_select</span><span class="o">.</span><span class="n">select_by_visible_text</span><span class="p">(</span><span class="n">option_text</span><span class="p">)</span>
-            
+
             <span class="n">selected_option</span> <span class="o">=</span> <span class="n">chart_select</span><span class="o">.</span><span class="n">first_selected_option</span><span class="o">.</span><span class="n">text</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">selected_option</span><span class="p">,</span> <span class="n">option_text</span><span class="p">)</span>
 

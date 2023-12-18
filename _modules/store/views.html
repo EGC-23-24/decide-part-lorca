@@ -326,7 +326,7 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    API view for listing and creating votes.</span>
 
-<span class="sd">    Inherits from Django Rest Framework&#39;s ListAPIView to provide a method for listing existing votes </span>
+<span class="sd">    Inherits from Django Rest Framework&#39;s ListAPIView to provide a method for listing existing votes</span>
 <span class="sd">    and a method for creating new votes based on the voting type.</span>
 
 <span class="sd">    Attributes:</span>
@@ -335,7 +335,7 @@ document.write(`
 <span class="sd">        filter_backends: Set of filter backends to be used for the queryset.</span>
 <span class="sd">        filterset_fields: Fields of the Vote model that can be filtered.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">queryset</span> <span class="o">=</span> <span class="n">Vote</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">VoteSerializer</span>
     <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">(</span><span class="n">django_filters</span><span class="o">.</span><span class="n">rest_framework</span><span class="o">.</span><span class="n">DjangoFilterBackend</span><span class="p">,)</span>
@@ -350,11 +350,11 @@ document.write(`
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Response object containing serialized Vote data.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Raises:</span>
 <span class="sd">            PermissionDenied: If the user is not staff.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">UserIsStaff</span><span class="p">,)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">check_permissions</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request</span><span class="p">)</span></div>
@@ -372,7 +372,7 @@ document.write(`
 <span class="sd">        Raises:</span>
 <span class="sd">            HTTP_400_BAD_REQUEST: If voting_type is not in the predefined voting types.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">voting_type</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;voting_type&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">voting_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">VOTING_TYPES</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="k">return</span> <span class="n">Response</span><span class="p">({},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span>

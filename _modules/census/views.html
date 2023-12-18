@@ -339,8 +339,9 @@ document.write(`
 <span class="sd">    :param request: The HTTP request object.</span>
 <span class="sd">    :return: Rendered web page for the census.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;census/census.html&quot;</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="is_admin"><a class="viewcode-back" href="../../modules/census.html#census.views.is_admin">[docs]</a><span class="k">def</span> <span class="nf">is_admin</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -351,8 +352,9 @@ document.write(`
 <span class="sd">    :return: True if the user is authenticated and is a staff member, False otherwise.</span>
 <span class="sd">    :rtype: bool</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span> <span class="ow">and</span> <span class="n">user</span><span class="o">.</span><span class="n">is_staff</span></div>
+
 
 <div class="viewcode-block" id="CensusCreate"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusCreate">[docs]</a><span class="k">class</span> <span class="nc">CensusCreate</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListCreateAPIView</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -360,7 +362,7 @@ document.write(`
 
 <span class="sd">    Inherits from ListCreateAPIView to provide handling for GET and POST requests for Census model.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">UserIsStaff</span><span class="p">,)</span>
 
 <div class="viewcode-block" id="CensusCreate.create"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusCreate.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -372,7 +374,7 @@ document.write(`
 <span class="sd">        :param kwargs: Keyword arguments.</span>
 <span class="sd">        :return: A Response object with creation status.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">voting_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voting_id&quot;</span><span class="p">)</span>
         <span class="n">voters</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voters&quot;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
@@ -392,7 +394,7 @@ document.write(`
 <span class="sd">        :param kwargs: Keyword arguments.</span>
 <span class="sd">        :return: A Response object with the list of voters.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">voting_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voting_id&quot;</span><span class="p">)</span>
         <span class="n">voters</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span>
             <span class="s2">&quot;voter_id&quot;</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">True</span>
@@ -406,7 +408,7 @@ document.write(`
 
 <span class="sd">    Inherits from RetrieveDestroyAPIView to provide handling for GET and DELETE requests for the Census model.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="CensusDetail.destroy"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusDetail.destroy">[docs]</a>    <span class="k">def</span> <span class="nf">destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">voting_id</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Deletes voters from a census based on provided voting_id and voter ids.</span>
@@ -417,9 +419,10 @@ document.write(`
 <span class="sd">        :param kwargs: Keyword arguments.</span>
 <span class="sd">        :return: A Response object confirming deletion.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">voters</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voters&quot;</span><span class="p">)</span>
-        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voter_id__in</span><span class="o">=</span><span class="n">voters</span><span class="p">)</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voter_id__in</span><span class="o">=</span><span class="n">voters</span><span class="p">)</span>
         <span class="n">census</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;Voters deleted from census&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">ST_204</span><span class="p">)</span></div>
 
@@ -460,7 +463,9 @@ document.write(`
             <span class="p">{</span><span class="s2">&quot;error_id&quot;</span><span class="p">:</span> <span class="s2">&quot;There is not a census with that voting_id&quot;</span><span class="p">},</span>
         <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;census/census_details.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;census&quot;</span><span class="p">:</span> <span class="n">census</span><span class="p">})</span></div>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+                      <span class="s2">&quot;census/census_details.html&quot;</span><span class="p">,</span>
+                      <span class="p">{</span><span class="s2">&quot;census&quot;</span><span class="p">:</span> <span class="n">census</span><span class="p">})</span></div>
 
 
 <div class="viewcode-block" id="createCensus"><a class="viewcode-back" href="../../modules/census.html#census.views.createCensus">[docs]</a><span class="k">def</span> <span class="nf">createCensus</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -470,19 +475,21 @@ document.write(`
 <span class="sd">    :param request: The HTTP request object.</span>
 <span class="sd">    :return: Redirects to the census page on success or renders the creation form with errors.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
         <span class="n">voting_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voting_id&quot;</span><span class="p">)</span>
         <span class="n">voter_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voter_id&quot;</span><span class="p">)</span>
 
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">voter_id</span><span class="p">)</span>
+            <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">voter_id</span><span class="p">)</span>
             <span class="n">census</span><span class="o">.</span><span class="n">full_clean</span><span class="p">()</span>
             <span class="n">census</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
             <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;Census created successfully&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;census&quot;</span><span class="p">)</span>
 
-        <span class="c1"># Si hay un ValidationError, muestra el mensaje de error en la página de creación del censo</span>
+        <span class="c1"># Si hay un ValidationError, muestra el mensaje de error en la página</span>
+        <span class="c1"># de creación del censo</span>
         <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
                 <span class="k">return</span> <span class="n">render</span><span class="p">(</span>
@@ -505,7 +512,9 @@ document.write(`
                 <span class="p">)</span>
 
     <span class="c1"># Si el método no es POST, muestra la página de creación del censo</span>
-    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;census/census_create.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;form&quot;</span><span class="p">:</span> <span class="n">CreationCensusForm</span><span class="p">})</span></div>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+                  <span class="s2">&quot;census/census_create.html&quot;</span><span class="p">,</span>
+                  <span class="p">{</span><span class="s2">&quot;form&quot;</span><span class="p">:</span> <span class="n">CreationCensusForm</span><span class="p">})</span></div>
 
 
 <div class="viewcode-block" id="deleteCensus"><a class="viewcode-back" href="../../modules/census.html#census.views.deleteCensus">[docs]</a><span class="k">def</span> <span class="nf">deleteCensus</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -515,7 +524,7 @@ document.write(`
 <span class="sd">    :param request: The HTTP request object containing the voting and voter IDs.</span>
 <span class="sd">    :return: Redirects to the census page on successful deletion or renders the census page with an error message.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
         <span class="n">voting_id</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;voting_id&quot;</span><span class="p">],</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;voter_id&quot;</span><span class="p">]</span>
     <span class="p">)</span>
@@ -538,7 +547,7 @@ document.write(`
 <span class="sd">    :param request: The HTTP request object.</span>
 <span class="sd">    :return: Rendered web page displaying a list of all census records.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">queryset</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;census/census_list.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;queryset&quot;</span><span class="p">:</span> <span class="n">queryset</span><span class="p">})</span></div>
 
@@ -561,9 +570,10 @@ document.write(`
 <span class="sd">        :param kwargs: Keyword arguments.</span>
 <span class="sd">        :return: HttpResponse or redirection.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="ow">not</span> <span class="n">is_admin</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">):</span>
-            <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;You must be an admin to access this page!&quot;</span><span class="p">)</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="n">request</span><span class="p">,</span> <span class="s2">&quot;You must be an admin to access this page!&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
@@ -574,7 +584,7 @@ document.write(`
 <span class="sd">        :param kwargs: Keyword arguments.</span>
 <span class="sd">        :return: Context data dictionary.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">context</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">votings</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
         <span class="n">context</span><span class="p">[</span><span class="s2">&quot;votings&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">votings</span>
@@ -634,7 +644,7 @@ document.write(`
 
 <span class="sd">    Inherits from TemplateView to display a page for selecting the voting and uploading the Excel file for census data.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;census/import_census.html&quot;</span>
 
 <div class="viewcode-block" id="CensusImportView.dispatch"><a class="viewcode-back" href="../../modules/census.html#census.views.CensusImportView.dispatch">[docs]</a>    <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -646,9 +656,10 @@ document.write(`
 <span class="sd">        :param kwargs: Keyword arguments.</span>
 <span class="sd">        :return: HttpResponse or redirection.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="ow">not</span> <span class="n">is_admin</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">):</span>
-            <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;You must be an admin to access this page!&quot;</span><span class="p">)</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="n">request</span><span class="p">,</span> <span class="s2">&quot;You must be an admin to access this page!&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
@@ -661,7 +672,7 @@ document.write(`
 <span class="sd">        :param kwargs: Keyword arguments.</span>
 <span class="sd">        :return: Redirects to the import page with a success or error message.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">voting_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voting_id&quot;</span><span class="p">)</span>
         <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span>
 
@@ -681,7 +692,8 @@ document.write(`
 
                 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sheet</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">min_row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">values_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
                     <span class="n">voter_id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                    <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">voter_id</span><span class="p">)</span>
+                    <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                        <span class="n">voting_id</span><span class="o">=</span><span class="n">voting_id</span><span class="p">,</span> <span class="n">voter_id</span><span class="o">=</span><span class="n">voter_id</span><span class="p">)</span>
 
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                 <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Error importing data: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -701,7 +713,7 @@ document.write(`
 <span class="sd">        :param kwargs: Keyword arguments.</span>
 <span class="sd">        :return: Context data dictionary.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">context</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">votings</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
         <span class="n">context</span><span class="p">[</span><span class="s2">&quot;votings&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">votings</span>

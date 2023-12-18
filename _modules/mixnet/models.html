@@ -326,7 +326,7 @@ document.write(`
 <span class="sd">        key (ForeignKey): Foreign key to a Key instance, nullable.</span>
 <span class="sd">        pubkey (ForeignKey): Foreign key to a Key instance for public key, nullable.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">voting_id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">()</span>
     <span class="n">auth_position</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">auths</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Auth</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;mixnets&quot;</span><span class="p">)</span>
@@ -336,7 +336,7 @@ document.write(`
     <span class="n">pubkey</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Key</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;mixnets_pub&quot;</span><span class="p">,</span>
                                <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">SET_NULL</span><span class="p">)</span>
-    
+
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a string representation of the Mixnet instance.</span>
@@ -344,7 +344,7 @@ document.write(`
 <span class="sd">        :return: A formatted string representing the Mixnet instance.</span>
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">auths</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
         <span class="k">return</span> <span class="s2">&quot;Voting: </span><span class="si">{}</span><span class="s2">, Auths: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">PubKey: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voting_id</span><span class="p">,</span>
                                                           <span class="n">auths</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pubkey</span><span class="p">)</span>
@@ -360,7 +360,7 @@ document.write(`
 <span class="sd">        :return: Shuffled messages.</span>
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">crypt</span> <span class="o">=</span> <span class="n">MixCrypt</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
         <span class="n">k</span> <span class="o">=</span> <span class="n">crypt</span><span class="o">.</span><span class="n">setk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">g</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 
@@ -379,11 +379,11 @@ document.write(`
 <span class="sd">        :return: Decrypted messages.</span>
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">crypt</span> <span class="o">=</span> <span class="n">MixCrypt</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
         <span class="n">k</span> <span class="o">=</span> <span class="n">crypt</span><span class="o">.</span><span class="n">setk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">g</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">crypt</span><span class="o">.</span><span class="n">shuffle_decrypt</span><span class="p">(</span><span class="n">msgs</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span></div>
-    
+
 <div class="viewcode-block" id="Mixnet.gen_key"><a class="viewcode-back" href="../../modules/mixnet.html#mixnet.models.Mixnet.gen_key">[docs]</a>    <span class="k">def</span> <span class="nf">gen_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a cryptographic key for the mixnet.</span>
@@ -393,7 +393,7 @@ document.write(`
 <span class="sd">        :param g: Generator number, part of the cryptographic key.</span>
 <span class="sd">        :type g: int, optional</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">crypt</span> <span class="o">=</span> <span class="n">MixCrypt</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">:</span>
             <span class="n">k</span> <span class="o">=</span> <span class="n">crypt</span><span class="o">.</span><span class="n">setk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">g</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
@@ -423,8 +423,8 @@ document.write(`
 <span class="sd">        :return: The response from the API call or None.</span>
 <span class="sd">        :rtype: Response or None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="n">next_auths</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">next_auths</span><span class="p">()</span>
+
+        <span class="n">next_auths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_auths</span><span class="p">()</span>
 
         <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
             <span class="s2">&quot;auths&quot;</span><span class="p">:</span> <span class="n">AuthSerializer</span><span class="p">(</span><span class="n">next_auths</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
@@ -435,7 +435,7 @@ document.write(`
         <span class="k">if</span> <span class="n">next_auths</span><span class="p">:</span>
             <span class="n">auth</span> <span class="o">=</span> <span class="n">next_auths</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">url</span>
             <span class="n">r</span> <span class="o">=</span> <span class="n">mods</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;mixnet&#39;</span><span class="p">,</span> <span class="n">entry_point</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
-                           <span class="n">baseurl</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+                          <span class="n">baseurl</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">r</span>
 
         <span class="k">return</span> <span class="kc">None</span></div>

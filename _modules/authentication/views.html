@@ -326,7 +326,8 @@ document.write(`
 <span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span><span class="p">,</span> <span class="n">login</span>
 <span class="kn">from</span> <span class="nn">django.core.mail</span> <span class="kn">import</span> <span class="n">EmailMessage</span>
 
-<div class="viewcode-block" id="CustomUserCreationForm"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.CustomUserCreationForm">[docs]</a><span class="k">class</span> <span class="nc">CustomUserCreationForm</span><span class="p">(</span><span class="n">UserCreationForm</span><span class="p">):</span>  
+
+<div class="viewcode-block" id="CustomUserCreationForm"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.CustomUserCreationForm">[docs]</a><span class="k">class</span> <span class="nc">CustomUserCreationForm</span><span class="p">(</span><span class="n">UserCreationForm</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Custom form for user registration.</span>
 
@@ -335,7 +336,7 @@ document.write(`
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="CustomUserCreationForm.Meta"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.CustomUserCreationForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="n">UserCreationForm</span><span class="o">.</span><span class="n">Meta</span><span class="p">):</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
-        <span class="n">fields</span><span class="o">=</span> <span class="p">(</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span>
             <span class="s1">&#39;username&#39;</span><span class="p">,</span>
             <span class="s1">&#39;password1&#39;</span><span class="p">,</span>
             <span class="s1">&#39;password2&#39;</span><span class="p">,</span>
@@ -345,14 +346,14 @@ document.write(`
         <span class="p">)</span>
 
         <span class="n">labels</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;username&#39;</span><span class="p">:(</span><span class="s1">&#39;Username&#39;</span><span class="p">),</span>
-            <span class="s1">&#39;password1&#39;</span><span class="p">:(</span><span class="s1">&#39;Password&#39;</span><span class="p">),</span>
-            <span class="s1">&#39;password2&#39;</span><span class="p">:(</span><span class="s1">&#39;Confirm Password&#39;</span><span class="p">),</span>
-            <span class="s1">&#39;email&#39;</span><span class="p">:(</span><span class="s1">&#39;Email&#39;</span><span class="p">),</span>
-            <span class="s1">&#39;first_name&#39;</span><span class="p">:(</span><span class="s1">&#39;First Name&#39;</span><span class="p">),</span>
-            <span class="s1">&#39;last_name&#39;</span><span class="p">:(</span><span class="s1">&#39;Last Name&#39;</span><span class="p">)</span>
+            <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;Username&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;password1&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;Password&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;password2&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;Confirm Password&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;Email&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;first_name&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;First Name&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;last_name&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;Last Name&#39;</span><span class="p">)</span>
         <span class="p">}</span></div>
-  
+
 <div class="viewcode-block" id="CustomUserCreationForm.username_clean_lenght"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.CustomUserCreationForm.username_clean_lenght">[docs]</a>    <span class="k">def</span> <span class="nf">username_clean_lenght</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validate the length of the username.</span>
@@ -361,14 +362,13 @@ document.write(`
 <span class="sd">        :type username: str</span>
 <span class="sd">        :return: True if the username is longer than 150 characters, False otherwise.</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &quot;&quot;&quot;</span>  
-        <span class="n">username</span> <span class="o">=</span> <span class="n">username</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="n">username</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
-        
 
 <div class="viewcode-block" id="CustomUserCreationForm.username_clean_exits"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.CustomUserCreationForm.username_clean_exits">[docs]</a>    <span class="k">def</span> <span class="nf">username_clean_exits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -381,8 +381,8 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">username</span> <span class="o">=</span> <span class="n">username</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
-        <span class="n">new</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span><span class="p">)</span>  
-        <span class="k">if</span> <span class="n">new</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>  
+        <span class="n">new</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
@@ -398,12 +398,12 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">username</span> <span class="o">=</span> <span class="n">username</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
-        <span class="n">username_val_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;[^\w@.\-_+]&quot;</span><span class="p">,</span> <span class="n">username</span><span class="p">)</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">username_val_regex</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">username_val_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;[^</span><span class="se">\\</span><span class="s2">w@.</span><span class="se">\\</span><span class="s2">-_+]&quot;</span><span class="p">,</span> <span class="n">username</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">username_val_regex</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span></div>
-  
-<div class="viewcode-block" id="CustomUserCreationForm.email_clean"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.CustomUserCreationForm.email_clean">[docs]</a>    <span class="k">def</span> <span class="nf">email_clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">email</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CustomUserCreationForm.email_clean"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.CustomUserCreationForm.email_clean">[docs]</a>    <span class="k">def</span> <span class="nf">email_clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Check if the email already exists in the database.</span>
 
@@ -411,13 +411,13 @@ document.write(`
 <span class="sd">        :type email: str</span>
 <span class="sd">        :return: True if the email already exists, False otherwise.</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &quot;&quot;&quot;</span>  
-        <span class="n">email</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  
-        <span class="n">new</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">)</span>  
-        <span class="k">if</span> <span class="n">new</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>  
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span></div>
-  
+
 <div class="viewcode-block" id="CustomUserCreationForm.clean_confirmation"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.CustomUserCreationForm.clean_confirmation">[docs]</a>    <span class="k">def</span> <span class="nf">clean_confirmation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">confirm_password</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validate that the entered passwords match.</span>
@@ -428,11 +428,11 @@ document.write(`
 <span class="sd">        :type confirm_password: str</span>
 <span class="sd">        :return: True if the passwords do not match, False otherwise.</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
-        <span class="k">if</span> <span class="n">password</span> <span class="ow">and</span> <span class="n">confirm_password</span> <span class="ow">and</span> <span class="n">password</span> <span class="o">!=</span> <span class="n">confirm_password</span><span class="p">:</span>  
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">password</span> <span class="ow">and</span> <span class="n">confirm_password</span> <span class="ow">and</span> <span class="n">password</span> <span class="o">!=</span> <span class="n">confirm_password</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span></div>
-    
+
 <div class="viewcode-block" id="CustomUserCreationForm.clean_password_lenght"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.CustomUserCreationForm.clean_password_lenght">[docs]</a>    <span class="k">def</span> <span class="nf">clean_password_lenght</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validate the length of the password.</span>
@@ -442,7 +442,7 @@ document.write(`
 <span class="sd">        :return: True if the password has fewer than 8 characters, False otherwise.</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">password</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">password</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
@@ -456,20 +456,44 @@ document.write(`
 <span class="sd">        :return: True if the password is common, False otherwise.</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">common_passwords</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;12345678&#39;</span><span class="p">,</span> <span class="s1">&#39;11111111&#39;</span><span class="p">,</span> <span class="s1">&#39;00000000&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;password0&#39;</span><span class="p">,</span> <span class="s1">&#39;password1&#39;</span><span class="p">,</span> <span class="s1">&#39;decide&#39;</span><span class="p">,</span> <span class="s1">&#39;decide password&#39;</span><span class="p">,</span> <span class="s1">&#39;01234567&#39;</span><span class="p">,</span> 
-        <span class="s1">&#39;2345678&#39;</span><span class="p">,</span><span class="s1">&#39;password123&#39;</span><span class="p">,</span> <span class="s1">&#39;password12&#39;</span><span class="p">,</span> <span class="s1">&#39;cotraseña&#39;</span><span class="p">,</span> <span class="s1">&#39;contraseña123&#39;</span><span class="p">,</span><span class="s1">&#39;adminadmin&#39;</span><span class="p">,</span> <span class="s1">&#39;admin123&#39;</span><span class="p">,</span> <span class="s1">&#39;1234567890&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;0987654321&#39;</span><span class="p">,</span> <span class="s1">&#39;87654321&#39;</span><span class="p">,</span><span class="s1">&#39;lorca123&#39;</span><span class="p">,</span><span class="s1">&#39;lorca_password&#39;</span><span class="p">]</span>
+        <span class="n">common_passwords</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;12345678&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;11111111&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;00000000&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;password&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;password0&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;password1&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;decide&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;decide password&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;01234567&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2345678&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;password123&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;password12&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;cotraseña&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;contraseña123&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;adminadmin&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;admin123&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;1234567890&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;0987654321&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;87654321&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;lorca123&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;lorca_password&#39;</span><span class="p">]</span>
 
         <span class="n">res</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">common_passwords</span><span class="p">:</span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">password</span><span class="o">==</span><span class="n">c</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">password</span> <span class="o">==</span> <span class="n">c</span><span class="p">):</span>
                 <span class="n">res</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="k">break</span>
-        
+
         <span class="k">return</span> <span class="n">res</span></div>
 
-<div class="viewcode-block" id="CustomUserCreationForm.clean_password_too_similar"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.CustomUserCreationForm.clean_password_too_similar">[docs]</a>    <span class="k">def</span> <span class="nf">clean_password_too_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">):</span>
+<div class="viewcode-block" id="CustomUserCreationForm.clean_password_too_similar"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.CustomUserCreationForm.clean_password_too_similar">[docs]</a>    <span class="k">def</span> <span class="nf">clean_password_too_similar</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">password</span><span class="p">,</span>
+            <span class="n">username</span><span class="p">,</span>
+            <span class="n">first_name</span><span class="p">,</span>
+            <span class="n">last_name</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Check if the password is too similar to personal data.</span>
 
@@ -484,9 +508,10 @@ document.write(`
 <span class="sd">        :return: True if the password is too similar to personal data, False otherwise.</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">password</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="o">|</span> <span class="n">password</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="n">first_name</span><span class="p">)</span> <span class="o">|</span> <span class="n">password</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="n">last_name</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">password</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="o">|</span> <span class="n">password</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span>
+                <span class="n">first_name</span><span class="p">)</span> <span class="o">|</span> <span class="n">password</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="n">last_name</span><span class="p">)):</span>
             <span class="k">return</span> <span class="kc">True</span>
-            
+
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
@@ -512,6 +537,7 @@ document.write(`
 <span class="sd">    Handles POST requests to retrieve user information based on the provided user token.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="GetUserView.post"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.GetUserView.post">[docs]</a>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Handle POST requests to retrieve user information.</span>
@@ -533,6 +559,7 @@ document.write(`
 <span class="sd">    Handles POST requests to log out a user by deleting their authentication token.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="LogoutView.post"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.LogoutView.post">[docs]</a>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Handle POST requests to log out a user.</span>
@@ -559,6 +586,7 @@ document.write(`
 <span class="sd">    Handles POST requests to register a new user with admin privileges.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="RegisterViewAPI.post"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.RegisterViewAPI.post">[docs]</a>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Handle POST requests to register a new user.</span>
@@ -585,7 +613,9 @@ document.write(`
             <span class="n">token</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Token</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">IntegrityError</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">Response</span><span class="p">({},</span> <span class="n">status</span><span class="o">=</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;user_pk&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">pk</span><span class="p">,</span> <span class="s1">&#39;token&#39;</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">key</span><span class="p">},</span> <span class="n">HTTP_201_CREATED</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span>
+            <span class="p">{</span><span class="s1">&#39;user_pk&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">pk</span><span class="p">,</span> <span class="s1">&#39;token&#39;</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">key</span><span class="p">},</span> <span class="n">HTTP_201_CREATED</span><span class="p">)</span></div></div>
+
 
 <div class="viewcode-block" id="LoginView"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.LoginView">[docs]</a><span class="k">class</span> <span class="nc">LoginView</span><span class="p">(</span><span class="n">CreateView</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -607,11 +637,11 @@ document.write(`
 <span class="sd">        :return: An HTTP response indicating the success or failure of the login operation.</span>
 <span class="sd">        :rtype: HttpResponse</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">values</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span>  
+        <span class="n">values</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span>
 
         <span class="n">username</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
         <span class="n">password1</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;password1&#39;</span><span class="p">]</span>
-        
+
         <span class="n">user</span> <span class="o">=</span> <span class="n">authenticate</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password1</span><span class="p">)</span>
 
         <span class="n">response</span> <span class="o">=</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
@@ -624,13 +654,13 @@ document.write(`
         <span class="k">else</span><span class="p">:</span>
             <span class="n">incorrect</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;This username or password do not exist&quot;</span><span class="p">]</span>
             <span class="n">template</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s2">&quot;authentication/login.html&quot;</span><span class="p">)</span>
-            <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;errors&quot;</span><span class="p">:</span><span class="n">incorrect</span><span class="p">}</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="n">incorrect</span><span class="p">}</span>
 
             <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">response</span></div></div>
 
-    
+
 <div class="viewcode-block" id="RegisterView"><a class="viewcode-back" href="../../modules/auth.html#authentication.views.RegisterView">[docs]</a><span class="k">class</span> <span class="nc">RegisterView</span><span class="p">(</span><span class="n">CreateView</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    View for user registration.</span>
@@ -652,12 +682,36 @@ document.write(`
 <span class="sd">        :rtype: CustomUserCreationForm</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">form</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">RegisterView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_form</span><span class="p">()</span>
-        <span class="n">form</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span><span class="s1">&#39;form-control mb-2&#39;</span><span class="p">,</span> <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span><span class="s1">&#39;Less than 150 characters&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="s1">&#39;required&#39;</span><span class="p">})</span>
-        <span class="n">form</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;password1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span><span class="s1">&#39;form-control mb-2&#39;</span><span class="p">,</span> <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span><span class="s1">&#39;8 characters or more&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="s1">&#39;required&#39;</span><span class="p">})</span> 
-        <span class="n">form</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;password2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span><span class="s1">&#39;form-control mb-2&#39;</span><span class="p">,</span> <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span><span class="s1">&#39;Confirm password&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="s1">&#39;required&#39;</span><span class="p">})</span> 
-        <span class="n">form</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span><span class="s1">&#39;form-control mb-2&#39;</span><span class="p">,</span> <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span><span class="s1">&#39;Alex&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="s1">&#39;required&#39;</span><span class="p">})</span> 
-        <span class="n">form</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span><span class="s1">&#39;form-control mb-2&#39;</span><span class="p">,</span> <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span><span class="s1">&#39;Smith&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="s1">&#39;required&#39;</span><span class="p">})</span> 
-        <span class="n">form</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span><span class="s1">&#39;form-control mb-2&#39;</span><span class="p">,</span> <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span><span class="s1">&#39;example@decide.com&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="s1">&#39;required&#39;</span><span class="p">})</span> 
+        <span class="n">form</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;form-control mb-2&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span> <span class="s1">&#39;Less than 150 characters&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="s1">&#39;required&#39;</span><span class="p">})</span>
+        <span class="n">form</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;password1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;form-control mb-2&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span> <span class="s1">&#39;8 characters or more&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="s1">&#39;required&#39;</span><span class="p">})</span>
+        <span class="n">form</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;password2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;form-control mb-2&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span> <span class="s1">&#39;Confirm password&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="s1">&#39;required&#39;</span><span class="p">})</span>
+        <span class="n">form</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;form-control mb-2&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span> <span class="s1">&#39;Alex&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="s1">&#39;required&#39;</span><span class="p">})</span>
+        <span class="n">form</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;form-control mb-2&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span> <span class="s1">&#39;Smith&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="s1">&#39;required&#39;</span><span class="p">})</span>
+        <span class="n">form</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailInput</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;form-control mb-2&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span> <span class="s1">&#39;example@decide.com&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="s1">&#39;required&#39;</span><span class="p">})</span>
 
         <span class="k">return</span> <span class="n">form</span></div>
 
@@ -670,7 +724,7 @@ document.write(`
 <span class="sd">        :return: An HTTP response indicating the success or failure of the registration.</span>
 <span class="sd">        :rtype: HttpResponse</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">values</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span>   
+        <span class="n">values</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span>
 
         <span class="n">username</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
         <span class="n">password1</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;password1&#39;</span><span class="p">]</span>
@@ -682,38 +736,37 @@ document.write(`
 
         <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
 
-        
-        <span class="k">if</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">clean_confirmation</span><span class="p">(</span><span class="n">password1</span><span class="p">,</span> <span class="n">password2</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">clean_confirmation</span><span class="p">(</span><span class="n">password1</span><span class="p">,</span> <span class="n">password2</span><span class="p">)):</span>
             <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Passwords must be the same&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">username_clean_lenght</span><span class="p">(</span><span class="n">username</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">username_clean_lenght</span><span class="p">(</span><span class="n">username</span><span class="p">)):</span>
             <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;This username is larger than 150 characters&quot;</span><span class="p">)</span>
-           
-        <span class="k">if</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">username_clean_exits</span><span class="p">(</span><span class="n">username</span><span class="p">)):</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">username_clean_exits</span><span class="p">(</span><span class="n">username</span><span class="p">)):</span>
             <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;This username has already taken&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">username_clean_pattern</span><span class="p">(</span><span class="n">username</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">username_clean_pattern</span><span class="p">(</span><span class="n">username</span><span class="p">)):</span>
             <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;This username not match with the pattern&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">email_clean</span><span class="p">(</span><span class="n">email</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">email_clean</span><span class="p">(</span><span class="n">email</span><span class="p">)):</span>
             <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;This email has already taken&quot;</span><span class="p">)</span>
-            
-        <span class="k">if</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">clean_password_lenght</span><span class="p">(</span><span class="n">password1</span><span class="p">)):</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">clean_password_lenght</span><span class="p">(</span><span class="n">password1</span><span class="p">)):</span>
             <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;This password must contain at least 8 characters&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">clean_password_common</span><span class="p">(</span><span class="n">password1</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">clean_password_common</span><span class="p">(</span><span class="n">password1</span><span class="p">)):</span>
             <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;This password is a common password&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">clean_password_too_similar</span><span class="p">(</span><span class="n">password1</span><span class="p">,</span><span class="n">username</span><span class="p">,</span><span class="n">first_name</span><span class="p">,</span><span class="n">last_name</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">clean_password_too_similar</span><span class="p">(</span>
+                <span class="n">password1</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">)):</span>
             <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;This password is too similar to your personal data&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">clean_password_numeric</span><span class="p">(</span><span class="n">password1</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">clean_password_numeric</span><span class="p">(</span><span class="n">password1</span><span class="p">)):</span>
             <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;This password is numeric&quot;</span><span class="p">)</span>
 
-
-        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
             <span class="n">template</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s2">&quot;authentication/register.html&quot;</span><span class="p">)</span>
-            <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;errors&quot;</span><span class="p">:</span><span class="n">errors</span><span class="p">}</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="n">errors</span><span class="p">}</span>
 
             <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
@@ -724,19 +777,25 @@ document.write(`
                 <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
                 <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="n">password1</span><span class="p">)</span>
 
-                <span class="n">email</span><span class="o">=</span><span class="n">EmailMessage</span><span class="p">(</span><span class="s2">&quot;Message from the app Decide&quot;</span><span class="p">,</span> 
-
-                <span class="s2">&quot;This is a confirmation message: the user with name </span><span class="si">{}</span><span class="s2"> and email </span><span class="si">{}</span><span class="s2"> has registered in the app Decide recently.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">),</span> 
-
-                <span class="s2">&quot;&quot;</span><span class="p">,[</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">],</span> <span class="n">reply_to</span><span class="o">=</span><span class="p">[</span><span class="n">email</span><span class="p">])</span>
+                <span class="n">email</span> <span class="o">=</span> <span class="n">EmailMessage</span><span class="p">(</span>
+                    <span class="s2">&quot;Message from the app Decide&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;This is a confirmation message: the user with name </span><span class="si">{}</span><span class="s2"> and email </span><span class="si">{}</span><span class="s2"> has registered in the app Decide recently.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">user</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span>
+                        <span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">),</span>
+                    <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                    <span class="p">[</span>
+                        <span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">],</span>
+                    <span class="n">reply_to</span><span class="o">=</span><span class="p">[</span><span class="n">email</span><span class="p">])</span>
 
                 <span class="n">email</span><span class="o">.</span><span class="n">send</span><span class="p">()</span>
                 <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
                 <span class="n">token</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Token</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
 
             <span class="k">except</span> <span class="n">IntegrityError</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;Integrity Error raised&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span>
-            
+                <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span>
+                    <span class="s2">&quot;Integrity Error raised&quot;</span><span class="p">,</span>
+                    <span class="n">status</span><span class="o">=</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span>
+
             <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span></div></div>
 
 
@@ -753,7 +812,7 @@ document.write(`
     <span class="n">context</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">is_authenticated</span> <span class="o">=</span> <span class="kc">False</span>
 
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
         <span class="n">is_authenticated</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">context</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span>
 
@@ -772,7 +831,7 @@ document.write(`
 <span class="sd">    :rtype: HttpResponse</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
         <span class="n">logout</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
         <span class="n">response</span><span class="o">.</span><span class="n">delete_cookie</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
         <span class="n">response</span><span class="o">.</span><span class="n">delete_cookie</span><span class="p">(</span><span class="s1">&#39;decide&#39;</span><span class="p">)</span>

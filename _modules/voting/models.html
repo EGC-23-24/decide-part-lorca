@@ -320,7 +320,7 @@ document.write(`
 <span class="sd">        TYPES (list): The list of possible types for a question.</span>
 <span class="sd">        type (CharField): The type of the question, chosen from TYPES.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">desc</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">TYPES</span> <span class="o">=</span> <span class="p">[</span>
         <span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;Classic question&#39;</span><span class="p">),</span>
@@ -338,7 +338,7 @@ document.write(`
 <span class="sd">        :param args: Variable length argument list.</span>
 <span class="sd">        :param kwargs: Keyword arguments.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span>
             <span class="c1"># Create Yes/No options when a Yes/No question is saved</span>
@@ -367,7 +367,7 @@ document.write(`
 <span class="sd">        number (PositiveIntegerField): The number of the option.</span>
 <span class="sd">        option (TextField): The text of the option.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
         <span class="n">Question</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;options&#39;</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
     <span class="n">number</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -379,7 +379,7 @@ document.write(`
 
 <span class="sd">        :return: None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">]:</span>
@@ -392,7 +392,7 @@ document.write(`
 <span class="sd">        :return: The option text and number or a restriction message.</span>
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">]:</span>
             <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">option</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -409,7 +409,7 @@ document.write(`
 <span class="sd">        option (TextField): The text of the ranked option.</span>
 <span class="sd">        preference (PositiveIntegerField): The preference number for the option.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
         <span class="n">Question</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;ranked_options&#39;</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
     <span class="n">number</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -422,7 +422,7 @@ document.write(`
 
 <span class="sd">        :return: None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">ranked_options</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span>
@@ -435,7 +435,7 @@ document.write(`
 <span class="sd">        :return: The ranked option text and number or a restriction message.</span>
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">option</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -451,7 +451,7 @@ document.write(`
 <span class="sd">        number (PositiveIntegerField): The number of the Yes/No option.</span>
 <span class="sd">        option (TextField): The text of the Yes/No option.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
         <span class="n">Question</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;yesno_options&#39;</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
     <span class="n">number</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -465,7 +465,7 @@ document.write(`
 <span class="sd">        :param kwargs: Keyword arguments.</span>
 <span class="sd">        :return: None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span>
@@ -478,9 +478,10 @@ document.write(`
 <span class="sd">        :return: The Yes/No option text and number or a restriction message.</span>
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> - </span><span class="si">{}</span><span class="s1"> (</span><span class="si">{}</span><span class="s1">) &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">option</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> - </span><span class="si">{}</span><span class="s1"> (</span><span class="si">{}</span><span class="s1">) &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span>
+                                          <span class="bp">self</span><span class="o">.</span><span class="n">option</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="s1">&#39;You cannot create a Yes/No option for a non-Yes/No question&#39;</span></div>
 
@@ -502,7 +503,7 @@ document.write(`
 <span class="sd">        tally (JSONField): The tally of votes.</span>
 <span class="sd">        postproc (JSONField): The post-processing data of the voting.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
     <span class="n">desc</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
@@ -515,7 +516,11 @@ document.write(`
     <span class="n">future_stop</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">pub_key</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span>
-        <span class="n">Key</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;voting&#39;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">SET_NULL</span><span class="p">)</span>
+        <span class="n">Key</span><span class="p">,</span>
+        <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;voting&#39;</span><span class="p">,</span>
+        <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">SET_NULL</span><span class="p">)</span>
     <span class="n">auths</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Auth</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;votings&#39;</span><span class="p">)</span>
 
     <span class="n">tally</span> <span class="o">=</span> <span class="n">JSONField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -529,10 +534,8 @@ document.write(`
             <span class="k">return</span>
 
         <span class="n">auth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-            <span class="s2">&quot;auths&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">url</span><span class="p">}</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">all</span><span class="p">()],</span>
-        <span class="p">}</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;voting&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;auths&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">url</span><span class="p">}</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">all</span><span class="p">()],</span> <span class="p">}</span>
         <span class="n">key</span> <span class="o">=</span> <span class="n">mods</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;mixnet&#39;</span><span class="p">,</span> <span class="n">baseurl</span><span class="o">=</span><span class="n">auth</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
         <span class="n">pk</span> <span class="o">=</span> <span class="n">Key</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">key</span><span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">],</span> <span class="n">g</span><span class="o">=</span><span class="n">key</span><span class="p">[</span><span class="s2">&quot;g&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">key</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
         <span class="n">pk</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -548,10 +551,14 @@ document.write(`
 <span class="sd">        :return: A list of formatted votes.</span>
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># gettings votes from store</span>
-        <span class="n">votes</span> <span class="o">=</span> <span class="n">mods</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;store&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
-                         <span class="s1">&#39;voting_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">},</span> <span class="n">HTTP_AUTHORIZATION</span><span class="o">=</span><span class="s1">&#39;Token &#39;</span> <span class="o">+</span> <span class="n">token</span><span class="p">)</span>
+        <span class="n">votes</span> <span class="o">=</span> <span class="n">mods</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;store&#39;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;voting_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">},</span>
+            <span class="n">HTTP_AUTHORIZATION</span><span class="o">=</span><span class="s1">&#39;Token &#39;</span> <span class="o">+</span>
+            <span class="n">token</span><span class="p">)</span>
         <span class="c1"># anon votes</span>
         <span class="n">votes_format</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">vote_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -583,16 +590,24 @@ document.write(`
 
         <span class="c1"># first, we do the shuffle</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;msgs&quot;</span><span class="p">:</span> <span class="n">votes</span><span class="p">}</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">mods</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;mixnet&#39;</span><span class="p">,</span> <span class="n">entry_point</span><span class="o">=</span><span class="n">shuffle_url</span><span class="p">,</span> <span class="n">baseurl</span><span class="o">=</span><span class="n">auth</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
-                             <span class="n">response</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">mods</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s1">&#39;mixnet&#39;</span><span class="p">,</span>
+            <span class="n">entry_point</span><span class="o">=</span><span class="n">shuffle_url</span><span class="p">,</span>
+            <span class="n">baseurl</span><span class="o">=</span><span class="n">auth</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+            <span class="n">response</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
             <span class="c1"># TODO: manage error</span>
             <span class="k">pass</span>
 
         <span class="c1"># then, we can decrypt that</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;msgs&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()}</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">mods</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;mixnet&#39;</span><span class="p">,</span> <span class="n">entry_point</span><span class="o">=</span><span class="n">decrypt_url</span><span class="p">,</span> <span class="n">baseurl</span><span class="o">=</span><span class="n">auth</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
-                             <span class="n">response</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">mods</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s1">&#39;mixnet&#39;</span><span class="p">,</span>
+            <span class="n">entry_point</span><span class="o">=</span><span class="n">decrypt_url</span><span class="p">,</span>
+            <span class="n">baseurl</span><span class="o">=</span><span class="n">auth</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+            <span class="n">response</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
             <span class="c1"># TODO: manage error</span>
@@ -611,16 +626,17 @@ document.write(`
 
 <span class="sd">            :raises ValueError: If the input contains characters that are not part of a valid decimal string.</span>
 <span class="sd">            &quot;&quot;&quot;</span>
-            
+
             <span class="n">decimal_string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">decimal_string</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
                 <span class="s1">&#39;[&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="c1"># Convert the decimal string to a list of ASCII characters with length 4</span>
+                <span class="c1"># Convert the decimal string to a list of ASCII characters with</span>
+                <span class="c1"># length 4</span>
                 <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">decimal_string</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="n">decimal_string</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="n">decimal_string</span>
                 <span class="n">ascii_string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">decimal_string</span><span class="p">),</span> <span class="mi">3</span><span class="p">):</span>
-                    <span class="n">ascii_char</span> <span class="o">=</span> <span class="n">decimal_string</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span>
+                    <span class="n">ascii_char</span> <span class="o">=</span> <span class="n">decimal_string</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span>
                     <span class="n">ascii_string</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">ascii_char</span><span class="p">))</span>
                 <span class="k">return</span> <span class="n">ascii_string</span>
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
@@ -648,7 +664,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Performs post-processing on the tallied votes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">tally</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tally</span>
         <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 
@@ -672,7 +688,7 @@ document.write(`
                 <span class="k">for</span> <span class="n">vote_weight</span> <span class="ow">in</span> <span class="n">votes_weights</span><span class="p">:</span>
                     <span class="n">list_preferences</span> <span class="o">=</span> <span class="n">vote_weight</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">vote_weight</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_preferences</span><span class="p">):</span>
-                        <span class="n">vote_counts</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_preferences</span><span class="p">)</span> <span class="o">-</span> \
+                        <span class="n">vote_counts</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_preferences</span><span class="p">)</span> <span class="o">-</span> \
                             <span class="nb">int</span><span class="p">(</span><span class="n">vote_weight</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 
             <span class="n">opts</span> <span class="o">=</span> <span class="p">[]</span>

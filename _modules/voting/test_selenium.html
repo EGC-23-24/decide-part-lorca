@@ -314,6 +314,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">base</span> <span class="kn">import</span> <span class="n">mods</span>
 <span class="kn">from</span> <span class="nn">nose.tools</span> <span class="kn">import</span> <span class="n">nottest</span>
 
+
 <div class="viewcode-block" id="QuestionsTests"><a class="viewcode-back" href="../../modules/voting.html#voting.test_selenium.QuestionsTests">[docs]</a><span class="k">class</span> <span class="nc">QuestionsTests</span><span class="p">(</span><span class="n">StaticLiveServerTestCase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Test case class for testing the question creation functionalities using Selenium.</span>
@@ -326,7 +327,7 @@ document.write(`
 <span class="sd">        Sets up necessary data and configurations before each test method.</span>
 <span class="sd">        Initializes Selenium WebDriver for browser-based testing.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Load base test functionality for decide</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="n">BaseTestCase</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">APIClient</span><span class="p">()</span>
@@ -347,7 +348,7 @@ document.write(`
 <span class="sd">        Cleans up after each test method.</span>
 <span class="sd">        Quits the Selenium WebDriver.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 
@@ -357,8 +358,8 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a classic question using the admin interface.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/question/add/&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/question/add/&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
@@ -371,8 +372,8 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a ranked question using the admin interface.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/question/add/&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/question/add/&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;Ranked Question&#39;</span><span class="p">)</span>
@@ -385,7 +386,7 @@ document.write(`
 <span class="sd">        Tests the creation of a classic question through the admin interface.</span>
 <span class="sd">        Verifies if the question is successfully created and listed in the admin panel.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/admin/login/?next=/admin/&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
 
@@ -393,7 +394,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
             <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;qwerty&quot;</span><span class="p">,</span> <span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/question/add/&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/question/add/&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
@@ -401,7 +402,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_type&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;classic&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/question/&quot;</span><span class="p">)</span></div>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/question/&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuestionsTests.test_create_ranked_question"><a class="viewcode-back" href="../../modules/voting.html#voting.test_selenium.QuestionsTests.test_create_ranked_question">[docs]</a>    <span class="k">def</span> <span class="nf">test_create_ranked_question</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -416,7 +417,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
             <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;qwerty&quot;</span><span class="p">,</span> <span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/question/add/&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/question/add/&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;Ranked Question&#39;</span><span class="p">)</span>
@@ -424,7 +425,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_type&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;ranked&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/question/&quot;</span><span class="p">)</span></div>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/question/&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuestionsTests.test_create_classic_question_option"><a class="viewcode-back" href="../../modules/voting.html#voting.test_selenium.QuestionsTests.test_create_classic_question_option">[docs]</a>    <span class="k">def</span> <span class="nf">test_create_classic_question_option</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -451,7 +452,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_option&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;test1&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/questionoption/&quot;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/questionoption/&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
             <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;success&quot;</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span></div>
 
@@ -481,9 +482,13 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_option&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;test1&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/questionoption/&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;success&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
-            <span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;You cannot create an option for a non-Classic or multiple choice question&quot;</span><span class="p">)</span></div>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/questionoption/&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span>
+                <span class="s2">&quot;success&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span>
+                <span class="s2">&quot;a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;You cannot create an option for a non-Classic or multiple choice question&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuestionsTests.test_create_ranked_question_option"><a class="viewcode-back" href="../../modules/voting.html#voting.test_selenium.QuestionsTests.test_create_ranked_question_option">[docs]</a>    <span class="k">def</span> <span class="nf">test_create_ranked_question_option</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -509,8 +514,9 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_option&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_option&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;test1&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/questionoptionranked/&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span>
+            <span class="s2">&quot;/admin/voting/questionoptionranked/&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
             <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;success&quot;</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span></div>
 
@@ -538,10 +544,15 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_option&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_option&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;test1&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/questionoptionranked/&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;success&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
-            <span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;You cannot create a ranked option for a non-ranked question&quot;</span><span class="p">)</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span>
+            <span class="s2">&quot;/admin/voting/questionoptionranked/&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span>
+                <span class="s2">&quot;success&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span>
+                <span class="s2">&quot;a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;You cannot create a ranked option for a non-ranked question&quot;</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="VotingTests"><a class="viewcode-back" href="../../modules/voting.html#voting.test_selenium.VotingTests">[docs]</a><span class="k">class</span> <span class="nc">VotingTests</span><span class="p">(</span><span class="n">StaticLiveServerTestCase</span><span class="p">):</span>
@@ -556,7 +567,7 @@ document.write(`
 <span class="sd">        Sets up necessary data and configurations before each test method.</span>
 <span class="sd">        Initializes Selenium WebDriver for browser-based testing.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Load base test functionality for decide</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="n">BaseTestCase</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">APIClient</span><span class="p">()</span>
@@ -577,7 +588,7 @@ document.write(`
 <span class="sd">        Cleans up after each test method.</span>
 <span class="sd">        Quits the Selenium WebDriver.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 
@@ -587,8 +598,8 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates an authorization using the admin interface.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/base/auth/add/&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/base/auth/add/&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Test Auth&quot;</span><span class="p">)</span>
@@ -602,7 +613,7 @@ document.write(`
 <span class="sd">        Creates a classic question using the admin interface.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/question/add/&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/question/add/&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
@@ -616,7 +627,7 @@ document.write(`
 <span class="sd">        Creates a ranked question using the admin interface.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/question/add/&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/question/add/&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;Ranked Question&#39;</span><span class="p">)</span>
@@ -645,7 +656,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates an option for a ranked question using the admin interface.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span>
                         <span class="s2">&quot;/admin/voting/questionoptionranked/add/&quot;</span><span class="p">)</span>
 
@@ -675,7 +686,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">create_classic_option</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">create_auth</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/voting/add/&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/voting/add/&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;Classic Voting&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
@@ -689,7 +700,7 @@ document.write(`
             <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_auths&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/voting/&quot;</span><span class="p">)</span></div>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/voting/&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="VotingTests.test_create_ranked_voting"><a class="viewcode-back" href="../../modules/voting.html#voting.test_selenium.VotingTests.test_create_ranked_voting">[docs]</a>    <span class="k">def</span> <span class="nf">test_create_ranked_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -708,7 +719,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">create_ranked_option</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">create_auth</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/voting/add/&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/voting/add/&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;Ranked Voting&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
@@ -722,7 +733,7 @@ document.write(`
             <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_auths&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s2">&quot;_save&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="o">+</span><span class="s2">&quot;/admin/voting/voting/&quot;</span><span class="p">)</span></div></div>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="s2">&quot;/admin/voting/voting/&quot;</span><span class="p">)</span></div></div>
 </pre></div>
 
                 </article>

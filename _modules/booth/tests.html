@@ -317,6 +317,7 @@ document.write(`
 <span class="sd">    :ivar client: The Django test client used to simulate HTTP requests.</span>
 <span class="sd">    :vartype client: Client</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="BoothTestCase.setUp"><a class="viewcode-back" href="../../modules/booth.html#booth.tests.BoothTestCase.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set up the test environment before each test method is run.</span>
@@ -326,6 +327,7 @@ document.write(`
 <span class="sd">        :return: None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="BoothTestCase.tearDown"><a class="viewcode-back" href="../../modules/booth.html#booth.tests.BoothTestCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Clean up the test environment after each test method is run.</span>
@@ -336,6 +338,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="BoothTestCase.testBoothNotFound"><a class="viewcode-back" href="../../modules/booth.html#booth.tests.BoothTestCase.testBoothNotFound">[docs]</a>    <span class="k">def</span> <span class="nf">testBoothNotFound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the behavior when trying to access a non-existing booth.</span>
@@ -347,7 +350,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/booth/10000/&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span></div>
-    
+
 <div class="viewcode-block" id="BoothTestCase.testBoothRedirection"><a class="viewcode-back" href="../../modules/booth.html#booth.tests.BoothTestCase.testBoothRedirection">[docs]</a>    <span class="k">def</span> <span class="nf">testBoothRedirection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the behavior when accessing a booth without a trailing slash.</span>
@@ -356,11 +359,9 @@ document.write(`
 <span class="sd">        with a voting ID without a trailing slash.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>   
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/booth/10000&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">301</span><span class="p">)</span></div></div>
-
-       
 </pre></div>
 
                 </article>

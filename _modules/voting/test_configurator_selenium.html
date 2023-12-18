@@ -321,6 +321,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
 <span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
 
+
 <div class="viewcode-block" id="ConfiguratorTests"><a class="viewcode-back" href="../../modules/voting.html#voting.test_configurator_selenium.ConfiguratorTests">[docs]</a><span class="nd">@nottest</span>
 <span class="k">class</span> <span class="nc">ConfiguratorTests</span><span class="p">(</span><span class="n">StaticLiveServerTestCase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -334,7 +335,7 @@ document.write(`
 <span class="sd">        Sets up necessary data and configurations before each test method.</span>
 <span class="sd">        Initializes Selenium WebDriver for browser-based testing.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># Load base test functionality for decide</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="n">BaseTestCase</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">APIClient</span><span class="p">()</span>
@@ -352,7 +353,7 @@ document.write(`
 <span class="sd">        Cleans up after each test method.</span>
 <span class="sd">        Quits the Selenium WebDriver.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 
@@ -362,7 +363,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a Yes/No type voting instance for testing.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Yes/No test question&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test Yes/No voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
@@ -373,14 +374,14 @@ document.write(`
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">yesno_voting</span> <span class="o">=</span> <span class="n">v</span>
         <span class="k">return</span> <span class="n">v</span></div>
-    
+
 <div class="viewcode-block" id="ConfiguratorTests.create_users"><a class="viewcode-back" href="../../modules/voting.html#voting.test_configurator_selenium.ConfiguratorTests.create_users">[docs]</a>    <span class="k">def</span> <span class="nf">create_users</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates user instances for testing, including admin and non-admin users.</span>
 <span class="sd">        :return: Returns the non-admin user.</span>
 <span class="sd">        :rtype: User</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">user_admin</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="n">is_staff</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">is_superuser</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">user_admin</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s1">&#39;qwerty&#39;</span><span class="p">)</span>
         <span class="n">user_admin</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -389,7 +390,7 @@ document.write(`
         <span class="n">user_noadmin</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">user_noadmin</span></div>
 
-<div class="viewcode-block" id="ConfiguratorTests.add_user_to_census"><a class="viewcode-back" href="../../modules/voting.html#voting.test_configurator_selenium.ConfiguratorTests.add_user_to_census">[docs]</a>    <span class="k">def</span> <span class="nf">add_user_to_census</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pk</span><span class="p">):</span>
+<div class="viewcode-block" id="ConfiguratorTests.add_user_to_census"><a class="viewcode-back" href="../../modules/voting.html#voting.test_configurator_selenium.ConfiguratorTests.add_user_to_census">[docs]</a>    <span class="k">def</span> <span class="nf">add_user_to_census</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds a user to the census for a particular voting.</span>
 
@@ -398,26 +399,27 @@ document.write(`
 <span class="sd">        :return: The created Census instance.</span>
 <span class="sd">        :rtype: Census</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_users</span><span class="p">()</span>
         <span class="n">c</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">voter_id</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voting_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">yesno_voting</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
         <span class="n">c</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">c</span></div>
-    
+
 <div class="viewcode-block" id="ConfiguratorTests.test_access_to_voting_lists_view_as_admin"><a class="viewcode-back" href="../../modules/voting.html#voting.test_configurator_selenium.ConfiguratorTests.test_access_to_voting_lists_view_as_admin">[docs]</a>    <span class="k">def</span> <span class="nf">test_access_to_voting_lists_view_as_admin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests admin access to the list of votings through the web interface.</span>
 <span class="sd">        Verifies if the admin user can view the list of votings.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">create_yesno_voting</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_user_to_census</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        <span class="n">signin_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;login&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_dom_attribute</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
+        <span class="n">signin_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;login&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_dom_attribute</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}{</span><span class="n">signin_url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="n">username</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">))</span>
+        <span class="p">)</span>
         <span class="n">username</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
@@ -425,10 +427,13 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;btn-primary&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span>
                         <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;listvoting&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
-        <span class="n">list_voting_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;listvoting&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_dom_attribute</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;listvoting&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
+        <span class="n">list_voting_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;listvoting&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_dom_attribute</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}{</span><span class="n">list_voting_url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
-   
+
 <div class="viewcode-block" id="ConfiguratorTests.test_access_to_voting_lists_view_as_user"><a class="viewcode-back" href="../../modules/voting.html#voting.test_configurator_selenium.ConfiguratorTests.test_access_to_voting_lists_view_as_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_access_to_voting_lists_view_as_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests non-admin user access to the list of votings through the web interface.</span>
@@ -441,11 +446,12 @@ document.write(`
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        <span class="n">signin_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;login&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_dom_attribute</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
+        <span class="n">signin_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;login&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_dom_attribute</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}{</span><span class="n">signin_url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="n">username</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">))</span>
+        <span class="p">)</span>
         <span class="n">username</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;noadmin&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_password1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
@@ -453,32 +459,47 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;btn-primary&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span> <span class="o">==</span>
                         <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;listvoting&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
-        <span class="n">list_voting_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;listvoting&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_dom_attribute</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;listvoting&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
+        <span class="n">list_voting_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;listvoting&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_dom_attribute</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}{</span><span class="n">list_voting_url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//a[contains(.,&#39;Vote&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span></div>
-   
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span>
+                <span class="s2">&quot;//a[contains(.,&#39;Vote&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span></div>
+
 <div class="viewcode-block" id="ConfiguratorTests.test_start_voting_from_votings_list"><a class="viewcode-back" href="../../modules/voting.html#voting.test_configurator_selenium.ConfiguratorTests.test_start_voting_from_votings_list">[docs]</a>    <span class="k">def</span> <span class="nf">test_start_voting_from_votings_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the functionality to start a voting from the list of votings as an admin.</span>
 <span class="sd">        Verifies if the voting can be started successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">test_access_to_voting_lists_view_as_admin</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;Start&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;End&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span></div>
-    
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;Start&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span>
+                <span class="s2">&quot;//button[contains(.,&#39;End&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span></div>
+
 <div class="viewcode-block" id="ConfiguratorTests.test_stop_voting_from_votings_list"><a class="viewcode-back" href="../../modules/voting.html#voting.test_configurator_selenium.ConfiguratorTests.test_stop_voting_from_votings_list">[docs]</a>    <span class="k">def</span> <span class="nf">test_stop_voting_from_votings_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the functionality to stop a voting from the list of votings as an admin.</span>
 <span class="sd">        Verifies if the voting can be stopped successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">test_access_to_voting_lists_view_as_admin</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;Start&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;End&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;Tally&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span></div>
-    
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;Start&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;End&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span>
+                <span class="s2">&quot;//button[contains(.,&#39;Tally&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span></div>
+
 <div class="viewcode-block" id="ConfiguratorTests.test_update_voting_from_votings_list"><a class="viewcode-back" href="../../modules/voting.html#voting.test_configurator_selenium.ConfiguratorTests.test_update_voting_from_votings_list">[docs]</a>    <span class="k">def</span> <span class="nf">test_update_voting_from_votings_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the functionality to update a voting from the list of votings as an admin.</span>
@@ -486,15 +507,21 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">test_access_to_voting_lists_view_as_admin</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;Update&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;Update&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Yes/No voting UPDATED&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span><span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span><span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Description UPDATED&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Yes/No voting UPDATED&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_desc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Description UPDATED&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_question&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_question&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Yes/No test question&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;Update&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="n">updated_element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//h1[contains(.,&#39;UPDATED&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;id_question&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Yes/No test question&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;Update&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="n">updated_element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//h1[contains(.,&#39;UPDATED&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">updated_element</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="s2">&quot;Yes/No voting UPDATED&quot;</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="ConfiguratorTests.test_results_from_voting_list"><a class="viewcode-back" href="../../modules/voting.html#voting.test_configurator_selenium.ConfiguratorTests.test_results_from_voting_list">[docs]</a>    <span class="k">def</span> <span class="nf">test_results_from_voting_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -502,14 +529,23 @@ document.write(`
 <span class="sd">        Tests viewing the results of a voting from the list of votings as an admin.</span>
 <span class="sd">        Verifies if the voting results can be accessed and displayed correctly.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">test_access_to_voting_lists_view_as_admin</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;Start&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;End&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//a[contains(.,&#39;Results&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//a[contains(.,&#39;Results&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;Start&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(.,&#39;End&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span>
+                <span class="s2">&quot;//a[contains(.,&#39;Results&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//a[contains(.,&#39;Results&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_url</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="s2">&quot;/visualizer/&quot;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//h3[contains(.,&#39;Yes/No voting Results:&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span>
+                <span class="s2">&quot;//h3[contains(.,&#39;Yes/No voting Results:&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span></div></div>
 </pre></div>
 
                 </article>

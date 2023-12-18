@@ -321,6 +321,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
 <span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
 
+
 <div class="viewcode-block" id="MultipleChoiceQuestionBoothTest"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.MultipleChoiceQuestionBoothTest">[docs]</a><span class="nd">@nottest</span>
 <span class="k">class</span> <span class="nc">MultipleChoiceQuestionBoothTest</span><span class="p">(</span><span class="n">StaticLiveServerTestCase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -336,6 +337,7 @@ document.write(`
 <span class="sd">    :ivar driver: The Selenium WebDriver instance for browser automation.</span>
 <span class="sd">    :vartype driver: webdriver.Chrome</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="MultipleChoiceQuestionBoothTest.create_voting"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.MultipleChoiceQuestionBoothTest.create_voting">[docs]</a>    <span class="k">def</span> <span class="nf">create_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a test voting with a multiple-choice question and options.</span>
@@ -346,18 +348,19 @@ document.write(`
         <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;test question&#39;</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s1">&#39;option </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">v</span></div>
-    
+
 <div class="viewcode-block" id="MultipleChoiceQuestionBoothTest.get_or_create_user"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.MultipleChoiceQuestionBoothTest.get_or_create_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get or create a test user.</span>
@@ -372,7 +375,7 @@ document.write(`
         <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s1">&#39;qwerty&#39;</span><span class="p">)</span>
         <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">user</span></div>
-      
+
 <div class="viewcode-block" id="MultipleChoiceQuestionBoothTest.setUp"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.MultipleChoiceQuestionBoothTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set up the test environment before each test method is run.</span>
@@ -383,7 +386,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="n">BaseTestCase</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_voting</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -403,21 +406,21 @@ document.write(`
         <span class="n">options</span><span class="o">.</span><span class="n">headless</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>             </div>
-            
-<div class="viewcode-block" id="MultipleChoiceQuestionBoothTest.tearDown"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.MultipleChoiceQuestionBoothTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="MultipleChoiceQuestionBoothTest.tearDown"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.MultipleChoiceQuestionBoothTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Clean up the test environment after each test method is run.</span>
 
 <span class="sd">        This method is called after each test method in the test case.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>          
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
-    
+
 <div class="viewcode-block" id="MultipleChoiceQuestionBoothTest.test_testquestionmultipleoptions"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.MultipleChoiceQuestionBoothTest.test_testquestionmultipleoptions">[docs]</a>    <span class="k">def</span> <span class="nf">test_testquestionmultipleoptions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the behavior of selecting multiple options in a multiple-choice question booth.</span>
@@ -431,41 +434,49 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">910</span><span class="p">,</span> <span class="mi">1016</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;menu-toggle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        
+
         <span class="n">goto_logging</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;goto-logging-button&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;goto-logging-button&quot;</span><span class="p">))</span>
+        <span class="p">)</span>
         <span class="n">goto_logging</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
         <span class="n">username</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">))</span>
+        <span class="p">)</span>
         <span class="n">username</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;user1&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;qwerty&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;process-login-button&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
-        <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;form:nth-child(1) &gt; .form-check&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;form:nth-child(1) &gt; .form-check&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;form:nth-child(2) &gt; .form-check&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;form:nth-child(2) &gt; .form-check&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;form:nth-child(2) &gt; .form-check&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;form:nth-child(3) &gt; .form-check&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        
-        <span class="n">checkboxes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s1">&#39;.form-check input[type=&quot;checkbox&quot;]&#39;</span><span class="p">)</span>
+        <span class="n">WebDriverWait</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;form:nth-child(1) &gt; .form-check&quot;</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span>
+                                 <span class="s2">&quot;form:nth-child(1) &gt; .form-check&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="n">WebDriverWait</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;form:nth-child(2) &gt; .form-check&quot;</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span>
+                                 <span class="s2">&quot;form:nth-child(2) &gt; .form-check&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="n">WebDriverWait</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;form:nth-child(2) &gt; .form-check&quot;</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span>
+                                 <span class="s2">&quot;form:nth-child(3) &gt; .form-check&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
-        <span class="n">selected_checkboxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">checkbox</span> <span class="k">for</span> <span class="n">checkbox</span> <span class="ow">in</span> <span class="n">checkboxes</span> <span class="k">if</span> <span class="n">checkbox</span><span class="o">.</span><span class="n">is_selected</span><span class="p">()]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">selected_checkboxes</span><span class="p">)</span><span class="o">==</span><span class="mi">3</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s1">&#39;form&#39;</span><span class="p">))</span><span class="o">==</span><span class="mi">5</span><span class="p">)</span></div></div>
-    
+        <span class="n">checkboxes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s1">&#39;.form-check input[type=&quot;checkbox&quot;]&#39;</span><span class="p">)</span>
+
+        <span class="n">selected_checkboxes</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">checkbox</span> <span class="k">for</span> <span class="n">checkbox</span> <span class="ow">in</span> <span class="n">checkboxes</span> <span class="k">if</span> <span class="n">checkbox</span><span class="o">.</span><span class="n">is_selected</span><span class="p">()]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">selected_checkboxes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s1">&#39;form&#39;</span><span class="p">))</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="CommentBoothTestCase"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.CommentBoothTestCase">[docs]</a><span class="nd">@nottest</span>
@@ -483,6 +494,7 @@ document.write(`
 <span class="sd">    :ivar driver: The Selenium WebDriver instance for browser automation.</span>
 <span class="sd">    :vartype driver: webdriver.Chrome</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="CommentBoothTestCase.create_voting"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.CommentBoothTestCase.create_voting">[docs]</a>    <span class="k">def</span> <span class="nf">create_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a test voting with a text-type question.</span>
@@ -495,13 +507,14 @@ document.write(`
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">v</span></div>
 
-<div class="viewcode-block" id="CommentBoothTestCase.get_or_create_user"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.CommentBoothTestCase.get_or_create_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pk</span><span class="p">):</span>
+<div class="viewcode-block" id="CommentBoothTestCase.get_or_create_user"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.CommentBoothTestCase.get_or_create_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get or create a test user.</span>
 
@@ -532,7 +545,7 @@ document.write(`
         <span class="n">v</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">v</span>
 
-        <span class="c1">#Añadimos al usuario noadmin al censo y empezamos la votacion</span>
+        <span class="c1"># Añadimos al usuario noadmin al censo y empezamos la votacion</span>
         <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_create_user</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">user</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -543,21 +556,21 @@ document.write(`
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="c1">#Opciones de Chrome</span>
+        <span class="c1"># Opciones de Chrome</span>
         <span class="n">options</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">ChromeOptions</span><span class="p">()</span>
         <span class="n">options</span><span class="o">.</span><span class="n">headless</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>            </div>
-            
-<div class="viewcode-block" id="CommentBoothTestCase.tearDown"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.CommentBoothTestCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CommentBoothTestCase.tearDown"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.CommentBoothTestCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Clean up the test environment after each test method is run.</span>
 
 <span class="sd">        This method is called after each test method in the test case.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>          
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 
@@ -576,32 +589,43 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">910</span><span class="p">,</span> <span class="mi">1016</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;menu-toggle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        
+
         <span class="n">goto_logging</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;goto-logging-button&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;goto-logging-button&quot;</span><span class="p">))</span>
+        <span class="p">)</span>
         <span class="n">goto_logging</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
         <span class="n">username</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">))</span>
+        <span class="p">)</span>
         <span class="n">username</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;user1&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;qwerty&quot;</span><span class="p">,</span> <span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span>
+            <span class="s2">&quot;qwerty&quot;</span><span class="p">,</span> <span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
 
         <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;floatingTextarea2&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;floatingTextarea2&quot;</span><span class="p">))</span>
+        <span class="p">)</span>
         <span class="n">text_area</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;floatingTextarea2&quot;</span><span class="p">)</span>
         <span class="n">text_area</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="n">text_area</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Comentario de prueba&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;send-vote&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//h1[contains(.,&#39;Voting ID:&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;floatingTextarea2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">text_area</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">),</span><span class="s2">&quot;Comentario de prueba&quot;</span><span class="p">)</span></div></div>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span>
+                <span class="s2">&quot;//h1[contains(.,&#39;Voting ID:&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span>
+                <span class="s2">&quot;floatingTextarea2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span>
+            <span class="n">text_area</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">),</span>
+            <span class="s2">&quot;Comentario de prueba&quot;</span><span class="p">)</span></div></div>
+
 
 <div class="viewcode-block" id="YesNoBoothTestCase"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.YesNoBoothTestCase">[docs]</a><span class="nd">@nottest</span>
 <span class="k">class</span> <span class="nc">YesNoBoothTestCase</span><span class="p">(</span><span class="n">StaticLiveServerTestCase</span><span class="p">):</span>
@@ -618,6 +642,7 @@ document.write(`
 <span class="sd">    :ivar driver: The Selenium WebDriver instance for browser automation.</span>
 <span class="sd">    :vartype driver: webdriver.Chrome</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="YesNoBoothTestCase.create_voting"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.YesNoBoothTestCase.create_voting">[docs]</a>    <span class="k">def</span> <span class="nf">create_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a test voting with a Yes/No type question.</span>
@@ -630,13 +655,14 @@ document.write(`
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">v</span></div>
 
-<div class="viewcode-block" id="YesNoBoothTestCase.get_or_create_user"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.YesNoBoothTestCase.get_or_create_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pk</span><span class="p">):</span>
+<div class="viewcode-block" id="YesNoBoothTestCase.get_or_create_user"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.YesNoBoothTestCase.get_or_create_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get or create a test user.</span>
 
@@ -650,7 +676,7 @@ document.write(`
         <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s1">&#39;qwerty&#39;</span><span class="p">)</span>
         <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">user</span></div>
-    
+
 <div class="viewcode-block" id="YesNoBoothTestCase.setUp"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.YesNoBoothTestCase.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set up the test environment before each test method is run.</span>
@@ -675,26 +701,26 @@ document.write(`
         <span class="n">v</span><span class="o">.</span><span class="n">create_pubkey</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-    
+
         <span class="n">options</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">ChromeOptions</span><span class="p">()</span>
         <span class="n">options</span><span class="o">.</span><span class="n">headless</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>              </div>
-            
-<div class="viewcode-block" id="YesNoBoothTestCase.tearDown"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.YesNoBoothTestCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>     
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="YesNoBoothTestCase.tearDown"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.YesNoBoothTestCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Clean up the test environment after each test method is run.</span>
 
 <span class="sd">        This method is called after each test method in the test case.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>      
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>  </div>
-    
+        <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="YesNoBoothTestCase.test_testquestionyesno"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.YesNoBoothTestCase.test_testquestionyesno">[docs]</a>    <span class="k">def</span> <span class="nf">test_testquestionyesno</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the behavior of submitting a Yes/No response in a Yes/No type question booth.</span>
@@ -708,29 +734,38 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">910</span><span class="p">,</span> <span class="mi">1016</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;menu-toggle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        
+
         <span class="n">goto_logging</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;goto-logging-button&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;goto-logging-button&quot;</span><span class="p">))</span>
+        <span class="p">)</span>
         <span class="n">goto_logging</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
         <span class="n">username</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">))</span>
+        <span class="p">)</span>
         <span class="n">username</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;user1&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;qwerty&quot;</span><span class="p">,</span> <span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
-        
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span>
+            <span class="s2">&quot;qwerty&quot;</span><span class="p">,</span> <span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
+
         <span class="n">login</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.btn-success&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.btn-success&quot;</span><span class="p">))</span>
+        <span class="p">)</span>
         <span class="n">login</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//h1[contains(.,&#39;Voting ID:&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;yesbutton&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;nobutton&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span>
+                <span class="s2">&quot;//h1[contains(.,&#39;Voting ID:&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;yesbutton&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;nobutton&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span></div></div>
 
 
 <div class="viewcode-block" id="PreferenceBoothTest"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.PreferenceBoothTest">[docs]</a><span class="nd">@nottest</span>
@@ -748,6 +783,7 @@ document.write(`
 <span class="sd">    :ivar driver: The Selenium WebDriver instance for browser automation.</span>
 <span class="sd">    :vartype driver: webdriver.Chrome</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="PreferenceBoothTest.create_voting"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.PreferenceBoothTest.create_voting">[docs]</a>    <span class="k">def</span> <span class="nf">create_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a test voting with a Preference type question.</span>
@@ -766,14 +802,14 @@ document.write(`
         <span class="n">v</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;test voting&#39;</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                          <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">v</span></div>
 
-
-<div class="viewcode-block" id="PreferenceBoothTest.get_or_create_user"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.PreferenceBoothTest.get_or_create_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pk</span><span class="p">):</span>
+<div class="viewcode-block" id="PreferenceBoothTest.get_or_create_user"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.PreferenceBoothTest.get_or_create_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get or create a test user.</span>
 
@@ -813,27 +849,26 @@ document.write(`
         <span class="n">v</span><span class="o">.</span><span class="n">create_pubkey</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-    
+
         <span class="n">options</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">ChromeOptions</span><span class="p">()</span>
         <span class="n">options</span><span class="o">.</span><span class="n">headless</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>            </div>
-           
-            
-<div class="viewcode-block" id="PreferenceBoothTest.tearDown"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.PreferenceBoothTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="PreferenceBoothTest.tearDown"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.PreferenceBoothTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Clean up the test environment after each test method is run.</span>
 
 <span class="sd">        This method is called after each test method in the test case.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span></div>
-    
+
 <div class="viewcode-block" id="PreferenceBoothTest.login_user"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.PreferenceBoothTest.login_user">[docs]</a>    <span class="k">def</span> <span class="nf">login_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Log in a user with the provided username and password.</span>
@@ -845,7 +880,7 @@ document.write(`
 <span class="sd">        :return: None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;menu-toggle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        
+
         <span class="n">goto_logging</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
             <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;goto-logging-button&quot;</span><span class="p">))</span>
         <span class="p">)</span>
@@ -855,10 +890,12 @@ document.write(`
             <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">))</span>
         <span class="p">)</span>
         <span class="n">username_field</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">password</span><span class="p">,</span> <span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span>
+            <span class="n">password</span><span class="p">,</span> <span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
         <span class="n">login</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
             <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;process-login-button&quot;</span><span class="p">))</span>
         <span class="p">)</span>
@@ -896,7 +933,10 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">select_preferences</span><span class="p">(</span><span class="n">preferences</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.btn-primary&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;//h1[contains(.,&#39;Voting ID:&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+                <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;//h1[contains(.,&#39;Voting ID:&#39;)]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
 
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
             <span class="n">EC</span><span class="o">.</span><span class="n">presence_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;rankingInput&quot;</span><span class="p">))</span>
@@ -916,7 +956,7 @@ document.write(`
         <span class="n">preferences</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
         <span class="n">expected_values</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;3&#39;</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">perform_preference</span><span class="p">(</span><span class="n">preferences</span><span class="p">,</span> <span class="n">expected_values</span><span class="p">)</span></div>
-            
+
 <div class="viewcode-block" id="PreferenceBoothTest.test_preference_booth_same_preference"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.PreferenceBoothTest.test_preference_booth_same_preference">[docs]</a>    <span class="k">def</span> <span class="nf">test_preference_booth_same_preference</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the preference voting with the same preference for multiple options.</span>
@@ -926,14 +966,14 @@ document.write(`
         <span class="n">preferences</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
         <span class="n">expected_values</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">perform_preference</span><span class="p">(</span><span class="n">preferences</span><span class="p">,</span> <span class="n">expected_values</span><span class="p">)</span></div>
-        
+
 <div class="viewcode-block" id="PreferenceBoothTest.test_preference_booth_no_fullfile_all_preferences"><a class="viewcode-back" href="../../modules/booth.html#booth.test_selenium.PreferenceBoothTest.test_preference_booth_no_fullfile_all_preferences">[docs]</a>    <span class="k">def</span> <span class="nf">test_preference_booth_no_fullfile_all_preferences</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the preference voting with some preferences not fully filled.</span>
 
 <span class="sd">        :return: None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">preferences</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
+        <span class="n">preferences</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
         <span class="n">expected_values</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">perform_preference</span><span class="p">(</span><span class="n">preferences</span><span class="p">,</span> <span class="n">expected_values</span><span class="p">)</span></div></div>
 </pre></div>

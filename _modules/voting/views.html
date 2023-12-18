@@ -322,9 +322,10 @@ document.write(`
 <span class="kn">from</span> <span class="nn">django.contrib.auth.forms</span> <span class="kn">import</span> <span class="n">UserCreationForm</span><span class="p">,</span> <span class="n">AuthenticationForm</span>
 <span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
 <span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">IntegrityError</span>
-<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span>  <span class="n">UpdateVotingForm</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">UpdateVotingForm</span>
 <span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
 <span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+
 
 <div class="viewcode-block" id="VotingView"><a class="viewcode-back" href="../../modules/voting.html#voting.views.VotingView">[docs]</a><span class="k">class</span> <span class="nc">VotingView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListCreateAPIView</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -339,7 +340,7 @@ document.write(`
 <span class="sd">        filter_backends: Backend used for filtering the queryset.</span>
 <span class="sd">        filterset_fields: Fields allowed for filtering.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">queryset</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">VotingSerializer</span>
     <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">(</span><span class="n">django_filters</span><span class="o">.</span><span class="n">rest_framework</span><span class="o">.</span><span class="n">DjangoFilterBackend</span><span class="p">,)</span>
@@ -354,7 +355,7 @@ document.write(`
 <span class="sd">        :param kwargs: Keyword arguments including &#39;voting_id&#39; if provided.</span>
 <span class="sd">        :return: Response with serialized Voting data or error message.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">idpath</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;voting_id&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">queryset</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
         <span class="n">version</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">version</span>
@@ -374,30 +375,34 @@ document.write(`
 <span class="sd">        :param kwargs: Keyword arguments.</span>
 <span class="sd">        :return: Response indicating the success or failure of the operation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">UserIsStaff</span><span class="p">,)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">check_permissions</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">,</span> <span class="s1">&#39;question&#39;</span><span class="p">,</span> <span class="s1">&#39;question_opt&#39;</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">data</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">Response</span><span class="p">({},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span>
-        
+
         <span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;question&#39;</span><span class="p">))</span>
         <span class="n">question</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">q_opt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;question_opt&#39;</span><span class="p">)):</span>
             <span class="n">opt</span> <span class="o">=</span> <span class="n">QuestionOption</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="n">q_opt</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">idx</span><span class="p">)</span>
             <span class="n">opt</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">),</span>
-                <span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">,</span> <span class="n">future_stop</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;future_stop&#39;</span><span class="p">))</span>
+        <span class="n">voting</span> <span class="o">=</span> <span class="n">Voting</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">),</span>
+            <span class="n">desc</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">),</span>
+            <span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">,</span>
+            <span class="n">future_stop</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;future_stop&#39;</span><span class="p">))</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">auth</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span>
-                                        <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
+        <span class="n">auth</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Auth</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">BASEURL</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;me&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test auth&#39;</span><span class="p">})</span>
         <span class="n">auth</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">auths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
 
         <span class="n">future_stop_task_manager</span><span class="p">(</span><span class="n">voting</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Response</span><span class="p">({},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">)</span></div></div>
-    
+
 
 <div class="viewcode-block" id="VotingUpdate"><a class="viewcode-back" href="../../modules/voting.html#voting.views.VotingUpdate">[docs]</a><span class="k">class</span> <span class="nc">VotingUpdate</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">RetrieveUpdateDestroyAPIView</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -411,7 +416,7 @@ document.write(`
 <span class="sd">        filter_backends: Backend used for filtering the queryset.</span>
 <span class="sd">        permission_classes: Permission classes required for the view.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">queryset</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">VotingSerializer</span>
     <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">(</span><span class="n">django_filters</span><span class="o">.</span><span class="n">rest_framework</span><span class="o">.</span><span class="n">DjangoFilterBackend</span><span class="p">,)</span>
@@ -427,7 +432,7 @@ document.write(`
 <span class="sd">        :param kwargs: Keyword arguments.</span>
 <span class="sd">        :return: Response indicating the success or failure of the operation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">action</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;action&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">action</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">Response</span><span class="p">({},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span>
@@ -471,8 +476,6 @@ document.write(`
             <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Action not found, try with start, stop or tally&#39;</span>
             <span class="n">st</span> <span class="o">=</span> <span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span>
         <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">st</span><span class="p">)</span></div></div>
-    
-
 
 
 <div class="viewcode-block" id="list_votings"><a class="viewcode-back" href="../../modules/voting.html#voting.views.list_votings">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s2">&quot;/authentication/login-view/&quot;</span><span class="p">)</span>
@@ -485,7 +488,7 @@ document.write(`
 <span class="sd">    :param request: The incoming HTTP request.</span>
 <span class="sd">    :return: Rendered webpage with the list of votings.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_staff</span><span class="p">:</span>
         <span class="n">votings</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
         <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
@@ -494,7 +497,7 @@ document.write(`
             <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">user</span><span class="p">,</span>
         <span class="p">})</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">census</span> <span class="o">=</span>  <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voter_id</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">census</span> <span class="o">=</span> <span class="n">Census</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">voter_id</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
         <span class="n">votings</span> <span class="o">=</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">id__in</span><span class="o">=</span><span class="n">census</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;voting_id&#39;</span><span class="p">))</span>
         <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
         <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;list_votings.html&#39;</span><span class="p">,</span> <span class="p">{</span>
@@ -502,8 +505,9 @@ document.write(`
             <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">user</span><span class="p">,</span>
         <span class="p">})</span></div>
 
+
 <div class="viewcode-block" id="voting_details"><a class="viewcode-back" href="../../modules/voting.html#voting.views.voting_details">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s2">&quot;/authentication/login-view/&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">voting_details</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="n">voting_id</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">voting_details</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">voting_id</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    View function for displaying the details of a specific voting.</span>
 
@@ -511,11 +515,12 @@ document.write(`
 <span class="sd">    :param voting_id: The ID of the voting to be detailed.</span>
 <span class="sd">    :return: Rendered webpage with the details of the specified voting.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">voting</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Voting</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;voting_details.html&#39;</span><span class="p">,{</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;voting_details.html&#39;</span><span class="p">,</span> <span class="p">{</span>
         <span class="s1">&#39;voting&#39;</span><span class="p">:</span> <span class="n">voting</span><span class="p">,</span>
     <span class="p">})</span></div>
+
 
 <div class="viewcode-block" id="voting_delete"><a class="viewcode-back" href="../../modules/voting.html#voting.views.voting_delete">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s2">&quot;/authentication/login-view/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">voting_delete</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">voting_id</span><span class="p">):</span>
@@ -526,18 +531,22 @@ document.write(`
 <span class="sd">    :param voting_id: The ID of the voting to be deleted.</span>
 <span class="sd">    :return: Redirects to the voting list page after deletion, or renders the current page if the deletion isn&#39;t confirmed.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">voting</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Voting</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
-        
-        <span class="k">if</span> <span class="s1">&#39;delete_button&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
-            
-            <span class="n">voting</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
-            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;La votación ha sido eliminada con éxito.&#39;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;list_votings&#39;</span><span class="p">)</span>  
 
-    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;list_votings.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;votings&#39;</span><span class="p">:</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">})</span></div>
+        <span class="k">if</span> <span class="s1">&#39;delete_button&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+
+            <span class="n">voting</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span>
+                <span class="n">request</span><span class="p">,</span> <span class="s1">&#39;La votación ha sido eliminada con éxito.&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;list_votings&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span>
+        <span class="n">request</span><span class="p">,</span> <span class="s1">&#39;list_votings.html&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;votings&#39;</span><span class="p">:</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">})</span></div>
+
 
 <div class="viewcode-block" id="start_voting"><a class="viewcode-back" href="../../modules/voting.html#voting.views.start_voting">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s2">&quot;/authentication/login-view/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">start_voting</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">voting_id</span><span class="p">):</span>
@@ -550,7 +559,7 @@ document.write(`
 <span class="sd">    :param voting_id: The ID of the voting to be started.</span>
 <span class="sd">    :return: Redirects to the voting list page after starting the voting, or renders the current page if not confirmed.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">voting</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Voting</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
         <span class="k">if</span> <span class="s1">&#39;start_voting_button&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
@@ -558,8 +567,10 @@ document.write(`
             <span class="n">voting</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
             <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
             <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Voting started successfully.&#39;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;list_votings&#39;</span><span class="p">)</span>  
-    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;list_votings.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;votings&#39;</span><span class="p">:</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">})</span></div>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;list_votings&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span>
+        <span class="n">request</span><span class="p">,</span> <span class="s1">&#39;list_votings.html&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;votings&#39;</span><span class="p">:</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">})</span></div>
 
 
 <div class="viewcode-block" id="end_voting"><a class="viewcode-back" href="../../modules/voting.html#voting.views.end_voting">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s2">&quot;/authentication/login-view/&quot;</span><span class="p">)</span>
@@ -573,15 +584,18 @@ document.write(`
 <span class="sd">    :param voting_id: The ID of the voting to be ended.</span>
 <span class="sd">    :return: Redirects to the voting list page after ending the voting, or renders the current page if not confirmed.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">voting</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Voting</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
         <span class="k">if</span> <span class="s1">&#39;end_voting_button&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
             <span class="n">voting</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
             <span class="n">voting</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
             <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Voting started successfully.&#39;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;list_votings&#39;</span><span class="p">)</span>  
-    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;list_votings.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;votings&#39;</span><span class="p">:</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">})</span></div>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;list_votings&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span>
+        <span class="n">request</span><span class="p">,</span> <span class="s1">&#39;list_votings.html&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;votings&#39;</span><span class="p">:</span> <span class="n">Voting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">})</span></div>
+
 
 <div class="viewcode-block" id="update_voting"><a class="viewcode-back" href="../../modules/voting.html#voting.views.update_voting">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s2">&quot;/authentication/login-view/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">update_voting</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">voting_id</span><span class="p">):</span>
@@ -594,7 +608,7 @@ document.write(`
 <span class="sd">    :param voting_id: The ID of the voting to be updated.</span>
 <span class="sd">    :return: Redirects to the voting list page after updating, or renders the update form if not confirmed.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">voting</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Voting</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
@@ -602,11 +616,13 @@ document.write(`
         <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
             <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
             <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Voting updated successfully.&#39;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;list_votings&#39;</span><span class="p">)</span>  
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;list_votings&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">form</span> <span class="o">=</span> <span class="n">UpdateVotingForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">voting</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;update_voting.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span> <span class="s1">&#39;voting&#39;</span><span class="p">:</span> <span class="n">voting</span><span class="p">})</span></div>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;update_voting.html&#39;</span><span class="p">,</span> <span class="p">{</span>
+                  <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span> <span class="s1">&#39;voting&#39;</span><span class="p">:</span> <span class="n">voting</span><span class="p">})</span></div>
+
 
 <div class="viewcode-block" id="tally_view"><a class="viewcode-back" href="../../modules/voting.html#voting.views.tally_view">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s2">&quot;/authentication/login-view/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">tally_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">voting_id</span><span class="p">):</span>
@@ -619,13 +635,13 @@ document.write(`
 <span class="sd">    :param voting_id: The ID of the voting to tally.</span>
 <span class="sd">    :return: Redirects to the voting list page after tallying, or renders the current page if not confirmed.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">voting</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Voting</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">voting_id</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
         <span class="n">token</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;auth-token&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
         <span class="n">voting</span><span class="o">.</span><span class="n">tally_votes</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
         <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Tally completed successfully.&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;list_votings&#39;</span><span class="p">)</span>  
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;list_votings&#39;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;tally_view.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;voting&#39;</span><span class="p">:</span> <span class="n">voting</span><span class="p">})</span></div>
 </pre></div>

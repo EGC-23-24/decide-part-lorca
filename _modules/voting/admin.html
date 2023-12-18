@@ -327,7 +327,7 @@ document.write(`
 <span class="sd">    :param queryset: The queryset of selected items.</span>
 <span class="sd">    :type queryset: QuerySet</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">queryset</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
         <span class="n">v</span><span class="o">.</span><span class="n">create_pubkey</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -347,7 +347,7 @@ document.write(`
 <span class="sd">    :param queryset: The queryset of selected items.</span>
 <span class="sd">    :type queryset: QuerySet</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">queryset</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
         <span class="n">v</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="n">v</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
@@ -366,10 +366,11 @@ document.write(`
 <span class="sd">    :param queryset: The queryset of selected items.</span>
 <span class="sd">    :type queryset: QuerySet</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">end_date__lt</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()):</span>
         <span class="n">token</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;auth-token&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
         <span class="n">v</span><span class="o">.</span><span class="n">tally_votes</span><span class="p">(</span><span class="n">token</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="QuestionAdmin"><a class="viewcode-back" href="../../modules/voting.html#voting.admin.QuestionAdmin">[docs]</a><span class="k">class</span> <span class="nc">QuestionAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -378,8 +379,9 @@ document.write(`
 <span class="sd">    Attributes:</span>
 <span class="sd">        list_display: Fields to be displayed in the list view.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="QuestionOptionRankedAdmin"><a class="viewcode-back" href="../../modules/voting.html#voting.admin.QuestionOptionRankedAdmin">[docs]</a><span class="k">class</span> <span class="nc">QuestionOptionRankedAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -388,8 +390,9 @@ document.write(`
 <span class="sd">    Attributes:</span>
 <span class="sd">        list_display: Fields to be displayed in the list view.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;question&#39;</span><span class="p">,</span> <span class="s1">&#39;number&#39;</span><span class="p">,</span> <span class="s1">&#39;option&#39;</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="QuestionOptionYesNoAdmin"><a class="viewcode-back" href="../../modules/voting.html#voting.admin.QuestionOptionYesNoAdmin">[docs]</a><span class="k">class</span> <span class="nc">QuestionOptionYesNoAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -398,7 +401,7 @@ document.write(`
 <span class="sd">    Attributes:</span>
 <span class="sd">        list_display: Fields to be displayed in the list view.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;question&#39;</span><span class="p">,</span> <span class="s1">&#39;number&#39;</span><span class="p">,</span> <span class="s1">&#39;option&#39;</span><span class="p">)</span></div>
 
 
@@ -414,7 +417,7 @@ document.write(`
 <span class="sd">        search_fields: Fields to search in the list view.</span>
 <span class="sd">        actions: Custom actions available for this model.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;start_date&#39;</span><span class="p">,</span> <span class="s1">&#39;end_date&#39;</span><span class="p">,</span> <span class="s1">&#39;future_stop&#39;</span><span class="p">)</span>
     <span class="n">readonly_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;start_date&#39;</span><span class="p">,</span> <span class="s1">&#39;end_date&#39;</span><span class="p">,</span> <span class="s1">&#39;pub_key&#39;</span><span class="p">,</span>
                        <span class="s1">&#39;tally&#39;</span><span class="p">,</span> <span class="s1">&#39;postproc&#39;</span><span class="p">)</span>
@@ -422,8 +425,7 @@ document.write(`
     <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="n">StartedFilter</span><span class="p">,)</span>
     <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="p">)</span>
 
-    <span class="n">actions</span> <span class="o">=</span> <span class="p">[</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">tally</span> <span class="p">]</span></div>
-
+    <span class="n">actions</span> <span class="o">=</span> <span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">tally</span><span class="p">]</span></div>
 
 
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Voting</span><span class="p">,</span> <span class="n">VotingAdmin</span><span class="p">)</span>
@@ -431,7 +433,6 @@ document.write(`
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">QuestionOption</span><span class="p">)</span>
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">QuestionOptionRanked</span><span class="p">,</span> <span class="n">QuestionOptionRankedAdmin</span><span class="p">)</span>
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">QuestionOptionYesNo</span><span class="p">,</span> <span class="n">QuestionOptionYesNoAdmin</span><span class="p">)</span>
-
 </pre></div>
 
                 </article>

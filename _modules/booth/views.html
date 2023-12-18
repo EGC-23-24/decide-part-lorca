@@ -347,7 +347,7 @@ document.write(`
                 <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;pub_key&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
             <span class="n">context</span><span class="p">[</span><span class="s1">&#39;voting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="k">except</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">Http404</span>
 
         <span class="n">context</span><span class="p">[</span><span class="s1">&#39;KEYBITS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">KEYBITS</span>

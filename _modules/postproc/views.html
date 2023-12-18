@@ -323,6 +323,7 @@ document.write(`
 <span class="sd">    :method weight: Post-process voting results considering weights.</span>
 <span class="sd">    :method post: Handle POST requests for post-processing voting results.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="PostProcView.identity"><a class="viewcode-back" href="../../modules/postproc.html#postproc.views.PostProcView.identity">[docs]</a>    <span class="k">def</span> <span class="nf">identity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Post-process voting results with identity transformation.</span>
@@ -338,11 +339,11 @@ document.write(`
             <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
                 <span class="o">**</span><span class="n">opt</span><span class="p">,</span>
                 <span class="s1">&#39;postproc&#39;</span><span class="p">:</span> <span class="n">opt</span><span class="p">[</span><span class="s1">&#39;votes&#39;</span><span class="p">],</span>
-            <span class="p">});</span>
+            <span class="p">})</span>
 
         <span class="n">out</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;postproc&#39;</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">out</span><span class="p">)</span></div>
-    
+
 <div class="viewcode-block" id="PostProcView.text"><a class="viewcode-back" href="../../modules/postproc.html#postproc.views.PostProcView.text">[docs]</a>    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text_votes</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Post-process text-based voting results.</span>
@@ -358,10 +359,10 @@ document.write(`
             <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
                 <span class="o">**</span><span class="n">vote</span><span class="p">,</span>
                 <span class="s1">&#39;postproc&#39;</span><span class="p">:</span> <span class="n">vote</span><span class="p">[</span><span class="s1">&#39;vote&#39;</span><span class="p">],</span>
-            <span class="p">});</span>
+            <span class="p">})</span>
 
         <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">out</span><span class="p">)</span></div>
-    
+
 <div class="viewcode-block" id="PostProcView.weight"><a class="viewcode-back" href="../../modules/postproc.html#postproc.views.PostProcView.weight">[docs]</a>    <span class="k">def</span> <span class="nf">weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Post-process voting results considering weights.</span>
@@ -377,11 +378,11 @@ document.write(`
             <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
                 <span class="o">**</span><span class="n">opt</span><span class="p">,</span>
                 <span class="s1">&#39;postproc&#39;</span><span class="p">:</span> <span class="n">opt</span><span class="p">[</span><span class="s1">&#39;votes_wights&#39;</span><span class="p">],</span>
-            <span class="p">});</span>
+            <span class="p">})</span>
 
         <span class="n">out</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;postproc&#39;</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">out</span><span class="p">)</span></div>
-    
+
 <div class="viewcode-block" id="PostProcView.post"><a class="viewcode-back" href="../../modules/postproc.html#postproc.views.PostProcView.post">[docs]</a>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Handle POST requests for post-processing voting results.</span>
@@ -403,13 +404,12 @@ document.write(`
 
         <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">&#39;IDENTITY&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>
-        
+
         <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">&#39;TEXT&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">text_votes</span><span class="p">)</span>
-        
+
         <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">&#39;WEIGHT&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>
-        
 
         <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span></div></div>
 </pre></div>
