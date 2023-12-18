@@ -1,4 +1,4 @@
-# decide-part-lorca
+# Diario de equipo
 
 * Curso: 2023/2024
 * Asignatura: Evolución y Gestión de la Configuración

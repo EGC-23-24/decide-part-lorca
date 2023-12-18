@@ -44,8 +44,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'doc/issues';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Manual de git" href="Manual-de-Git.html" />
-    <link rel="prev" title="Informe de pruebas" href="Informe-de-pruebas.html" />
+    <link rel="next" title="Proceso de Gestión de Incidencias" href="proceso-de-gestion-de-incidencias.html" />
+    <link rel="prev" title="Diario de equipo" href="diario-de-equipo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -155,15 +155,16 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Decide doc files</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="diario-de-equipo.html">decide-part-lorca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Gestion-de-repositorio.html">Gestión de repositorio y código</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Informe-de-pruebas.html">Informe de pruebas</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Issues</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="Manual-de-Git.html">Manual de git</a></li>
-<li class="toctree-l2"><a class="reference internal" href="proceso-de-gestion-de-incidencias.html">Proceso de Gestión de Incidencias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Manual-de-Git.html">Manual de Git</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SPEC.html">SPEC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diario-de-equipo.html">Diario de equipo</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proceso-de-gestion-de-incidencias.html">Proceso de Gestión de Incidencias</a></li>
 <li class="toctree-l2"><a class="reference internal" href="subsistemas.html">Subsistemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiki-cover.html">decide-part-lorca-1</a></li>
+
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../memes.html">Memes collection</a></li>
@@ -379,7 +380,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Issues</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autenticacion">Autenticación</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#censo">Censo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#votaciones">Votaciones</a></li>
@@ -389,18 +389,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-procesado">Post-procesado</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-resultados">Visualización de resultados</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interfaz-de-administracion">Interfaz de administración</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-agrupaciones">Otras agrupaciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion">Integración</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seguridad">Seguridad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentacion">Documentación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traducciones">Traducciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diseno-y-usabilidad">Diseño y usabilidad</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-agrupaciones">Otras agrupaciones</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion">Integración</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seguridad">Seguridad</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentacion">Documentación</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traducciones">Traducciones</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diseno-y-usabilidad">Diseño y usabilidad</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -517,11 +514,10 @@ document.write(`
 </pre></div>
 </div>
 </section>
-</section>
 <section id="otras-agrupaciones">
-<h1>Otras agrupaciones<a class="headerlink" href="#otras-agrupaciones" title="Permalink to this heading">#</a></h1>
+<h2>Otras agrupaciones<a class="headerlink" href="#otras-agrupaciones" title="Permalink to this heading">#</a></h2>
 <section id="integracion">
-<h2>Integración<a class="headerlink" href="#integracion" title="Permalink to this heading">#</a></h2>
+<h3>Integración<a class="headerlink" href="#integracion" title="Permalink to this heading">#</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Versionar la API (F)
 * Autenticación entre servidores con token (M)
 * Implementar tests completos, mejorar la cobertura de código (M)
@@ -532,7 +528,7 @@ document.write(`
 </div>
 </section>
 <section id="seguridad">
-<h2>Seguridad<a class="headerlink" href="#seguridad" title="Permalink to this heading">#</a></h2>
+<h3>Seguridad<a class="headerlink" href="#seguridad" title="Permalink to this heading">#</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Firmado y comprobación de código (tanto cliente como servidor) (A)
 * Protección contra ataques ddos (A)
 * Hacer todo el proceso distribuido para eliminar el punto único de
@@ -542,14 +538,14 @@ document.write(`
 </div>
 </section>
 <section id="documentacion">
-<h2>Documentación<a class="headerlink" href="#documentacion" title="Permalink to this heading">#</a></h2>
+<h3>Documentación<a class="headerlink" href="#documentacion" title="Permalink to this heading">#</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Completar documentación de API (F)
 * Completar documentación de todas las clases y funciones (F)
 </pre></div>
 </div>
 </section>
 <section id="traducciones">
-<h2>Traducciones<a class="headerlink" href="#traducciones" title="Permalink to this heading">#</a></h2>
+<h3>Traducciones<a class="headerlink" href="#traducciones" title="Permalink to this heading">#</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Hacer la interfaz traducible (M)
 * Traducir la interfaz al español (F)
 * Traducir la interfaz a otros idiomas (F)
@@ -557,13 +553,14 @@ document.write(`
 </div>
 </section>
 <section id="diseno-y-usabilidad">
-<h2>Diseño y usabilidad<a class="headerlink" href="#diseno-y-usabilidad" title="Permalink to this heading">#</a></h2>
+<h3>Diseño y usabilidad<a class="headerlink" href="#diseno-y-usabilidad" title="Permalink to this heading">#</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Estudiar la usabilidad y definir una nueva interfaz usable, con
   componentes css. (M)
 * Hacer la interfaz responsive, para que funcione en móviles. (M)
 * Estudiar la accesibilidad de la interfaz y hacerla accesible (M)
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 
@@ -579,20 +576,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Informe-de-pruebas.html"
+       href="diario-de-equipo.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Informe de pruebas</p>
+        <p class="prev-next-title">Diario de equipo</p>
       </div>
     </a>
     <a class="right-next"
-       href="Manual-de-Git.html"
+       href="proceso-de-gestion-de-incidencias.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Manual de git</p>
+        <p class="prev-next-title">Proceso de Gestión de Incidencias</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -611,7 +608,6 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Issues</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autenticacion">Autenticación</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#censo">Censo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#votaciones">Votaciones</a></li>
@@ -621,18 +617,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-procesado">Post-procesado</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-resultados">Visualización de resultados</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interfaz-de-administracion">Interfaz de administración</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-agrupaciones">Otras agrupaciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion">Integración</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seguridad">Seguridad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentacion">Documentación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traducciones">Traducciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diseno-y-usabilidad">Diseño y usabilidad</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-agrupaciones">Otras agrupaciones</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion">Integración</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seguridad">Seguridad</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentacion">Documentación</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traducciones">Traducciones</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diseno-y-usabilidad">Diseño y usabilidad</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

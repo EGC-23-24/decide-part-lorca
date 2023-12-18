@@ -1,8 +1,9 @@
-# Manual de git 
+# Manual de Git
 
-###### Por Álvaro Bernal Caunedo y Joaquín Martín Acuña 
+Por Álvaro Bernal Caunedo y Joaquín Martín Acuña
 
 ### Copiar commits de otras ramas
+
 #### 1.1. Prerequisitos
 
 **Si tienes cambios sin confirmar en local:**
