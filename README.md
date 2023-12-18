@@ -19,6 +19,23 @@ Esta versión de Decide implementa 5 tipos de votaciones posibles:
 * Votación por orden de preferencia
 * Votación de respuesta abierta
 
+Documentación del proyecto
+---------------------------------
+Para la realización del proyecto se ha realizado una documentación que se puede encontrar en la **wiki del repositorio**. En ella se puede encontrar los siguientes documentos:
+- Documentación de los subsistemas.
+- Documentación de los tests.
+- Documentación de la gestión del repositorio.
+- Documentación del proceso de gestión de incidencias.
+- Diario de equipo.
+- Documentación de despliegue e integración continua.
+- Portada del proyecto.
+- Documento del proyecto.
+- Manual de git para los desarrolladores del proyecto.
+- Posibles tareas a implementar.
+
+
+#### Github Pages
+De forma adicional, se ha creado un workflow de integración continuna para generar una página web con la documentación del código del proyecto, ubicado en el siguiente enlace: https://egc-23-24.github.io/decide-part-lorca/ 
 
 Subsistemas, apps y proyecto base
 ---------------------------------
@@ -180,7 +197,15 @@ En esta vista podremos crear un nuevo censo indicando el id de la votación y el
 
 ![Imagen 04: Login form](./resources/lorca/census_create.png)
 
-También podremos eliminar a una persona del censo, ver los detalles del censo de una votación, importar un censo a partir un archivo excel así como exportar un censo ya existente. También, podremos listar todos los censos que tenemos creados.
+En esta vista se puede importar personas al censo desde un archivo xls:
+
+![Imagen 04: Login form](./resources/lorca/import_census.png)
+
+En esta vista se puede exportar las personas que pertenecen al censo de una votación:
+
+![Imagen 04: Login form](./resources/lorca/export_census.png)
+
+También podremos eliminar a una persona del censo, ver los detalles del censo de una votación. También, podremos listar todos los censos que tenemos creados.
 
 ### 5. Inciar y gestionar una votación
 Una vez añadido el censo, si pulsamos en el botón list votings de la página de inicio podremos ver todas las votaciones creadas por el adminsitrador y nos llevará a la vista de gestión de votaciones. En esta vista podremos finalizar, eliminar y editar una votación. 
