@@ -22,7 +22,7 @@ jobs:
         if: steps.autopep8.outputs.exit-code == 2
         uses: peter-evans/create-pull-request@v3
         with:
-          commit-message: autopep8 action fixes
+          commit-message: refactor:autopep8 action fixes
           title: Fixes by autopep8 action
           body: This is an auto-generated PR with fixes by autopep8.
           labels: Improvement
