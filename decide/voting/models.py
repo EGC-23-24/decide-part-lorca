@@ -16,7 +16,7 @@ class Question(models.Model):
         TYPES (list): The list of possible types for a question.
         type (CharField): The type of the question, chosen from TYPES.
     """
-    
+
     desc = models.TextField()
     TYPES = [
         ('C', 'Classic question'),
@@ -34,7 +34,7 @@ class Question(models.Model):
         :param args: Variable length argument list.
         :param kwargs: Keyword arguments.
         """
-        
+
         super().save(*args, **kwargs)
         if self.type == 'Y':
             # Create Yes/No options when a Yes/No question is saved
@@ -63,7 +63,7 @@ class QuestionOption(models.Model):
         number (PositiveIntegerField): The number of the option.
         option (TextField): The text of the option.
     """
-    
+
     question = models.ForeignKey(
         Question, related_name='options', on_delete=models.CASCADE)
     number = models.PositiveIntegerField(blank=True, null=True)
@@ -75,7 +75,7 @@ class QuestionOption(models.Model):
 
         :return: None
         """
-        
+
         if not self.number:
             self.number = self.question.options.count() + 2
         if self.question.type in ['C', 'M']:
@@ -88,7 +88,7 @@ class QuestionOption(models.Model):
         :return: The option text and number or a restriction message.
         :rtype: str
         """
-        
+
         if self.question.type in ['C', 'M']:
             return '{} ({})'.format(self.option, self.number)
         else:
@@ -105,7 +105,7 @@ class QuestionOptionRanked(models.Model):
         option (TextField): The text of the ranked option.
         preference (PositiveIntegerField): The preference number for the option.
     """
-    
+
     question = models.ForeignKey(
         Question, related_name='ranked_options', on_delete=models.CASCADE)
     number = models.PositiveIntegerField(blank=True, null=True)
@@ -118,7 +118,7 @@ class QuestionOptionRanked(models.Model):
 
         :return: None
         """
-        
+
         if not self.number:
             self.number = self.question.ranked_options.count() + 1
         if self.question.type == 'R':
@@ -131,7 +131,7 @@ class QuestionOptionRanked(models.Model):
         :return: The ranked option text and number or a restriction message.
         :rtype: str
         """
-        
+
         if self.question.type == 'R':
             return '{} ({})'.format(self.option, self.number)
         else:
@@ -147,7 +147,7 @@ class QuestionOptionYesNo(models.Model):
         number (PositiveIntegerField): The number of the Yes/No option.
         option (TextField): The text of the Yes/No option.
     """
-    
+
     question = models.ForeignKey(
         Question, related_name='yesno_options', on_delete=models.CASCADE)
     number = models.PositiveIntegerField(blank=True, null=True)
@@ -161,7 +161,7 @@ class QuestionOptionYesNo(models.Model):
         :param kwargs: Keyword arguments.
         :return: None
         """
-        
+
         if not self.number:
             self.number = self.question.options.count() + 2
         if self.question.type == 'Y':
@@ -174,9 +174,10 @@ class QuestionOptionYesNo(models.Model):
         :return: The Yes/No option text and number or a restriction message.
         :rtype: str
         """
-        
+
         if self.question.type == 'Y':
-            return '{} - {} ({}) '.format(self.question, self.option, self.number)
+            return '{} - {} ({}) '.format(self.question,
+                                          self.option, self.number)
         else:
             return 'You cannot create a Yes/No option for a non-Yes/No question'
 
@@ -198,7 +199,7 @@ class Voting(models.Model):
         tally (JSONField): The tally of votes.
         postproc (JSONField): The post-processing data of the voting.
     """
-    
+
     name = models.CharField(max_length=200)
     desc = models.TextField(blank=True, null=True)
     question = models.ForeignKey(
@@ -211,7 +212,11 @@ class Voting(models.Model):
     future_stop = models.DateTimeField(blank=True, null=True)
 
     pub_key = models.OneToOneField(
-        Key, related_name='voting', blank=True, null=True, on_delete=models.SET_NULL)
+        Key,
+        related_name='voting',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL)
     auths = models.ManyToManyField(Auth, related_name='votings')
 
     tally = JSONField(blank=True, null=True)
@@ -225,10 +230,8 @@ class Voting(models.Model):
             return
 
         auth = self.auths.first()
-        data = {
-            "voting": self.id,
-            "auths": [{"name": a.name, "url": a.url} for a in self.auths.all()],
-        }
+        data = {"voting": self.id, "auths": [
+            {"name": a.name, "url": a.url} for a in self.auths.all()], }
         key = mods.post('mixnet', baseurl=auth.url, json=data)
         pk = Key(p=key["p"], g=key["g"], y=key["y"])
         pk.save()
@@ -244,10 +247,14 @@ class Voting(models.Model):
         :return: A list of formatted votes.
         :rtype: list
         """
-        
+
         # gettings votes from store
-        votes = mods.get('store', params={
-                         'voting_id': self.id}, HTTP_AUTHORIZATION='Token ' + token)
+        votes = mods.get(
+            'store',
+            params={
+                'voting_id': self.id},
+            HTTP_AUTHORIZATION='Token ' +
+            token)
         # anon votes
         votes_format = []
         vote_list = []
@@ -279,16 +286,24 @@ class Voting(models.Model):
 
         # first, we do the shuffle
         data = {"msgs": votes}
-        response = mods.post('mixnet', entry_point=shuffle_url, baseurl=auth.url, json=data,
-                             response=True)
+        response = mods.post(
+            'mixnet',
+            entry_point=shuffle_url,
+            baseurl=auth.url,
+            json=data,
+            response=True)
         if response.status_code != 200:
             # TODO: manage error
             pass
 
         # then, we can decrypt that
         data = {"msgs": response.json()}
-        response = mods.post('mixnet', entry_point=decrypt_url, baseurl=auth.url, json=data,
-                             response=True)
+        response = mods.post(
+            'mixnet',
+            entry_point=decrypt_url,
+            baseurl=auth.url,
+            json=data,
+            response=True)
 
         if response.status_code != 200:
             # TODO: manage error
@@ -307,16 +322,17 @@ class Voting(models.Model):
 
             :raises ValueError: If the input contains characters that are not part of a valid decimal string.
             """
-            
+
             decimal_string = str(decimal_string).replace(
                 '[', '').replace(']', '')
             try:
-                # Convert the decimal string to a list of ASCII characters with length 4
+                # Convert the decimal string to a list of ASCII characters with
+                # length 4
                 while len(decimal_string) % 3 != 0:
                     decimal_string = '0' + decimal_string
                 ascii_string = ''
                 for i in range(0, len(decimal_string), 3):
-                    ascii_char = decimal_string[i:i+3]
+                    ascii_char = decimal_string[i:i + 3]
                     ascii_string += chr(int(ascii_char))
                 return ascii_string
             except ValueError:
@@ -344,7 +360,7 @@ class Voting(models.Model):
         """
         Performs post-processing on the tallied votes.
         """
-        
+
         tally = self.tally
         options = self.question.options.all()
 
@@ -368,7 +384,7 @@ class Voting(models.Model):
                 for vote_weight in votes_weights:
                     list_preferences = vote_weight.split('-')
                     for i, vote_weight in enumerate(list_preferences):
-                        vote_counts[i+1] += len(list_preferences) - \
+                        vote_counts[i + 1] += len(list_preferences) - \
                             int(vote_weight) + 1
 
             opts = []

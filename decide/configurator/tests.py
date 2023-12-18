@@ -24,7 +24,8 @@ class ConfiguratorViewTest(BaseTestCase):
         self.assertRedirects(response, "/")
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), "You must be an admin to access this page!")
+        self.assertEqual(str(messages[0]),
+                         "You must be an admin to access this page!")
 
 
 class CreateClassicViewTest(BaseTestCase):
@@ -59,7 +60,8 @@ class CreateClassicViewTest(BaseTestCase):
 
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), "Classic voting created successfully!")
+        self.assertEqual(str(messages[0]),
+                         "Classic voting created successfully!")
 
     def test_post_request_invalid_form(self):
         data = {
@@ -109,7 +111,8 @@ class CreateYesNoViewTest(BaseTestCase):
 
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), "Yes/No voting created successfully!")
+        self.assertEqual(str(messages[0]),
+                         "Yes/No voting created successfully!")
 
     def test_post_request_invalid_form(self):
         data = {
@@ -136,7 +139,8 @@ class CreateMultipleChoiceViewTest(BaseTestCase):
         response = self.client.get(reverse("create_multiple_choice"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "configurator/create_multiple_choice.html")
+        self.assertTemplateUsed(
+            response, "configurator/create_multiple_choice.html")
         self.assertIsInstance(response.context["form"], MultipleChoiceForm)
 
     def test_post_request_valid_form(self):
@@ -175,7 +179,8 @@ class CreateMultipleChoiceViewTest(BaseTestCase):
         response = self.client.post(reverse("create_multiple_choice"), data)
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "configurator/create_multiple_choice.html")
+        self.assertTemplateUsed(
+            response, "configurator/create_multiple_choice.html")
 
         form = response.context["form"]
 
@@ -191,7 +196,8 @@ class CreatePreferenceViewTest(BaseTestCase):
         response = self.client.get(reverse("create_preference"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "configurator/create_preference.html")
+        self.assertTemplateUsed(
+            response, "configurator/create_preference.html")
         self.assertIsInstance(response.context["form"], PreferenceForm)
 
     def test_post_request_valid_form(self):
@@ -214,7 +220,8 @@ class CreatePreferenceViewTest(BaseTestCase):
 
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), "Preference voting created successfully!")
+        self.assertEqual(str(messages[0]),
+                         "Preference voting created successfully!")
 
     def test_post_request_invalid_form(self):
         data = {
@@ -228,7 +235,8 @@ class CreatePreferenceViewTest(BaseTestCase):
         response = self.client.post(reverse("create_preference"), data)
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "configurator/create_preference.html")
+        self.assertTemplateUsed(
+            response, "configurator/create_preference.html")
 
         form = response.context["form"]
 
@@ -244,7 +252,8 @@ class CreateOpenQuestionViewTest(BaseTestCase):
         response = self.client.get(reverse("create_open_question"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "configurator/create_open_question.html")
+        self.assertTemplateUsed(
+            response, "configurator/create_open_question.html")
         self.assertIsInstance(response.context["form"], OpenQuestionForm)
 
     def test_post_request_valid_form(self):
@@ -264,7 +273,8 @@ class CreateOpenQuestionViewTest(BaseTestCase):
 
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), "Open question voting created successfully!")
+        self.assertEqual(str(messages[0]),
+                         "Open question voting created successfully!")
 
     def test_post_request_invalid_form(self):
         data = {
@@ -275,7 +285,8 @@ class CreateOpenQuestionViewTest(BaseTestCase):
         response = self.client.post(reverse("create_open_question"), data)
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "configurator/create_open_question.html")
+        self.assertTemplateUsed(
+            response, "configurator/create_open_question.html")
 
         form = response.context["form"]
 

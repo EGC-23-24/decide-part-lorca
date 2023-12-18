@@ -22,7 +22,7 @@ class StoreView(generics.ListAPIView):
     """
     API view for listing and creating votes.
 
-    Inherits from Django Rest Framework's ListAPIView to provide a method for listing existing votes 
+    Inherits from Django Rest Framework's ListAPIView to provide a method for listing existing votes
     and a method for creating new votes based on the voting type.
 
     Attributes:
@@ -31,7 +31,7 @@ class StoreView(generics.ListAPIView):
         filter_backends: Set of filter backends to be used for the queryset.
         filterset_fields: Fields of the Vote model that can be filtered.
     """
-    
+
     queryset = Vote.objects.all()
     serializer_class = VoteSerializer
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
@@ -46,11 +46,11 @@ class StoreView(generics.ListAPIView):
 
         Returns:
             Response object containing serialized Vote data.
-        
+
         Raises:
             PermissionDenied: If the user is not staff.
         """
-        
+
         self.permission_classes = (UserIsStaff,)
         self.check_permissions(request)
         return super().get(request)
@@ -68,7 +68,7 @@ class StoreView(generics.ListAPIView):
         Raises:
             HTTP_400_BAD_REQUEST: If voting_type is not in the predefined voting types.
         """
-        
+
         voting_type = request.data.get('voting_type')
         if voting_type not in VOTING_TYPES.keys():
             return Response({}, status=status.HTTP_400_BAD_REQUEST)

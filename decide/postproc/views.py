@@ -19,6 +19,7 @@ class PostProcView(APIView):
     :method weight: Post-process voting results considering weights.
     :method post: Handle POST requests for post-processing voting results.
     """
+
     def identity(self, options):
         """
         Post-process voting results with identity transformation.
@@ -34,11 +35,11 @@ class PostProcView(APIView):
             out.append({
                 **opt,
                 'postproc': opt['votes'],
-            });
+            })
 
         out.sort(key=lambda x: -x['postproc'])
         return Response(out)
-    
+
     def text(self, text_votes):
         """
         Post-process text-based voting results.
@@ -54,10 +55,10 @@ class PostProcView(APIView):
             out.append({
                 **vote,
                 'postproc': vote['vote'],
-            });
+            })
 
         return Response(out)
-    
+
     def weight(self, options):
         """
         Post-process voting results considering weights.
@@ -73,11 +74,11 @@ class PostProcView(APIView):
             out.append({
                 **opt,
                 'postproc': opt['votes_wights'],
-            });
+            })
 
         out.sort(key=lambda x: -x['postproc'])
         return Response(out)
-    
+
     def post(self, request):
         """
         Handle POST requests for post-processing voting results.
@@ -99,12 +100,11 @@ class PostProcView(APIView):
 
         if t == 'IDENTITY':
             return self.identity(opts)
-        
+
         if t == 'TEXT':
             return self.text(text_votes)
-        
+
         if t == 'WEIGHT':
             return self.weight(opts)
-        
 
         return Response({})

@@ -48,7 +48,7 @@ class MixnetViewSet(viewsets.ModelViewSet):
 
         mn.gen_key(p, g)
 
-        data = { "key": { "p": mn.key.p, "g": mn.key.g } }
+        data = {"key": {"p": mn.key.p, "g": mn.key.g}}
         # chained call to the next auth to gen the key
         resp = mn.chain_call("/", data)
         if resp:
@@ -61,7 +61,7 @@ class MixnetViewSet(viewsets.ModelViewSet):
         mn.pubkey = pubkey
         mn.save()
 
-        return  Response(KeySerializer(pubkey, many=False).data)
+        return Response(KeySerializer(pubkey, many=False).data)
 
 
 class Shuffle(APIView):
@@ -75,7 +75,10 @@ class Shuffle(APIView):
         """
 
         position = request.data.get("position", 0)
-        mn = get_object_or_404(Mixnet, voting_id=voting_id, auth_position=position)
+        mn = get_object_or_404(
+            Mixnet,
+            voting_id=voting_id,
+            auth_position=position)
 
         msgs = request.data.get("msgs", [])
         pk = request.data.get("pk", None)
@@ -88,14 +91,14 @@ class Shuffle(APIView):
 
         data = {
             "msgs": msgs,
-            "pk": { "p": p, "g": g, "y": y },
+            "pk": {"p": p, "g": g, "y": y},
         }
         # chained call to the next auth to gen the key
         resp = mn.chain_call("/shuffle/{}/".format(voting_id), data)
         if resp:
             msgs = resp
 
-        return  Response(msgs)
+        return Response(msgs)
 
 
 class Decrypt(APIView):
@@ -109,7 +112,10 @@ class Decrypt(APIView):
         """
 
         position = request.data.get("position", 0)
-        mn = get_object_or_404(Mixnet, voting_id=voting_id, auth_position=position)
+        mn = get_object_or_404(
+            Mixnet,
+            voting_id=voting_id,
+            auth_position=position)
 
         msgs = request.data.get("msgs", [])
         pk = request.data.get("pk", None)
@@ -128,12 +134,11 @@ class Decrypt(APIView):
 
         data = {
             "msgs": msgs,
-            "pk": { "p": p, "g": g, "y": y },
+            "pk": {"p": p, "g": g, "y": y},
         }
         # chained call to the next auth to gen the key
         resp = mn.chain_call("/decrypt/{}/".format(voting_id), data)
         if resp:
             msgs = resp
 
-        return  Response(msgs)
-
+        return Response(msgs)

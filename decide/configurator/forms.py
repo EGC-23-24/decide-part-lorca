@@ -42,9 +42,12 @@ class ClassicForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["name"].widget.attrs.update({"class": "form-control"})
-        self.fields["desc"].widget.attrs.update({"class": "form-control", "rows": 3})
-        self.fields["question_desc"].widget.attrs.update({"class": "form-control"})
-        self.fields["future_stop"].widget.attrs.update({"class": "form-control"})
+        self.fields["desc"].widget.attrs.update(
+            {"class": "form-control", "rows": 3})
+        self.fields["question_desc"].widget.attrs.update(
+            {"class": "form-control"})
+        self.fields["future_stop"].widget.attrs.update(
+            {"class": "form-control"})
         self.fields["option1"].widget.attrs.update({"class": "form-control"})
         self.fields["option2"].widget.attrs.update({"class": "form-control"})
         self.fields["more_options"].widget.attrs.update(
@@ -76,9 +79,12 @@ class YesNoForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["name"].widget.attrs.update({"class": "form-control"})
-        self.fields["desc"].widget.attrs.update({"class": "form-control", "rows": 3})
-        self.fields["question_desc"].widget.attrs.update({"class": "form-control"})
-        self.fields["future_stop"].widget.attrs.update({"class": "form-control"})
+        self.fields["desc"].widget.attrs.update(
+            {"class": "form-control", "rows": 3})
+        self.fields["question_desc"].widget.attrs.update(
+            {"class": "form-control"})
+        self.fields["future_stop"].widget.attrs.update(
+            {"class": "form-control"})
 
 
 class MultipleChoiceForm(forms.ModelForm):
@@ -118,9 +124,12 @@ class MultipleChoiceForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["name"].widget.attrs.update({"class": "form-control"})
-        self.fields["desc"].widget.attrs.update({"class": "form-control", "rows": 3})
-        self.fields["question_desc"].widget.attrs.update({"class": "form-control"})
-        self.fields["future_stop"].widget.attrs.update({"class": "form-control"})
+        self.fields["desc"].widget.attrs.update(
+            {"class": "form-control", "rows": 3})
+        self.fields["question_desc"].widget.attrs.update(
+            {"class": "form-control"})
+        self.fields["future_stop"].widget.attrs.update(
+            {"class": "form-control"})
         self.fields["option1"].widget.attrs.update({"class": "form-control"})
         self.fields["option2"].widget.attrs.update({"class": "form-control"})
         self.fields["more_options"].widget.attrs.update(
@@ -165,9 +174,12 @@ class PreferenceForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["name"].widget.attrs.update({"class": "form-control"})
-        self.fields["desc"].widget.attrs.update({"class": "form-control", "rows": 3})
-        self.fields["question_desc"].widget.attrs.update({"class": "form-control"})
-        self.fields["future_stop"].widget.attrs.update({"class": "form-control"})
+        self.fields["desc"].widget.attrs.update(
+            {"class": "form-control", "rows": 3})
+        self.fields["question_desc"].widget.attrs.update(
+            {"class": "form-control"})
+        self.fields["future_stop"].widget.attrs.update(
+            {"class": "form-control"})
         self.fields["option1"].widget.attrs.update({"class": "form-control"})
         self.fields["option2"].widget.attrs.update({"class": "form-control"})
         self.fields["more_options"].widget.attrs.update(
@@ -199,9 +211,12 @@ class OpenQuestionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["name"].widget.attrs.update({"class": "form-control"})
-        self.fields["desc"].widget.attrs.update({"class": "form-control", "rows": 3})
-        self.fields["question_desc"].widget.attrs.update({"class": "form-control"})
-        self.fields["future_stop"].widget.attrs.update({"class": "form-control"})
+        self.fields["desc"].widget.attrs.update(
+            {"class": "form-control", "rows": 3})
+        self.fields["question_desc"].widget.attrs.update(
+            {"class": "form-control"})
+        self.fields["future_stop"].widget.attrs.update(
+            {"class": "form-control"})
 
 
 def create_question(self, type):
