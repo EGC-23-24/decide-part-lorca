@@ -6,7 +6,7 @@ from rest_framework.authtoken.models import Token
 
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
-from base.tests import BaseTestCase 
+from base.tests import BaseTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -19,6 +19,7 @@ class AuthTestCase(APITestCase):
 
     Inherits from APITestCase to provide utility functions for making API requests.
     """
+
     def setUp(self):
         """
         Set up the test environment.
@@ -53,7 +54,8 @@ class AuthTestCase(APITestCase):
         :return: None
         """
         data = {'username': 'voter1', 'password': '123'}
-        response = self.client.post('/authentication/login/', data, format='json')
+        response = self.client.post(
+            '/authentication/login/', data, format='json')
         self.assertEqual(response.status_code, 200)
 
         token = response.json()
@@ -68,7 +70,8 @@ class AuthTestCase(APITestCase):
         :return: None
         """
         data = {'username': 'voter1', 'password': '321'}
-        response = self.client.post('/authentication/login/', data, format='json')
+        response = self.client.post(
+            '/authentication/login/', data, format='json')
         self.assertEqual(response.status_code, 400)
 
     def test_getuser(self):
@@ -80,11 +83,13 @@ class AuthTestCase(APITestCase):
         :return: None
         """
         data = {'username': 'voter1', 'password': '123'}
-        response = self.client.post('/authentication/login/', data, format='json')
+        response = self.client.post(
+            '/authentication/login/', data, format='json')
         self.assertEqual(response.status_code, 200)
         token = response.json()
 
-        response = self.client.post('/authentication/getuser/', token, format='json')
+        response = self.client.post(
+            '/authentication/getuser/', token, format='json')
         self.assertEqual(response.status_code, 200)
 
         user = response.json()
@@ -100,7 +105,8 @@ class AuthTestCase(APITestCase):
         :return: None
         """
         token = {'token': 'invented'}
-        response = self.client.post('/authentication/getuser/', token, format='json')
+        response = self.client.post(
+            '/authentication/getuser/', token, format='json')
         self.assertEqual(response.status_code, 404)
 
     def test_getuser_invalid_token(self):
@@ -113,17 +119,22 @@ class AuthTestCase(APITestCase):
         :return: None
         """
         data = {'username': 'voter1', 'password': '123'}
-        response = self.client.post('/authentication/login/', data, format='json')
+        response = self.client.post(
+            '/authentication/login/', data, format='json')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(Token.objects.filter(user__username='voter1').count(), 1)
+        self.assertEqual(
+            Token.objects.filter(
+                user__username='voter1').count(), 1)
 
         token = response.json()
         self.assertTrue(token.get('token'))
 
-        response = self.client.post('/authentication/logout/', token, format='json')
+        response = self.client.post(
+            '/authentication/logout/', token, format='json')
         self.assertEqual(response.status_code, 200)
 
-        response = self.client.post('/authentication/getuser/', token, format='json')
+        response = self.client.post(
+            '/authentication/getuser/', token, format='json')
         self.assertEqual(response.status_code, 404)
 
     def test_logout(self):
@@ -135,17 +146,23 @@ class AuthTestCase(APITestCase):
         :return: None
         """
         data = {'username': 'voter1', 'password': '123'}
-        response = self.client.post('/authentication/login/', data, format='json')
+        response = self.client.post(
+            '/authentication/login/', data, format='json')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(Token.objects.filter(user__username='voter1').count(), 1)
+        self.assertEqual(
+            Token.objects.filter(
+                user__username='voter1').count(), 1)
 
         token = response.json()
         self.assertTrue(token.get('token'))
 
-        response = self.client.post('/authentication/logout/', token, format='json')
+        response = self.client.post(
+            '/authentication/logout/', token, format='json')
         self.assertEqual(response.status_code, 200)
 
-        self.assertEqual(Token.objects.filter(user__username='voter1').count(), 0)
+        self.assertEqual(
+            Token.objects.filter(
+                user__username='voter1').count(), 0)
 
     def test_register_bad_permissions(self):
         """
@@ -157,12 +174,14 @@ class AuthTestCase(APITestCase):
         :return: None
         """
         data = {'username': 'voter1', 'password': '123'}
-        response = self.client.post('/authentication/login/', data, format='json')
+        response = self.client.post(
+            '/authentication/login/', data, format='json')
         self.assertEqual(response.status_code, 200)
         token = response.json()
 
         token.update({'username': 'user1'})
-        response = self.client.post('/authentication/register/', token, format='json')
+        response = self.client.post(
+            '/authentication/register/', token, format='json')
         self.assertEqual(response.status_code, 401)
 
     def test_register_bad_request(self):
@@ -175,14 +194,16 @@ class AuthTestCase(APITestCase):
         :return: None
         """
         data = {'username': 'admin', 'password': 'admin'}
-        response = self.client.post('/authentication/login/', data, format='json')
+        response = self.client.post(
+            '/authentication/login/', data, format='json')
         self.assertEqual(response.status_code, 200)
         token = response.json()
 
         token.update({'username': 'user1'})
-        response = self.client.post('/authentication/register/', token, format='json')
+        response = self.client.post(
+            '/authentication/register/', token, format='json')
         self.assertEqual(response.status_code, 400)
-        
+
     def test_register_user_already_exist(self):
         """
         Test user registration when the user already exists.
@@ -192,12 +213,14 @@ class AuthTestCase(APITestCase):
         :return: None
         """
         data = {'username': 'admin', 'password': 'admin'}
-        response = self.client.post('/authentication/login/', data, format='json')
+        response = self.client.post(
+            '/authentication/login/', data, format='json')
         self.assertEqual(response.status_code, 200)
         token = response.json()
 
         token.update(data)
-        response = self.client.post('/authentication/register/', token, format='json')
+        response = self.client.post(
+            '/authentication/register/', token, format='json')
         self.assertEqual(response.status_code, 400)
 
     def test_register(self):
@@ -209,12 +232,14 @@ class AuthTestCase(APITestCase):
         :return: None
         """
         data = {'username': 'admin', 'password': 'admin'}
-        response = self.client.post('/authentication/login/', data, format='json')
+        response = self.client.post(
+            '/authentication/login/', data, format='json')
         self.assertEqual(response.status_code, 200)
         token = response.json()
 
         token.update({'username': 'user1', 'password': 'pwd1'})
-        response = self.client.post('/authentication/register/', token, format='json')
+        response = self.client.post(
+            '/authentication/register/', token, format='json')
         self.assertEqual(response.status_code, 201)
         self.assertEqual(
             sorted(list(response.json().keys())),

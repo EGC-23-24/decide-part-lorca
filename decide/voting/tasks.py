@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Voting
 from decide.celery import app
 
+
 @shared_task()
 def future_stop_voting_task(voting_id, created_at):
     """
@@ -20,10 +21,11 @@ def future_stop_voting_task(voting_id, created_at):
         None: This function performs an action (updating the voting event and revoking the task)
         but does not return any value.
     """
-    
+
     voting = Voting.objects.get(id=voting_id)
-    
+
     voting.end_date = voting.future_stop
     voting.save()
-    app.control.revoke(f'future_stop_voting_task-{voting_id}-{created_at}', terminate=True)
-        
+    app.control.revoke(
+        f'future_stop_voting_task-{voting_id}-{created_at}',
+        terminate=True)

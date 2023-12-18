@@ -22,6 +22,7 @@ from voting.models import Voting, Question, QuestionOption, QuestionOptionRanked
 
 from .tasks import future_stop_voting_task
 
+
 class VotingTestCase(BaseTestCase):
     """
     Test case class for Voting-related functionalities.
@@ -33,14 +34,14 @@ class VotingTestCase(BaseTestCase):
         """
         Sets up necessary data before each test method.
         """
-        
+
         super().setUp()
 
     def tearDown(self):
         """
         Cleans up after each test method.
         """
-        
+
         super().tearDown()
 
     def encrypt_msg(self, msg, v, bits=settings.KEYBITS):
@@ -56,7 +57,7 @@ class VotingTestCase(BaseTestCase):
         :return: The encrypted message.
         :rtype: tuple
         """
-        
+
         pk = v.pub_key
         p, g, y = (pk.p, pk.g, pk.y)
         k = MixCrypt(bits=bits)
@@ -72,7 +73,7 @@ class VotingTestCase(BaseTestCase):
         :return: A dictionary of the clear votes count.
         :rtype: dict
         """
-        
+
         voters = list(Census.objects.filter(voting_id=v.id))
         voter = voters.pop()
 
@@ -101,17 +102,18 @@ class VotingTestCase(BaseTestCase):
         :return: The created classic voting instance.
         :rtype: Voting
         """
-        
+
         q = Question(desc='test question', type='C')
         q.save()
         for i in range(5):
-            opt = QuestionOption(question=q, option='option {}'.format(i+1))
+            opt = QuestionOption(question=q, option='option {}'.format(i + 1))
             opt.save()
         v = Voting(name='test voting', question=q)
         v.save()
 
-        a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
-                                          defaults={'me': True, 'name': 'test auth'})
+        a, _ = Auth.objects.get_or_create(
+            url=settings.BASEURL, defaults={
+                'me': True, 'name': 'test auth'})
         a.save()
         v.auths.add(a)
 
@@ -124,12 +126,12 @@ class VotingTestCase(BaseTestCase):
         :return: The created ranked voting instance.
         :rtype: Voting
         """
-        
+
         q = Question(desc='ranked test question', type='R')
         q.save()
         for i in range(5):
             opt = QuestionOptionRanked(
-                question=q, option='option {}'.format(i+1), number=i+1)
+                question=q, option='option {}'.format(i + 1), number=i + 1)
             opt.save()
         v = Voting(name='test ranked voting', question=q)
         v.save()
@@ -148,12 +150,12 @@ class VotingTestCase(BaseTestCase):
         :return: The created Yes/No voting instance.
         :rtype: Voting
         """
-        
+
         q = Question(desc='Yes/No test question', type='Y')
         q.save()
         for i in range(5):
             opt = QuestionOptionYesNo(
-                question=q, option='option {}'.format(i+1))
+                question=q, option='option {}'.format(i + 1))
             opt.save()
         v = Voting(name='test Yes/No voting', question=q)
         v.save()
@@ -172,17 +174,18 @@ class VotingTestCase(BaseTestCase):
         :return: The created multiple choice voting instance.
         :rtype: Voting
         """
-        
+
         q = Question(desc='test multiple choice question', type='M')
         q.save()
         for i in range(5):
-            opt = QuestionOption(question=q, option='option {}'.format(i+1))
+            opt = QuestionOption(question=q, option='option {}'.format(i + 1))
             opt.save()
         v = Voting(name='test voting', question=q)
         v.save()
 
-        a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
-                                          defaults={'me': True, 'name': 'test auth'})
+        a, _ = Auth.objects.get_or_create(
+            url=settings.BASEURL, defaults={
+                'me': True, 'name': 'test auth'})
         a.save()
         v.auths.add(a)
 
@@ -195,7 +198,7 @@ class VotingTestCase(BaseTestCase):
         :return: The created text comment voting instance.
         :rtype: Voting
         """
-        
+
         q = Question(desc='Text test question', type='T')
         q.save()
         v = Voting(name='test text voting', question=q)
@@ -215,7 +218,7 @@ class VotingTestCase(BaseTestCase):
         :param v: The voting instance.
         :type v: Voting
         """
-        
+
         for i in range(100):
             u, _ = User.objects.get_or_create(username='testvoter{}'.format(i))
             u.is_active = True
@@ -230,7 +233,7 @@ class VotingTestCase(BaseTestCase):
         :param v: The voting instance.
         :type v: Voting
         """
-        
+
         user, _ = User.objects.get_or_create(pk=pk)
         user.username = 'user{}'.format(pk)
         user.set_password('qwerty')
@@ -275,7 +278,7 @@ class VotingTestCase(BaseTestCase):
 
         This method tests the creation of a classic voting, storing votes, and tallying them to verify the vote count.
         """
-        
+
         v = self.create_classic_voting()
         self.create_voters(v)
 
@@ -288,8 +291,7 @@ class VotingTestCase(BaseTestCase):
         self.login()  # set token
         v.tally_votes(self.token)
 
-        tally = v.tally
-        tally.sort()
+        tally = sorted(v.tally)
         tally = {k: len(list(x)) for k, x in itertools.groupby(tally)}
 
         for q in v.question.options.all():
@@ -307,20 +309,21 @@ class VotingTestCase(BaseTestCase):
         :return: A list of clear vote strings.
         :rtype: list
         """
-        
+
         def string_to_ascii(value):
             result = ''
             for char in value:
                 value_ascii = str(ord(char))
                 if len(value_ascii) <= 2:
-                    value_ascii = '0' + value_ascii if len(value_ascii) == 2 else value_ascii
+                    value_ascii = '0' + \
+                        value_ascii if len(value_ascii) == 2 else value_ascii
                 result += value_ascii
             return result
-        
+
         voters = list(Census.objects.filter(voting_id=v.id))
         voter = voters.pop()
 
-        answers = ['1-2-3-4-5','2-3-4-5-1','3-4-5-1-2']
+        answers = ['1-2-3-4-5', '2-3-4-5-1', '3-4-5-1-2']
         clear = []
         for answer in answers:
             for i in range(random.randint(0, 5)):
@@ -337,14 +340,14 @@ class VotingTestCase(BaseTestCase):
                 voter = voters.pop()
                 mods.post('store', json=data)
         return clear
-    
+
     def test_complete_ranked_voting(self):
         """
         Test method to verify the complete voting process for a ranked voting.
 
         This method tests the creation of a ranked voting, storing votes, and tallying them to verify the vote count.
         """
-        
+
         v = self.create_ranked_voting()
         self.create_voters(v)
 
@@ -357,13 +360,12 @@ class VotingTestCase(BaseTestCase):
         v.tally_votes(self.token)
 
         tally = v.tally
-        answers = ['1-2-3-4-5','2-3-4-5-1','3-4-5-1-2']
+        answers = ['1-2-3-4-5', '2-3-4-5-1', '3-4-5-1-2']
 
         for answer in answers:
             num_of_answer = clear.count(answer)
-            if num_of_answer!=0:
+            if num_of_answer != 0:
                 self.assertEqual(num_of_answer, tally['msgs'].count(answer))
-        
 
     def store_multiple_choice_votes(self, v):
         """
@@ -374,7 +376,7 @@ class VotingTestCase(BaseTestCase):
         :return: A dictionary of the clear votes count.
         :rtype: dict
         """
-        
+
         voters = list(Census.objects.filter(voting_id=v.id))
         voter = voters.pop()
         options = v.question.options.all()
@@ -410,7 +412,7 @@ class VotingTestCase(BaseTestCase):
 
         This method tests the creation of a multiple choice voting, storing votes, and tallying them to verify the vote count.
         """
-        
+
         v = self.create_multiple_choice_voting()
         self.create_voters(v)
 
@@ -423,8 +425,7 @@ class VotingTestCase(BaseTestCase):
         self.login()  # set token
         v.tally_votes(self.token)
 
-        tally = v.tally
-        tally.sort()
+        tally = sorted(v.tally)
         tally = {k: len(list(x)) for k, x in itertools.groupby(tally)}
 
         for q in v.question.options.all():
@@ -432,7 +433,6 @@ class VotingTestCase(BaseTestCase):
 
         for q in v.postproc:
             self.assertEqual(tally.get(q["number"], 0), q["votes"])
-
 
     def store_comment_votes(self, v):
         """
@@ -443,19 +443,20 @@ class VotingTestCase(BaseTestCase):
         :return: A list of clear vote strings.
         :rtype: list
         """
-        
+
         def string_to_ascii(value):
             result = ''
             for char in value:
                 value_ascii = str(ord(char))
                 if len(value_ascii) <= 2:
-                    value_ascii = '0' + value_ascii if len(value_ascii) == 2 else value_ascii
+                    value_ascii = '0' + \
+                        value_ascii if len(value_ascii) == 2 else value_ascii
                 result += value_ascii
             return result
 
         voters = list(Census.objects.filter(voting_id=v.id))
         voter = voters.pop()
-        answers = ['a','b','c']
+        answers = ['a', 'b', 'c']
         clear = []
         for answer in answers:
             for i in range(random.randint(0, 5)):
@@ -479,7 +480,7 @@ class VotingTestCase(BaseTestCase):
 
         This method tests the creation of a text comment voting, storing votes, and tallying them to verify the vote count.
         """
-        
+
         v = self.create_comment_voting()
         self.create_voters(v)
 
@@ -493,13 +494,12 @@ class VotingTestCase(BaseTestCase):
         v.tally_votes(self.token)
 
         tally = v.tally
-        answers = ['a','b','c']
+        answers = ['a', 'b', 'c']
 
         for answer in answers:
             num_of_answer = clear.count(answer)
-            if num_of_answer!=0:
+            if num_of_answer != 0:
                 self.assertEqual(num_of_answer, tally['msgs'].count(answer))
-        
 
     def test_create_voting_from_api(self):
         """
@@ -507,7 +507,7 @@ class VotingTestCase(BaseTestCase):
 
         This method tests the creation of a voting using API endpoints and different user permissions.
         """
-        
+
         data = {'name': 'Example'}
         response = self.client.post('/voting/', data, format='json')
         self.assertEqual(response.status_code, 401)
@@ -538,7 +538,7 @@ class VotingTestCase(BaseTestCase):
 
         This method tests the creation of a Yes/No voting, storing votes, and tallying them to verify the vote count.
         """
-        
+
         v = self.create_yesno_voting()
         self.create_voters(v)
 
@@ -551,8 +551,7 @@ class VotingTestCase(BaseTestCase):
         self.login()
         v.tally_votes(self.token)
 
-        tally = v.tally
-        tally.sort()
+        tally = sorted(v.tally)
         tally = {k: len(list(x)) for k, x in itertools.groupby(tally)}
 
         for q in v.question.options.all():
@@ -567,7 +566,7 @@ class VotingTestCase(BaseTestCase):
 
         This method tests the creation of a ranked voting using API endpoints and different user permissions.
         """
-        
+
         data = {'name': 'Voting ranked'}
         response = self.client.post('/voting/', data, format='json')
         self.assertEqual(response.status_code, 401)
@@ -600,7 +599,7 @@ class VotingTestCase(BaseTestCase):
 
         This method tests the creation of a multiple choice voting using API endpoints and different user permissions.
         """
-        
+
         data = {'name': 'Example'}
         response = self.client.post('/voting/', data, format='json')
         self.assertEqual(response.status_code, 401)
@@ -634,7 +633,7 @@ class VotingTestCase(BaseTestCase):
 
         This method tests the creation of a text comment voting using API endpoints and different user permissions.
         """
-        
+
         data = {'name': 'Voting text'}
         response = self.client.post('/voting/', data, format='json')
         self.assertEqual(response.status_code, 401)
@@ -669,7 +668,7 @@ class VotingTestCase(BaseTestCase):
 
         This method tests updating a voting's status through various actions such as start, stop, and tally via API.
         """
-        
+
         voting = self.create_classic_voting()
 
         data = {'action': 'start'}
@@ -772,7 +771,7 @@ class QuestionTestCases(BaseTestCase):
         """
         Sets up necessary data before each test method.
         """
-        
+
         super().setUp()
 
     def tearDown(self):
@@ -786,15 +785,15 @@ class QuestionTestCases(BaseTestCase):
         """
         Creates a classic question successfully for testing purposes.
         """
-        
-        self.cleaner.get(self.live_server_url+"/admin/login/?next=/admin/")
+
+        self.cleaner.get(self.live_server_url + "/admin/login/?next=/admin/")
         self.cleaner.set_window_size(1280, 720)
 
     def test_question_to_string(self):
         """
         Tests the string representation of the Question model.
         """
-        
+
         q = Question(desc='test question', type='C')
         self.assertEqual(str(q), 'test question')
 
@@ -802,7 +801,7 @@ class QuestionTestCases(BaseTestCase):
         """
         Tests the string representation of the QuestionOption model for a classic question.
         """
-        
+
         q = Question(desc='test question', type='C')
         opt = QuestionOption(number=1, option='test option', question=q)
         self.assertEqual(str(opt), 'test option (1)')
@@ -811,7 +810,7 @@ class QuestionTestCases(BaseTestCase):
         """
         Tests the string representation of the QuestionOptionRanked model.
         """
-        
+
         q = Question(desc='test question', type='R')
         opt = QuestionOptionRanked(number=1, option='test option', question=q)
         self.assertEqual(str(opt), 'test option (1)')
@@ -820,27 +819,29 @@ class QuestionTestCases(BaseTestCase):
         """
         Tests the string representation error for the QuestionOptionRanked model when linked to a non-ranked question.
         """
-        
+
         q = Question(desc='test question', type='C')
         opt = QuestionOptionRanked(number=1, option='test option', question=q)
-        self.assertEqual(str(opt),
-                         'You cannot create a ranked option for a non-ranked question')
+        self.assertEqual(
+            str(opt),
+            'You cannot create a ranked option for a non-ranked question')
 
     def test_question_option_error_str(self):
         """
         Tests the string representation error for the QuestionOption model when linked to a non-classic or multiple choice question.
         """
-        
+
         q = Question(desc='test question', type='R')
         opt = QuestionOption(number=1, option='test option', question=q)
-        self.assertEqual(str(opt),
-                         'You cannot create an option for a non-Classic or multiple choice question')
+        self.assertEqual(
+            str(opt),
+            'You cannot create an option for a non-Classic or multiple choice question')
 
     def test_question_option_yesno_to_string(self):
         """
         Tests the string representation of the QuestionOptionYesNo model.
         """
-        
+
         q = Question(desc='test question', type='Y')
         opt = QuestionOptionYesNo(number=1, option='test option', question=q)
         self.assertEqual(str(opt), 'test question - test option (1) ')
@@ -849,27 +850,29 @@ class QuestionTestCases(BaseTestCase):
         """
         Tests the string representation error for the QuestionOptionYesNo model when linked to a non-Yes/No question.
         """
-        
+
         q = Question(desc='test question', type='C')
         opt = QuestionOptionYesNo(number=1, option='test option', question=q)
-        self.assertEqual(str(opt),
-                         'You cannot create a Yes/No option for a non-Yes/No question')
+        self.assertEqual(
+            str(opt),
+            'You cannot create a Yes/No option for a non-Yes/No question')
 
     def test_yes_no_question_option_error_str(self):
         """
         Tests the string representation error for the QuestionOption model when linked to a Yes/No question.
         """
-        
+
         q = Question(desc='test question', type='Y')
         opt = QuestionOption(number=1, option='test option', question=q)
-        self.assertEqual(str(opt),
-                         'You cannot create an option for a non-Classic or multiple choice question')
+        self.assertEqual(
+            str(opt),
+            'You cannot create an option for a non-Classic or multiple choice question')
 
     def test_question(self):
         """
         Tests creating and saving different types of questions.
         """
-        
+
         q1 = Question(desc='test question', type='C')
         q1.save()
 
@@ -896,7 +899,7 @@ class QuestionTestCases(BaseTestCase):
         """
         Tests creating and saving a QuestionOption for a classic question.
         """
-        
+
         Question(desc='test question', type='C').save()
         q = Question.objects.get(desc='test question')
         QuestionOption(number=1, option='test option', question=q).save()
@@ -910,7 +913,7 @@ class QuestionTestCases(BaseTestCase):
         """
         Tests creating a QuestionOption for a non-compatible question type and expecting an error.
         """
-        
+
         Question(desc='test question', type='R').save()
         q = Question.objects.get(desc='test question')
         QuestionOption(number=1, option='test option', question=q).save()
@@ -920,7 +923,7 @@ class QuestionTestCases(BaseTestCase):
         """
         Tests creating and saving a QuestionOptionRanked for a ranked question.
         """
-        
+
         Question(desc='test question', type='R').save()
         q = Question.objects.get(desc='test question')
         QuestionOptionRanked(number=1, option='test option', question=q).save()
@@ -934,7 +937,7 @@ class QuestionTestCases(BaseTestCase):
         """
         Tests creating a QuestionOptionRanked for a non-ranked question type and expecting an error.
         """
-        
+
         Question(desc='test question', type='C').save()
         q = Question.objects.get(desc='test question')
         QuestionOptionRanked(number=1, option='test option', question=q).save()
@@ -944,7 +947,7 @@ class QuestionTestCases(BaseTestCase):
         """
         Tests creating and saving a QuestionOptionYesNo for a Yes/No question.
         """
-        
+
         Question(desc='test question', type='Y').save()
         q = Question.objects.get(desc='test question')
         QuestionOptionYesNo(number=1, option='test option', question=q).save()
@@ -958,7 +961,7 @@ class QuestionTestCases(BaseTestCase):
         """
         Tests creating a QuestionOption for a non-compatible question type and expecting an error.
         """
-        
+
         Question(desc='test question', type='Y').save()
         q = Question.objects.get(desc='test question')
         QuestionOption(number=1, option='test option', question=q).save()
@@ -968,7 +971,7 @@ class QuestionTestCases(BaseTestCase):
         """
         Tests creating a QuestionOptionYesNo for a non-Yes/No question type and expecting an error.
         """
-        
+
         Question(desc='test question', type='C').save()
         q = Question.objects.get(desc='test question')
         QuestionOptionYesNo(number=1, option='test option', question=q).save()
@@ -978,11 +981,13 @@ class QuestionTestCases(BaseTestCase):
         """
         Tests the string representation error for the QuestionOption model when linked to a text comment question.
         """
-        
+
         q = Question(desc='test question', type='T')
         opt = QuestionOption(number=1, option='test option', question=q)
-        self.assertEqual(str(opt),
-                         'You cannot create an option for a non-Classic or multiple choice question')
+        self.assertEqual(
+            str(opt),
+            'You cannot create an option for a non-Classic or multiple choice question')
+
 
 @nottest
 class PostProcTest(TestCase):
@@ -991,19 +996,19 @@ class PostProcTest(TestCase):
 
     This class includes methods to test the post-processing of different types of votings such as comment and ranked votings.
     """
-    
+
     def setUp(self):
         """
         Sets up necessary data before each test method.
         """
-        
+
         super().setUp()
-        
+
     def tearDown(self):
         """
         Cleans up after each test method.
         """
-        
+
         super().tearDown()
 
     def test_do_comment_postproc(self):
@@ -1012,20 +1017,21 @@ class PostProcTest(TestCase):
 
         Verifies if the post-processing is done correctly for text comment votings.
         """
-        
+
         q1 = Question(desc='test question 1', type='T')
         q1.save()
 
         v = Voting(name='test voting', question=q1)
         v.save()
-    
-        a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
-                                          defaults={'me': True, 'name': 'test auth'})
+
+        a, _ = Auth.objects.get_or_create(
+            url=settings.BASEURL, defaults={
+                'me': True, 'name': 'test auth'})
         a.save()
         v.auths.add(a)
 
         tally = {'msgs': ['text1', 'text2']}
-        
+
         v.tally = tally
         v.save()
 
@@ -1040,15 +1046,16 @@ class PostProcTest(TestCase):
 
         Verifies if the correct exception is raised when there are no votes.
         """
-        
+
         q1 = Question(desc='test question 1', type='T')
         q1.save()
 
         v = Voting(name='test voting', question=q1)
         v.save()
-    
-        a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
-                                          defaults={'me': True, 'name': 'test auth'})
+
+        a, _ = Auth.objects.get_or_create(
+            url=settings.BASEURL, defaults={
+                'me': True, 'name': 'test auth'})
         a.save()
         v.auths.add(a)
 
@@ -1066,7 +1073,7 @@ class PostProcTest(TestCase):
 
         Verifies if the post-processing is done correctly for ranked votings, including the calculation of votes and post-processing results.
         """
-        
+
         q = Question(desc='test question', type='R')
         q.save()
         op1 = QuestionOptionRanked(question=q, option='Test 1', number=1)
@@ -1075,8 +1082,9 @@ class PostProcTest(TestCase):
         op2.save()
         v = Voting(name='test voting', question=q)
         v.save()
-        a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
-                                          defaults={'me': True, 'name': 'test auth'})
+        a, _ = Auth.objects.get_or_create(
+            url=settings.BASEURL, defaults={
+                'me': True, 'name': 'test auth'})
         a.save()
         v.auths.add(a)
 
@@ -1099,7 +1107,7 @@ class PostProcTest(TestCase):
 
         Verifies if the correct exception is raised when there is an invalid vote.
         """
-        
+
         q = Question(desc='test question', type='R')
         q.save()
         op1 = QuestionOptionRanked(question=q, option='Test 1', number=1)
@@ -1108,8 +1116,9 @@ class PostProcTest(TestCase):
         op2.save()
         v = Voting(name='test voting', question=q)
         v.save()
-        a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
-                                          defaults={'me': True, 'name': 'test auth'})
+        a, _ = Auth.objects.get_or_create(
+            url=settings.BASEURL, defaults={
+                'me': True, 'name': 'test auth'})
         a.save()
         v.auths.add(a)
 
@@ -1122,43 +1131,45 @@ class PostProcTest(TestCase):
         with self.assertRaises(ValueError):
             v.do_postproc()
 
+
 class FutureClosureTests(BaseTestCase):
     """
     Test case class for testing the future closure functionality of votings.
 
     This class includes methods to test the task that handles the automatic closure of votings at a future date.
     """
-    
+
     def setUp(self):
         """
         Sets up necessary data and schedules a future stop voting task before each test method.
         """
-        
+
         q = Question(desc='test question')
         q.save()
         for i in range(5):
-            opt = QuestionOption(question=q, option='option {}'.format(i+1))
+            opt = QuestionOption(question=q, option='option {}'.format(i + 1))
             opt.save()
         v = Voting(name='test voting', question=q)
         v.save()
 
-        a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
-                                          defaults={'me': True, 'name': 'test auth'})
+        a, _ = Auth.objects.get_or_create(
+            url=settings.BASEURL, defaults={
+                'me': True, 'name': 'test auth'})
         a.save()
         v.auths.add(a)
-        
+
         self.res = future_stop_voting_task.delay(v.id, v.created_at)
         self.v = v
-        
+
         super().setUp()
 
     def tearDown(self):
         """
         Cleans up after each test method.
         """
-        
+
         super().tearDown()
-    
+
     def test_task_started(self):
         """
         Tests if the future stop voting task has started.
@@ -1168,8 +1179,12 @@ class FutureClosureTests(BaseTestCase):
         self.v.future_stop = timezone.now() + timedelta(weeks=1)
         self.v.save()
 
-        self.assertIn(self.res.status, ['PENDING', 'STARTED', 'SUCCESS'], "Task status should be either 'PENDING' , 'STARTED' or 'SUCCESS'")
-        
+        self.assertIn(self.res.status,
+                      ['PENDING',
+                       'STARTED',
+                       'SUCCESS'],
+                      "Task status should be either 'PENDING' , 'STARTED' or 'SUCCESS'")
+
     def test_task_finished(self):
         """
         Tests the status of the future stop voting task.
@@ -1178,7 +1193,7 @@ class FutureClosureTests(BaseTestCase):
         """
 
         self.assertEqual(self.res.status, "SUCCESS")
-    
+
     def test_end_date(self):
         """
         Tests if the end date of the voting is set correctly after the execution of the future stop task.

@@ -52,10 +52,11 @@ def rand(p):
     :return: A random integer k.
     :rtype: int
     """
-    
+
     while True:
         k = random.StrongRandom().randint(1, int(p) - 1)
-        if GCD(k, int(p) - 1) == 1: break
+        if GCD(k, int(p) - 1) == 1:
+            break
     return k
 
 
@@ -68,7 +69,7 @@ def gen_multiple_key(*crypts):
     :return: A new MixCrypt object with combined properties.
     :rtype: MixCrypt
     """
-    
+
     k1 = crypts[0]
     k = MixCrypt(k=k1.k, bits=k1.bits)
     k.k.y = 1
@@ -89,7 +90,7 @@ def multiple_decrypt(c, *crypts):
     :return: The decrypted message.
     :rtype: int
     """
-    
+
     a, b = c
     for k in crypts:
         b = k.decrypt((a, b))
@@ -107,12 +108,13 @@ def multiple_decrypt_shuffle(ciphers, *crypts):
     :return: The list of decrypted and shuffled messages.
     :rtype: list
     """
-    
+
     b = ciphers
     for i, k in enumerate(crypts):
         last = i == len(crypts) - 1
         b = k.shuffle_decrypt(b, last)
     return b
+
 
 def multiple_decrypt_shuffle2(ciphers, *crypts, pubkey=None):
     """
@@ -127,7 +129,7 @@ def multiple_decrypt_shuffle2(ciphers, *crypts, pubkey=None):
     :return: The list of decrypted and shuffled messages.
     :rtype: list
     """
-    
+
     '''
     >>> B = 256
     >>> k1 = MixCrypt(bits=B)
@@ -166,7 +168,7 @@ class MixCrypt:
     :param bits: Bit size for the key generation.
     :type bits: int
     """
-    
+
     def __init__(self, k=None, bits=256):
         self.bits = bits
         if k:
@@ -181,7 +183,7 @@ class MixCrypt:
         :return: The generated ElGamal key.
         :rtype: ElGamal key
         """
-        
+
         self.k = ElGamal.generate(self.bits, Random.new().read)
         return self.k
 
@@ -196,7 +198,7 @@ class MixCrypt:
         :return: The constructed ElGamal key.
         :rtype: ElGamal key
         """
-        
+
         x = rand(p)
         y = pow(g, x, p)
         self.k = ElGamal.construct((p, g, y, x))
@@ -217,10 +219,10 @@ class MixCrypt:
         :return: The set ElGamal key.
         :rtype: ElGamal key
         """
-        
+
         self.k = ElGamal.construct((p, g, y, x))
         return self.k
-    
+
     def encrypt(self, m, k=None):
         """
         Encrypts a message using ElGamal encryption.
@@ -232,7 +234,7 @@ class MixCrypt:
         :return: The encrypted message.
         :rtype: tuple
         """
-        
+
         r = rand(self.k.p)
         if not k:
             k = self.k
@@ -248,10 +250,10 @@ class MixCrypt:
         :return: The decrypted message.
         :rtype: int
         """
-        
+
         m = self.k._decrypt(c)
         return m
-    
+
     def multiple_decrypt(self, msgs, last=True):
         """
         Decrypts multiple messages, optionally leaving them in tuple form.
@@ -263,7 +265,7 @@ class MixCrypt:
         :return: List of decrypted messages or message tuples.
         :rtype: list
         """
-        
+
         msgs2 = []
         for a, b in msgs:
             clear = self.decrypt((a, b))
@@ -285,7 +287,7 @@ class MixCrypt:
         :return: The shuffled and decrypted list of messages.
         :rtype: list
         """
-        
+
         msgs2 = msgs.copy()
         msgs3 = []
         while msgs2:
@@ -299,7 +301,7 @@ class MixCrypt:
             msgs3.append(msg)
 
         return msgs3
-    
+
     def reencrypt(self, cipher, pubkey=None):
         """
         Re-encrypts an encrypted message, optionally with a new public key.
@@ -311,7 +313,7 @@ class MixCrypt:
         :return: The re-encrypted message.
         :rtype: tuple
         """
-        
+
         '''
         >>> B = 256
         >>> k = MixCrypt(bits=B)
@@ -347,7 +349,7 @@ class MixCrypt:
         :return: A list of permuted indices.
         :rtype: list
         """
-        
+
         x = list(range(l))
         for i in range(l):
             d = random.StrongRandom().randint(0, i)

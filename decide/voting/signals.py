@@ -11,8 +11,8 @@ def future_stop_add_task(sender, created, instance, **kwargs):
     """
     A Django signal receiver that triggers a task manager for future stop voting events.
 
-    This function is called automatically after a Voting object is saved. It sets the 
-    'created_at' attribute of the Voting instance to the current time and then calls the 
+    This function is called automatically after a Voting object is saved. It sets the
+    'created_at' attribute of the Voting instance to the current time and then calls the
     future stop task manager with the instance's ID.
 
     Args:

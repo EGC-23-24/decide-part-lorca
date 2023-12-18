@@ -13,6 +13,7 @@ class BoothTestCase(BaseTestCase):
     :ivar client: The Django test client used to simulate HTTP requests.
     :vartype client: Client
     """
+
     def setUp(self):
         """
         Set up the test environment before each test method is run.
@@ -22,6 +23,7 @@ class BoothTestCase(BaseTestCase):
         :return: None
         """
         super().setUp()
+
     def tearDown(self):
         """
         Clean up the test environment after each test method is run.
@@ -32,6 +34,7 @@ class BoothTestCase(BaseTestCase):
         """
 
         super().tearDown()
+
     def testBoothNotFound(self):
         """
         Test the behavior when trying to access a non-existing booth.
@@ -43,7 +46,7 @@ class BoothTestCase(BaseTestCase):
         """
         response = self.client.get('/booth/10000/')
         self.assertEqual(response.status_code, 404)
-    
+
     def testBoothRedirection(self):
         """
         Test the behavior when accessing a booth without a trailing slash.
@@ -52,8 +55,6 @@ class BoothTestCase(BaseTestCase):
         with a voting ID without a trailing slash.
 
         :return: None
-        """   
+        """
         response = self.client.get('/booth/10000')
         self.assertEqual(response.status_code, 301)
-
-       

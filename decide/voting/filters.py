@@ -11,7 +11,7 @@ class StartedFilter(SimpleListFilter):
         title (str): The title displayed on the filter interface.
         parameter_name (str): The name of the parameter used in the query string.
     """
-    
+
     title = 'started'
     parameter_name = 'started'
 
@@ -26,7 +26,7 @@ class StartedFilter(SimpleListFilter):
         :return: List of tuples, where each tuple represents a lookup option.
         :rtype: list
         """
-        
+
         return [
             ('NS', 'Not started'),
             ('S', 'Started'),
@@ -45,13 +45,15 @@ class StartedFilter(SimpleListFilter):
         :return: Filtered queryset based on the selected lookup option.
         :rtype: QuerySet
         """
-        
+
         if self.value() == 'NS':
             return queryset.filter(start_date__isnull=True)
         if self.value() == 'S':
             return queryset.exclude(start_date__isnull=True)
         if self.value() == 'R':
-            return queryset.exclude(start_date__isnull=True).filter(end_date__isnull=True)
+            return queryset.exclude(
+                start_date__isnull=True).filter(
+                end_date__isnull=True)
         if self.value() == 'F':
             return queryset.exclude(end_date__isnull=True)
         else:

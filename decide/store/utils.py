@@ -6,13 +6,14 @@ from rest_framework.response import Response
 from .models import Vote
 from base import mods
 
+
 def classic_store(request):
     """
     Processes and stores a classic type vote.
 
     Args:
         request: Django HttpRequest object containing vote data.
-    
+
     The request should contain:
         - voting (int): The ID of the voting.
         - voter (int): The ID of the voter.
@@ -26,7 +27,7 @@ def classic_store(request):
         HTTP_401_UNAUTHORIZED: If the voting is not found, or has not started, or is closed.
         HTTP_400_BAD_REQUEST: If the voting ID, voter ID, or vote data is missing or invalid.
     """
-  
+
     vid = request.data.get('voting')
     voting = mods.get('voting', params={'id': vid})
     if not voting or not isinstance(voting, list):
@@ -49,28 +50,37 @@ def classic_store(request):
         token = request.auth.key
     else:
         token = "NO-AUTH-VOTE"
-    voter = mods.post('authentication', entry_point='/getuser/', json={'token': token})
+    voter = mods.post(
+        'authentication',
+        entry_point='/getuser/',
+        json={
+            'token': token})
     voter_id = voter.get('id', None)
     if not voter_id or voter_id != uid:
         return status.HTTP_401_UNAUTHORIZED
 
     # the user is in the census
-    perms = mods.get('census/{}'.format(vid), params={'voter_id': uid}, response=True)
+    perms = mods.get(
+        'census/{}'.format(vid),
+        params={
+            'voter_id': uid},
+        response=True)
     if perms.status_code == 401:
         return status.HTTP_401_UNAUTHORIZED
 
     a = vote.get("a")
     b = vote.get("b")
 
-    defs = { "a": a, "b": b }
+    defs = {"a": a, "b": b}
     v, _ = Vote.objects.get_or_create(voting_id=vid, voter_id=uid,
-                                        defaults=defs)
+                                      defaults=defs)
     v.a = a
     v.b = b
 
     v.save()
-    
+
     return status.HTTP_200_OK
+
 
 def choices_store(request):
     """
@@ -115,27 +125,36 @@ def choices_store(request):
         token = request.auth.key
     else:
         token = "NO-AUTH-VOTE"
-    voter = mods.post('authentication', entry_point='/getuser/', json={'token': token})
+    voter = mods.post(
+        'authentication',
+        entry_point='/getuser/',
+        json={
+            'token': token})
     voter_id = voter.get('id', None)
     if not voter_id or voter_id != uid:
         return status.HTTP_401_UNAUTHORIZED
 
     # the user is in the census
-    perms = mods.get('census/{}'.format(vid), params={'voter_id': uid}, response=True)
+    perms = mods.get(
+        'census/{}'.format(vid),
+        params={
+            'voter_id': uid},
+        response=True)
     if perms.status_code == 401:
         return status.HTTP_401_UNAUTHORIZED
 
     vote = Vote.objects.filter(voter_id=uid, voting_id=vid).first()
 
-    if vote != None:
-        Vote.objects.filter(voter_id=uid, voting_id=vid).delete()  
-            
+    if vote is not None:
+        Vote.objects.filter(voter_id=uid, voting_id=vid).delete()
+
     for v in votes:
         a = v.get("a")
         b = v.get("b")
 
-        defs = { "a": a, "b": b }
-        voteDB, _ = Vote.objects.get_or_create(voting_id=vid, voter_id=uid, a=a, b=b, defaults=defs)
+        defs = {"a": a, "b": b}
+        voteDB, _ = Vote.objects.get_or_create(
+            voting_id=vid, voter_id=uid, a=a, b=b, defaults=defs)
         voteDB.a = a
         voteDB.b = b
 

@@ -10,6 +10,7 @@ from rest_framework.test import APIClient
 from base import mods
 from nose.tools import nottest
 
+
 class QuestionsTests(StaticLiveServerTestCase):
     """
     Test case class for testing the question creation functionalities using Selenium.
@@ -22,7 +23,7 @@ class QuestionsTests(StaticLiveServerTestCase):
         Sets up necessary data and configurations before each test method.
         Initializes Selenium WebDriver for browser-based testing.
         """
-        
+
         # Load base test functionality for decide
         self.base = BaseTestCase()
         self.client = APIClient()
@@ -43,7 +44,7 @@ class QuestionsTests(StaticLiveServerTestCase):
         Cleans up after each test method.
         Quits the Selenium WebDriver.
         """
-        
+
         super().tearDown()
         self.driver.quit()
 
@@ -53,8 +54,8 @@ class QuestionsTests(StaticLiveServerTestCase):
         """
         Creates a classic question using the admin interface.
         """
-        
-        self.driver.get(self.live_server_url+"/admin/voting/question/add/")
+
+        self.driver.get(self.live_server_url + "/admin/voting/question/add/")
 
         self.driver.find_element(By.ID, "id_desc").click()
         self.driver.find_element(
@@ -67,8 +68,8 @@ class QuestionsTests(StaticLiveServerTestCase):
         """
         Creates a ranked question using the admin interface.
         """
-        
-        self.driver.get(self.live_server_url+"/admin/voting/question/add/")
+
+        self.driver.get(self.live_server_url + "/admin/voting/question/add/")
 
         self.driver.find_element(By.ID, "id_desc").click()
         self.driver.find_element(By.ID, "id_desc").send_keys('Ranked Question')
@@ -81,7 +82,7 @@ class QuestionsTests(StaticLiveServerTestCase):
         Tests the creation of a classic question through the admin interface.
         Verifies if the question is successfully created and listed in the admin panel.
         """
-        
+
         self.driver.get(f'{self.live_server_url}/admin/login/?next=/admin/')
         self.driver.set_window_size(1280, 720)
 
@@ -89,7 +90,7 @@ class QuestionsTests(StaticLiveServerTestCase):
         self.driver.find_element(
             By.ID, "id_password").send_keys("qwerty", Keys.ENTER)
 
-        self.driver.get(self.live_server_url+"/admin/voting/question/add/")
+        self.driver.get(self.live_server_url + "/admin/voting/question/add/")
 
         self.driver.find_element(By.ID, "id_desc").click()
         self.driver.find_element(By.ID, "id_desc").send_keys('Test')
@@ -97,7 +98,7 @@ class QuestionsTests(StaticLiveServerTestCase):
         self.driver.find_element(By.ID, "id_type").send_keys('classic')
         self.driver.find_element(By.NAME, "_save").click()
         self.assertTrue(self.driver.current_url ==
-                        self.live_server_url+"/admin/voting/question/")
+                        self.live_server_url + "/admin/voting/question/")
 
     def test_create_ranked_question(self):
         """
@@ -112,7 +113,7 @@ class QuestionsTests(StaticLiveServerTestCase):
         self.driver.find_element(
             By.ID, "id_password").send_keys("qwerty", Keys.ENTER)
 
-        self.driver.get(self.live_server_url+"/admin/voting/question/add/")
+        self.driver.get(self.live_server_url + "/admin/voting/question/add/")
 
         self.driver.find_element(By.ID, "id_desc").click()
         self.driver.find_element(By.ID, "id_desc").send_keys('Ranked Question')
@@ -120,7 +121,7 @@ class QuestionsTests(StaticLiveServerTestCase):
         self.driver.find_element(By.ID, "id_type").send_keys('ranked')
         self.driver.find_element(By.NAME, "_save").click()
         self.assertTrue(self.driver.current_url ==
-                        self.live_server_url+"/admin/voting/question/")
+                        self.live_server_url + "/admin/voting/question/")
 
     def test_create_classic_question_option(self):
         """
@@ -147,7 +148,7 @@ class QuestionsTests(StaticLiveServerTestCase):
         self.driver.find_element(By.ID, "id_option").send_keys('test1')
         self.driver.find_element(By.NAME, "_save").click()
         self.assertTrue(self.driver.current_url ==
-                        self.live_server_url+"/admin/voting/questionoption/")
+                        self.live_server_url + "/admin/voting/questionoption/")
         self.assertTrue(
             len(self.driver.find_elements(By.CLASS_NAME, "success")) == 1)
 
@@ -177,9 +178,13 @@ class QuestionsTests(StaticLiveServerTestCase):
         self.driver.find_element(By.ID, "id_option").send_keys('test1')
         self.driver.find_element(By.NAME, "_save").click()
         self.assertTrue(self.driver.current_url ==
-                        self.live_server_url+"/admin/voting/questionoption/")
-        self.assertTrue(self.driver.find_element(By.CLASS_NAME, "success").find_element(
-            By.TAG_NAME, "a").text == "You cannot create an option for a non-Classic or multiple choice question")
+                        self.live_server_url + "/admin/voting/questionoption/")
+        self.assertTrue(
+            self.driver.find_element(
+                By.CLASS_NAME,
+                "success").find_element(
+                By.TAG_NAME,
+                "a").text == "You cannot create an option for a non-Classic or multiple choice question")
 
     def test_create_ranked_question_option(self):
         """
@@ -205,8 +210,9 @@ class QuestionsTests(StaticLiveServerTestCase):
         self.driver.find_element(By.ID, "id_option").click()
         self.driver.find_element(By.ID, "id_option").send_keys('test1')
         self.driver.find_element(By.NAME, "_save").click()
-        self.assertTrue(self.driver.current_url ==
-                        self.live_server_url+"/admin/voting/questionoptionranked/")
+        self.assertTrue(
+            self.driver.current_url == self.live_server_url +
+            "/admin/voting/questionoptionranked/")
         self.assertTrue(
             len(self.driver.find_elements(By.CLASS_NAME, "success")) == 1)
 
@@ -234,10 +240,15 @@ class QuestionsTests(StaticLiveServerTestCase):
         self.driver.find_element(By.ID, "id_option").click()
         self.driver.find_element(By.ID, "id_option").send_keys('test1')
         self.driver.find_element(By.NAME, "_save").click()
-        self.assertTrue(self.driver.current_url ==
-                        self.live_server_url+"/admin/voting/questionoptionranked/")
-        self.assertTrue(self.driver.find_element(By.CLASS_NAME, "success").find_element(
-            By.TAG_NAME, "a").text == "You cannot create a ranked option for a non-ranked question")
+        self.assertTrue(
+            self.driver.current_url == self.live_server_url +
+            "/admin/voting/questionoptionranked/")
+        self.assertTrue(
+            self.driver.find_element(
+                By.CLASS_NAME,
+                "success").find_element(
+                By.TAG_NAME,
+                "a").text == "You cannot create a ranked option for a non-ranked question")
 
 
 class VotingTests(StaticLiveServerTestCase):
@@ -252,7 +263,7 @@ class VotingTests(StaticLiveServerTestCase):
         Sets up necessary data and configurations before each test method.
         Initializes Selenium WebDriver for browser-based testing.
         """
-        
+
         # Load base test functionality for decide
         self.base = BaseTestCase()
         self.client = APIClient()
@@ -273,7 +284,7 @@ class VotingTests(StaticLiveServerTestCase):
         Cleans up after each test method.
         Quits the Selenium WebDriver.
         """
-        
+
         super().tearDown()
         self.driver.quit()
 
@@ -283,8 +294,8 @@ class VotingTests(StaticLiveServerTestCase):
         """
         Creates an authorization using the admin interface.
         """
-        
-        self.driver.get(self.live_server_url+"/admin/base/auth/add/")
+
+        self.driver.get(self.live_server_url + "/admin/base/auth/add/")
 
         self.driver.find_element(By.ID, "id_name").click()
         self.driver.find_element(By.ID, "id_name").send_keys("Test Auth")
@@ -298,7 +309,7 @@ class VotingTests(StaticLiveServerTestCase):
         Creates a classic question using the admin interface.
         """
 
-        self.driver.get(self.live_server_url+"/admin/voting/question/add/")
+        self.driver.get(self.live_server_url + "/admin/voting/question/add/")
 
         self.driver.find_element(By.ID, "id_desc").click()
         self.driver.find_element(
@@ -312,7 +323,7 @@ class VotingTests(StaticLiveServerTestCase):
         Creates a ranked question using the admin interface.
         """
 
-        self.driver.get(self.live_server_url+"/admin/voting/question/add/")
+        self.driver.get(self.live_server_url + "/admin/voting/question/add/")
 
         self.driver.find_element(By.ID, "id_desc").click()
         self.driver.find_element(By.ID, "id_desc").send_keys('Ranked Question')
@@ -341,7 +352,7 @@ class VotingTests(StaticLiveServerTestCase):
         """
         Creates an option for a ranked question using the admin interface.
         """
-        
+
         self.driver.get(self.live_server_url +
                         "/admin/voting/questionoptionranked/add/")
 
@@ -371,7 +382,7 @@ class VotingTests(StaticLiveServerTestCase):
         self.create_classic_option()
         self.create_auth()
 
-        self.driver.get(self.live_server_url+"/admin/voting/voting/add/")
+        self.driver.get(self.live_server_url + "/admin/voting/voting/add/")
         self.driver.find_element(By.ID, "id_name").click()
         self.driver.find_element(By.ID, "id_name").send_keys('Classic Voting')
         self.driver.find_element(By.ID, "id_desc").click()
@@ -385,7 +396,7 @@ class VotingTests(StaticLiveServerTestCase):
             By.ID, "id_auths").send_keys(self.live_server_url)
         self.driver.find_element(By.NAME, "_save").click()
         self.assertTrue(self.driver.current_url ==
-                        self.live_server_url+"/admin/voting/voting/")
+                        self.live_server_url + "/admin/voting/voting/")
 
     def test_create_ranked_voting(self):
         """
@@ -404,7 +415,7 @@ class VotingTests(StaticLiveServerTestCase):
         self.create_ranked_option()
         self.create_auth()
 
-        self.driver.get(self.live_server_url+"/admin/voting/voting/add/")
+        self.driver.get(self.live_server_url + "/admin/voting/voting/add/")
         self.driver.find_element(By.ID, "id_name").click()
         self.driver.find_element(By.ID, "id_name").send_keys('Ranked Voting')
         self.driver.find_element(By.ID, "id_desc").click()
@@ -418,4 +429,4 @@ class VotingTests(StaticLiveServerTestCase):
             By.ID, "id_auths").send_keys(self.live_server_url)
         self.driver.find_element(By.NAME, "_save").click()
         self.assertTrue(self.driver.current_url ==
-                        self.live_server_url+"/admin/voting/voting/")
+                        self.live_server_url + "/admin/voting/voting/")

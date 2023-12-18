@@ -13,7 +13,7 @@ class Vote(models.Model):
         b (BigBigField): Encrypted data part B representing the vote.
         voted (DateTimeField): The timestamp of when the vote was cast.
     """
-    
+
     voting_id = models.PositiveIntegerField()
     voter_id = models.PositiveIntegerField()
 
@@ -29,5 +29,5 @@ class Vote(models.Model):
         Returns:
             str: A string showing the voting ID and the voter ID.
         """
-        
+
         return '{}: {}'.format(self.voting_id, self.voter_id)
