@@ -311,6 +311,7 @@ class VisualizerTestCase(StaticLiveServerTestCase):
             end_date=timezone.now() +
             timezone.timedelta(
                 days=1),
+            postproc= [],
             question_id=question.id)
         voting.save()
 
@@ -385,6 +386,7 @@ class VisualizerTestCase(StaticLiveServerTestCase):
         """
         voting = self.create_yesno_voting_started()
         voting.end_date = timezone.now() + timezone.timedelta(days=1)
+        voting.postproc=[]
         voting.save()
 
         self.driver.get(f'{self.live_server_url}/visualizer/{voting.pk}/')
@@ -452,6 +454,7 @@ class VisualizerTestCase(StaticLiveServerTestCase):
         """
         voting = self.create_comment_voting_started()
         voting.end_date = timezone.now() + timezone.timedelta(days=1)
+        voting.postproc=[]
         voting.save()
 
         self.driver.get(f'{self.live_server_url}/visualizer/{voting.pk}/')
@@ -504,6 +507,7 @@ class VisualizerTestCase(StaticLiveServerTestCase):
         """
         voting = self.create_multiple_choice_voting_started()
         voting.end_date = timezone.now() + timezone.timedelta(days=1)
+        voting.postproc=[]
         voting.save()
 
         self.driver.get(f'{self.live_server_url}/visualizer/{voting.pk}/')
@@ -577,6 +581,7 @@ class VisualizerTestCase(StaticLiveServerTestCase):
         """
         voting = self.create_preference_voting_started()
         voting.end_date = timezone.now() + timezone.timedelta(days=1)
+        voting.postproc=[]
         voting.save()
 
         self.driver.get(f'{self.live_server_url}/visualizer/{voting.pk}/')
