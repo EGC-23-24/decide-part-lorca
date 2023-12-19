@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "ubuntu/bionic64"
+  config.vm.box = "ubuntu/jammy64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -58,8 +58,8 @@ Vagrant.configure("2") do |config|
   # end
 
   config.vm.provider "virtualbox" do |v|
-      v.memory = 512
-      v.cpus = 1
+      v.memory = 2048
+      v.cpus = 3
   end
 
   # View the documentation for the provider you are using for more
