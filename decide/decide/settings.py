@@ -193,7 +193,6 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
 CELERY_TASK_DEFAULT_QUEUE = 'default'
-CELERY_TASK_ALWAYS_EAGER = True
 
 try:
     from local_settings import *
