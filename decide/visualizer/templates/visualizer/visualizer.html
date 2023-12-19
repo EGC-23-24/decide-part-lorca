@@ -43,6 +43,9 @@
                 <div v-if="voting.end_date && !voting.future_stop">
                     <h4>Voting has been closed, we need to recount!</h4>
                 </div>
+                <div v-else-if="voting.future_stop">
+                    <h6>Voting ends at [[ voting.future_stop ]], after which a recount will take place.</h6>
+                </div>
             </div>
             <div v-else>    
                 <div v-if="voting.question.type === 'C' || voting.question.type === 'R' || voting.question.type === 'M'" class="mb-3">
