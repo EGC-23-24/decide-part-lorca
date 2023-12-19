@@ -1,0 +1,37 @@
+{% extends 'base2.html' %}
+{% load i18n static %} 
+{% block extrahead %}
+<link
+  type="text/css"
+  rel="stylesheet"
+  href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css"
+/>
+<link type="text/css" rel="stylesheet" href="{% static "booth/style.css" %}" />
+{% endblock %} 
+{% block content %}
+<div class="container" style="margin-top: 60px;">
+  <h1 class="display-4 text-center mb-4">Export census</h1>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Voting</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for voting in votings %}
+      <tr>
+        <td class="d-flex justify-content-between">
+          <div>{{ voting.name }}</div>
+          <a
+            class="btn btn-primary btn-sm"
+            href="{% url 'export_census_of_voting' voting.id %}"
+            >Export census</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

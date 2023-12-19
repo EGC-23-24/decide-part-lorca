@@ -1,0 +1,46 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+{% block content %}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        background-color: #004aad;
+    }
+
+    .banner {
+        width: 1437.5px;
+        height: 831.25px;
+        margin-top: 30px;
+        background-image: url("{% static 'homepage.png' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .custom-btn {
+        background-color: #FFFFFF;
+        color: #004aad;
+    }
+</style>
+
+<main class="d-flex justify-content-center align-items-start">
+    <div class="container" style="text-align: center;">
+        <div class="banner">
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}

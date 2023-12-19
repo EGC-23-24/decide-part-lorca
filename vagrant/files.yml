@@ -19,3 +19,17 @@
   copy:
     src: files/settings.py
     dest: /home/decide/decide/decide/local_settings.py
+
+- name: celery sysmtemd service
+  become: yes
+  become_user: root
+  copy:
+    src: files/celery.service
+    dest: /etc/systemd/system/celery.service
+
+- name: redis.conf file
+  become: yes
+  become_user: root
+  copy:
+    src: files/redis.conf
+    dest: /etc/redis/redis.conf

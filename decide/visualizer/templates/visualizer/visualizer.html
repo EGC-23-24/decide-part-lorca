@@ -10,39 +10,130 @@
 {% block content %}
     <div id="app-visualizer">
         <!-- Navbar -->
-        <nav class="navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-dark bg-primary">
             <div class="container-fluid">
-                <h1 class="navbar-brand">Decide</h1>
+                <a class="navbar-brand" href="/" style="color: white;">Decide!</a>
             </div>
         </nav>
           
-
         <div class="voting container">
             <h1>[[ voting.id ]] - [[ voting.name ]]</h1>
 
-            <h2 v-if="!voting.start_date">Votación no comenzada</h2>
-            <h2 v-else-if="!voting.end_date">Votación en curso</h2>
-            <div v-else>
-                <h2 class="heading">Resultados:</h2>
+            <h2 v-if="!voting.start_date">Voting not started</h2>
+            <div v-else-if="!voting.postproc">
+                <h2>Voting in progress</h2>
+                <p>Real-time data:</p>
 
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Opción</th>
-                            <th>Puntuación</th>
-                            <th>Votos</th>
+                            <th>Number of voters in the census</th>
+                            <th>Number of votes</th>
+                            <th>Percentage of participation</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="opt in voting.postproc" :key="opt.number">
-                            <th>[[opt.option]]</th>
-                            <td>[[opt.postproc]]</td>
-                            <td class="text-muted">[[opt.votes]]</td>
+                        <tr>
+                            <td id="census">[[ realtimedata.num_census ]]</td>
+                            <td id="votes">[[ realtimedata.num_votes ]]</td>
+                            <td id="participation">[[ realtimedata.participation ]]</td>
                         </tr>
                     </tbody>
                 </table>
+                <div v-if="voting.end_date && !voting.future_stop">
+                    <h4>Voting has been closed, we need to recount!</h4>
+                </div>
+                <div v-else-if="voting.future_stop">
+                    <h6>Voting ends at [[ voting.future_stop ]], after which a recount will take place.</h6>
+                </div>
             </div>
+            <div v-else>    
+                <div v-if="voting.question.type === 'C' || voting.question.type === 'R' || voting.question.type === 'M'" class="mb-3">
+                    <h2 class="heading">Results:</h2>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Score</th>
+                                <th>Votes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="opt in voting.postproc" :key="opt.number">
+                                <th>[[opt.option]]</th>
+                                <td>[[opt.postproc]]</td>
+                                <td class="text-muted">[[opt.votes]]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <select id="chart-select" onchange="showChart()">
+                        <option value="doughnut-chart-post">Doughnut Chart (Score)</option>
+                        <option value="doughnut-chart-votes">Doughnut Chart (Votes)</option>
+                        <option value="polar-chart-post">Polar Chart (Score)</option>
+                        <option value="polar-chart-votes">Polar Chart (Votes)</option>
+                        <option value="radar-chart-post">Radar Chart (Score)</option>
+                        <option value="radar-chart-votes">Radar Chart (Votes)</option>
+                        <option value="bar-chart">Bar Chart</option>
+                    </select>
 
+                    <canvas id="bar-chart" style="display:none"></canvas>
+                    <canvas id="polar-chart-post" style="display:none"></canvas>
+                    <canvas id="polar-chart-votes" style="display:none"></canvas>
+                    <canvas id="radar-chart-votes" style="display:none"></canvas>
+                    <canvas id="doughnut-chart-votes" style="display:none"></canvas>
+                    <canvas id="radar-chart-post" style="display:none"></canvas>
+                    <canvas id="doughnut-chart-post"></canvas>
+                </div>
+                <div v-else-if="voting.question.type === 'T'" class="d-flex justify-content-center mt-3">
+                    <h3>Text Voting Results:</h3>
+                    <div v-if="voting.postproc.length === 0">
+                        <br>
+                        <h5>Oops, it seems that nobody has voted</h5>
+                    </div>
+                    <table class="table">
+                        <tr v-for="(opt, index) in voting.postproc" :key="index">
+                            <td class="bg-primary text-white p-2 rounded">
+                                <span class="badge bg-secondary">[[ index + 1 ]]</span>
+                                [[ opt.postproc ]]
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div v-else-if="voting.question.type === 'Y'" class="d-flex justify-content-center mt-3">
+                    <h3>Yes/No voting Results:</h3>
+                    <div class="container mt-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table">
+                                    <tr v-for="(opt, index) in voting.postproc" :key="index">
+                                        <td class="bg-primary text-white p-2 rounded">
+                                            <strong>[[ opt.option ]]:</strong> <span class="text-muted">[[ opt.postproc ]] votes</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    
+                        <div class="row">
+                            <div class="col-md-12">
+                                <select id="chart-select" onchange="showChart()" class="mb-2">
+                                    <option value="bar-chart">Bar Chart</option>
+                                    <option value="polar-chart-post">Polar Chart (Score)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="chart-container">
+                                    <canvas id="bar-chart"></canvas>
+                                    <canvas id="polar-chart-post" style="display:none"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                 
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
@@ -53,17 +144,230 @@
     <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
     <script src="https://unpkg.com/bootstrap@5.2.2/dist/js/bootstrap.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
     <script>
         var voting = {{voting|safe}};
+        var realtimedata = {{realtimedata|safe}};
         const { createApp } = Vue
         createApp({
             delimiters: ['[[', ']]'],
             data() {
                 return {
-                    voting: voting
+                    voting: voting,
+                    realtimedata: realtimedata
                 }
             }
         }).mount('#app-visualizer')
+    </script>
+    <script>
+        function showChart() {
+            const select = document.getElementById("chart-select");
+            const chartId = select.value;
+            const charts = document.getElementsByTagName("canvas");
+            for (let i = 0; i < charts.length; i++) {
+                if (charts[i].id === chartId) {
+                    charts[i].style.display = "block";
+                } else {
+                    charts[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+    <script>
+        let labels = voting.postproc.map((opt) => opt.option)
+        let postproc = voting.postproc.map((opt) => opt.postproc)
+        let votes = voting.postproc.map((opt) => opt.votes)
+        
+        let ctx = document.getElementById("bar-chart").getContext("2d");
+        let chart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                    label: "Score",
+                    backgroundColor: 'rgba(70, 130, 180, 0.5)',
+                    borderColor: "#4682B4",
+                    data: postproc
+                    },
+                    {
+                    label: "Votes",
+                    backgroundColor: "rgba(255, 140, 0, 0.5)",
+                    borderColor: "#FF8C00",
+                    data: votes
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    text: voting.name,
+                    display: true
+                }
+            }
+        });
+
+        ctx = document.getElementById("polar-chart-post").getContext("2d");
+        randomColors = [...Array(voting.postproc.length).keys()].map(i => "#" + Math.floor(random((i+30)*200)*16777215).toString(16));
+        var myChart = new Chart(ctx, {
+            type: 'polarArea',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Score',
+                    data: postproc,
+                    backgroundColor: randomColors,
+                    borderColor: randomColors,
+                    borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    text: voting.name + " (score)",
+                    display: true
+                }
+            }
+        });
+
+        ctx = document.getElementById("polar-chart-votes").getContext("2d");
+        var myChart = new Chart(ctx, {
+            type: 'polarArea',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Votes',
+                    data: votes,
+                    backgroundColor: randomColors,
+                    borderColor: randomColors,
+                    borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    text: voting.name + " (votes)",
+                    display: true
+                }
+            }
+        });
+
+        ctx = document.getElementById("radar-chart-votes").getContext("2d");
+        randomColors = [...Array(voting.postproc.length).keys()].map(i => "#" + Math.floor(random((i+30)*200)*16777215).toString(16));
+        var myChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Votes',
+                    data: votes,
+                    backgroundColor: randomColors,
+                    borderColor: randomColors,
+                    borderWidth: 1,
+                    hoverBackgroundColor: randomColors,
+                    borderJoinStyle: 'round',
+                    pointHoverBorderWidth: 6,
+                    pointHitRadius: 6,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    text: voting.name + " (votes)",
+                    display: true
+                }
+            }
+        });
+
+        ctx = document.getElementById("doughnut-chart-votes").getContext("2d");
+        randomColors = [...Array(voting.postproc.length).keys()].map(i => "#" + Math.floor(random((i+30)*200)*16777215).toString(16));
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Votes',
+                    data: votes,
+                    backgroundColor: randomColors,
+                    borderColor: randomColors,
+                    borderWidth: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    text: voting.name + " (votes)",
+                    display: true
+                }
+            }
+        });
+
+        ctx = document.getElementById("radar-chart-post").getContext("2d");
+        randomColors = [...Array(voting.postproc.length).keys()].map(i => "#" + Math.floor(random((i+30)*200)*16777215).toString(16));
+        var myChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Score',
+                    data: postproc,
+                    backgroundColor: randomColors,
+                    borderColor: randomColors,
+                    borderWidth: 1,
+                    hoverBackgroundColor: randomColors,
+                    borderJoinStyle: 'round',
+                    pointHoverBackgroundColor : randomColors,
+                    pointHoverBorderWidth: 6,
+                    pointHitRadius: 6,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    text: voting.name + " (score)",
+                    display: true
+                }
+            }
+        });
+
+        ctx = document.getElementById("doughnut-chart-post").getContext("2d");
+        randomColors = [...Array(voting.postproc.length).keys()].map(i => "#" + Math.floor(random((i+30)*200)*16777215).toString(16));
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                    label: 'Score',
+                    data: postproc,
+                    backgroundColor: randomColors,
+                    borderColor: randomColors,
+                    borderWidth: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    text: voting.name + " (score)",
+                    display: true
+                }
+            }
+        });
+
+        function random(seed) {
+            var x = Math.sin(seed++) * 10000;
+            return x - Math.floor(x);
+        }
     </script>
 </body>
 {% endblock %}

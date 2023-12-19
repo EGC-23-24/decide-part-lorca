@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block extrahead %}
+    <link type="text/css" rel="stylesheet"
+         href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet"
+         href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
+    <link type="text/css" rel="stylesheet" href='{% static "booth/style.css" %}' />
+{% endblock %}
+
+{% block content %}
+<div class="row h-100 justify-content-center align-items-center">
+
+  {% if authenticated == False %}
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">App Decide</h1>
+      <p class="lead">Welcome to module authentication of App Decide</p>
+      <p class="lead">Create an user or sign in</p>
+      <p class="lead">
+        <a href="/authentication/register-view" class="btn btn-lg btn-primary">Register</a>
+      </p>
+      <p class="lead">
+        <a href="/authentication/login-view" class="btn btn-lg btn-primary">Sign in</a>
+      </p>
+    </main>
+    {% endif %}
+
+    {% if authenticated == True %}
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">App Decide</h1>
+      <p class="lead">Welcome to module authentication of App Decide</p>
+      <p class="lead">Your current user is {{ username }}</p>
+      <p class="lead">
+        <a href="/authentication/logout-view" class="btn btn-lg btn-primary">Logout</a>
+      </p>
+    </main>
+    {% endif %}
+</div> 
+
+{% endblock %}

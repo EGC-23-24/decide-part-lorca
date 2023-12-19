@@ -1,0 +1,15 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+  <div style="text-align: center;">
+    <h1>Update Voting</h1>
+  </div>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Voting</button>
+  </form>
+
+  <a href="{% url 'list_votings' %}">Cancel</a>
+{% endblock %}

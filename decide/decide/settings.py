@@ -25,7 +25,7 @@ SECRET_KEY = '^##ydkswfu0+=ofw0l#$kv^8n)0$i(qd&d&ol#p9!b$8*5%j1+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework_swagger',
     'gateway',
+    'social_django'
 ]
 
 REST_FRAMEWORK = {
@@ -55,22 +56,36 @@ REST_FRAMEWORK = {
 }
 
 AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
     'base.backends.AuthBackend',
+    'django.contrib.auth.backends.ModelBackend'
 ]
+
+LOGIN_REDIRECT_URL = '/'
+
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
+
 
 MODULES = [
     'authentication',
     'base',
     'booth',
     'census',
+    'configurator',
     'mixnet',
     'postproc',
     'store',
     'visualizer',
     'voting',
+
 ]
 
 BASEURL = 'http://localhost:8000'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,7 +94,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
 ROOT_URLCONF = 'decide.urls'
@@ -157,6 +172,7 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = BASE_DIR + '/' + 'static',
 
 # number of bits for the key, all auths should use the same number of bits
 KEYBITS = 256
@@ -164,6 +180,20 @@ KEYBITS = 256
 # Versioning
 ALLOWED_VERSIONS = ['v1', 'v2']
 DEFAULT_VERSION = 'v1'
+
+CELERY_BROKER_URL = os.environ.get(
+    "CELERY_BROKER_URL", "redis://localhost:6379/0"
+)
+CELERY_RESULT_BACKEND = os.environ.get(
+    "CELERY_RESULT_BACKEND", "redis://localhost:6379/0"
+)
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+CELERY_TASK_DEFAULT_QUEUE = 'default'
+CELERY_TASK_ALWAYS_EAGER = True
 
 try:
     from local_settings import *
@@ -180,3 +210,16 @@ if os.path.exists("config.jsonnet"):
 
 
 INSTALLED_APPS = INSTALLED_APPS + MODULES
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "decidepartlorca2324@gmail.com"
+EMAIL_HOST_PASSWORD = "minv wukr swha dxnv"
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '314792186602-tb6jd8sgtquj1nel58knt1iok5tdo5n9.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '315921004519258'
+SOCIAL_AUTH_FACEBOOK_SECRET = '31fe7b9b67e74c0e76f3ba32c76e8482'

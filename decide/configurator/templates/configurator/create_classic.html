@@ -1,0 +1,128 @@
+{% extends "base.html"%}
+
+{% load i18n static %}
+
+{% block extrahead %}
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-6 mx-auto">
+        <h1 class="display-4 mb-4 text-center">Create a Classic voting</h1>
+
+        <form method="post" enctype="multipart/form-data" class="form bg-light border rounded p-4">
+            {% csrf_token %}
+
+            <!-- Voting Fields -->
+            <div class="mb-3">
+                {{ form.name.label_tag }}
+                {{ form.name }}
+            </div>
+            <div class="mb-3">
+                {{ form.desc.label_tag }}
+                {{ form.desc }}
+            </div>
+
+            <!-- Question Fields -->
+            <div class="mb-3">
+                {{ form.question_desc.label_tag }}
+                {{ form.question_desc }}
+            </div>
+
+            <!-- Future Stop -->
+            <div class="mb-3">
+                {{ form.future_stop.label_tag }}
+                {{ form.future_stop }}
+            </div>
+
+            <hr class="my-4">
+
+            <!-- Options -->
+            <div id="options-container">
+                <div class="mb-3">
+                    {{ form.option1.label_tag }}
+                    {{ form.option1 }}
+                </div>
+                <div class="mb-3">
+                    {{ form.option2.label_tag }}
+                    {{ form.option2 }}
+                </div>
+            </div>
+
+            <!-- Hidden field for dynamic options -->
+            {{ form.more_options }}
+
+            <div class="d-flex justify-content-center gap-2">
+                <a href="{% url 'configurator' %}" class="btn btn-secondary">Cancel</a>
+                <button type="button" class="btn btn-primary" onclick="addOption()">Add Option</button>
+                <button type="submit" class="btn btn-primary" onclick="updateOptions()">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extrabody %}
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    function addOption() {
+        var container = $("#options-container");
+        var optionNumber = container.children().length + 1;
+
+        var optionGroup = $("<div class='mb-3'></div>");
+        var optionLabel = $("<label for='id_option" + optionNumber + "'>Option " + optionNumber + "</label>");
+        var optionInputContainer = $("<div class='d-flex'></div>");
+        var optionInput = $("<input type='text' name='option" + optionNumber + "' class='form-control' required>");
+        var removeButton = $("<button type='button' class='btn btn-danger btn-remove-option' onclick='removeOption(this)'>Remove</button>");
+
+        optionGroup.append(optionLabel);
+        optionGroup.append(optionInputContainer);
+        optionInputContainer.append(optionInput);
+        optionInputContainer.append(removeButton);
+
+        container.append(optionGroup);
+
+        updateOptions();
+    }
+
+    function removeOption(button) {
+        var container = $("#options-container");
+        var optionGroup = $(button).parent().parent();
+        optionGroup.remove();
+
+        var optionNumber = 1;
+        container.children().each(function () {
+            var optionLabel = $(this).children().first();
+            optionLabel.text("Option " + optionNumber);
+
+            var optionInputContainer = optionLabel.next();
+            var optionInput = optionInputContainer.children().first();
+            optionInput.attr("name", "option" + optionNumber);
+
+            optionNumber++;
+        });
+
+        updateOptions();
+    }
+
+    function updateOptions() {
+        var container = $("#options-container");
+        var options = container
+            .children()
+            .slice(2) // Skip the first two options
+            .map(function () {
+                return $(this).find("input").val();
+            })
+            .get()
+            .join("\n");
+        $("#id_options").val(options);
+    }
+
+</script>
+
+{% endblock %}

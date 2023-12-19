@@ -1,0 +1,46 @@
+{% extends "base.html"%}
+
+{% load i18n static %}
+
+{% block extrahead %}
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-6 mx-auto">
+        <h1 class="display-4 mb-4 text-center">Create a Yes/No voting</h1>
+
+        <form method="post" enctype="multipart/form-data" class="form bg-light border rounded p-4">
+            {% csrf_token %}
+
+            <!-- Voting Fields -->
+            <div class="mb-3">
+                {{ form.name.label_tag }}
+                {{ form.name }}
+            </div>
+            <div class="mb-3">
+                {{ form.desc.label_tag }}
+                {{ form.desc }}
+            </div>
+
+            <!-- Question Fields -->
+            <div class="mb-3">
+                {{ form.question_desc.label_tag }}
+                {{ form.question_desc }}
+            </div>
+
+            <!-- Future Stop -->
+            <div class="mb-3">
+                {{ form.future_stop.label_tag }}
+                {{ form.future_stop }}
+            </div>
+
+            <div class="d-flex justify-content-center gap-2">
+                <a href="{% url 'configurator' %}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
