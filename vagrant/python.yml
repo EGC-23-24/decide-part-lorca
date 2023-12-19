@@ -7,6 +7,13 @@
     dest: /home/decide/decide
     version: master
 
+- name: Upgrade pip
+  become: yes
+  become_user: decide
+  pip:
+    name: pip
+    state: latest
+
 - name: Python virtualenv
   become: yes
   become_user: decide
