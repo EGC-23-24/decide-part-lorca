@@ -1193,7 +1193,7 @@ class FutureClosureTests(BaseTestCase):
         Verifies if the task status is marked as 'SUCCESS' or 'FAILURE'.
         """
 
-        self.assertIn(self.res.status, ["SUCCESS","FAILURE"])
+        self.assertIn(self.res.status, ["SUCCESS", "FAILURE"])
 
     def test_end_date(self):
         """
