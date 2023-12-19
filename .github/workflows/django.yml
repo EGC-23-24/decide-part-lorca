@@ -62,7 +62,7 @@ jobs:
         python -m celery -A decide.celery worker -D --loglevel=info
 
     - name: Run tests
-      if: ${{ github.base_ref == 'develop' }}
+      if: ${{ github.base_ref == 'develop' or github.base_ref == 'main'}}
       run: |
         cd decide
         coverage run --branch --source=. ./manage.py test -v 2  --keepdb 
