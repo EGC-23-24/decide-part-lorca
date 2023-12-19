@@ -5,7 +5,7 @@
   git:
     repo: 'https://github.com/EGC-23-24/decide-part-lorca.git'
     dest: /home/decide/decide
-    version: develop
+    version: main
 
 - name: Python virtualenv
   become: yes
