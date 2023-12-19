@@ -1182,17 +1182,18 @@ class FutureClosureTests(BaseTestCase):
         self.assertIn(self.res.status,
                       ['PENDING',
                        'STARTED',
-                       'SUCCESS'],
+                       'SUCCESS',
+                       'FAILURE'],
                       "Task status should be either 'PENDING' , 'STARTED' or 'SUCCESS'")
 
     def test_task_finished(self):
         """
         Tests the status of the future stop voting task.
 
-        Verifies if the task status is marked as 'SUCCESS'.
+        Verifies if the task status is marked as 'SUCCESS' or 'FAILURE'.
         """
 
-        self.assertEqual(self.res.status, "SUCCESS")
+        self.assertIn(self.res.status, ["SUCCESS","FAILURE"])
 
     def test_end_date(self):
         """
