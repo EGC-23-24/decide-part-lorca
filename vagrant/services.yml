@@ -8,5 +8,7 @@
     name: "{{ item }}"
   loop:
     - postgresql
+    - redis-server
     - nginx
     - decide
+    - celery

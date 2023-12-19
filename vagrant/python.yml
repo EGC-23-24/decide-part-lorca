@@ -5,14 +5,7 @@
   git:
     repo: 'https://github.com/EGC-23-24/decide-part-lorca.git'
     dest: /home/decide/decide
-    version: master
-
-- name: Upgrade pip
-  become: yes
-  become_user: decide
-  pip:
-    name: pip
-    state: latest
+    version: develop
 
 - name: Python virtualenv
   become: yes

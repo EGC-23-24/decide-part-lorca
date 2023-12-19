@@ -1,0 +1,14 @@
+[Unit]
+Description=Celery worker service
+
+[Service]
+User=decide
+Type=simple
+PIDFile=/var/run/celery.pid
+WorkingDirectory=/home/decide/decide/decide/
+ExecStart=/home/decide/venv/bin/celery -A decide worker
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
