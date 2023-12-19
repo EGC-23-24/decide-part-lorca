@@ -24,4 +24,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             fields: The fields to include in the serialized data.
         """
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'is_staff')
+        fields = (
+            'id',
+            'username',
+            'first_name',
+            'last_name',
+            'email',
+            'is_staff')

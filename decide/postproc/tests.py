@@ -15,6 +15,7 @@ class PostProcTestCase(APITestCase):
     :ivar client: The Django REST framework API client.
     :vartype client: APIClient
     """
+
     def setUp(self):
         """
         Set up the test environment before each test method is run.
@@ -48,22 +49,22 @@ class PostProcTestCase(APITestCase):
         data = {
             'type': 'IDENTITY',
             'options': [
-                { 'option': 'Option 1', 'number': 1, 'votes': 5 },
-                { 'option': 'Option 2', 'number': 2, 'votes': 0 },
-                { 'option': 'Option 3', 'number': 3, 'votes': 3 },
-                { 'option': 'Option 4', 'number': 4, 'votes': 2 },
-                { 'option': 'Option 5', 'number': 5, 'votes': 5 },
-                { 'option': 'Option 6', 'number': 6, 'votes': 1 },
+                {'option': 'Option 1', 'number': 1, 'votes': 5},
+                {'option': 'Option 2', 'number': 2, 'votes': 0},
+                {'option': 'Option 3', 'number': 3, 'votes': 3},
+                {'option': 'Option 4', 'number': 4, 'votes': 2},
+                {'option': 'Option 5', 'number': 5, 'votes': 5},
+                {'option': 'Option 6', 'number': 6, 'votes': 1},
             ]
         }
 
         expected_result = [
-            { 'option': 'Option 1', 'number': 1, 'votes': 5, 'postproc': 5 },
-            { 'option': 'Option 5', 'number': 5, 'votes': 5, 'postproc': 5 },
-            { 'option': 'Option 3', 'number': 3, 'votes': 3, 'postproc': 3 },
-            { 'option': 'Option 4', 'number': 4, 'votes': 2, 'postproc': 2 },
-            { 'option': 'Option 6', 'number': 6, 'votes': 1, 'postproc': 1 },
-            { 'option': 'Option 2', 'number': 2, 'votes': 0, 'postproc': 0 },
+            {'option': 'Option 1', 'number': 1, 'votes': 5, 'postproc': 5},
+            {'option': 'Option 5', 'number': 5, 'votes': 5, 'postproc': 5},
+            {'option': 'Option 3', 'number': 3, 'votes': 3, 'postproc': 3},
+            {'option': 'Option 4', 'number': 4, 'votes': 2, 'postproc': 2},
+            {'option': 'Option 6', 'number': 6, 'votes': 1, 'postproc': 1},
+            {'option': 'Option 2', 'number': 2, 'votes': 0, 'postproc': 0},
         ]
 
         response = self.client.post('/postproc/', data, format='json')

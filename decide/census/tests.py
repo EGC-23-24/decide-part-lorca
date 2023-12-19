@@ -22,17 +22,17 @@ class CensusTestCase(BaseTestCase):
     """
     Test case for census-related operations.
 
-    This class inherits from TestCase and provides test methods for creating, 
+    This class inherits from TestCase and provides test methods for creating,
     validating, and deleting census records.
     """
-    
+
     def setUp(self):
         """
         Set up the test environment before each test method.
 
         Creates a voting instance, a user, and a census record.
         """
-        
+
         # Crear una votación
         q = Question(desc="test question")
         q.save()
@@ -56,10 +56,10 @@ class CensusTestCase(BaseTestCase):
         """
         Test the creation of a census record.
 
-        Validates that the census record is correctly created and its attributes 
+        Validates that the census record is correctly created and its attributes
         match the expected values.
         """
-        
+
         # Crear una votación
         q = Question(desc="test question")
         q.save()
@@ -89,7 +89,7 @@ class CensusTestCase(BaseTestCase):
 
         Expects a ValueError when trying to create a census with an invalid voting ID.
         """
-        
+
         # Crear una votación
         q = Question(desc="test question")
         q.save()
@@ -106,7 +106,8 @@ class CensusTestCase(BaseTestCase):
 
         with self.assertRaises(ValueError):
             # Crear un censo
-            census = Census.objects.create(voting_id="invalid_voting_id", voter_id=u.id)
+            census = Census.objects.create(
+                voting_id="invalid_voting_id", voter_id=u.id)
             census.full_clean()  # This should raise a ValidationError exception
 
     def test_create_census_invalid_voter_id(self):
@@ -115,7 +116,7 @@ class CensusTestCase(BaseTestCase):
 
         Expects a ValueError when trying to create a census with an invalid voter ID.
         """
-        
+
         # Crear una votación
         q = Question(desc="test question")
         q.save()
@@ -132,17 +133,18 @@ class CensusTestCase(BaseTestCase):
 
         with self.assertRaises(ValueError):
             # Attempt to create a census with an invalid voter_id
-            census = Census.objects.create(voting_id=v.id, voter_id="invalid_voter_id")
+            census = Census.objects.create(
+                voting_id=v.id, voter_id="invalid_voter_id")
             census.full_clean()
 
     def test_create_census_invalid_voting_id_and_voter_id(self):
         """
         Test the creation of a census record with both invalid voting and voter IDs.
 
-        Expects a ValueError when trying to create a census with invalid voting and 
+        Expects a ValueError when trying to create a census with invalid voting and
         voter IDs.
         """
-        
+
         with self.assertRaises(ValueError):
             # Attempt to create a census with an invalid voting_id and voter_id
             census = Census.objects.create(
@@ -154,10 +156,10 @@ class CensusTestCase(BaseTestCase):
         """
         Test the deletion of a census record.
 
-        Validates that the census record is successfully deleted and no longer exists 
+        Validates that the census record is successfully deleted and no longer exists
         in the database.
         """
-        
+
         # Delete any existing Census objects to avoid IntegrityError
         Census.objects.all().delete()
 
@@ -192,9 +194,8 @@ class CensusTestCase(BaseTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertFalse(
             Census.objects.filter(
-                voting_id=census_to_delete.voting_id, voter_id=census_to_delete.voter_id
-            ).exists()
-        )
+                voting_id=census_to_delete.voting_id,
+                voter_id=census_to_delete.voter_id).exists())
 
     def test_delete_census_invalid_voting_id(self):
         """
@@ -202,7 +203,7 @@ class CensusTestCase(BaseTestCase):
 
         Expects a ValueError when trying to delete a census with an invalid voting ID.
         """
-        
+
         # Crear una votación
         q = Question(desc="test question")
         q.save()
@@ -219,7 +220,8 @@ class CensusTestCase(BaseTestCase):
 
         with self.assertRaises(ValueError):
             # Attempt to delete a census with an invalid voting_id
-            census = Census.objects.create(voting_id="invalid_voting_id", voter_id=u.id)
+            census = Census.objects.create(
+                voting_id="invalid_voting_id", voter_id=u.id)
             census.full_clean()
 
     def test_delete_census_invalid_voter_id(self):
@@ -228,7 +230,7 @@ class CensusTestCase(BaseTestCase):
 
         Expects a ValueError when trying to delete a census with an invalid voter ID.
         """
-        
+
         # Crear una votación
         q = Question(desc="test question")
         q.save()
@@ -245,17 +247,18 @@ class CensusTestCase(BaseTestCase):
 
         with self.assertRaises(ValueError):
             # Attempt to delete a census with an invalid voter_id
-            census = Census.objects.create(voting_id=v.id, voter_id="invalid_voter_id")
+            census = Census.objects.create(
+                voting_id=v.id, voter_id="invalid_voter_id")
             census.full_clean()
 
     def test_delete_census_invalid_voting_id_and_voter_id(self):
         """
         Test the deletion of a census record with both invalid voting and voter IDs.
 
-        Expects a ValueError when trying to delete a census with invalid voting and 
+        Expects a ValueError when trying to delete a census with invalid voting and
         voter IDs.
         """
-        
+
         with self.assertRaises(ValueError):
             # Attempt to delete a census with an invalid voting_id and voter_id
             census = Census.objects.create(
@@ -267,10 +270,10 @@ class CensusTestCase(BaseTestCase):
         """
         Test listing of all census records.
 
-        Validates that the census records can be retrieved and their attributes match 
+        Validates that the census records can be retrieved and their attributes match
         the expected values.
         """
-        
+
         # Eliminar todos los objetos Census existentes
         Census.objects.all().delete()
 
@@ -311,7 +314,7 @@ class CensusTestCase(BaseTestCase):
 
         Expects a ValueError when trying to list census records with an invalid voting ID.
         """
-        
+
         # Crear una votación
         q = Question(desc="test question")
         q.save()
@@ -328,7 +331,8 @@ class CensusTestCase(BaseTestCase):
 
         with self.assertRaises(ValueError):
             # Attempt to list a census with an invalid voting_id
-            census = Census.objects.create(voting_id="invalid_voting_id", voter_id=u.id)
+            census = Census.objects.create(
+                voting_id="invalid_voting_id", voter_id=u.id)
             census.full_clean()
 
     def test_list_census_invalid_voter_id(self):
@@ -337,7 +341,7 @@ class CensusTestCase(BaseTestCase):
 
         Expects a ValueError when trying to list census records with an invalid voter ID.
         """
-        
+
         # Crear una votación
         q = Question(desc="test question")
         q.save()
@@ -354,17 +358,18 @@ class CensusTestCase(BaseTestCase):
 
         with self.assertRaises(ValueError):
             # Attempt to list a census with an invalid voter_id
-            census = Census.objects.create(voting_id=v.id, voter_id="invalid_voter_id")
+            census = Census.objects.create(
+                voting_id=v.id, voter_id="invalid_voter_id")
             census.full_clean()
 
     def test_list_census_invalid_voting_id_and_voter_id(self):
         """
         Test listing of census records with both invalid voting and voter IDs.
 
-        Expects a ValueError when trying to list census records with invalid voting and 
+        Expects a ValueError when trying to list census records with invalid voting and
         voter IDs.
         """
-        
+
         with self.assertRaises(ValueError):
             # Attempt to list a census with an invalid voting_id and voter_id
             census = Census.objects.create(
@@ -376,10 +381,10 @@ class CensusTestCase(BaseTestCase):
         """
         Test retrieval of a specific census record.
 
-        Validates that a specific census record can be retrieved and its attributes match 
+        Validates that a specific census record can be retrieved and its attributes match
         the expected values.
         """
-        
+
         # Eliminar todos los objetos Census existentes
         Census.objects.all().delete()
 
@@ -418,10 +423,10 @@ class CensusTestCase(BaseTestCase):
         """
         Test retrieval of a census record with an invalid voting ID.
 
-        Expects a ValueError when trying to retrieve a census record with an invalid 
+        Expects a ValueError when trying to retrieve a census record with an invalid
         voting ID.
         """
-        
+
         # Crear una votación
         q = Question(desc="test question")
         q.save()
@@ -438,17 +443,18 @@ class CensusTestCase(BaseTestCase):
 
         with self.assertRaises(ValueError):
             # Attempt to get a census with an invalid voting_id
-            census = Census.objects.create(voting_id="invalid_voting_id", voter_id=u.id)
+            census = Census.objects.create(
+                voting_id="invalid_voting_id", voter_id=u.id)
             census.full_clean()
 
     def test_get_census_invalid_voter_id(self):
         """
         Test retrieval of a census record with an invalid voter ID.
 
-        Expects a ValueError when trying to retrieve a census record with an invalid 
+        Expects a ValueError when trying to retrieve a census record with an invalid
         voter ID.
         """
-        
+
         # Crear una votación
         q = Question(desc="test question")
         q.save()
@@ -465,17 +471,18 @@ class CensusTestCase(BaseTestCase):
 
         with self.assertRaises(ValueError):
             # Attempt to get a census with an invalid voter_id
-            census = Census.objects.create(voting_id=v.id, voter_id="invalid_voter_id")
+            census = Census.objects.create(
+                voting_id=v.id, voter_id="invalid_voter_id")
             census.full_clean()
 
     def test_get_census_invalid_voting_id_and_voter_id(self):
         """
         Test retrieval of a census record with both invalid voting and voter IDs.
 
-        Expects a ValueError when trying to retrieve a census record with invalid 
+        Expects a ValueError when trying to retrieve a census record with invalid
         voting and voter IDs.
         """
-        
+
         with self.assertRaises(ValueError):
             # Attempt to get a census with an invalid voting_id and voter_id
             census = Census.objects.create(
@@ -489,7 +496,7 @@ class CensusTestCase(BaseTestCase):
 
         Cleans up any created test data.
         """
-        
+
         super().tearDown()
         self.census = None
 
@@ -499,7 +506,7 @@ class CensusTestCase(BaseTestCase):
 
         Validates that a user has permission to vote in a specific voting.
         """
-        
+
         # Crear un votante
         u, created = User.objects.get_or_create(username="testvoter")
         u.is_active = True
@@ -528,10 +535,10 @@ class CensusTestCase(BaseTestCase):
         """
         Test listing all votings.
 
-        Validates that all votings can be listed and their attributes match the 
+        Validates that all votings can be listed and their attributes match the
         expected values.
         """
-        
+
         # Crear una votación
         q = Question(desc="test question")
         q.save()
@@ -550,7 +557,8 @@ class CensusTestCase(BaseTestCase):
         census = Census.objects.create(voting_id=v.id, voter_id=u.id)
 
         self.login()
-        response = self.client.get("/census/?voting_id={}".format(v.id), format="json")
+        response = self.client.get(
+            "/census/?voting_id={}".format(v.id), format="json")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"voters": [u.id]})
 
@@ -560,7 +568,7 @@ class CensusTestCase(BaseTestCase):
 
         Validates the behavior when adding a voter who no longer exists.
         """
-        
+
         # Crear una votación
         q = Question(desc="test question")
         q.save()
@@ -592,7 +600,7 @@ class CensusTestCase(BaseTestCase):
 
         Validates that new voters can be added to a voting successfully.
         """
-        
+
         # Crear una votación
         q = Question(desc="test question")
         q.save()
@@ -619,7 +627,7 @@ class CensusTestCase(BaseTestCase):
 
         Validates that a voter can be removed from a voting successfully.
         """
-        
+
         # Eliminar todos los objetos Census existentes
         Census.objects.all().delete()
 
@@ -657,14 +665,14 @@ class CensusTest(StaticLiveServerTestCase):
     This class inherits from StaticLiveServerTestCase to provide a test environment
     for web-based interactions using Selenium WebDriver.
     """
-    
+
     def setUp(self):
         """
         Set up the test environment before each test method.
 
         Initializes the WebDriver and sets up the base test environment.
         """
-        
+
         # Load base test functionality for decide
         self.base = BaseTestCase()
         self.base.setUp()
@@ -681,7 +689,7 @@ class CensusTest(StaticLiveServerTestCase):
 
         Closes the WebDriver and tears down the base test environment.
         """
-        
+
         super().tearDown()
         self.driver.quit()
 
@@ -691,10 +699,10 @@ class CensusTest(StaticLiveServerTestCase):
         """
         Test the successful creation of a census entry in the admin interface.
 
-        This method simulates the process of logging into the admin site and 
+        This method simulates the process of logging into the admin site and
         creating a new census entry with valid data.
         """
-        
+
         self.cleaner.get(self.live_server_url + "/admin/login/?next=/admin/")
         self.cleaner.set_window_size(1280, 720)
 
@@ -719,14 +727,14 @@ class CensusTest(StaticLiveServerTestCase):
         self.cleaner.find_element(By.NAME, "_save").click()
 
         self.assertTrue(
-            self.cleaner.current_url == self.live_server_url + "/admin/census/census"
-        )
+            self.cleaner.current_url == self.live_server_url +
+            "/admin/census/census")
 
     def createCensusEmptyError(self):
         """
         Test the behavior when attempting to create a census entry with empty fields.
 
-        This method checks if the correct error message is displayed when trying 
+        This method checks if the correct error message is displayed when trying
         to save a census entry without filling out the required fields.
         """
 
@@ -760,10 +768,10 @@ class CensusTest(StaticLiveServerTestCase):
         """
         Test the behavior when attempting to create a census entry with invalid values.
 
-        This method simulates the creation of a census entry with invalid values 
+        This method simulates the creation of a census entry with invalid values
         and checks if the appropriate error message is displayed.
         """
-        
+
         self.cleaner.get(self.live_server_url + "/admin/login/?next=/admin/")
         self.cleaner.set_window_size(1280, 720)
 
@@ -778,9 +786,11 @@ class CensusTest(StaticLiveServerTestCase):
         self.cleaner.get(self.live_server_url + "/admin/census/census/add")
         now = datetime.now()
         self.cleaner.find_element(By.ID, "id_voting_id").click()
-        self.cleaner.find_element(By.ID, "id_voting_id").send_keys("64654654654654")
+        self.cleaner.find_element(
+            By.ID, "id_voting_id").send_keys("64654654654654")
         self.cleaner.find_element(By.ID, "id_voter_id").click()
-        self.cleaner.find_element(By.ID, "id_voter_id").send_keys("64654654654654")
+        self.cleaner.find_element(
+            By.ID, "id_voter_id").send_keys("64654654654654")
         self.cleaner.find_element(By.NAME, "_save").click()
 
         self.assertTrue(
@@ -799,12 +809,12 @@ class CensusExportViewTest(BaseTestCase):
     """
     Test suite for the CensusExportView functionality.
     """
-    
+
     def setUp(self):
         """
         Set up the test environment for each test method.
         """
-        
+
         super().setUp()
 
     def create_voting(self):
@@ -814,7 +824,7 @@ class CensusExportViewTest(BaseTestCase):
         Returns:
             Voting: The Voting instance that was created.
         """
-        
+
         q = Question(desc="test question")
         q.save()
         for i in range(5):
@@ -838,7 +848,7 @@ class CensusExportViewTest(BaseTestCase):
         Ensures that admin users can access the export census view and
         that the context contains the correct data.
         """
-        
+
         self.create_voting()
 
         self.client.force_login(User.objects.get(username="admin"))
@@ -862,7 +872,7 @@ class CensusExportViewTest(BaseTestCase):
         Ensures that non-admin users are redirected when trying to access
         the export census view.
         """
-        
+
         self.create_voting()
 
         self.client.force_login(User.objects.get(username="noadmin"))
@@ -877,12 +887,12 @@ class ExportCensusTest(BaseTestCase):
     """
     Test suite for exporting census data.
     """
-    
+
     def setUp(self):
         """
         Set up the test environment for each test method.
         """
-        
+
         super().setUp()
 
     def create_voting(self):
@@ -892,7 +902,7 @@ class ExportCensusTest(BaseTestCase):
         Returns:
             Voting: The Voting instance that was created.
         """
-        
+
         q = Question(desc="test question")
         q.save()
         for i in range(5):
@@ -931,7 +941,7 @@ class ExportCensusTest(BaseTestCase):
         Ensures that the response contains the correct content type and
         disposition, and the Excel file contains the correct data.
         """
-        
+
         v = self.create_voting()
         self.create_voters(v)
 
@@ -973,7 +983,7 @@ class CensusImportViewTest(BaseTestCase):
         """
         Set up the test environment for each test method by creating a user and initializing the base test case.
         """
-        
+
         super().setUp()
         user = User(username="test")
         user.set_password("test")
@@ -986,7 +996,7 @@ class CensusImportViewTest(BaseTestCase):
         Returns:
             Voting: The Voting instance that was created.
         """
-        
+
         q = Question(desc="test question")
         q.save()
         for i in range(5):
@@ -1010,7 +1020,7 @@ class CensusImportViewTest(BaseTestCase):
         Ensures that census data is correctly imported into the database
         and appropriate success message is displayed.
         """
-        
+
         v = self.create_voting()
         v.create_pubkey()
         v.start_date = timezone.now()
@@ -1058,7 +1068,7 @@ class CensusImportViewTest(BaseTestCase):
 
         Ensures that an error message is displayed when incorrect data is imported.
         """
-        
+
         v = self.create_voting()
         v.create_pubkey()
         v.start_date = timezone.now()
@@ -1095,7 +1105,7 @@ class CensusImportViewTest(BaseTestCase):
 
         Ensures that an appropriate error message is displayed when no file is selected.
         """
-        
+
         v = self.create_voting()
         v.create_pubkey()
         v.start_date = timezone.now()
@@ -1119,7 +1129,7 @@ class CensusImportViewTest(BaseTestCase):
 
         Ensures that an appropriate error message is displayed when trying to import data for an ended voting.
         """
-        
+
         v = self.create_voting()
         v.create_pubkey()
         v.start_date = timezone.now()
@@ -1146,7 +1156,7 @@ class CensusImportViewTest(BaseTestCase):
 
         Ensures that an appropriate error message is displayed when trying to import data for a not-started voting.
         """
-        
+
         v = self.create_voting()
 
         workbook = Workbook()
@@ -1180,7 +1190,7 @@ class CensusImportViewTest(BaseTestCase):
 
         Ensures that non-admin users receive an appropriate error message when trying to access the import view.
         """
-        
+
         v = self.create_voting()
         v.create_pubkey()
         v.start_date = timezone.now()
@@ -1198,4 +1208,5 @@ class CensusImportViewTest(BaseTestCase):
 
         messages = list(response.context["messages"])
         self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), "You must be an admin to access this page!")
+        self.assertEqual(str(messages[0]),
+                         "You must be an admin to access this page!")

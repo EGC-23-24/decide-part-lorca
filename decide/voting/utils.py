@@ -31,8 +31,13 @@ def future_stop_task_manager(voting_id):
             f'future_stop_voting_task-{voting_id}-{voting.created_at}')
         if task:
             app.control.revoke(
-                f'future_stop_voting_task-{voting_id}-{voting.created_at}', terminate=True)
+                f'future_stop_voting_task-{voting_id}-{voting.created_at}',
+                terminate=True)
 
         if future_stop:
             future_stop_voting_task.apply_async(
-                args=[voting_id, voting.created_at], eta=future_stop, task_id=f'future_stop_voting_task-{voting_id}-{voting.created_at}')
+                args=[
+                    voting_id,
+                    voting.created_at],
+                eta=future_stop,
+                task_id=f'future_stop_voting_task-{voting_id}-{voting.created_at}')

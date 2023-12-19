@@ -14,7 +14,7 @@ class CensusAdmin(admin.ModelAdmin):
         list_filter: Specifies the fields of the Census model to be used for filtering in the list view.
         search_fields: Specifies the fields of the Census model to be used for searching in the list view.
     """
-    
+
     list_display = ('voting_id', 'voter_id')
     list_filter = ('voting_id', )
 

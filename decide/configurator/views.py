@@ -47,7 +47,8 @@ class CreateClassicView(TemplateView):
 
     def dispatch(self, request, *args, **kwargs):
         if not is_admin(request.user):
-            messages.error(request, "You must be an admin to access this page!")
+            messages.error(
+                request, "You must be an admin to access this page!")
             return HttpResponseRedirect("/")
         return super().dispatch(request, *args, **kwargs)
 
@@ -72,7 +73,8 @@ class CreateYesNoView(TemplateView):
 
     def dispatch(self, request, *args, **kwargs):
         if not is_admin(request.user):
-            messages.error(request, "You must be an admin to access this page!")
+            messages.error(
+                request, "You must be an admin to access this page!")
             return HttpResponseRedirect("/")
         return super().dispatch(request, *args, **kwargs)
 
@@ -90,14 +92,16 @@ class CreateMultipleChoiceView(TemplateView):
         if form.is_valid():
             new_voting = form.save()
             request.session["voting_id"] = new_voting.id
-            messages.success(request, "Multiple choice voting created successfully!")
+            messages.success(
+                request, "Multiple choice voting created successfully!")
             return redirect(reverse("manage_census"))
         else:
             return self.render_to_response(self.get_context_data(form=form))
 
     def dispatch(self, request, *args, **kwargs):
         if not is_admin(request.user):
-            messages.error(request, "You must be an admin to access this page!")
+            messages.error(
+                request, "You must be an admin to access this page!")
             return HttpResponseRedirect("/")
         return super().dispatch(request, *args, **kwargs)
 
@@ -115,14 +119,16 @@ class CreatePreferenceView(TemplateView):
         if form.is_valid():
             new_voting = form.save()
             request.session["voting_id"] = new_voting.id
-            messages.success(request, "Preference voting created successfully!")
+            messages.success(
+                request, "Preference voting created successfully!")
             return redirect(reverse("manage_census"))
         else:
             return self.render_to_response(self.get_context_data(form=form))
 
     def dispatch(self, request, *args, **kwargs):
         if not is_admin(request.user):
-            messages.error(request, "You must be an admin to access this page!")
+            messages.error(
+                request, "You must be an admin to access this page!")
             return HttpResponseRedirect("/")
         return super().dispatch(request, *args, **kwargs)
 
@@ -140,14 +146,16 @@ class CreateOpenQuestionView(TemplateView):
         if form.is_valid():
             new_voting = form.save()
             request.session["voting_id"] = new_voting.id
-            messages.success(request, "Open question voting created successfully!")
+            messages.success(
+                request, "Open question voting created successfully!")
             return redirect(reverse("manage_census"))
         else:
             return self.render_to_response(self.get_context_data(form=form))
 
     def dispatch(self, request, *args, **kwargs):
         if not is_admin(request.user):
-            messages.error(request, "You must be an admin to access this page!")
+            messages.error(
+                request, "You must be an admin to access this page!")
             return HttpResponseRedirect("/")
         return super().dispatch(request, *args, **kwargs)
 
@@ -163,6 +171,7 @@ class ManageCensusView(TemplateView):
 
     def dispatch(self, request, *args, **kwargs):
         if not is_admin(request.user):
-            messages.error(request, "You must be an admin to access this page!")
+            messages.error(
+                request, "You must be an admin to access this page!")
             return HttpResponseRedirect("/")
         return super().dispatch(request, *args, **kwargs)

@@ -35,8 +35,9 @@ def census(request):
     :param request: The HTTP request object.
     :return: Rendered web page for the census.
     """
-    
+
     return render(request, "census/census.html")
+
 
 def is_admin(user):
     """
@@ -47,8 +48,9 @@ def is_admin(user):
     :return: True if the user is authenticated and is a staff member, False otherwise.
     :rtype: bool
     """
-    
+
     return user.is_authenticated and user.is_staff
+
 
 class CensusCreate(generics.ListCreateAPIView):
     """
@@ -56,7 +58,7 @@ class CensusCreate(generics.ListCreateAPIView):
 
     Inherits from ListCreateAPIView to provide handling for GET and POST requests for Census model.
     """
-    
+
     permission_classes = (UserIsStaff,)
 
     def create(self, request, *args, **kwargs):
@@ -68,7 +70,7 @@ class CensusCreate(generics.ListCreateAPIView):
         :param kwargs: Keyword arguments.
         :return: A Response object with creation status.
         """
-        
+
         voting_id = request.data.get("voting_id")
         voters = request.data.get("voters")
         try:
@@ -88,7 +90,7 @@ class CensusCreate(generics.ListCreateAPIView):
         :param kwargs: Keyword arguments.
         :return: A Response object with the list of voters.
         """
-        
+
         voting_id = request.GET.get("voting_id")
         voters = Census.objects.filter(voting_id=voting_id).values_list(
             "voter_id", flat=True
@@ -102,7 +104,7 @@ class CensusDetail(generics.RetrieveDestroyAPIView):
 
     Inherits from RetrieveDestroyAPIView to provide handling for GET and DELETE requests for the Census model.
     """
-    
+
     def destroy(self, request, voting_id, *args, **kwargs):
         """
         Deletes voters from a census based on provided voting_id and voter ids.
@@ -113,9 +115,10 @@ class CensusDetail(generics.RetrieveDestroyAPIView):
         :param kwargs: Keyword arguments.
         :return: A Response object confirming deletion.
         """
-        
+
         voters = request.data.get("voters")
-        census = Census.objects.filter(voting_id=voting_id, voter_id__in=voters)
+        census = Census.objects.filter(
+            voting_id=voting_id, voter_id__in=voters)
         census.delete()
         return Response("Voters deleted from census", status=ST_204)
 
@@ -156,7 +159,9 @@ def GetId(request):
             {"error_id": "There is not a census with that voting_id"},
         )
     else:
-        return render(request, "census/census_details.html", {"census": census})
+        return render(request,
+                      "census/census_details.html",
+                      {"census": census})
 
 
 def createCensus(request):
@@ -166,19 +171,21 @@ def createCensus(request):
     :param request: The HTTP request object.
     :return: Redirects to the census page on success or renders the creation form with errors.
     """
-    
+
     if request.method == "POST":
         voting_id = request.POST.get("voting_id")
         voter_id = request.POST.get("voter_id")
 
         try:
-            census = Census.objects.create(voting_id=voting_id, voter_id=voter_id)
+            census = Census.objects.create(
+                voting_id=voting_id, voter_id=voter_id)
             census.full_clean()
             census.save()
             messages.success(request, "Census created successfully")
             return redirect("census")
 
-        # Si hay un ValidationError, muestra el mensaje de error en la página de creación del censo
+        # Si hay un ValidationError, muestra el mensaje de error en la página
+        # de creación del censo
         except ValidationError as e:
             if not Voting.objects.filter(id=voting_id).exists():
                 return render(
@@ -201,7 +208,9 @@ def createCensus(request):
                 )
 
     # Si el método no es POST, muestra la página de creación del censo
-    return render(request, "census/census_create.html", {"form": CreationCensusForm})
+    return render(request,
+                  "census/census_create.html",
+                  {"form": CreationCensusForm})
 
 
 def deleteCensus(request):
@@ -211,7 +220,7 @@ def deleteCensus(request):
     :param request: The HTTP request object containing the voting and voter IDs.
     :return: Redirects to the census page on successful deletion or renders the census page with an error message.
     """
-    
+
     census = Census.objects.filter(
         voting_id=request.POST["voting_id"], voter_id=request.POST["voter_id"]
     )
@@ -234,7 +243,7 @@ def censusList(request):
     :param request: The HTTP request object.
     :return: Rendered web page displaying a list of all census records.
     """
-    
+
     queryset = Census.objects.all()
     return render(request, "census/census_list.html", {"queryset": queryset})
 
@@ -257,9 +266,10 @@ class CensusExportView(TemplateView):
         :param kwargs: Keyword arguments.
         :return: HttpResponse or redirection.
         """
-        
+
         if not is_admin(request.user):
-            messages.error(request, "You must be an admin to access this page!")
+            messages.error(
+                request, "You must be an admin to access this page!")
             return HttpResponseRedirect("/")
         return super().dispatch(request, *args, **kwargs)
 
@@ -270,7 +280,7 @@ class CensusExportView(TemplateView):
         :param kwargs: Keyword arguments.
         :return: Context data dictionary.
         """
-        
+
         context = super().get_context_data(**kwargs)
         votings = Voting.objects.all()
         context["votings"] = votings
@@ -330,7 +340,7 @@ class CensusImportView(TemplateView):
 
     Inherits from TemplateView to display a page for selecting the voting and uploading the Excel file for census data.
     """
-    
+
     template_name = "census/import_census.html"
 
     def dispatch(self, request, *args, **kwargs):
@@ -342,9 +352,10 @@ class CensusImportView(TemplateView):
         :param kwargs: Keyword arguments.
         :return: HttpResponse or redirection.
         """
-        
+
         if not is_admin(request.user):
-            messages.error(request, "You must be an admin to access this page!")
+            messages.error(
+                request, "You must be an admin to access this page!")
             return HttpResponseRedirect("/")
         return super().dispatch(request, *args, **kwargs)
 
@@ -357,7 +368,7 @@ class CensusImportView(TemplateView):
         :param kwargs: Keyword arguments.
         :return: Redirects to the import page with a success or error message.
         """
-        
+
         voting_id = request.POST.get("voting_id")
         voting = Voting.objects.get(id=voting_id)
 
@@ -377,7 +388,8 @@ class CensusImportView(TemplateView):
 
                 for row in sheet.iter_rows(min_row=2, values_only=True):
                     voter_id = row[0]
-                    Census.objects.create(voting_id=voting_id, voter_id=voter_id)
+                    Census.objects.create(
+                        voting_id=voting_id, voter_id=voter_id)
 
             except Exception as e:
                 messages.error(request, f"Error importing data: {str(e)}")
@@ -397,7 +409,7 @@ class CensusImportView(TemplateView):
         :param kwargs: Keyword arguments.
         :return: Context data dictionary.
         """
-        
+
         context = super().get_context_data(**kwargs)
         votings = Voting.objects.all()
         context["votings"] = votings

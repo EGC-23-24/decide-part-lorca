@@ -73,7 +73,12 @@ def mock_query(client):
     The client param should be a rest_framework.tests.APIClient
     '''
 
-    def test_query(modname, entry_point='/', method='get', baseurl=None, **kwargs):
+    def test_query(
+            modname,
+            entry_point='/',
+            method='get',
+            baseurl=None,
+            **kwargs):
         url = '/{}{}'.format(modname, entry_point)
         params = kwargs.get('params', None)
         if params:

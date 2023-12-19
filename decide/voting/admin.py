@@ -23,7 +23,7 @@ def start(modeladmin, request, queryset):
     :param queryset: The queryset of selected items.
     :type queryset: QuerySet
     """
-    
+
     for v in queryset.all():
         v.create_pubkey()
         v.start_date = timezone.now()
@@ -43,7 +43,7 @@ def stop(ModelAdmin, request, queryset):
     :param queryset: The queryset of selected items.
     :type queryset: QuerySet
     """
-    
+
     for v in queryset.all():
         v.end_date = timezone.now()
         v.save()
@@ -62,10 +62,11 @@ def tally(ModelAdmin, request, queryset):
     :param queryset: The queryset of selected items.
     :type queryset: QuerySet
     """
-    
+
     for v in queryset.filter(end_date__lt=timezone.now()):
         token = request.session.get('auth-token', '')
         v.tally_votes(token)
+
 
 class QuestionAdmin(admin.ModelAdmin):
     """
@@ -74,8 +75,9 @@ class QuestionAdmin(admin.ModelAdmin):
     Attributes:
         list_display: Fields to be displayed in the list view.
     """
-    
+
     list_display = ('desc', 'type')
+
 
 class QuestionOptionRankedAdmin(admin.ModelAdmin):
     """
@@ -84,8 +86,9 @@ class QuestionOptionRankedAdmin(admin.ModelAdmin):
     Attributes:
         list_display: Fields to be displayed in the list view.
     """
-    
+
     list_display = ('question', 'number', 'option')
+
 
 class QuestionOptionYesNoAdmin(admin.ModelAdmin):
     """
@@ -94,7 +97,7 @@ class QuestionOptionYesNoAdmin(admin.ModelAdmin):
     Attributes:
         list_display: Fields to be displayed in the list view.
     """
-    
+
     list_display = ('question', 'number', 'option')
 
 
@@ -110,7 +113,7 @@ class VotingAdmin(admin.ModelAdmin):
         search_fields: Fields to search in the list view.
         actions: Custom actions available for this model.
     """
-    
+
     list_display = ('name', 'start_date', 'end_date', 'future_stop')
     readonly_fields = ('start_date', 'end_date', 'pub_key',
                        'tally', 'postproc')
@@ -118,8 +121,7 @@ class VotingAdmin(admin.ModelAdmin):
     list_filter = (StartedFilter,)
     search_fields = ('name', )
 
-    actions = [ start, stop, tally ]
-
+    actions = [start, stop, tally]
 
 
 admin.site.register(Voting, VotingAdmin)
@@ -127,4 +129,3 @@ admin.site.register(Question, QuestionAdmin)
 admin.site.register(QuestionOption)
 admin.site.register(QuestionOptionRanked, QuestionOptionRankedAdmin)
 admin.site.register(QuestionOptionYesNo, QuestionOptionYesNoAdmin)
-

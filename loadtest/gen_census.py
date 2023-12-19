@@ -24,7 +24,8 @@ def create_voters(filename):
     invalid_voters = []
     for username, pwd in voters.items():
         token.update({'username': username, 'password': pwd})
-        response = requests.post(HOST + '/authentication/register/', data=token)
+        response = requests.post(
+            HOST + '/authentication/register/', data=token)
         if response.status_code == 201:
             voters_pk.append(response.json().get('user_pk'))
         else:
@@ -45,7 +46,9 @@ def add_census(voters_pk, voting_pk):
     response = requests.post(HOST + '/census/', json=data2, headers=auth)
 
 
-
 voters, invalids = create_voters('voters.json')
 add_census(voters, VOTING)
-print("Create voters with pk={0} \nInvalid usernames={1}".format(voters, invalids))
+print(
+    "Create voters with pk={0} \nInvalid usernames={1}".format(
+        voters,
+        invalids))
