@@ -35,15 +35,17 @@ cuerpo
 # test (incorporación o modificación de pruebas)
 # conf (modificación de archivos de configuración)
 
-### issue
+### asunto
 # Consiste en una breve descripción del problema abordado y debe comenzar con un verbo en participio pasado.
+
+### id
 # Se hará referencia al problema correspondiente (si lo hay) de la siguiente manera: `#<ID_issue>`.
 
 ### cuerpo (opcional)
 # Se utilizará en caso de que el problema no sea lo suficientemente descriptivo.
 
 ### Ejemplo
-# conf: Actualizar docker-compose.yml
+# conf: Update docker-compose.yml #1
 ```
 <div id='id2'/>
 
